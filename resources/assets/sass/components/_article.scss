@@ -1,0 +1,26 @@
+.article-hero {
+  display: block;
+  figure {
+    @include backgroundCover;
+    width: 100%;
+  }
+}
+
+.article-title {
+  color: $red;
+  font-weight: $bold;
+}
+
+.article-meta {
+  border-bottom: 3px solid $red;
+}
+
+.article-date {
+  color: $red;
+  font-size: 1.4rem;
+  font-weight: $bold;
+}
+
+.article-excerpt {
+  color: $gray;
+}

@@ -1,0 +1,52 @@
+.cliente-footer {
+  background: white;
+  &__inner {
+    padding: 10rem 0;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    // grid-template-areas:
+    //   'a a a a a b'
+    //   'c c c c c d';
+    grid-row-gap: 6rem;
+  }
+
+  &__descarga {
+    padding: 0 0 0 calc( 100vw / 4);
+    h3 {
+      font-size: 3rem;
+      color: $red;
+      line-height: 4rem;
+      font-weight: $bold;
+      max-width: 220px;
+      margin: 0 0 2rem 0;
+    }
+  }
+
+  &__marca {
+     padding: 0 0 0 calc( 100vw / 6);
+     h4 {
+      font-size: 6rem;
+      color: $red;
+      line-height: 7rem;
+      font-weight: $bold;
+      border-bottom: 1px solid $red;
+      padding: 0 0 1rem 0;
+      display: block;
+     }
+  }
+
+  &__contacto {
+    padding: 13.5rem 0 0 1rem;
+    display: flex;
+
+    align-items: center;
+    h4 {
+      font-size: 2rem;
+      color: $red;
+      line-height: 3rem;
+      font-weight: $bold;
+      display: block;
+      margin: 0 3rem 0 0;
+     }
+  }
+}

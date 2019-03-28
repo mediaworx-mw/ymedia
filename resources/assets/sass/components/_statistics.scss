@@ -1,0 +1,10 @@
+.statistics {
+  background: $gray-light;
+  padding: $pad;
+  width: 100%;
+  min-height: 200px;
+  margin: 0 0 4rem 0;
+  &__inner {
+    padding: 4rem 0;
+  }
+}

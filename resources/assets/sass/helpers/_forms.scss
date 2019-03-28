@@ -1,0 +1,26 @@
+form {
+  width: 100%;
+}
+
+input[type=text], input[type=email], input[type=tel], textarea{
+  width: 100%;
+  border: solid 2px $gray;
+  padding: 2rem;
+  background: white;
+  font-size: 7rem;
+  color: $red;
+  font-weight: $bold;
+  line-height: 1;
+  font-family: $main-font;
+  &::placeholder {
+    color: $gray;
+    opacity: 1;
+
+  }
+}
+
+textarea {
+  font-size: 5rem;
+}
+
+

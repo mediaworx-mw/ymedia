@@ -1,0 +1,36 @@
+*, html, body {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  >svg {
+    display: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+   transition: opacity 0.3s ease;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+

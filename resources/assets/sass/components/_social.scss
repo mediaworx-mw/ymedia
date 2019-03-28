@@ -1,0 +1,21 @@
+.social {
+  position: fixed;
+  bottom: 5vh;
+  left: $left;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  &__icon {
+    text-align: center;
+    margin: 0 0 2rem 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+@include mobile {
+  .social {
+    left: $left-grid;
+  }
+}

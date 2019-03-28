@@ -1,0 +1,79 @@
+.contacto-form {
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+  &__header {
+    padding: 0 0 4rem 0;
+    h2 {
+      font-size: 3.2rem;
+      color: $red;
+      line-height: 4rem;
+      font-weight: $bold;
+    }
+  }
+  &__form {
+    .wpcf7 {
+      width: 100%;
+    }
+    .form-field {
+      margin: 0 0 3rem 0;
+    }
+    textarea {
+      max-height: 300px;
+    }
+     .aceptar {
+      position: relative;
+      z-index: -9999;
+      position: relative;
+       margin: 0;
+      &+span {
+        font-size: 1.8rem;
+        color: $gray;
+        font-weight: $bold;
+        padding: 0 0 0 2rem;
+        display: block;
+        &:before {
+          content: '';
+          position: absolute;
+          height: 15px;
+          width: 15px;
+          background: white;
+          left: 0;
+          top: -7px;
+          border-radius: 50%;
+          border: 1px solid $gray;
+        }
+      }
+      &:checked + span {
+        &:before {
+          background: $red;
+        }
+      }
+    }
+    .consulta {
+      display: inline-block;
+      color: $red;
+      font-size: 1.8rem;
+      font-weight: $bold;
+      padding: 2rem 0 0 3rem;
+    }
+    input[type=submit] {
+      background: lighten($gray, 10%);
+      color: $gray-dark;
+      font-size: 4rem;
+      padding: 3rem 5rem;
+       transition: all 0.3s ease;
+      &:hover {
+        background: $red;
+        color: white;
+        transition: all 0.3s ease;
+      }
+    }
+
+  }
+
+
+
+}
+
+

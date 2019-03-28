@@ -1,0 +1,27 @@
+.contacto-maps {
+  padding: 0 4rem 0 0;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding: 0 0 4rem 0;
+    h2 {
+      font-size: 3.2rem;
+      color: $red;
+      line-height: 4rem;
+      font-weight: $bold;
+    }
+  }
+  &__maps {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 75.5%;
+
+  }
+  &__map {
+    height: 49%;
+    background: $red;
+
+  }
+}

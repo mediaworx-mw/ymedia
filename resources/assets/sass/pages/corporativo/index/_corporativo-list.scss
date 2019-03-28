@@ -1,0 +1,190 @@
+.grid-sizer { width: 16.667%;}
+
+.member-modal {
+  @include modal($red);
+}
+
+.members {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.member {
+  padding: 1vw;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  &--regular {
+    height: 30vw;
+    width: 33.33%;
+  }
+  &--grande {
+    height: 30vw;
+    width: 50%;
+  }
+  &--vertical {
+    width: 33.33%;
+    height: 60vw;
+  }
+  &__video {
+    position: absolute;
+    @include center;
+    width: 102%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    video {
+      position: absolute;
+      @include center;
+      height: 120%;
+      width: auto;
+    }
+  }
+  &__more {
+    position: absolute;
+    height: 3px;
+    width: 40px;
+    background: $red;
+    right: 1rem;
+    bottom: 3rem;
+    cursor: pointer;
+    z-index: 10;
+    &:after {
+      content: '';
+      height: 40px;
+      width: 3px;
+      background: $red;
+      position: absolute;
+      @include center;
+    }
+  }
+  &__inner {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    transition: background 0.3s ease;
+    overflow: hidden;
+  }
+
+  &__info {
+    padding: 0.5rem;
+    position: relative;
+    z-index: 5;
+  }
+
+  &__line {
+    height: 15px;
+    width: 60px;
+    background:$red;
+    display: block;
+    margin: 0 0 1rem 0;
+  }
+
+  &__first-name {
+    color: white;
+    font-size: 7rem;
+    line-height: 7rem;
+    font-weight: $bold;
+  }
+
+  &__last-name{
+    color: white;
+    font-size: 4rem;
+    line-height: 5rem;
+    font-weight: $bold;
+  }
+
+  &__role {
+    color: white;
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: $bold;
+  }
+}
+
+@include desktop {
+  .member {
+    padding: 1vw;
+    background: white;
+    position: relative;
+    &--regular {
+      height: 60vw;
+      width: 100%;
+    }
+    &--grande {
+      height: 60vw;
+      width: 100%;
+    }
+    &--vertical {
+      width: 100%;
+      height: 60vw;
+    }
+  }
+
+}
+
+@include tablet {
+  .member {
+    &--regular {
+      height: 60vw;
+    }
+    &--grande {
+      height: 60vw;
+    }
+    &--vertical {
+      height: 60vw;
+    }
+
+    &__first-name {
+      font-size: 5rem;
+      line-height: 5rem;
+    }
+
+    &__last-name{
+      font-size: 5rem;
+      line-height: 5rem;
+    }
+    &__role {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+
+@include mobile {
+  .member {
+    &--regular {
+      height: 70vw;
+    }
+    &--grande {
+      height: 70vw;
+    }
+    &--vertical {
+      height: 70vw;
+    }
+    &__line {
+      height: 6px;
+      width: 30px;
+    }
+    &__first-name {
+      font-size: 3rem;
+      line-height: 3rem;
+    }
+    &__last-name{
+      font-size: 3rem;
+      line-height: 3rem;
+    }
+    &__role {
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+  }
+}

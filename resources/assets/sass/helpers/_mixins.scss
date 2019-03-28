@@ -1,0 +1,145 @@
+@mixin hd {
+  @media (min-width: #{$hd-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin min-height {
+  @media (max-height: #{$laptop-height}) and (min-width: #{$desktop-width}){
+    @content;
+  }
+}
+
+@mixin center{
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+
+@mixin centerX{
+  left:50%;
+  transform: translate(-50%, 0);
+}
+
+@mixin centerY{
+  top:50%;
+  transform: translate(0, -50%);
+}
+
+@mixin zoom($zoom, $speed){
+  transform: scale($zoom);
+  transform-origin:center;
+  transition: transform $speed;
+}
+
+@mixin font-max-min($size, $min, $max) {
+  font-size: $size;
+  line-height: calc(#{$size} - 1vw});
+
+  @include hd {
+    font-size: $max;
+    line-height: calc(#{$max} - 1rem});
+  }
+
+  @include tablet {
+    font-size: calc(#{$min} + 1rem});
+    line-height: calc(#{$min} });
+  }
+
+  @include mobile {
+    font-size: $min;
+    line-height: calc(#{$min} - 0.8rem});
+  }
+
+  @include min-height {
+    font-size: 9rem;
+    line-height: 8rem;
+  }
+}
+
+@mixin backgroundCover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin articlePaddingLeft {
+  padding: 0 $half-pad 0 $pad;
+}
+
+@mixin articlePaddingRight {
+  padding: 0 $pad 0 $half-pad;
+}
+
+@mixin articlePaddingMiddle {
+  padding: 0 $half-pad;
+}
+
+@mixin modal($color) {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  background: $color;
+  left: 0;
+  top: 0;
+  z-index: $zmodal;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+  &.visible {
+    opacity: 1;
+    visibility: inherit;
+    transition: opacity 0.5s ease;
+  }
+}
+
+@mixin close($top, $right) {
+  display: block;
+  padding: 20px;
+  height: 3px;
+  width: 40px;
+  background: transparent;
+  position: absolute;
+  top: $top;
+  right: $right;
+  transform: rotate(45deg);
+  cursor: pointer;
+  z-index: $zclose;
+  &:before {
+    height: 3px;
+    width: 40px;
+    content: '';
+    background: $red;
+    position: absolute;
+    @include center;
+  }
+  &:after {
+    width: 3px;
+    height: 40px;
+    content: '';
+    background: $red;
+    position: absolute;
+    @include center;
+  }
+
+}

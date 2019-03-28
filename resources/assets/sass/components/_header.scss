@@ -1,0 +1,30 @@
+.header {
+  position: fixed;
+  background: white;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  max-width: 100%;
+  z-index: $zheader;
+  padding: 2rem 0 1.5rem 0;
+  transition: padding 0.3s ease;
+  &--small {
+    padding: 0 0 1.5rem 0;
+    transition: padding 0.3s ease;
+  }
+  &__inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: $zheader-inner;
+  }
+  &__logo {
+    margin: 0.8rem 0 0 0;
+    svg {
+      path {
+        transition: all 0.5s 0.4s ease;
+      }
+    }
+  }
+}

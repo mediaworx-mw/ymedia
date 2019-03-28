@@ -1,0 +1,75 @@
+.clientes-list {
+  width: 100%;
+  background: white;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background: $red;
+  &__block {
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $red;
+
+  }
+  &__square {
+    background: $red;
+  }
+  &__client {
+    background: lighten($red, 10%);
+    cursor: pointer;
+    transition: background 0.3s ease, border 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    img {
+      filter: brightness(0) invert(1);
+      width: 60%;
+      margin: 0 auto;
+      display: block;
+    }
+    &:hover {
+      background: white;
+       border: 1px solid white;
+      transition: background 0.3s ease, border 0.3s ease;
+      img {
+        filter: none;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .clientes-list {
+    padding: 0 $pad-grid;
+    grid-template-columns: repeat(4, 1fr);
+    &__block {
+      height: 20vw;
+    }
+  }
+}
+
+@include tablet {
+  .clientes-list {
+    grid-template-columns: repeat(2, 1fr);
+    &__block {
+      height: 40vw;
+    }
+    &__square {
+      display: none;
+    }
+    &__client {
+      background: $red;
+    }
+  }
+}
+
+@include mobile {
+  .clientes-list {
+    grid-template-columns: repeat(1, 1fr);
+    &__block {
+      height: 80vw;
+    }
+
+  }
+}
+

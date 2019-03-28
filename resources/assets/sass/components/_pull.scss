@@ -1,0 +1,75 @@
+.pull {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  position: relative;
+  padding: 0;
+  margin: 3rem 0 0 0;
+  .pull-box {
+    display: inline-block;
+    position: relative;
+     width: 50px;
+     padding: 0;
+     height: 30px;
+    .pull-inner {
+      background: $red;
+      display: block;
+      height: 4px;
+      position: absolute;
+      top: 50%;
+      @include centerY;
+      width: 50px;
+      transition: all 0.2s;
+      &::before {
+        background: $red;
+        content: '';
+        display: block;
+        height: 4px;
+        position: absolute;
+       width: 50px;
+        top: -10px;
+        transition: all 0.2s;
+      }
+      &::after {
+        background: $red;
+        bottom: -10px;
+        content: '';
+        display: block;
+        height: 4px;
+        position: absolute;
+        transition: all 0.2s;
+        width: 50px;
+      }
+    }
+  }
+  &.closed {
+    .pull-box {
+      .pull-inner {
+        height: 0;
+        &:before {
+          background: white;
+          transform: rotate(-45deg) translate(-8px, 7px);
+          transition: transform 0.2s;
+        }
+        &:after {
+          background: white;
+          transform: rotate(45deg) translate(-4px, -4px);
+          transition: transform 0.2s;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .pull {
+
+    .pull-box {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+
+}

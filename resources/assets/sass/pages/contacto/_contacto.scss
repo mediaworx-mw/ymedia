@@ -1,0 +1,10 @@
+.contacto {
+  width: 100%;
+  background: white;
+  &__content {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+  }
+}
+
+

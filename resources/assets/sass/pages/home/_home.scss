@@ -1,0 +1,214 @@
+.home {
+  position: relative;
+}
+
+.home-section {
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  &:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: $zhome-overlay;
+  }
+}
+
+.tag {
+  position: absolute;
+  width: 100%;
+  max-width: 600px;
+  z-index: $zcounter;
+  padding: 0;
+  top: 20vh;
+  &__title {
+    margin: 0;
+    font-size: 8rem;
+    line-height: 8rem;
+    font-weight: $bold;
+  }
+  &__text {
+    font-weight: $bold;
+    font-size: 2.4rem;
+    line-height: 3.5rem;
+  }
+  &__arrow {
+    position: relative;
+    bottom: -1rem;
+  }
+}
+
+.home1 {
+  background-color: white;
+  .tag {
+    left: $left;
+    transform: translateX(-700px);
+    &__title {
+      color: $red;
+    }
+    &__text {
+      color: $red;
+    }
+  }
+  &:after {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.home2 {
+  background-color: white;
+  .tag {
+    right: $right;
+    transform: translateX(700px);
+    &__title {
+      color: white;
+    }
+    &__text {
+      color: white;
+    }
+    &__arrow {
+      text-align: right;
+      g {
+        path, polyline {
+          stroke: white;
+        }
+      }
+    }
+  }
+  &:after {
+    background: rgba(170, 0, 0, 0.7);
+  }
+}
+
+.home3 {
+  background-color: white;
+  .tag {
+    left: $left;
+    transform: translateX(-700px);
+    &__title {
+      color: $red;
+    }
+    &__text {
+      color: $red;
+    }
+  }
+  &:after {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+@include hd {
+  .tag {
+    max-width: 600px;
+    &__title {
+        font-size: 10rem;
+        line-height: 11rem;
+    }
+    &__text {
+      font-size: 3.2rem;
+      line-height: 4.2rem;
+    }
+  }
+  .home1 {
+    .tag {
+      left: $left-grid;
+    }
+  }
+  .home2 {
+    .tag {
+      right: $right-grid;
+    }
+  }
+  .home3 {
+    .tag {
+      left: $left-grid;
+    }
+  }
+}
+
+
+@include desktop {
+  .home1 {
+    .tag {
+      left: $left-grid
+    }
+  }
+  .home2 {
+    .tag {
+      right: $right-grid
+    }
+  }
+  .home3 {
+    .tag {
+      left: $left-grid
+    }
+  }
+}
+
+@include tablet {
+  .tag {
+    width: 100%;
+    max-width: 340px;
+    &__text {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+    &__title {
+      font-size: 6rem;
+      line-height: 7rem;
+    }
+  }
+  .home1 {
+    .tag {
+      left: $left-grid;
+    }
+  }
+  .home2 {
+    .tag {
+      right: $right-grid;
+    }
+  }
+  .home3 {
+    .tag {
+      left: $left-grid;
+    }
+  }
+}
+
+@include mobile {
+  .tag {
+    width: 100%;
+    max-width: 250px;
+    &__title {
+      font-size: 6rem;
+      line-height: 7rem;
+    }
+    &__text {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+  }
+  .home1 {
+    .tag {
+      left: $left-grid;
+    }
+  }
+  .home2 {
+    .tag {
+      right: $right-grid;
+    }
+  }
+  .home3 {
+    .tag {
+      left: $left-grid;
+    }
+  }
+}

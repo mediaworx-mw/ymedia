@@ -1,0 +1,104 @@
+.canal-single {
+  &__top {
+    width: 100%;
+    position: relative;
+
+  }
+  &__hero {
+    width: 100%;
+    height: 60vw;
+    max-height: 800px;
+    @include backgroundCover;
+  }
+  &__header {
+    position: absolute;
+    max-width: 80vw;
+    @include center;
+    width: 100%;
+  }
+  &__category {
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background: $green;
+    padding: 1rem 2rem;
+    margin: 0 0 2rem 0;
+    font-size: 1.6rem;
+  }
+  &__title {
+    color: white;
+    font-size: 5.5vw;
+    line-height: 5vw;
+    font-weight: $bold;
+    margin: 0 0 2rem 0;
+  }
+  &__subtitle {
+    color: white;
+    font-size: 2.5vw;
+    line-height: 3vw;
+    font-weight: $bold;
+  }
+  &__meta {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+  }
+  &__date {
+    background: $red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 8rem 1rem 4rem;
+    h2 {
+      font-size: 2rem;
+      line-height: 2rem;
+      color: white;
+      font-weight: $regular;
+      border-bottom: 3px solid white;
+      padding: 0 0 0.5rem 0;
+      margin: 0 0 1rem 0;
+    }
+    h3 {
+      font-size: 6rem;
+      color: white;
+      font-weight: $bold;
+    }
+  }
+  &__author {
+    padding: 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      font-size: 3rem;
+      line-height: 2rem;
+      color: white;
+      font-weight: $bold;
+      margin: 0 0 1rem 0;
+    }
+    span {
+      font-size: 1.8rem;
+      line-height: 2rem;
+      color: white;
+      font-weight: $bold;
+    }
+  }
+
+  &__excerpt {
+    padding: 200px $pad 4rem 10vw;
+    position: relative;
+    p {
+      font-size: 3.6rem;
+      line-height: 4rem;
+      font-weight: $bold;
+      color: $red;
+      max-width: $max-width-content;
+    }
+  }
+  &__content {
+
+    margin: 0 auto;
+  }
+
+}

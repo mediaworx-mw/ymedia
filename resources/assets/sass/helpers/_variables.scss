@@ -1,0 +1,56 @@
+// Colors
+$red: #DC241F;
+$red-grid: darken($red, 10%);
+$gray-light: #F2F2F2;
+$gray: #aaaaaa;
+$gray-dark: #909194;
+$gray-grid: #e1e1e1;
+$green: #3CD590;
+
+// Devices
+$desktop-width: 1024px;
+$tablet-width: 768px;
+$mobile-width: 576px;
+
+// Fonts
+$main-font: Helvetica, 'Roboto', sans-serif;
+$bold: 600;
+$medium: 500;
+$regular: 400;
+
+// Z-index
+$zheader: 13;
+$zfooter: 13;
+$zheader-inner: 15;
+$zcounter: 12;
+$zhome-overlay: 7;
+$znav: 14;
+$zmodal: 20;
+$zclose: 21;
+
+
+// Containers
+$container-page: 100vw;
+$max-width-content: 1000px;
+
+//Media Query Breaks
+$hd-width: 1880px;
+$desktop-width: 1200px;
+$tablet-width: 768px;
+$mobile-width: 400px;
+$laptop-height: 799px;
+
+//Paddings
+$half-pad: 2rem;
+$pad: 4rem;
+$pad-grid: 8.3333vw;
+$pad-page: 10rem 4rem 4rem 4rem;
+
+//Position
+$left: 4em;
+$right: 4rem;
+
+$left-grid: 8.3333vw;
+$right-grid: 8.3333vw;
+
+

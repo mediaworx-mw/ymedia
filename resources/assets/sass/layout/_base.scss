@@ -1,0 +1,62 @@
+html, body{
+  box-sizing: border-box;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.container {
+  width: 100vw;
+  max-width: 100%;
+  padding: 0 $pad;
+  margin: 0 auto;
+  &--max {
+    max-width: $max-width-content
+  }
+}
+
+.container-back {
+  width: 100vw;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+
+@include hd {
+ .container-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "a";
+    max-width: $container-page;
+    margin: 0 auto;
+    >div {
+      grid-area: a;
+      align-self: center;
+      justify-self: center;
+      width: 100vw;
+      max-width: 100%;
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    padding: 0 $pad-grid;
+  }
+
+  .container-back {
+    max-width: 83.333vw;
+  }
+
+  .container-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "a";
+    >div {
+      grid-area: a;
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.corporativo-top {
+  padding: 8rem 0;
+  &__tag {
+    @include font-max-min(6vw, 4rem, 8rem);
+    color: $red;
+    max-width: 70%;
+    margin: 0 0 6rem 0;
+  }
+  &__intro {
+    max-width: 1000px;
+    width: 100%;
+    color: $gray;
+    font-size: 1.8rem;
+  }
+}
