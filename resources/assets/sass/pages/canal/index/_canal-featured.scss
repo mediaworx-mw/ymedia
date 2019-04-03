@@ -7,11 +7,11 @@
       @include backgroundCover;
       width: 100%;
       height: 60vw;
-      max-height: 700px;
+      max-height: 710px;
     }
   }
   &__content {
-    padding: 6rem $pad;
+    padding: 10rem $pad 6rem $pad;
   }
   &__title {
     margin: 0 0 2rem 0;

@@ -4,6 +4,7 @@ import Home from './components/home.js';
 import Corporativo from './components/corporativo.js';
 import Clientes from './components/clientes.js';
 import Cliente from './components/cliente.js';
+import Sidebar from './components/sidebar.js';
 import match from './utils/match';
 
 function detectCurrentPage() {
@@ -20,6 +21,7 @@ function detectCurrentPage() {
 function main() {
   Footer();
   Header();
+  Sidebar();
 }
 
 function init() {

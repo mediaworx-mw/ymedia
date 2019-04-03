@@ -11,6 +11,7 @@
 
 <?php get_header(); ?>
 <div class="single" data-site-body="single-canal">
+  <?php get_template_part('components/sidebar'); ?>
   <?php while ( have_posts() ) : the_post();?>
   <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="canal-single">
@@ -19,7 +20,11 @@
         <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
         </div>
         <div class="canal-single__header">
-          <a href="#" class="canal-single__category">Estudios</a>
+
+          <?php
+            $terms = get_the_terms($post->ID, 'canal_category' );
+          ?>
+          <a href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
           <h1 class="canal-single__title"><?php the_title(); ?></h1>
           <h2 class="canal-single__subtitle"><?php the_field('subtitulo_canal'); ?></h2>
         </div>

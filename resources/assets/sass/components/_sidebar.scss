@@ -1,0 +1,114 @@
+.sidebar {
+  position: absolute;
+  min-height: 700px;
+  width: 500px;
+  right: 0;
+  top: 710px;
+  padding: 0;
+  z-index: 30;
+  &__top {
+    padding: 4rem 0;
+    background: $red;
+    width: 100%;
+    position: relative;
+    height: 50px;
+
+  }
+  &__handle {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    @include centerY;
+    right: 4rem;
+    cursor: pointer;
+    span {
+      height: 4px;
+      width: 30px;
+      background: white;
+      position: absolute;
+      @include center;
+      &:after {
+        content: '';
+        width: 4px;
+        height: 30px;
+        position: absolute;
+        @include center;
+        background: white;
+      }
+    }
+    &--open {
+      span {
+        &:after {
+          height: 0;
+          width: 0;
+        }
+      }
+    }
+  }
+  &__content {
+     background: $red;
+     padding: 1rem 4rem 4rem 4rem;
+     opacity: 0;
+     transition: opacity 0.3s ease;
+     visibility: hidden;
+     &--visible {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease;
+     }
+  }
+  &__search {
+    padding: 0 0 4rem 0;
+  }
+  &__search-form {
+    display: flex;
+    justify-content: space-between;
+    input {
+      background: white;
+      padding: 1rem;
+      width: 100%;
+      color: $gray;
+    }
+    input[type=submit]{
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      font-size: 0;
+      background: $gray url('../images/search.svg') no-repeat center / 20px;
+      &:hover {
+        background-color: $gray-dark;
+      }
+    }
+  }
+
+  &__categories-list {
+    text-align: right;
+    li {
+      margin: 0 0 2rem 0;
+      a {
+        color: white;
+        font-weight: $bold;
+        font-size: 3rem;
+        display: block;
+        opacity: 1;
+         transition: opacity 0.3s ease;
+        &:after {
+          content: ' +';
+          font-size: 3rem;
+          font-weight: $bold;
+          color: white;
+        }
+        &:hover {
+          opacity: 0.8;
+          transition: opacity 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+  .sidebar {
+    top: 60vw;
+  }
+}

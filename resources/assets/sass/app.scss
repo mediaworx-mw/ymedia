@@ -3,7 +3,6 @@
 @import 'helpers/variables';
 @import 'helpers/typography';
 @import 'helpers/mixins';
-@import 'helpers/forms';
 @import 'helpers/general';
 
 @import 'layout/base';
@@ -16,13 +15,14 @@
 @import 'components/footer';
 @import 'components/social';
 @import 'components/counter';
-@import 'components/form';
+@import 'components/forms';
 @import 'components/svg';
 @import 'components/article';
 @import 'components/video';
 @import 'components/statistics';
 @import 'components/entry';
 @import 'components/page-crumb';
+@import 'components/sidebar';
 
 //@import 'webgl/webgl';
 

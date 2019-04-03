@@ -1,9 +1,10 @@
 .contacto-form {
-  padding: 0 4rem;
+  padding: 0 $pad;
   display: flex;
   flex-direction: column;
   &__header {
-    padding: 0 0 4rem 0;
+    padding: 0 0 $pad 0;
+    min-height: 120px;
     h2 {
       font-size: 3.2rem;
       color: $red;
@@ -18,9 +19,29 @@
     .form-field {
       margin: 0 0 3rem 0;
     }
+
+    input[type=text], input[type=email], input[type=tel], textarea{
+      width: 100%;
+      border: solid 2px $gray;
+      padding: 2rem;
+      background: white;
+      font-size: 7rem;
+      color: $red;
+      font-weight: $bold;
+      line-height: 1;
+      font-family: $main-font;
+      &::placeholder {
+        color: $gray;
+        opacity: 1;
+
+      }
+    }
+
     textarea {
+      font-size: 5rem;
       max-height: 300px;
     }
+
      .aceptar {
       position: relative;
       z-index: -9999;
@@ -32,14 +53,15 @@
         font-weight: $bold;
         padding: 0 0 0 2rem;
         display: block;
+        position: relative;
         &:before {
           content: '';
           position: absolute;
           height: 15px;
           width: 15px;
           background: white;
-          left: 0;
-          top: -7px;
+          left: -7px;
+          top: 0;
           border-radius: 50%;
           border: 1px solid $gray;
         }
@@ -69,11 +91,14 @@
         transition: all 0.3s ease;
       }
     }
-
   }
-
-
-
 }
 
-
+@include desktop {
+  .contacto-form {
+    padding: 0 $pad-grid 4rem $pad-grid;
+    &__header {
+      min-height: auto;
+    }
+  }
+}

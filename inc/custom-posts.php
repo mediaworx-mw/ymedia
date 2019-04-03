@@ -98,9 +98,10 @@ function custom_canal_taxonomy() {
     'show_in_nav_menus'          => true,
     'show_tagcloud'              => false,
     'rewrite'                    => false,
+
     'show_in_rest'               => true,
   );
-  register_taxonomy( 'canal_category', array( 'canal' ), $args );
+  register_taxonomy( 'canal_category', ['canal'], $args );
 
 }
 add_action( 'init', 'custom_canal_taxonomy', 0 );
