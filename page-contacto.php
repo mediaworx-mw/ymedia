@@ -17,7 +17,7 @@
       <h1 class="contacto-top__title"><?php the_field('titulo_contacto') ?></h1>
     </div>
   </div>
-  <div class="contacto__content">
+  <div class="contacto__content container">
     <div class="contacto-form">
       <div class="contacto-form__header">
         <h2>Dejanos una nota, sugerencia o consulta.</h2>

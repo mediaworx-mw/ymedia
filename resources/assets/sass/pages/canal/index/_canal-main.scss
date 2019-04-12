@@ -1,16 +1,17 @@
 .canal-main{
-  width: 100vw;
-  max-width: 100%;
+
+
   position: relative;
 }
 
 .canal-main-top {
   display: grid;
   grid-template-columns: 4fr 2fr;
-  padding: 0 0 6rem 0;
+  padding-bottom: 6rem;
   &__left {
     @include articlePaddingLeft;
     width: 100%;
+    padding-right: $half-pad;
   }
 
   &__right {
@@ -55,6 +56,10 @@
 
 
 .canal-article {
+  transform: translateY(100px);
+  position: relative;
+  opacity: 0;
+
   &__hero {
     figure {
       margin: 0 0 4rem 0;

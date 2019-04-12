@@ -60,26 +60,26 @@
 
 @mixin font-max-min($size, $min, $max) {
   font-size: $size;
-  line-height: calc(#{$size} - 1vw});
+  line-height: calc(#{$size});
 
   @include hd {
     font-size: $max;
-    line-height: calc(#{$max} - 1rem});
+    line-height: calc(#{$max} + 1rem);
   }
 
   @include tablet {
-    font-size: calc(#{$min} + 1rem});
-    line-height: calc(#{$min} });
+    font-size: calc(#{$min} + 1rem);
+    line-height: calc(#{$min} + 2rem });
   }
 
   @include mobile {
     font-size: $min;
-    line-height: calc(#{$min} - 0.8rem});
+    line-height: calc( #{$min} + 1rem );
   }
 
   @include min-height {
     font-size: 9rem;
-    line-height: 8rem;
+    line-height: 10rem;
   }
 }
 
@@ -90,11 +90,11 @@
 }
 
 @mixin articlePaddingLeft {
-  padding: 0 $half-pad 0 $pad;
+  padding: 0 $half-pad 0 0;
 }
 
 @mixin articlePaddingRight {
-  padding: 0 $pad 0 $half-pad;
+  padding: 0  0 0 $half-pad;
 }
 
 @mixin articlePaddingMiddle {

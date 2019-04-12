@@ -10,6 +10,7 @@ const Corporativo = () => {
   const $modalRole = document.querySelector('.member-modal__role');
   const $modalBio = document.querySelector('.member-modal__bio');
   const $modalTop = document.querySelector('.member-modal__top');
+  const $body = document.body;
 
 
   const msnry = new Masonry( $members, {
@@ -19,8 +20,10 @@ const Corporativo = () => {
   });
 
   const getBio = (photo, name, lastname, role, bio) => {
-    $memberModal
+    $memberModal;
     $memberModal.classList.add('visible');
+    $body.classList.add('overflow');
+
     $modalName.innerHTML = name;
     $modalLastname.innerHTML = lastname;
     $modalRole.innerHTML = role;
@@ -49,6 +52,7 @@ const Corporativo = () => {
 
   $close.addEventListener('click', function() {
     $memberModal.classList.remove('visible');
+     $body.classList.remove('overflow');
   });
 }
 

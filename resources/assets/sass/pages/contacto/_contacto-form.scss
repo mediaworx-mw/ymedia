@@ -1,5 +1,5 @@
 .contacto-form {
-  padding: 0 $pad;
+  padding: 0 $half-pad 0 0;
   display: flex;
   flex-direction: column;
   &__header {
@@ -25,7 +25,7 @@
       border: solid 2px $gray;
       padding: 2rem;
       background: white;
-      font-size: 7rem;
+      font-size: 4rem;
       color: $red;
       font-weight: $bold;
       line-height: 1;
@@ -33,16 +33,15 @@
       &::placeholder {
         color: $gray;
         opacity: 1;
-
       }
     }
 
     textarea {
-      font-size: 5rem;
+      font-size: 3rem;
       max-height: 300px;
     }
 
-     .aceptar {
+    .aceptar {
       position: relative;
       z-index: -9999;
       position: relative;
@@ -82,8 +81,8 @@
     input[type=submit] {
       background: lighten($gray, 10%);
       color: $gray-dark;
-      font-size: 4rem;
-      padding: 3rem 5rem;
+      font-size: 3rem;
+      padding: 1rem 2rem;
        transition: all 0.3s ease;
       &:hover {
         background: $red;
@@ -96,9 +95,52 @@
 
 @include desktop {
   .contacto-form {
-    padding: 0 $pad-grid 4rem $pad-grid;
+    padding-bottom: 4rem;
+    padding-right: 0;
     &__header {
       min-height: auto;
     }
+  }
+}
+
+@include tablet {
+  .contacto-form {
+    &__header {
+      min-height: auto;
+    }
+    &__form {
+      input[type=text], input[type=email], input[type=tel], textarea{
+        padding: 2rem;
+        font-size: 3rem;
+      }
+
+      textarea {
+        font-size: 2rem;
+        max-height: 300px;
+      }
+     .aceptar {
+      &+span {
+        font-size: 1.6rem;
+      }
+    }
+    .consulta {
+      display: inline-block;
+      color: $red;
+      font-size: 1.8rem;
+      font-weight: $bold;
+      padding: 2rem 0 0 3rem;
+    }
+    input[type=submit] {
+      font-size: 3rem;
+      padding: 2rem 4rem;
+       transition: all 0.3s ease;
+      &:hover {
+        background: $red;
+        color: white;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
   }
 }

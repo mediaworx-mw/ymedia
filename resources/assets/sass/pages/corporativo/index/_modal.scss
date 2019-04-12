@@ -9,6 +9,7 @@
     background: white;
     padding: 0;
     position: relative;
+    overflow-y: scroll;
   }
   &__close {
     @include close(1rem, 1rem);
@@ -56,5 +57,22 @@
   }
   &__bottom {
     padding: 3rem 0 3rem 6vw;
+
   }
+}
+
+@include tablet {
+  .member-modal {
+    padding: 2rem;
+    &__name {
+      font-size: 5rem;
+      line-height: 5rem;
+    }
+    &__lastname{
+      font-size: 5rem;
+      line-height: 5rem;
+    }
+
+  }
+
 }

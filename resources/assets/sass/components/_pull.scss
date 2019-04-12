@@ -1,4 +1,5 @@
 .pull {
+  opacity: 0;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -8,7 +9,7 @@
   .pull-box {
     display: inline-block;
     position: relative;
-     width: 50px;
+     width: 40px;
      padding: 0;
      height: 30px;
     .pull-inner {
@@ -18,7 +19,7 @@
       position: absolute;
       top: 50%;
       @include centerY;
-      width: 50px;
+      width: 40px;
       transition: all 0.2s;
       &::before {
         background: $red;
@@ -26,7 +27,7 @@
         display: block;
         height: 4px;
         position: absolute;
-       width: 50px;
+       width: 40px;
         top: -10px;
         transition: all 0.2s;
       }
@@ -38,7 +39,7 @@
         height: 4px;
         position: absolute;
         transition: all 0.2s;
-        width: 50px;
+        width: 40px;
       }
     }
   }

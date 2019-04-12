@@ -40,11 +40,11 @@
           </div>
         </div>
       </div>
-      <div class="canal-single__excerpt">
+      <div class="canal-single__excerpt container">
         <?php get_template_part('components/canal/single-menu') ?>
         <?php the_excerpt(); ?>
       </div>
-      <div class="canal-single__content">
+      <div class="canal-single__content container">
         <?php get_template_part('components/entry'); ?>
       </div>
     </div>

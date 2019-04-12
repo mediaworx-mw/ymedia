@@ -7,6 +7,7 @@
   width: 100vw;
   max-width: 100%;
   overflow: hidden;
+  background-color: white;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,6 +20,7 @@
     top: 0;
     left: 0;
     z-index: $zhome-overlay;
+    background: rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -34,11 +36,13 @@
     font-size: 8rem;
     line-height: 8rem;
     font-weight: $bold;
+    color: $red;
   }
   &__text {
     font-weight: $bold;
     font-size: 2.4rem;
     line-height: 3.5rem;
+     color: $red;
   }
   &__arrow {
     position: relative;
@@ -46,62 +50,22 @@
   }
 }
 
-.home1 {
-  background-color: white;
+.home1, .home3 {
   .tag {
     left: $left;
-    transform: translateX(-700px);
-    &__title {
-      color: $red;
-    }
-    &__text {
-      color: $red;
-    }
   }
-  &:after {
-    background: rgba(255, 255, 255, 0.4);
+  .tag__title, .tag__text, .tag__arrow {
+    transform: translateX(-700px);
   }
 }
 
 .home2 {
-  background-color: white;
   .tag {
     right: $right;
+    text-align: right;
+  }
+  .tag__title, .tag__text, .tag__arrow {
     transform: translateX(700px);
-    &__title {
-      color: white;
-    }
-    &__text {
-      color: white;
-    }
-    &__arrow {
-      text-align: right;
-      g {
-        path, polyline {
-          stroke: white;
-        }
-      }
-    }
-  }
-  &:after {
-    background: rgba(170, 0, 0, 0.7);
-  }
-}
-
-.home3 {
-  background-color: white;
-  .tag {
-    left: $left;
-    transform: translateX(-700px);
-    &__title {
-      color: $red;
-    }
-    &__text {
-      color: $red;
-    }
-  }
-  &:after {
-    background: rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -109,15 +73,15 @@
   .tag {
     max-width: 600px;
     &__title {
-        font-size: 10rem;
-        line-height: 11rem;
+      font-size: 10rem;
+      line-height: 11rem;
     }
     &__text {
       font-size: 3.2rem;
       line-height: 4.2rem;
     }
   }
-  .home1 {
+  .home1, .home3 {
     .tag {
       left: $left-grid;
     }
@@ -127,31 +91,9 @@
       right: $right-grid;
     }
   }
-  .home3 {
-    .tag {
-      left: $left-grid;
-    }
-  }
 }
 
 
-@include desktop {
-  .home1 {
-    .tag {
-      left: $left-grid
-    }
-  }
-  .home2 {
-    .tag {
-      right: $right-grid
-    }
-  }
-  .home3 {
-    .tag {
-      left: $left-grid
-    }
-  }
-}
 
 @include tablet {
   .tag {
@@ -166,21 +108,6 @@
       line-height: 7rem;
     }
   }
-  .home1 {
-    .tag {
-      left: $left-grid;
-    }
-  }
-  .home2 {
-    .tag {
-      right: $right-grid;
-    }
-  }
-  .home3 {
-    .tag {
-      left: $left-grid;
-    }
-  }
 }
 
 @include mobile {
@@ -188,27 +115,13 @@
     width: 100%;
     max-width: 250px;
     &__title {
-      font-size: 6rem;
-      line-height: 7rem;
+      font-size: 5rem;
+      line-height: 5rem;
     }
     &__text {
-      font-size: 2rem;
-      line-height: 3rem;
+      font-size: 1.8rem;
+      line-height: 2.5rem;
     }
   }
-  .home1 {
-    .tag {
-      left: $left-grid;
-    }
-  }
-  .home2 {
-    .tag {
-      right: $right-grid;
-    }
-  }
-  .home3 {
-    .tag {
-      left: $left-grid;
-    }
-  }
+
 }

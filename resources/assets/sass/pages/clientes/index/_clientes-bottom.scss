@@ -19,7 +19,7 @@
 
   &__colofon {
      display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     p {
       max-width: 800px;
       font-weight: $bold;

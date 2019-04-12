@@ -1,4 +1,9 @@
+.single {
+  position: relative;
+}
+
 .canal-single {
+
   &__top {
     width: 100%;
     position: relative;
@@ -27,16 +32,17 @@
   }
   &__title {
     color: white;
-    font-size: 5.5vw;
-    line-height: 5vw;
+    font-size: 7rem;
+    line-height: 8rem;
     font-weight: $bold;
     margin: 0 0 2rem 0;
   }
   &__subtitle {
     color: white;
-    font-size: 2.5vw;
-    line-height: 3vw;
+    font-size: 3rem;
+    line-height: 4rem;
     font-weight: $bold;
+    max-width: 700px;
   }
   &__meta {
     position: absolute;
@@ -86,10 +92,11 @@
   }
 
   &__excerpt {
-    padding: 200px $pad 4rem 10vw;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     position: relative;
     p {
-      font-size: 3.6rem;
+      font-size: 3rem;
       line-height: 4rem;
       font-weight: $bold;
       color: $red;
@@ -101,4 +108,60 @@
     margin: 0 auto;
   }
 
+}
+
+@include desktop {
+  .canal-single {
+    &__hero {
+
+      height: 80vw;
+
+
+    }
+    &__title {
+
+      font-size: 6rem;
+      line-height: 6rem;
+
+    }
+    &__subtitle {
+      color: white;
+      font-size: 2rem;
+      line-height: 3rem;
+
+    }
+
+
+
+  }
+
+}
+
+@include tablet {
+  .canal-single {
+
+    &__subtitle {
+      display: none;
+    }
+
+    &__meta {
+      display: none;
+    }
+    &__excerpt {
+       p {
+        font-size: 2rem;
+        line-height: 3rem;
+      }
+    }
+
+  }
+
+}
+
+@include mobile {
+  .canal-single {
+    &__hero {
+      height: 80vw;
+    }
+  }
 }

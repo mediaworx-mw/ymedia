@@ -12,7 +12,7 @@
   <?php wp_head(); ?>
 </head>
 <header class="header">
-  <div class="header__inner container">
+  <div class="header__inner">
     <a href="<?php bloginfo('url') ?>" class="header__logo">
       <?php get_template_part('svg/logo') ?>
     </a>

@@ -1,0 +1,44 @@
+.resultados-article {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 8rem 0;
+
+  &__hero {
+    width: 30%;
+    figure {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 10vw;
+    }
+  }
+  &__content {
+    width: 68%;
+
+  }
+  &__title {
+    color: $red;
+    font-size: 4rem;
+    line-height: 5rem;
+    margin: 0 0 2rem 0;
+    font-weight: $bold;
+  }
+
+  &__date {
+    color: $red;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    font-weight: $bold;
+    margin: 0 0 2rem 0;
+    border-bottom: 3px solid $red;
+    display: block;
+    padding: 0 0 1rem 0;
+  }
+
+  &__excerpt {
+    font-size: 1.6rem;
+    color: $gray;
+    line-height: 2.6rem;
+  }
+
+}

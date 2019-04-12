@@ -1,26 +1,71 @@
+
+// .grid {
+//   display: grid;
+//   grid-template-columns: repeat(6, 1fr);
+//   left: 0;
+//   height: 100%;
+//   position: absolute;
+//   top: 0;
+//   z-index: 0;
+//   width: 100vw;
+//   max-width: 100%;
+//   pointer-events: none;
+//   >div {
+//     background: transparent;
+//     display: flex;
+//   }
+//   &--gray {
+//     >div {
+//       border-right: 1px solid $gray-grid;
+//     }
+//   }
+//   &--max {
+//     max-width: $container-page;
+//     @include centerX;
+//     >div {
+//       border-right: 1px solid $gray-grid;
+//     }
+//   }
+// }
+
+
+// @include desktop {
+//   .grid {
+//     grid-template-columns: 1fr 5fr 5fr 1fr;
+//     >div {
+//       &:last-child, &:nth-last-child(2) {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+
+
 .grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   height: 100%;
   position: absolute;
   top: 0;
   z-index: 2;
   width: 100vw;
-  max-width: 100%;
+  max-width: 1600px;
   pointer-events: none;
+  margin: 0 auto;
+  padding: 0 4rem;
   >div {
     background: transparent;
     display: flex;
+
   }
   &--gray {
     >div {
       border-right: 1px solid $gray-grid;
-    }
-  }
-  &--red {
-    >div {
-       border-right: 1px solid $red-grid;
+      &:first-child {
+        border-left: 1px solid $gray-grid;
+      }
     }
   }
   &--max {
@@ -35,6 +80,9 @@
 
 @include desktop {
   .grid {
+    left: 0;
+    padding: 0;
+    transform: translateX(0);
     grid-template-columns: 1fr 5fr 5fr 1fr;
     >div {
       &:last-child, &:nth-last-child(2) {
@@ -43,3 +91,4 @@
     }
   }
 }
+

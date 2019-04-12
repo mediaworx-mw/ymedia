@@ -6,10 +6,10 @@
   width: 100vw;
   max-width: 100%;
   z-index: $zheader;
-  padding: 2rem 0 1.5rem 0;
+  padding: 2rem $half-pad 1.5rem $half-pad;
   transition: padding 0.3s ease;
   &--small {
-    padding: 0 0 1.5rem 0;
+    padding: 0 $half-pad 1.5rem $half-pad;
     transition: padding 0.3s ease;
   }
   &__inner {
@@ -21,6 +21,7 @@
   }
   &__logo {
     margin: 0.8rem 0 0 0;
+    opacity: 0;
     svg {
       path {
         transition: all 0.5s 0.4s ease;

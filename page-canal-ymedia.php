@@ -11,14 +11,15 @@
 ?>
 
 <?php get_header(); ?>
-<div class="canal" data-site-body="canal-ymedia">
+<?php grid('gray') ?>
+<div class="canal" data-site-body="canal">
   <?php get_template_part('components/sidebar'); ?>
-  <div class="canal-top">
+  <div class="canal-top ">
     <?php get_canal_featured();?>
   </div>
-  <div class="canal-main">
+  <div class="canal-main container">
 
-    <div class="canal-main-top">
+    <div class="canal-main-top ">
       <div class="canal-main-top__left">
         <?php get_canal(1, 1, 'big');?>
       </div>
@@ -36,5 +37,5 @@
     </div>
   </div>
 </div>
-<?php grid('gray') ?>
+
 <?php get_footer(); ?>

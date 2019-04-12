@@ -60,7 +60,7 @@
     }
   }
   &__inner {
-    background-size: cover;
+    background-size: auto 120%;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -131,6 +131,7 @@
 }
 
 @include tablet {
+
   .member {
     &--regular {
       height: 60vw;
@@ -161,6 +162,7 @@
 
 @include mobile {
   .member {
+
     &--regular {
       height: 70vw;
     }

@@ -40,6 +40,14 @@ const Header = () => {
     tl2.play();
   }
 
+  const headerAnimation = () => {
+    const headerTween = new TimelineLite({paused: true});
+    headerTween
+    .fromTo($headerLogo, 1, {marginLeft: '-1000px', opacity: 0}, {marginLeft: '0px', opacity: 1, ease: Power2.easeInOut})
+    .fromTo($pull, 1, {marginRight: '-1000px', opacity: 0}, {marginRight: '0px', opacity: 1, ease: Power2.easeInOut}, '-=0.7');
+    headerTween.play();
+  }
+
   $pull.addEventListener('click', () => {
     const windowWidth = window.innerWidth;
     toggleClass($pull, 'closed');
@@ -47,6 +55,10 @@ const Header = () => {
     toggleClass($body, 'overflowHidden');
     $pull.classList.contains('closed') ? openMenu() : closeMenu();
   });
+
+  headerAnimation();
+
+
 }
 
 export default Header;

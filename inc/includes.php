@@ -7,7 +7,7 @@
  * @subpackage Ymedia
  */
 
-function home_tag($h1, $p, $class) {
+function home_tag($h1, $p) {
  $src = get_template_directory();
  include($src.'/components/tag.php');
 }
@@ -15,6 +15,11 @@ function home_tag($h1, $p, $class) {
 function grid($class) {
  $src = get_template_directory();
  include($src.'/components/grid.php');
+}
+
+function grid_test($class) {
+ $src = get_template_directory();
+ include($src.'/components/grid-test.php');
 }
 
 function counter($number, $class) {

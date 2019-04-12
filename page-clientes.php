@@ -34,7 +34,7 @@
       <h1 class="clientes-top__tag"><?php the_field('tag_clientes'); ?></h1>
     </div>
   </div>
-  <div class="clientes-list">
+  <div class="clientes-list container">
     <?php if( have_rows('clientes') ): while ( have_rows('clientes') ) : the_row(); ?>
       <?php if( get_row_layout() == 'cuadro_clientes' ): ?>
         <div class="clientes-list__block clientes-list__square"></div>
@@ -67,7 +67,7 @@
     </div>
   </div>
   <div class="clientes-footer">
-    <div class="clientes-footer__inner">
+    <div class="clientes-footer__inner container">
       <div class="clientes-footer__tag">
         <h2><?php the_field('tag_descarga', 'options') ?></h2>
       </div>

@@ -1,14 +1,15 @@
 .clientes-footer {
   background: white;
+  padding: 10rem 0;
   &__inner {
-    padding: 10rem 0;
+
     display: grid;
     grid-template-columns: 5fr 1fr;
     grid-row-gap: 6rem;
   }
 
   &__tag {
-    padding: 0 0 0 calc( 100vw / 6);
+    padding: 0;
     h2 {
       font-size: 7.2rem;
       color: $red;
@@ -19,7 +20,7 @@
   }
 
   &__descarga {
-    padding: 0 0 0 1rem;
+    padding: 0;
     h3 {
       font-size: 3rem;
       color: $red;
@@ -31,7 +32,7 @@
   }
 
   &__marca {
-     padding: 0 0 0 calc( 100vw / 6);
+     padding: 0 $half-pad 0 0;
      h4 {
       font-size: 3.6rem;
       color: $red;
@@ -44,7 +45,7 @@
   }
 
   &__contacto {
-    padding: 3.5rem 0 0 1rem;
+    padding: 3.5rem 0 0 0;
     display: flex;
 
     align-items: center;

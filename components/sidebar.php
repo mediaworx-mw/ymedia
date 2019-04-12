@@ -23,6 +23,8 @@
       <?php }?>
       </ul>
     </div>
-    <div class="sidebar__calendar"></div>
+    <div class="sidebar__calendar">
+      <div class="calendar"></div>
+    </div>
     </div>
 </div>
