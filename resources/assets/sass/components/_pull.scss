@@ -5,13 +5,25 @@
   border: none;
   position: relative;
   padding: 0;
-  margin: 3rem 0 0 0;
+  margin: 2.6rem 0 0 0;
+
   .pull-box {
     display: inline-block;
     position: relative;
-     width: 40px;
+     width: 30px;
      padding: 0;
      height: 30px;
+     &:before {
+      content: 'menu';
+      position: absolute;
+      left: -50px;
+      top: 5px;
+      color: $red;
+      font-size: 1.5rem;
+      // animation: 4s fadeOut;
+      // animation-fill-mode: forwards;
+      }
+
     .pull-inner {
       background: $red;
       display: block;
@@ -19,17 +31,17 @@
       position: absolute;
       top: 50%;
       @include centerY;
-      width: 40px;
-      transition: all 0.2s;
+      width: 30px;
+      transition: all 0.5s ease 1s;
       &::before {
         background: $red;
         content: '';
         display: block;
         height: 4px;
         position: absolute;
-       width: 40px;
+       width: 30px;
         top: -10px;
-        transition: all 0.2s;
+       transition: all 0.5s ease 1s;
       }
       &::after {
         background: $red;
@@ -38,24 +50,35 @@
         display: block;
         height: 4px;
         position: absolute;
-        transition: all 0.2s;
-        width: 40px;
+        transition: all 0.5s ease 1s;
+        width: 30px;
       }
     }
   }
-  &.closed {
+  &.open {
     .pull-box {
+      &:before {
+        content: 'cerrar';
+        position: absolute;
+        left: -50px;
+        top: 5px;
+        color: white;
+        font-size: 1.5rem;
+        animation: 1s fadeIn;
+        animation-fill-mode: forwards;
+      }
       .pull-inner {
         height: 0;
+        transition: all 0.2s ease 0.5s;
         &:before {
           background: white;
           transform: rotate(-45deg) translate(-8px, 7px);
-          transition: transform 0.2s;
+          transition: all 0.2s ease 0.5s;
         }
         &:after {
           background: white;
           transform: rotate(45deg) translate(-4px, -4px);
-          transition: transform 0.2s;
+          transition: all 0.2s ease 0.5s;
         }
       }
     }
@@ -74,3 +97,28 @@
 
 
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  30% {
+     opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+     opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

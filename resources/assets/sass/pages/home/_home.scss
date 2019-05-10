@@ -12,6 +12,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  display: flex !important;
+  &__inner {
+    position: relative;
+    height: 100%;
+  }
   &:after {
     position: absolute;
     width: 100%;
@@ -22,73 +27,68 @@
     z-index: $zhome-overlay;
     background: rgba(255, 255, 255, 0.4);
   }
+
 }
 
-.tag {
-  position: absolute;
-  width: 100%;
-  max-width: 600px;
+.home-tag {
+  position: relative;
   z-index: $zcounter;
   padding: 0;
-  top: 20vh;
+  top: 40%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
   &__title {
     margin: 0;
-    font-size: 8rem;
-    line-height: 8rem;
+    font-size: 6rem;
+    line-height: 7rem;
     font-weight: $bold;
     color: $red;
+    span {
+      display: block;
+    }
   }
   &__text {
     font-weight: $bold;
-    font-size: 2.4rem;
-    line-height: 3.5rem;
+    font-size: 2rem;
+    line-height: 3rem;
      color: $red;
-  }
-  &__arrow {
-    position: relative;
-    bottom: -1rem;
+     max-width: 500px;
   }
 }
 
 .home1, .home3 {
-  .tag {
-    left: $left;
+  .home-tag__title span {
+    transform: translateX(-2000px);
   }
-  .tag__title, .tag__text, .tag__arrow {
-    transform: translateX(-700px);
+  .home-tag__text {
+    transform: translateX(-2000px);
   }
 }
 
 .home2 {
-  .tag {
-    right: $right;
+  .home-tag {
     text-align: right;
+    align-items: flex-end;
   }
-  .tag__title, .tag__text, .tag__arrow {
-    transform: translateX(700px);
+  .home-tag__title span {
+    transform: translateX(2000px);
+  }
+  .home-tag__text{
+    transform: translateX(2000px);
   }
 }
 
 @include hd {
-  .tag {
-    max-width: 600px;
+  .home-tag {
     &__title {
-      font-size: 10rem;
-      line-height: 11rem;
+      font-size: 8rem;
+      line-height: 9rem;
     }
     &__text {
-      font-size: 3.2rem;
-      line-height: 4.2rem;
-    }
-  }
-  .home1, .home3 {
-    .tag {
-      left: $left-grid;
-    }
-  }
-  .home2 {
-    .tag {
-      right: $right-grid;
+      font-size: 2.2rem;
+      line-height: 3.2rem;
+      max-width: 600px;
     }
   }
 }
@@ -96,32 +96,29 @@
 
 
 @include tablet {
-  .tag {
-    width: 100%;
-    max-width: 340px;
+  .home-tag {
+    &__title {
+      font-size: 4rem;
+      line-height: 5rem;
+    }
     &__text {
       font-size: 2rem;
       line-height: 3rem;
+       width: 80%;
     }
-    &__title {
-      font-size: 6rem;
-      line-height: 7rem;
-    }
+
   }
 }
 
 @include mobile {
-  .tag {
-    width: 100%;
-    max-width: 250px;
+  .home-tag {
     &__title {
-      font-size: 5rem;
-      line-height: 5rem;
+      font-size: 3rem;
+      line-height: 4rem;
     }
     &__text {
-      font-size: 1.8rem;
-      line-height: 2.5rem;
+      font-size: 1.6rem;
+      line-height: 2.3rem;
     }
   }
-
 }

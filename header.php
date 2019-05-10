@@ -11,8 +11,13 @@
   <?php endif; ?>
   <?php wp_head(); ?>
 </head>
+<?php if (!is_front_page()):?>
+<body class="body--big">
+<?php else: ?>
+<body>
+<?php endif; ?>
 <header class="header">
-  <div class="header__inner">
+  <div class="header__inner container">
     <a href="<?php bloginfo('url') ?>" class="header__logo">
       <?php get_template_part('svg/logo') ?>
     </a>
@@ -23,11 +28,23 @@
     </button>
   </div>
   <div class="nav">
-  <div class="nav__inner">
-    <nav class="nav__list" role="navigation">
-      <?php wp_nav_menu( array('theme_location' => 'main', 'menu' => 'Main', 'container'=>false) ); ?>
-    </nav>
+    <div class="nav__inner container">
+      <nav class="nav__list" role="navigation">
+        <?php wp_nav_menu( array('theme_location' => 'main', 'menu' => 'Main', 'container'=>false) ); ?>
+      </nav>
+      <div class="nav__bottom">
+        <nav class="nav__small" role="navigation">
+          <?php wp_nav_menu( array('theme_location' => 'main small', 'menu' => 'Main small', 'container'=>false) ); ?>
+        </nav>
+        <div class="nav__social">
+          <?php $social = get_field('social', 'options'); ?>
+          <a href="<?php echo $social['twitter']; ?>"><i class="fab fa-twitter"></i></a>
+          <a href="<?php echo $social['facebook']; ?>"><i class="fab fa-facebook-f"></i></a>
+          <a href="<?php echo $social['linkedin']; ?>"><i class="fab fa-linkedin-in"></i></a>
+          <a href="<?php echo $social['youtube']; ?>"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <?php grid('red') ?>
   </div>
-</div>
 </header>
-<body>

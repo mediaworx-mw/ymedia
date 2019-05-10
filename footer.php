@@ -22,8 +22,8 @@
           <div class="footer__box">
             <h5><?php echo $subscripcion['texto_subscripcion']; ?></h5>
             <form>
-              <input type="text" placeholder="dirección de email">
-              <input type="submit" value="enviar">
+              <input type="text" placeholder="Dirección de email">
+              <input type="submit" value="Enviar">
             </form>
           </div>
         </div>
@@ -36,23 +36,26 @@
       </div>
       <div class="footer__bottom">
         <div class="footer__social">
-          <a class="footer__logo logo-white" href="<?php bloginfo('url') ?>" >
-            <?php get_template_part('svg/logo') ?>
-          </a>
-          <div class="social-icons">
-            <?php $social = get_field('social', 'options'); ?>
-            <a href="<?php echo $social['twitter']; ?>"><i class="fab fa-twitter"></i></a>
-            <a href="<?php echo $social['facebook']; ?>"><i class="fab fa-facebook-f"></i></a>
-            <a href="<?php echo $social['linkedin']; ?>"><i class="fab fa-linkedin-in"></i></a>
-            <a href="<?php echo $social['youtube']; ?>"><i class="fab fa-youtube"></i></a>
-          </div>
-          <p class="copy">© <?php echo date("Y"); ?> <?php the_field('copyright_footer', 'options') ?></p>
+          <?php $social = get_field('social', 'options'); ?>
+          <a href="<?php echo $social['twitter']; ?>"><i class="fab fa-twitter"></i></a>
+          <a href="<?php echo $social['facebook']; ?>"><i class="fab fa-facebook-f"></i></a>
+          <a href="<?php echo $social['linkedin']; ?>"><i class="fab fa-linkedin-in"></i></a>
+          <a href="<?php echo $social['youtube']; ?>"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <div><p class="footer__copy">© <?php echo date("Y"); ?>
+          <?php the_field('copyright_footer', 'options') ?>
+        </p>
+        </div>
+        <div>
+        <a class="footer__logo logo-white" href="<?php bloginfo('url') ?>" >
+          <?php get_template_part('svg/logo') ?>
+        </a>
         </div>
       </div>
     </div>
   </div>
 </footer>
-</div>
 <?php wp_footer(); ?>
 </body>
 </html>

@@ -33,7 +33,7 @@
       <h1 class="cliente-top__tag"><?php the_field('tag_cliente'); ?></h1>
     </div>
   </div>
-  <div class="cliente-main">
+  <div class="cliente-main ">
     <div class="cliente-side">
       <div class="cliente-side__top">
         <h2><?php the_field('nombre_cliente'); ?></h2>
@@ -67,18 +67,18 @@
         </div>
       </div>
     </div>
-    <div class="cliente-content">
-      <?php get_template_part('components/entry'); ?>
+    <div class="cliente-content container">
+      <?php get_template_part('components/entry-clientes'); ?>
     </div>
   </div>
-  <div class="cliente-footer">
-    <div class="cliente-footer__inner">
+  <div class="cliente-footer ">
+    <div class="cliente-footer__inner container">
+      <div></div>
       <div class="cliente-footer__descarga">
         <h3><?php the_field('descarga_descarga','options') ?></h3>
         <a href="<?php the_field('archivo_descarga','options') ?>"><?php get_template_part('svg/descarga'); ?></a>
       </div>
-      <div>
-      </div>
+
       <div class="cliente-footer__marca">
         <h4><?php the_field('campana_descarga','options') ?></h4>
       </div>

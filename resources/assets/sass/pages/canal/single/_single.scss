@@ -1,25 +1,40 @@
 .single {
   position: relative;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
 }
 
 .canal-single {
-
   &__top {
     width: 100%;
     position: relative;
-
+    &--small {
+      width: 66.66%;
+      .canal-single__title{
+        color: $red;
+      }
+      .canal-single__meta{
+        bottom: auto;
+        top: 0;
+      }
+    }
+  }
+  &__top-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
   &__hero {
     width: 100%;
     height: 60vw;
-    max-height: 710px;
+    max-height: 600px;
     @include backgroundCover;
+    position: relative;
   }
   &__header {
     position: absolute;
-    max-width: 80vw;
-    @include center;
-    width: 100%;
+    bottom: 4rem;
+    left: 12rem;
   }
   &__category {
     display: inline-block;
@@ -39,8 +54,8 @@
   }
   &__subtitle {
     color: white;
-    font-size: 3rem;
-    line-height: 4rem;
+    font-size: 2rem;
+    line-height: 3rem;
     font-weight: $bold;
     max-width: 700px;
   }
@@ -55,15 +70,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 8rem 1rem 4rem;
+    padding: 1rem;
     h2 {
-      font-size: 2rem;
-      line-height: 2rem;
+      font-size: 1.8rem;
+      line-height: 1;
       color: white;
       font-weight: $regular;
-      border-bottom: 3px solid white;
-      padding: 0 0 0.5rem 0;
-      margin: 0 0 1rem 0;
+      margin: 0;
     }
     h3 {
       font-size: 6rem;
@@ -76,6 +89,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    display: none;
     h2 {
       font-size: 3rem;
       line-height: 2rem;
@@ -102,50 +116,85 @@
       color: $red;
       max-width: $max-width-content;
     }
+    &--small {
+      width: 32%;
+      padding: 0;
+      p {
+        font-size: 2rem;
+        line-height: 3rem;
+      }
+    }
   }
   &__content {
-
     margin: 0 auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
-
 }
 
 @include desktop {
   .canal-single {
     &__hero {
-
       height: 80vw;
-
-
+    }
+    &__top-wrap {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+     &__top {
+      &--small {
+        width: 100%;
+      }
+    }
+    &__excerpt {
+      &--small {
+        width: 100%;
+        padding: 0;
+        padding: 2rem 0;
+        p {
+          font-size: 2rem;
+          line-height: 3rem;
+        }
+      }
     }
     &__title {
-
       font-size: 6rem;
       line-height: 6rem;
-
     }
     &__subtitle {
       color: white;
       font-size: 2rem;
       line-height: 3rem;
-
     }
-
-
-
   }
-
 }
 
 @include tablet {
   .canal-single {
-
+    &__title {
+      color: white;
+      font-size: 4rem;
+      line-height: 5rem;
+    }
     &__subtitle {
       display: none;
     }
-
-    &__meta {
-      display: none;
+    &__header {
+      position: absolute;
+      bottom: 10rem;
+      left: 3rem;
+    }
+    &__date {
+      padding: 1rem;
+      h2 {
+        font-size: 1.4rem;
+      }
+      h3 {
+        font-size: 4rem;
+        line-height: 1;
+      }
     }
     &__excerpt {
        p {
@@ -153,15 +202,17 @@
         line-height: 3rem;
       }
     }
-
   }
-
 }
 
 @include mobile {
   .canal-single {
     &__hero {
       height: 80vw;
+    }
+    &__title {
+      font-size: 3rem;
+      line-height: 4rem;
     }
   }
 }

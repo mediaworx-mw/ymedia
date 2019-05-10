@@ -1,7 +1,7 @@
 <?php
 /**
 * The front page template file
-* Template Name: Clientes
+* Template Name: Contact Test
 *
 *
 * @package WordPress

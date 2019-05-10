@@ -1,0 +1,87 @@
+.flatpickr-calendar.inline {
+  display: block;
+
+  padding: 1rem;
+  box-sizing: content-box;
+
+
+}
+
+
+
+.flatpickr-calendar {
+  border-radius: 0;
+  background: white;
+  box-shadow: none;
+  z-index: 20;
+  border: 1px solid $gray;
+
+}
+
+.flatpickr-calendar.showTimeInput.hasTime .flatpickr-time, .flatpickr-time {
+  display: none;
+}
+
+.flatpickr-months .flatpickr-month {
+  color: black;
+  fill: black;
+  height: 40px;
+}
+.flatpickr-current-month {
+  font-size: 180%;
+  top: -5px;
+
+}
+
+.flatpickr-weekday, .flatpickr-weekdaycontainer {
+  color: black;
+  span {
+    color: black;
+  }
+}
+
+.flatpickr-day {
+  color: black;
+}
+
+.flatpickr-day.today {
+    border-color: $red;
+}
+
+.flatpickr-day.today:hover,
+.flatpickr-day:hover,
+.flatpickr-day.today:focus {
+  background: $red;
+  color: white;
+  border-color: $red;
+}
+
+.flatpickr-day.disabled,
+.flatpickr-day.disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay,
+.flatpickr-day.notAllowed,
+.flatpickr-day.notAllowed.prevMonthDay,
+.flatpickr-day.notAllowed.nextMonthDay {
+  color: lighten(black, 30%);
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  cursor: pointer;
+  line-height: 16px;
+  color: black;
+  fill: black;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-months .flatpickr-next-month:hover svg {
+  color: black;
+  fill: black;
+}
+
+.flatpickr-months .flatpickr-prev-month svg,
+.flatpickr-months .flatpickr-next-month svg {
+    width: 20px;
+    height: 20px;
+}

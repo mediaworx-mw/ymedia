@@ -1,33 +1,9 @@
 .resultados {
   padding: 0 0 6rem 0;
-  &__content {
-      display: flex;
-  justify-content: space-between;
-  }
-
-  &__list {
-    width: calc( (100vw / 6) * 4);
-    padding: 0 0 0 $pad;
-
-  }
-  &__side {
-     width: calc( (100vw / 6) * 1.7);
-
-    .sidebar {
-      position: relative ;
-      top: 0;
-      right: $pad ;
-      visibility: visible ;
-      opacity: 1 ;
-      &__handle {
-        display: none ;
-      }
-      &__content {
-         visibility: visible ;
-      opacity: 1 ;
-
-      }
-    }
+  position: relative;
+  &__not-found {
+    font-size: 3rem;
+    line-height: 4rem;
   }
 
 }

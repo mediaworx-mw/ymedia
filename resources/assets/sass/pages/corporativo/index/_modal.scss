@@ -25,6 +25,7 @@
     height: 20vw;
     min-height: 400px;
     position: relative;
+    padding: 0.5rem;
   }
 
   &__line {
@@ -38,21 +39,21 @@
     font-size: 6rem;
     line-height: 7rem;
     margin: 0;
-    color: $red;
+    color: white;
     font-weight: $bold;
   }
   &__lastname{
     font-size: 6rem;
     line-height: 7rem;
     margin: 0 0 1rem 0;
-    color: $red;
+     color: white;
     font-weight: $bold;
   }
   &__role {
     font-size: 2.4rem;
     line-height: 3rem;
     margin: 0 0 1rem 0;
-    color: $red;
+    color: white;
     font-weight: $bold;
   }
   &__bottom {

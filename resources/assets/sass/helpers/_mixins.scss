@@ -10,7 +10,6 @@
   }
 }
 
-
 @mixin desktop {
   @media (max-width: #{$desktop-width}) {
     @content;
@@ -78,8 +77,8 @@
   }
 
   @include min-height {
-    font-size: 9rem;
-    line-height: 10rem;
+    font-size: 5rem;
+    line-height: 6rem;
   }
 }
 
@@ -90,24 +89,23 @@
 }
 
 @mixin articlePaddingLeft {
-  padding: 0 $half-pad 0 0;
+  padding: 0 $quarter-pad 0 0;
 }
 
 @mixin articlePaddingRight {
-  padding: 0  0 0 $half-pad;
+  padding: 0  0 0 $quarter-pad;
 }
 
 @mixin articlePaddingMiddle {
-  padding: 0 $half-pad;
+  padding: 0 $quarter-pad;
 }
 
-@mixin modal($color) {
+@mixin modal() {
   position: fixed;
   width: 100vw;
   height: 100vh;
   max-width: 100%;
   max-height: 100%;
-  background: $color;
   left: 0;
   top: 0;
   z-index: $zmodal;

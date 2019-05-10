@@ -1,41 +1,29 @@
 .sidebar {
-  display: none;
   position: absolute;
-  min-height: 700px;
-  max-width: 500px;
-  width: 100%;
-  right: 0;
-  top: 710px;
+  width: 400px;
+  right: -400px;
+  top: 0;
   padding: 0;
   z-index: $zsidebar;
-  &__top {
-    padding: 4rem 0;
-    background: $red;
-    width: 100%;
-    position: relative;
-    height: 50px;
-
+  transition: all 0.3s ease;
+  &--visible {
+    right: 0;
+    transition: all 0.3s ease;
   }
   &__handle {
-    width: 40px;
-    height: 40px;
     position: absolute;
-    @include centerY;
-    right: 4rem;
+    top: 4rem;
+    left: -45px;
     cursor: pointer;
+    background: white;
+    width: 45px;
+    height: 45px;
     span {
-      height: 4px;
-      width: 30px;
-      background: white;
       position: absolute;
       @include center;
-      &:after {
-        content: '';
-        width: 4px;
-        height: 30px;
-        position: absolute;
-        @include center;
-        background: white;
+      i {
+        font-size: 2.5rem;
+        color: $red;
       }
     }
     &--open {
@@ -49,15 +37,7 @@
   }
   &__content {
      background: $red;
-     padding: 1rem 4rem 4rem 4rem;
-     opacity: 0;
-     transition: opacity 0.3s ease;
-     visibility: hidden;
-     &--visible {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.3s ease;
-     }
+     padding: 4rem;
   }
   &__search {
     padding: 0 0 4rem 0;
@@ -69,7 +49,7 @@
       background: white;
       padding: 1rem;
       width: calc( 100% - 50px);
-      color: $gray;
+      color: black;
     }
     input[type=submit]{
       cursor: pointer;
@@ -85,18 +65,19 @@
 
   &__categories-list {
     text-align: right;
+    margin: 0 0 4rem 0;
     li {
       margin: 0 0 2rem 0;
       a {
         color: white;
         font-weight: $bold;
-        font-size: 3rem;
+        font-size: 2rem;
         display: block;
         opacity: 1;
          transition: opacity 0.3s ease;
         &:after {
           content: ' +';
-          font-size: 3rem;
+          font-size: 2rem;
           font-weight: $bold;
           color: white;
         }
@@ -107,11 +88,46 @@
       }
     }
   }
+  &__calendar-header {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 2rem 0;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: '';
+      background: lighten($red, 25%);
+      height: 5px;
+      left: 0;
+      top: 16px;
+      width: 100%;
+      z-index: 5;
+    }
+  }
+  &__calendar-title {
+    font-size: 1.8rem;
+    font-weight: $bold;
+    color: lighten($red, 25%);
+    line-height: 1;
+    position: relative;
+    background: $red;
+    display: block;
+    text-align: right;
+    padding: 1rem 0 1rem 1rem;
+    z-index: 10;
+
+  }
+  &__calendar {
+    display: flex;
+    justify-content: center;
+  }
 }
+
+
 
 @include desktop {
   .sidebar {
-    top: 60vw;
+   // top: 60vw;
 
   }
 }
@@ -125,7 +141,7 @@
 
 @include mobile {
   .sidebar {
-    top: 80vw;
+    //top: 80vw;
      &__categories-list {
       li {
         a {

@@ -4,10 +4,20 @@
 
 body {
   position: relative;
-  padding: 10rem 0 0 0;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
   >svg {
     display: none;
   }
+}
+
+.body--big {
+   padding: 9.6rem 0 0 0 !important;
+}
+
+.body--small {
+   padding: 9.6rem 0 0 0 !important;
 }
 
 a {
@@ -32,6 +42,21 @@ button:focus {
 
 .overflowHidden {
   overflow: hidden;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none;
+}
+
+video::-webkit-media-controls {
+    display:none !important;
+}
+
+
+
+img, h1, h2, h3, h4, h5, h6, p, a, figure, input, textarea, video, .overgrid {
+  position: relative;
+  z-index: $z-content;
 }
 
 

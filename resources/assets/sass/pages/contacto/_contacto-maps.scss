@@ -3,28 +3,23 @@
   display: flex;
   flex-direction: column;
 
-  &__header {
-    padding: 0 0 4rem 0;
-     min-height: 120px;
-    h2 {
-      font-size: 3.2rem;
-      color: $red;
-      line-height: 4rem;
-      font-weight: $bold;
-    }
-  }
   &__maps {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 75.5%;
+    height: auto;
 
   }
   &__map {
-    height: 49%;
-    background: $red;
+    height: auto;
     display: flex;
     flex-direction: column;
+    transform: translateX(500px);
+    position: relative;
+    margin: 0 0 4rem 0;
+    &:last-child {
+      margin: 0;
+    }
 
   }
   &__map-inner {
@@ -32,110 +27,72 @@
   }
   &__info {
     height: auto;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
     h2 {
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: $bold;
-      color: white;
-      margin: 0;
-      line-height: 6rem;
-    }
-    h3 {
-      font-size: 2rem;
-      font-weight: $bold;
-      color: white;
+      color: $red;
       margin: 0;
       line-height: 4rem;
     }
-    h4 {
-      font-size: 1.6rem;
-      font-weight: $bold;
-      color: white;
+    h3 {
+      font-size: 1.8rem;
+      font-weight: $regular;
+      color: $gray;
       margin: 0;
-      line-height: 2.6rem;
+      line-height: 2.8rem;
+    }
+    h4 {
+      font-size: 1.8rem;
+      font-weight: $regular;
+      color: $gray;
+      margin: 0;
+      line-height: 2.8rem;
     }
   }
   &__info-bottom {
-    display: flex;
-    justify-content: space-between;
+    padding: 1rem 0 0 0;
+
     a {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       font-weight: $bold;
-      color: white;
+      color: $gray;
       margin: 0;
-      line-height: 4rem;
+      line-height: 2.8rem;
       display: block;
       margin-right: 2%;
-      &:last-child {
-        text-align: right;
-        margin-right: 0;
-      }
+
     }
   }
 }
 
 @include desktop-wide {
-  .contacto-maps {
-    &__info {
-      h3 {
-        font-size: 2rem;
-        line-height: 3rem;
-      }
-    }
-    &__info-bottom {
-      padding: 2rem 0 0 0;
-      display: flex;
-      justify-content: flex-start;
-      flex-direction: column;
-      a {
-        margin: 0;
-        width: 100%;
-        margin-right: 0;
-        &:last-child {
-          text-align: left;
-          margin-right: 0;
-        }
-      }
-    }
-  }
+
 }
 
 @include desktop {
   .contacto-maps {
-    padding-botom: 4rem;
-    margin: 0 auto;
-    width: 100%;
-    &__header {
-      min-height: auto;
-    }
+    flex-direction: row;
     &__maps {
-      height: auto;
+      flex-direction: row;
+      width: 100%;
     }
     &__map {
-      height: 800px;
-      margin: 0 0 4rem 0;
-
-    }
-    &__info {
-      h3 {
-        font-size: 2rem;
-        line-height: 3rem;
-      }
-    }
-    &__info-bottom {
-      padding: 2rem 0 0 0;
-      display: flex;
-      justify-content: flex-start;
-      flex-direction: column;
-      a {
-        margin: 0;
-        width: 100%;
-        margin-right: 0;
-        &:last-child {
-          text-align: left;
-          margin-right: 0;
-        }
-      }
+      width: 50%;
     }
   }
 }
+
+@include tablet {
+  .contacto-maps {
+    flex-direction: row;
+    &__maps {
+      flex-direction: column;
+      width: 100%;
+    }
+    &__map {
+      width: 100%;
+    }
+  }
+}
+

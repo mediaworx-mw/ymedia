@@ -1,18 +1,27 @@
 .clientes-bottom {
    background: $red;
+   width: 100vw;
+   max-width: 100%;
+   overflow: hidden;
   &__inner {
-    padding: 6rem 0 10rem 0;
+    padding-top: 6rem;
+    padding-bottom: 10rem;
   }
   &__tag {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     h2 {
+      span {
+        font-weight: $bold;
+        font-size: 4.8rem;
+        color: white;
+        line-height: 5.3rem;
+        transform: translateX(2000px);
+        display: block;
+        position: relative;
+      }
       width: 50%;
-      font-weight: $bold;
-      font-size: 4.8rem;
-      color: white;
-      line-height: 5.8rem;
     }
     margin: 0 0 10rem 0;
   }
@@ -21,11 +30,12 @@
      display: flex;
     justify-content: flex-start;
     p {
-      max-width: 800px;
+      max-width: 700px;
       font-weight: $bold;
       font-size: 3rem;
       color: white;
       line-height: 4rem;
+      transform: translateX(-2000px);
     }
   }
 }

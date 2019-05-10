@@ -2,7 +2,9 @@
   <div class="canal-featured__hero">
     <a href="<?php the_permalink(); ?>">
       <?php $thumb = get_the_post_thumbnail_url(); ?>
-      <figure style="background-image: url('<?php echo $thumb;?>')"></figure>
+      <figure class="parallax">
+        <div class="parallaxImage" style="background-image: url('<?php echo $thumb;?>')"></div>
+      </figure>
     </a>
     <div class="meta meta--large"></div>
   </div>

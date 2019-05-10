@@ -22,6 +22,11 @@ function grid_test($class) {
  include($src.'/components/grid-test.php');
 }
 
+function page_crumb() {
+ $src = get_template_directory();
+ include($src.'/components/page-crumb.php');
+}
+
 function counter($number, $class) {
  $src = get_template_directory();
  include($src.'/components/counter.php');
@@ -32,8 +37,12 @@ function video($id) {
  include($src.'/components/video.php');
 }
 
-function member($size) {
+function member() {
  $src = get_template_directory();
  include($src.'/components/corporativo/member.php');
 }
 
+function caso($size) {
+ $src = get_template_directory($size);
+ include($src.'/components/clientes/caso.php');
+}

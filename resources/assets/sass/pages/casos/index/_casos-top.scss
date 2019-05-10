@@ -1,0 +1,19 @@
+.casos-top {
+  margin: 0 0 3rem 0;
+  &__intro {
+    max-width: 700px;
+    width: 100%;
+    color: #aaaaaa;
+    font-size: 1.8rem;
+    //transform: translateX(-2000px);
+  }
+}
+
+@include mobile {
+  .casos-top {
+    margin: 0 0 1rem 0;
+    &__intro {
+      display: none;
+    }
+  }
+}

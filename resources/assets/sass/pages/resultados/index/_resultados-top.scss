@@ -2,13 +2,11 @@
   padding: 6rem 0 4rem 0;
 
   &__title {
-    @include font-max-min(6vw, 4rem, 8rem);
+    font-size: 5rem;
+    line-height: 6rem;
     color: $red;
     max-width: 100%;
     margin: 0;
-
-    display: block;
-    padding: 0 0 3rem 0;
   }
   &__tag {
     font-size: 5rem;
@@ -21,5 +19,23 @@
     display: block;
     padding: 0 0 3rem 0;
 
+  }
+}
+
+@include tablet{
+  .resultados-top {
+    &__title {
+      font-size: 3rem;
+      line-height: 4rem;
+    }
+  }
+}
+@include mobile{
+  .resultados-top {
+    &__title {
+      span {
+        display: block;
+      }
+    }
   }
 }

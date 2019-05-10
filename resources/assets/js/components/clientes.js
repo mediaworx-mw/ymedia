@@ -4,41 +4,74 @@ import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 
 
 const Clientes = () => {
-  const $video = document.querySelector('.video-clientes');
-  const $play = document.querySelector ('.clientes-top__play');
+
+  const $clients = document.querySelector('.clientes-list__inner');
   const $blocks = document.querySelectorAll('.clientes-list__client');
+  const $bottom = document.querySelector('.clientes-bottom');
+  const $bottomTag = document.querySelector('.clientes-bottom__tag').getElementsByTagName('span');
+  const $colofon = document.querySelector('.clientes-bottom__colofon').getElementsByTagName('p');
 
-  const controllerClients = new ScrollMagic.Controller();
+  const $footer = document.querySelector('.clientes-footer');
+  const $footerTag = document.querySelector('.clientes-footer__tag').getElementsByTagName('span');
+  const $descarga = document.querySelector('.clientes-footer__descarga');
+  const $marca = document.querySelector('.clientes-footer__marca').getElementsByTagName('h4');
+  const $contacto = document.querySelector('.clientes-footer__contacto');
 
-  const playVideo = () => {
-    $video.play();
-  }
+  const controllerBlocks = new ScrollMagic.Controller();
 
-  const pauseVideo = () => {
-    $video.pause();
-  }
+  const tweenBlocks = new TimelineLite({paused: true});
+  tweenBlocks
+  .staggerTo($blocks, 0.8, {y: 0, opacity: 1, ease: Expo.easeOut}, 0.2, "-= 0.4");
 
-  const resumeVideo = () => {
-    $play.classList.remove('hidden');
-  }
+   new ScrollMagic.Scene({
+    triggerElement: $clients,
+    offset: -100,
+    reverse: false
+  })
+  .setTween(tweenBlocks.play())
+  .addTo(controllerBlocks);
 
-  $play.addEventListener('click', () => {
-    $play.classList.add('hidden');
-    playVideo();
-  });
 
-  $video.addEventListener('ended', resumeVideo, false);
+  const tweenBottom = new TimelineLite({paused: true});
+  tweenBottom
+  .staggerTo($bottomTag, 0.5, {x: 0, ease:Expo.easeOut}, 0.1, "-= 0.25")
+  .to($colofon, 0.8, {x: 0, ease: Expo.easeOut}, 0.2, "-=0.5");
 
-  const triggerBlocks = document.querySelector('.clientes-list');
-  const TweenBlocks = TweenMax.staggerTo($blocks, 0.5, {y:0, opacity:1, ease: Power2.easeInOut}, 0.1);
-
-  new ScrollMagic.Scene({
-    triggerElement: triggerBlocks,
+   new ScrollMagic.Scene({
+    triggerElement: $bottom,
     offset: 0,
     reverse: false
   })
-  .setTween(TweenBlocks)
-  .addTo(controllerClients);
+  .setTween(tweenBottom.play())
+  .addTo(controllerBlocks);
+
+  const tweenFooter = new TimelineLite({paused: true});
+  tweenFooter
+  .staggerTo($footerTag, 0.5, {x: 0, ease:Expo.easeOut}, 0.1, "-= 0.25")
+  .to($descarga, 0.8, {x: 0, ease: Expo.easeOut}, 0.2, "-=0.5")
+  .to($marca, 0.8, {x: 0, ease: Expo.easeOut}, 0.2, "-=0.5")
+  .to($contacto, 0.8, {x: 0, ease: Expo.easeOut}, 0.2, "-=0.5");
+
+   new ScrollMagic.Scene({
+    triggerElement: $footer,
+    offset: 0,
+    reverse: false
+  })
+  .setTween(tweenFooter.play())
+  .addTo(controllerBlocks);
+
+
+  // $blocks.forEach(block => {
+  //   let tweenBlocks = TweenMax.to(block, 0.5, {y: 0, opacity: 1, ease:Expo.easeOut });
+
+  //   new ScrollMagic.Scene({
+  //     triggerElement: block,
+  //     offset: -(window.innerHeight * 0.6)
+  //   })
+  //   .setTween(tweenBlocks)
+  //   .addTo(controllerBlocks);
+  // });
+
 }
 
 export default Clientes;

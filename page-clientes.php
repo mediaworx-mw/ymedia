@@ -1,6 +1,6 @@
 <?php
 /**
-* The front page template file
+* Template Page for Clientes
 * Template Name: Clientes
 *
 *
@@ -12,51 +12,46 @@
 
 <?php get_header(); ?>
 <div class="clientes" data-site-body="clientes">
-  <div class="clientes-top">
-    <?php if( have_rows('hero_clientes') ): while ( have_rows('hero_clientes') ) : the_row(); ?>
-      <?php if( get_row_layout() == 'imagen_clientes' ): ?>
-        <div class="clientes-top__image" style="background-image: url(<?php echo get_sub_field('imagen_item_clientes') ?>)">
-        </div>
-      <?php elseif( get_row_layout() == 'video_clientes' ): ?>
-        <div class="clientes-top__video">
-          <video class="video-clientes">
-            <source src="<?php echo get_sub_field('video_webm_clientes') ?>" type="video/webm; codecs=vp8,vorbis">
-            <source src="<?php echo get_sub_field('video_ogg_clientes') ?>"  type="video/ogg; codecs=theora,vorbis">
-            <source src="<?php echo get_sub_field('video_mp4_clientes') ?>"  type="video/mp4">
-          </video>
-          <div class="clientes-top__play">
-            <?php get_template_part('svg/play'); ?>
-          </div>
-        </div>
-      <?php endif ?>
-     <?php endwhile; endif;?>
+<div class="clientes-top">
     <div class="clientes-top__info container">
       <h1 class="clientes-top__tag"><?php the_field('tag_clientes'); ?></h1>
+      <a href="<?php bloginfo('url'); ?>/casos-de-estudio" class="clientes-top__casos">+ Casos de Estudio</a>
     </div>
   </div>
-  <div class="clientes-list container">
-    <?php if( have_rows('clientes') ): while ( have_rows('clientes') ) : the_row(); ?>
-      <?php if( get_row_layout() == 'cuadro_clientes' ): ?>
-        <div class="clientes-list__block clientes-list__square"></div>
-      <?php elseif( get_row_layout() == 'lista_clientes' ): ?>
-        <?php
-          $post_object = get_sub_field('cliente_clientes');
-          if( $post_object ):
-            $post = $post_object;
-            setup_postdata( $post );
-        ?>
-          <a href="<?php the_permalink(); ?>"class="clientes-list__block clientes-list__client">
-             <img src="<?php the_field('logo_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
-          </a>
-          <?php wp_reset_postdata();?>
-        <?php endif; ?>
+  <div class="clientes-list overgrid">
+    <div class="clientes-list__inner container">
+      <?php if( have_rows('clientes') ): while ( have_rows('clientes') ) : the_row(); ?>
+        <?php if( get_row_layout() == 'cuadro_clientes' ): ?>
+          <div class="clientes-list__block clientes-list__square"></div>
+        <?php elseif( get_row_layout() == 'lista_clientes' ): ?>
+          <?php
+            $post_object = get_sub_field('cliente_clientes');
+            if( $post_object ):
+              $post = $post_object;
+              setup_postdata( $post );
+          ?>
 
-      <?php endif ?>
+            <?php $interna = get_field('pagina_interna_cliente'); ?>
+            <?php if ($interna) : ?>
+              <a href="<?php the_permalink(); ?>" class="clientes-list__block clientes-list__client">
+                <img src="<?php the_field('logo_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
+              </a>
+            <?php else: ?>
+              <a class="clientes-list__block clientes-list__client clientes-list__client--nolink">
+                <img src="<?php the_field('logo_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
+              </a>
+            <?php endif; ?>
+            <?php wp_reset_postdata();?>
+          <?php endif; ?>
 
-    <?php endwhile; endif;?>
+        <?php endif ?>
+
+      <?php endwhile; endif;?>
+    </div>
   </div>
-  <div class="clientes-bottom container">
-    <div class="clientes-bottom__inner ">
+
+  <div class="clientes-bottom overgrid">
+    <div class="clientes-bottom__inner container ">
       <div class="clientes-bottom__tag">
         <h2><?php the_field('tag_bottom_clientes') ?></h2>
       </div>

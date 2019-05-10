@@ -1,3 +1,5 @@
+@import 'vendor/fullpage';
+
 @import 'reset/reset';
 @import 'helpers/fonts';
 @import 'helpers/variables';
@@ -16,13 +18,14 @@
 @import 'components/social';
 @import 'components/counter';
 @import 'components/forms';
-@import 'components/svg';
 @import 'components/article';
 @import 'components/video';
 @import 'components/statistics';
 @import 'components/entry';
 @import 'components/page-crumb';
 @import 'components/sidebar';
+@import 'components/topbar';
+@import 'components/calendar';
 
 //@import 'webgl/webgl';
 
@@ -55,9 +58,16 @@
 @import 'pages/clientes/single/cliente-content';
 @import 'pages/clientes/single/cliente-footer';
 
+@import 'pages/casos/index/casos';
+@import 'pages/casos/index/casos-top';
+@import 'pages/casos/index/casos-list';
+// @import 'pages/casos/index/casos-bottom';
+// @import 'pages/casos/index/casos-footer';
+
 @import 'pages/contacto/contacto';
 @import 'pages/contacto/contacto-top';
 @import 'pages/contacto/contacto-form';
+@import 'pages/contacto/contacto-video';
 @import 'pages/contacto/contacto-maps';
 
 

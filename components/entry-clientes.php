@@ -1,5 +1,5 @@
 <div class="entry">
-  <?php if( have_rows('contenido') ): while ( have_rows('contenido') ) : the_row(); ?>
+<?php if( have_rows('contenido') ): while ( have_rows('contenido') ) : the_row(); ?>
     <?php if( get_row_layout() == '1_columna' ): ?>
       <div class="content col1">
         <?php $pos1_1 = get_sub_field('pos1_flex1'); ?>

@@ -1,11 +1,30 @@
 .clientes-list {
   width: 100%;
   background: $red;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  background: $red;
+  position: relative;
+  &__crumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    h2 {
+      font-size: 3.6rem;
+      line-height: 4rem;
+      color: white;
+      font-weight: $bold;
+      margin: 0 0 2rem 0;
+    }
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: $red;
+
+  }
   &__block {
     height: 15vw;
+    max-height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +33,19 @@
   }
   &__square {
     background: $red;
+    &:first-child {
+      align-items: flex-start;
+      justify-content: flex-start;
+      &:after {
+        padding-top: 4rem;
+        content: '//Clientes';
+        font-size: 3.6rem;
+        line-height: 4rem;
+        color: white;
+        font-weight: $bold;
+        margin: 0 0 2rem 0;
+      }
+    }
   }
   &__client {
     background: lighten($red, 10%);
@@ -21,6 +53,24 @@
     transition: background 0.3s ease, border 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
+    position: relative;
+    &:after {
+      content: '+';
+      color: white;
+      position: absolute;
+      bottom: 1rem;
+      right: 1.5rem;
+      font-size: 3.5rem;
+    }
+    &:hover:after {
+      color: $red;
+    }
+    &--nolink {
+      cursor: default;
+      &:after {
+        content: none;
+      }
+    }
     img {
       filter: brightness(0) invert(1);
       width: 60%;
@@ -40,8 +90,10 @@
 
 @include desktop {
   .clientes-list {
-    padding: 0 $pad-grid;
-    grid-template-columns: repeat(4, 1fr);
+    &__inner {
+      padding: 0 $pad-grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
     &__block {
       height: 20vw;
     }
@@ -50,7 +102,9 @@
 
 @include tablet {
   .clientes-list {
-    grid-template-columns: repeat(2, 1fr);
+    &__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
     &__block {
       height: 40vw;
     }
@@ -65,7 +119,9 @@
 
 @include mobile {
   .clientes-list {
-    grid-template-columns: repeat(1, 1fr);
+    &__inner {
+      grid-template-columns: repeat(1, 1fr);
+    }
     &__block {
       height: 80vw;
     }

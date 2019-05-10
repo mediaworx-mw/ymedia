@@ -1,59 +1,56 @@
-import Masonry from 'masonry-layout';
+import { TweenMax } from 'gsap';
+import ScrollMagic from 'scrollmagic';
+import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 const Corporativo = () => {
   const $members = document.querySelector('.members');
-  const $member = document.querySelectorAll('.member__inner');
-  const $memberModal = document.querySelector('.member-modal');
+  const $member = document.querySelectorAll('.member');
+  const $memberInner = document.querySelectorAll('.member__inner');
   const $close = document.querySelector('.member-modal__close')
-  const $modalName = document.querySelector('.member-modal__name');
-  const $modalLastname = document.querySelector('.member-modal__lastname');
-  const $modalRole = document.querySelector('.member-modal__role');
-  const $modalBio = document.querySelector('.member-modal__bio');
-  const $modalTop = document.querySelector('.member-modal__top');
   const $body = document.body;
+  const $tag = document.querySelector('.corporativo-top__tag').getElementsByTagName('span');
+  const $intro = document.querySelector('.corporativo-top__intro');
 
 
-  const msnry = new Masonry( $members, {
-    itemSelector: '.member',
-    percentPosition: true,
-    columnWidth: '.grid-sizer'
-  });
+  const controllerMembers = new ScrollMagic.Controller();
 
-  const getBio = (photo, name, lastname, role, bio) => {
-    $memberModal;
-    $memberModal.classList.add('visible');
-    $body.classList.add('overflow');
+  const tweenInit = new TimelineLite({paused: true});
+  tweenInit
+  .staggerTo($tag, 0.5, {x: 0, ease:Expo.easeOut, delay: 1}, 0.1, "-= 0.45")
+  .to($intro, 1, {x: 0, ease:Expo.easeOut}, '-=0.4');
 
-    $modalName.innerHTML = name;
-    $modalLastname.innerHTML = lastname;
-    $modalRole.innerHTML = role;
-    $modalBio.innerHTML = bio;
-    $modalTop.style.backgroundImage = "url('"+photo+"')";
-  }
+  tweenInit.play();
 
-  $member.forEach(function(e) {
-    e.addEventListener('click', function(){
-      const photo = this.getAttribute('data-photo');
-      const name = this.getAttribute('data-name');
-      const lastname = this.getAttribute('data-lastname');
-      const role = this.getAttribute('data-role');
-      const bio = this.getAttribute('data-bio');
-      getBio(photo, name, lastname, role, bio );
-    });
+  const tweenMembers = new TimelineLite({paused: true});
+  tweenMembers
+  .staggerTo($member, 0.8, {y: 0, opacity: 1, ease: Expo.easeOut}, 0.2, "-= 0.4");
+
+  new ScrollMagic.Scene({
+    triggerElement: $members,
+    offset: -300,
+    reverse: false
+  })
+  .setTween(tweenMembers.play())
+  .addTo(controllerMembers);
+
+  $memberInner.forEach(function(e) {
+    const video = e.querySelector('.member__video').querySelector('.video');
 
     e.addEventListener('mouseover', function() {
-     this.querySelector('.member__video').classList.remove('hidden');
+      video.play();
+      this.querySelector('.member__data-top').classList.add('over');
+      this.querySelector('.member__data-bottom').classList.add('over');
     });
 
     e.addEventListener('mouseleave', function() {
-     this.querySelector('.member__video').classList.add('hidden');
+      video.pause();
+      video.currentTime = 0;
+      this.querySelector('.member__data-top').classList.remove('over');
+      this.querySelector('.member__data-bottom').classList.remove('over');
     });
   });
 
-  $close.addEventListener('click', function() {
-    $memberModal.classList.remove('visible');
-     $body.classList.remove('overflow');
-  });
+
 }
 
 export default Corporativo;

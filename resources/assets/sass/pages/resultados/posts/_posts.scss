@@ -2,19 +2,20 @@
   display: flex;
   justify-content: space-between;
   margin: 0 0 8rem 0;
-
   &__hero {
-    width: 30%;
+    width: 33.33%;
     figure {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      height: 10vw;
+      height: 25vw;
+      min-height: 200px;
+      max-height: 300px;
+
     }
   }
   &__content {
-    width: 68%;
-
+    width: 65%;
   }
   &__title {
     color: $red;
@@ -34,11 +35,71 @@
     display: block;
     padding: 0 0 1rem 0;
   }
-
   &__excerpt {
     font-size: 1.6rem;
     color: $gray;
     line-height: 2.6rem;
   }
+}
 
+@include desktop {
+  .resultados-article {
+    &__hero {
+      width: 50%;
+
+    }
+    &__content {
+      width: 48%
+    }
+    &__title {
+      font-size: 3.5rem;
+      line-height: 4.5rem;
+      margin: 0 0 2rem 0;
+    }
+  }
+}
+
+@include tablet {
+  .resultados-article {
+    justify-content: flex-start;
+    margin: 0 0 8rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    &__hero {
+      width: 100%;
+      margin: 0 0 2rem 0;
+      figure {
+        height: 40vw;
+        min-height: 200px;
+        max-height: 300px;
+      }
+    }
+    &__content {
+      width: 100%;
+    }
+    &__title {
+      font-size: 3rem;
+      line-height: 4rem;
+      margin: 0 0 2rem 0;
+    }
+    &__date {
+      color: $red;
+      font-size: 1.6rem;
+      line-height: 3rem;
+      font-weight: $bold;
+      margin: 0 0 2rem 0;
+      border-bottom: 3px solid $red;
+      display: block;
+      padding: 0 0 1rem 0;
+    }
+  }
+}
+
+@include mobile {
+  .resultados-article {
+    &__title {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+  }
 }

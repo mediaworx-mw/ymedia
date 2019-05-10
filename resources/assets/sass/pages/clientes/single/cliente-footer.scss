@@ -1,7 +1,11 @@
 .cliente-footer {
+  padding: 10rem 0;
   background: white;
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
   &__inner {
-    padding: 10rem 0;
+
     display: grid;
     grid-template-columns: 5fr 1fr;
     // grid-template-areas:
@@ -11,7 +15,8 @@
   }
 
   &__descarga {
-    padding: 0 0 0 calc( 100vw / 4);
+    padding: 0 $half-pad 0 0;
+    transform: translateX(2000px);
     h3 {
       font-size: 3rem;
       color: $red;
@@ -23,21 +28,23 @@
   }
 
   &__marca {
-     padding: 0 0 0 calc( 100vw / 6);
+     padding: 0 $half-pad 0 0;
      h4 {
-      font-size: 6rem;
+      font-size: 3.6rem;
       color: $red;
-      line-height: 7rem;
-      font-weight: $bold;
+      line-height: 4rem;
+      font-weight: 600;
       border-bottom: 1px solid $red;
       padding: 0 0 1rem 0;
       display: block;
+       transform: translateX(-2000px);
      }
   }
 
   &__contacto {
-    padding: 13.5rem 0 0 1rem;
+    padding: 3.5rem 0 0 0;
     display: flex;
+    transform: translateX(2000px);
 
     align-items: center;
     h4 {

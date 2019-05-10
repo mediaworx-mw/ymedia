@@ -1,76 +1,77 @@
 //import WebGLHome from '../webgl/webglhome';
 import TweenMax from 'gsap';
 import ScrollMagic from 'scrollmagic';
-import scroll from '../utils/scroll';
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 const Home = () => {
 
  // WebGLHome();
 
-  const controllerHome = new ScrollMagic.Controller();
+
 
   const home1 = document.querySelector('.home1');
-  const title1 = document.querySelector('.home1').querySelector('.tag__title');
-  const text1 = document.querySelector('.home1').querySelector('.tag__text');
-  const arrow1 = document.querySelector('.home1').querySelector('.tag__arrow');
-  //const counter1 = document.querySelectorAll('.counter--1');
+  const title1 = document.querySelector('.home1').querySelector('.home-tag__title').getElementsByTagName('span');
+  const text1 = document.querySelector('.home1').querySelector('.home-tag__text');
+  const counter1 = document.querySelector('.counter--1');
 
   const home2 = document.querySelector('.home2');
-  const title2 = document.querySelector('.home2').querySelector('.tag__title');
-  const text2 = document.querySelector('.home2').querySelector('.tag__text');
-  const arrow2 = document.querySelector('.home2').querySelector('.tag__arrow');
-  //const counter2 = document.querySelectorAll('.counter--2');
+  const title2 = document.querySelector('.home2').querySelector('.home-tag__title').getElementsByTagName('span');
+  const text2 = document.querySelector('.home2').querySelector('.home-tag__text');
+  const counter2 = document.querySelector('.counter--2');
 
   const home3 = document.querySelector('.home3');
-  const title3 = document.querySelector('.home3').querySelector('.tag__title');
-  const text3 = document.querySelector('.home3').querySelector('.tag__text');
-  const arrow3 = document.querySelector('.home3').querySelector('.tag__arrow');
-  //const counter3 = document.querySelectorAll('.counter--3');
+  const title3 = document.querySelector('.home3').querySelector('.home-tag__title').getElementsByTagName('span');
+  const text3 = document.querySelector('.home3').querySelector('.home-tag__text');
+  const counter3 = document.querySelector('.counter--3');
 
+  const trigger1 = document.querySelector('.home1');
   const trigger2 = document.querySelector('.home2');
   const trigger3 = document.querySelector('.home3');
 
-  // counter1.forEach(function(e) {
-  //   e.addEventListener('click', () => {
-  //     scroll(home1, 300, 'easeOutCubic');
-  //   })
-  // });
+  const counterLine1 = document.querySelectorAll('.counter__1');
+  const counterLine2 = document.querySelectorAll('.counter__2');
+  const counterLine3 = document.querySelectorAll('.counter__3');
 
-  // counter2.forEach(function(e) {
-  //   e.addEventListener('click', () => {
-  //     scroll(home2, 300, 'easeOutCubic');
-  //   })
-  // });
+  const controllerHome = new ScrollMagic.Controller();
 
-  // counter3.forEach(function(e) {
-  //   e.addEventListener('click', () => {
-  //     scroll(home3, 300, 'easeOutCubic');
-  //   })
-  // });
+  counterLine1.forEach(function(e) {
+    e.addEventListener('click', () => {
+      fullpage_api.moveTo(1);
+    })
+  });
+
+  counterLine2.forEach(function(e) {
+    e.addEventListener('click', () => {
+      fullpage_api.moveTo(2);
+    })
+  });
+
+  counterLine3.forEach(function(e) {
+    e.addEventListener('click', () => {
+      fullpage_api.moveTo(3);
+    })
+  });
 
   const home1Tween = new TimelineLite({paused: true});
+
   home1Tween
-  .to(title1, 1, {x: 0, ease: Power2.easeInOut, delay: 1})
-  .to(text1, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8')
-  .to(arrow1, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8')
-  //.to(counter1, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8');
+  .staggerTo(title1, 0.5, {x: 0, ease:Expo.easeOut, delay: 1}, 0.1, "-= 0.45")
+  .to(text1, 1, {x: 0, ease:Expo.easeOut}, '-=0.4')
+  .to(counter1, 1, {x: 0, ease:Expo.easeOut}, '-=0.8');
   home1Tween.play();
 
   const home2Tween = new TimelineLite({paused: true});
-  home2Tween
-  .to(title2, 1, {x: 0, ease: Power2.easeInOut})
-  .to(text2, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8')
-  .to(arrow2, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8')
-  //.to(counter2, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8');
 
+  home2Tween
+  .staggerTo(title2, 0.5, {x: 0, ease:Expo.easeOut}, 0.1, "-= 0.45")
+  .to(text2, 1, {x: 0, ease:Expo.easeOut}, '-=0.4')
+  .to(counter2, 1, {x: 0, ease:Expo.easeOut}, '-=0.8');
 
   const home3Tween = new TimelineLite({paused: true});
   home3Tween
-  .to(title3, 1, {x: 0, ease: Power2.easeInOut})
-  .to(text3, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8')
-  .to(arrow3, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8')
-  //.to(counter3, 1, {x: 0, ease: Power2.easeInOut}, '-=0.8');
+  .staggerTo(title3, 0.5, {x: 0, ease:Expo.easeOut}, 0.1, "-= 0.45")
+  .to(text3, 1, {x: 0, ease:Expo.easeOut}, '-=0.4')
+  .to(counter3, 1, {x: 0, ease:Expo.easeOut}, '-=0.8');
 
   new ScrollMagic.Scene({
     triggerElement: trigger2,
@@ -88,5 +89,18 @@ const Home = () => {
   .setTween(home3Tween.play())
   .addTo(controllerHome);
 }
+
+new fullpage('#fullpage', {
+  onLeave: function(origin, destination, direction){
+    const $header = document.querySelector('.header');
+    const $nav = document.querySelector('.nav');
+    if( origin.index == 0 && direction =='down' && !$nav.classList.contains('open') ){
+      $header.classList.add('header--small');
+    }
+    if(origin.index == 1 && direction =='up'){
+      $header.classList.remove('header--small');
+    }
+  }
+});
 
 export default Home;

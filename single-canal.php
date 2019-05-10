@@ -15,37 +15,108 @@
   <?php while ( have_posts() ) : the_post();?>
   <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="canal-single">
-      <div class="canal-single__top">
-        <?php $thumb = get_the_post_thumbnail_url(); ?>
-        <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
-        </div>
-        <div class="canal-single__header">
+      <?php $layout = get_field('layout_canal'); ?>
 
-          <?php
-            $terms = get_the_terms($post->ID, 'canal_category' );
-          ?>
-          <a href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
-          <h1 class="canal-single__title"><?php the_title(); ?></h1>
-          <h2 class="canal-single__subtitle"><?php the_field('subtitulo_canal'); ?></h2>
-        </div>
-        <div class="canal-single__meta">
-          <div class="canal-single__date">
-            <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
-            <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
+      <?php if($layout == 'full'): ?>
+        <div class="canal-single__top canal-single__top--full overgrid">
+          <?php $thumb = get_the_post_thumbnail_url(); ?>
+          <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
+            <div class="canal-single__header">
+              <?php
+                $terms = get_the_terms($post->ID, 'canal_category' );
+                $color = get_field('color_categoria', $terms[0]);
+              ?>
+              <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
+              <h1 class="canal-single__title"><?php the_title(); ?></h1>
+              <h2 class="canal-single__subtitle"><?php the_field('subtitulo_canal'); ?></h2>
+            </div>
+            <div class="canal-single__meta">
+              <div class="canal-single__date">
+                <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
+                <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
+              </div>
+              <div class="canal-single__author">
+                <?php $author_name = get_the_author_meta('first_name', false).' '. get_the_author_meta('last_name', false);?>
+                <h2><?php echo $author_name;?></h2>
+                <span><?php the_field('rol_author', $user = 'user_'.$post->post_author); ?></span>
+              </div>
+            </div>
           </div>
-          <div class="canal-single__author">
-            <?php $author_name = get_the_author_meta('first_name', false).' '. get_the_author_meta('last_name', false);?>
-            <h2><?php echo $author_name;?></h2>
-            <span><?php the_field('rol_author', $user = 'user_'.$post->post_author); ?></span>
+        </div>
+        <div class="canal-single__excerpt canal-single__excerpt--full container">
+          <?php get_template_part('components/canal/single-menu') ?>
+          <?php the_excerpt(); ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if($layout == 'contained'): ?>
+        <div class="canal-single__top canal-single__top--contained overgrid container">
+          <?php $thumb = get_the_post_thumbnail_url(); ?>
+          <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
+            <div class="canal-single__header">
+              <?php
+                $terms = get_the_terms($post->ID, 'canal_category' );
+                $color = get_field('color_categoria', $terms[0]);
+              ?>
+              <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
+              <h1 class="canal-single__title"><?php the_title(); ?></h1>
+
+            </div>
+            <div class="canal-single__meta">
+              <div class="canal-single__date">
+                <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
+                <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
+              </div>
+              <div class="canal-single__author">
+                <?php $author_name = get_the_author_meta('first_name', false).' '. get_the_author_meta('last_name', false);?>
+                <h2><?php echo $author_name;?></h2>
+                <span><?php the_field('rol_author', $user = 'user_'.$post->post_author); ?></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="canal-single__excerpt canal-single__excerpt--contained container">
+          <?php get_template_part('components/canal/single-menu') ?>
+          <?php the_excerpt(); ?>
+        </div>
+      <?php endif; ?>
+
+       <?php if($layout == 'small'): ?>
+        <div class="canal-single__top-wrap container">
+          <div class="canal-single__top canal-single__top--small overgrid">
+            <?php
+                $terms = get_the_terms($post->ID, 'canal_category' );
+                $color = get_field('color_categoria', $terms[0]);
+              ?>
+            <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
+              <h1 class="canal-single__title"><?php the_title(); ?></h1>
+
+            <?php $thumb = get_the_post_thumbnail_url(); ?>
+            <div class="canal-single__header">
+
+
+            </div>
+            <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
+               <div class="canal-single__meta">
+              <div class="canal-single__date">
+                <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
+                <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
+              </div>
+            </div>
+            </div>
+
+
+          </div>
+          <div class="canal-single__excerpt canal-single__excerpt--small">
+            <?php get_template_part('components/canal/single-menu') ?>
+            <?php the_excerpt(); ?>
           </div>
         </div>
-      </div>
-      <div class="canal-single__excerpt container">
-        <?php get_template_part('components/canal/single-menu') ?>
-        <?php the_excerpt(); ?>
-      </div>
+      <?php endif; ?>
+
       <div class="canal-single__content container">
-        <?php get_template_part('components/entry'); ?>
+        <?php get_template_part('components/entry-canal'); ?>
       </div>
     </div>
   </article>

@@ -4,26 +4,23 @@ import toggleClass from '../utils/toggle';
 const Footer = () => {
   const $footer = document.querySelector('.footer');
   const $footerCross = document.querySelector('.footer__cross-button');
+  const $footerElementsTop = document.querySelector('.footer__top').getElementsByTagName('div');
+  const $footerElementsBottom = document.querySelector('.footer__bottom').getElementsByTagName('div');
+
+
+  const footerTween = new TimelineLite({paused: true});
+  footerTween
+  .staggerTo($footerElementsTop, 0.5, {opacity: 1, ease: Power2.easeInOut, delay: 0.4}, 0.1, "-= 0.25")
+  .staggerTo($footerElementsBottom, 0.5, {opacity: 1, ease: Power2.easeInOut}, 0.1, "-= 0.25")
+
 
   $footerCross.addEventListener('click', function() {
     toggleClass($footer, 'expanded');
     toggleClass($footerCross, 'open');
+    footerTween.play();
   });
 
-  let controllerFooter = new ScrollMagic.Controller();
-  let scrollHeight = document.body.scrollHeight;
-  let offsetFooter = scrollHeight - (scrollHeight/3);
 
-  new ScrollMagic.Scene({ offset: offsetFooter })
-  .on('enter', () => {
-    $footerCross.classList.add('visible');
-  })
-  .on('leave', () => {
-    $footerCross.classList.remove('visible');
-    $footer.classList.remove('expanded');
-    $footerCross.classList.remove('open');
-  })
-  .addTo(controllerFooter);
 
 }
 

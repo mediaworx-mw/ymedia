@@ -1,6 +1,9 @@
 .clientes-footer {
   background: white;
   padding: 10rem 0;
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
   &__inner {
 
     display: grid;
@@ -11,15 +14,20 @@
   &__tag {
     padding: 0;
     h2 {
-      font-size: 7.2rem;
-      color: $red;
-      line-height: 7.8rem;
-      font-weight: $bold;
-      max-width: 650px;
+      span {
+        transform: translateX(-2000px);
+        display: block;
+        position: relative;
+        font-size: 6rem;
+        color: $red;
+        line-height: 6.8rem;
+        font-weight: $bold;
+      }
     }
   }
 
   &__descarga {
+    transform: translateX(2000px);
     padding: 0;
     h3 {
       font-size: 3rem;
@@ -41,12 +49,14 @@
       border-bottom: 1px solid $red;
       padding: 0 0 1rem 0;
       display: block;
+      transform: translateX(-2000px);
      }
   }
 
   &__contacto {
     padding: 3.5rem 0 0 0;
     display: flex;
+    transform: translateX(2000px);
 
     align-items: center;
     h4 {
@@ -56,6 +66,7 @@
       font-weight: $bold;
       display: block;
       margin: 0 3rem 0 0;
+
      }
   }
 }

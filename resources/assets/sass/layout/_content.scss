@@ -1,8 +1,14 @@
 .content {
   display: flex;
   justify-content: space-between;
-  padding: $pad 0;
-  margin: 0 0 $pad 0;
+  padding: 4rem 0;
+  margin: 0;
+}
+
+.content-canal {
+   padding: 4rem 0;
+  column-count: 2;
+  column-gap: 20px;
 }
 
 .col1 {
@@ -36,6 +42,7 @@
 
 .col {
   display: flex;
+  padding: 0 0 4rem 0;
   &--arriba {
     align-items: flex-start;
   }
@@ -53,13 +60,12 @@
       display: flex;
       justify-content: space-between;
       .col {
-        width: 33.33vw;
+        width: 50%;
         padding: 0 2rem 0 0;
         &:last-child {
-          padding: 0 $pad 0 0;
+          padding: 0 0 0 0;
         }
       }
-
     }
 
     .col3 {
@@ -78,9 +84,7 @@
 
 
 @include desktop {
-
-
-.content {
+  .content {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -108,5 +112,11 @@
       }
     }
   }
+}
 
+@include tablet {
+  .content-canal {
+    column-count: 1;
+    column-gap: 0;
+  }
 }

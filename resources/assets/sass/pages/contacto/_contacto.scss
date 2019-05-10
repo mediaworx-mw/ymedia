@@ -3,25 +3,56 @@
   background: white;
   padding: 0 0 8rem 0;
   &__content {
-    display: grid;
-    grid-template-columns: 4fr 2fr;
+    display: flex;
   }
 }
 
-@include desktop-wide {
-  .contacto {
-    &__content {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
+.contacto-form {
+  width: calc( (100% / 6) * 2);
+}
+.contacto-video {
+  width: calc( (100% / 6) * 3);
 }
 
+.contacto-maps {
+  width: calc( (100% / 6) * 1);
+}
 
 @include desktop {
   .contacto {
     &__content {
-      grid-template-columns: 1fr;
+      flex-wrap: wrap;
     }
+
+  }
+  .contacto-form {
+  width: 50%;
+}
+  .contacto-video {
+    width: 50%;
+  }
+
+  .contacto-maps {
+    width: 100%;
+  }
+}
+
+@include tablet {
+  .contacto {
+    &__content {
+      flex-wrap: wrap;
+    }
+
+  }
+  .contacto-form {
+  width: 100%;
+}
+  .contacto-video {
+    display: none;
+  }
+
+  .contacto-maps {
+    width: 100%;
   }
 }
 

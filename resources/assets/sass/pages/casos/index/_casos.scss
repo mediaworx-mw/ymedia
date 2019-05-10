@@ -1,0 +1,18 @@
+.casos {
+  padding: 0 0 8rem 0;
+  position: relative;
+  //background: $red;
+  &__clientes {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: $red;
+    display: block;
+    padding: 1rem 4rem 1rem 1rem;
+    color: white;
+    font-weight: $bold;
+    font-size: 1.6rem;
+
+  }
+}
+
