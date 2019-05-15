@@ -34,7 +34,13 @@
 
       </div>
     </div>
-    <div class="contacto-video"></div>
+    <div class="contacto-video">
+      <video data-keepplaying class="contacto-video__vid" poster="<?php echo get_field('hero'.$id.'_home') ?>" playsinline autoplay muted loop>
+        <source src="<?php echo get_field('video_webm_contacto') ?>" type="video/webm">
+        <source src="<?php echo get_sub_field('video_ogg_contacto') ?>" type="video/ogg; codecs=theora,vorbis">
+        <source src="<?php echo get_field('video_mp4_contacto') ?>" type="video/mp4">
+      </video>
+    </div>
     <div class="contacto-maps">
       <div class="contacto-maps__maps">
 

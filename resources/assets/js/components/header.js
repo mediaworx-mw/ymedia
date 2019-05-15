@@ -15,7 +15,7 @@ const Header = () => {
 
   const controllerHeader = new ScrollMagic.Controller();
 
-  if(document.querySelector('.home') == null) {
+  if(document.querySelector('.home') == null && document.querySelector('.canal') == null ) {
     let offsetHeader = 10;
     new ScrollMagic.Scene({ offset: offsetHeader })
     .on('enter', () => {
@@ -25,6 +25,7 @@ const Header = () => {
       $header.classList.remove('header--small');
     })
     .addTo(controllerHeader);
+
   }
 
 

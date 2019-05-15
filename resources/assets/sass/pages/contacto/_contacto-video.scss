@@ -1,6 +1,19 @@
 .contacto-video {
   background: white;
   height: 500px;
-
   padding: 0;
+  //position: relative;
+  &__vid {
+    position: absolute;
+    bottom: 0;
+    left: 55%;
+    transform: translateX(-50%);
+    min-width: 90%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+  }
 }
+
+

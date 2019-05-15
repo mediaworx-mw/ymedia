@@ -9,13 +9,14 @@ $color = get_field('color_categoria', $terms[0]);
     <?php $thumb = get_the_post_thumbnail_url(); ?>
     <figure style="background-image: url('<?php echo $thumb;?>')"></figure>
   </a>
-  <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
-  <div class="canal-article__content">
-
-    <h2 class="article-title canal-article__title"><?php the_title(); ?></h2>
-    <div class="article-meta canal-article__meta">
-      <span class="article-date canal-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
+  <div class="canal-article__info">
+    <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-article__category"> <?php echo $terms[0]->name; ?></a>
+    <div class="canal-article__content">
+      <h2 class="article-title canal-article__title"><?php the_title(); ?></h2>
+      <div class="article-meta canal-article__meta">
+        <span class="article-date canal-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
+      </div>
+      <div class="canal-article__excerpt article-excerpt"><?php the_excerpt(); ?></div>
     </div>
-    <div class="canal-article__excerpt article-excerpt"><?php the_excerpt(); ?></div>
   </div>
 </article>

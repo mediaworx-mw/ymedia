@@ -1,19 +1,90 @@
 .topbar {
   padding: 3rem 0;
+  background: white;
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  z-index: 12;
+  width: 100%;
   &__inner {
     display: flex;
     justify-content: space-between;
   }
   &__tags {
-    width: calc( (100%/6)*4 );
-    overflow-x: hidden;
+    width: calc( (100%/6)*5 );
+    //overflow-x: hidden;
 
   }
+
+  &__merged {
+    position: relative;
+    margin: 0 1rem 0 0;
+    text-align: center;
+    color: white;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 1rem ;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 2px;
+    position: relative;
+    z-index: 10;
+    background: $gray;
+    &.selected {
+      background: #dc2d2b;
+    }
+
+    &:hover {
+      >div {
+        display: flex;
+      }
+    }
+  }
+
+  &__todas {
+    text-align: center;
+    color: white;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 1rem ;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 2px;
+    z-index: 10;
+    background: #f1e354;
+  }
+
+  &__drop {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    align-items: flex-start;
+    display: none;
+    flex-direction: column;
+    text-align: left;
+    background: white;
+    padding: 2px 0 0 0;
+
+    >li {
+      text-align: left;
+      width: 150px;
+      border-radius: 0;
+      margin: 0;
+      border-bottom: 1px solid white;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+     //display: none;
+  }
+
+
   &__list {
     display: flex;
   }
   &__tag {
-     margin: 0 1rem 0 0;
+    margin: 0 1rem 0 0;
     text-align: center;
     color: white;
     font-size: 1.6rem;
@@ -30,6 +101,8 @@
     }
   }
 
+
+
   &__tags-title {
     font-size: 2.5rem;
     line-height: 3rem;
@@ -39,8 +112,8 @@
   }
 
   &__search {
-    width: calc( (100%/6)*2 );
-    padding: 0 0 0 1rem;
+    width: calc( (100%/6)*1 );
+    padding: 0;
 
   }
   &__search-title {
@@ -56,26 +129,65 @@
     justify-content: space-between;
   }
   &__calendar {
-    width: 48%;
+    width: 49%;
     position: relative;
 
   }
 
   &__calendar-button {
-    margin: 0 1rem 0 0;
-    text-align: center;
+    margin: 0;
+    text-align: left;
     color: $gray;
     border: 1px solid $gray;
     border-radius: 2px;
     font-size: 1.4rem;
     line-height: 1;
-    padding: 1rem ;
+    padding: 1.2rem 1rem 0.8rem 1rem;
     cursor: pointer;
     display: block;
     position: relative;
+    height: 38px;
     i {
       color: $red;
       margin: 0 1rem 0 0;
+      position: absolute;
+      right: 3px;
+      top: 9px;
+    }
+  }
+  &__calendar-icon {
+    position: absolute;
+    background: white;
+    right: 7px;
+    top: 2px;
+    padding: 0.8rem;
+    z-index: 10;
+    cursor: pointer;
+
+    i {
+      font-size: 1.6rem;
+      color: $red;
+    }
+  }
+
+  &__calendar-clear {
+    position: absolute;
+    background: white;
+    right: 7px;
+    top: 2px;
+    padding: 0.8rem;
+    z-index: 11;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+
+    &.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+    i {
+      font-size: 1.6rem;
+      color: $red;
     }
   }
 
@@ -92,24 +204,58 @@
   }
 
   &__key {
-    width: 48%;
+    width: 49%;
+    position: relative;
+
   }
 
-  &__key-button {
-    margin: 0 1rem 0 0;
+  &__key-input {
+    margin: 0;
     text-align: center;
     color: $gray;
     border: 1px solid $gray;
     border-radius: 2px;
     font-size: 1.4rem;
     line-height: 1;
-    padding: 1rem ;
-    cursor: pointer;
+    padding: 1rem;
     display: block;
-    i {
-      color: $red;
-      margin: 0 1rem 0 0;
+    position: relative;
+    text-align: left;
+    width: 98%;
+    height: 38px;
+  }
+  &__key-submit {
+    position: absolute;
+    background: white;
+    right: 7px;
+    top: 2px;
+    padding: 0.8rem;
+    z-index: 10;
+    cursor: pointer;
 
+    i {
+      font-size: 1.6rem;
+      color: $red;
+    }
+  }
+  &__key-clear {
+    position: absolute;
+    background: white;
+    right: 7px;
+    top: 2px;
+    padding: 0.8rem;
+    z-index: 11;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+
+    &.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+    i {
+      font-size: 1.6rem;
+      color: $red;
     }
   }
 }

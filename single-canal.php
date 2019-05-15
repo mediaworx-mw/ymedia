@@ -11,9 +11,9 @@
 
 <?php get_header(); ?>
 <div class="single" data-site-body="single-canal">
-  <?php get_template_part('components/sidebar'); ?>
+
   <?php while ( have_posts() ) : the_post();?>
-  <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <article id="post-<?php the_ID(); ?>">
     <div class="canal-single">
       <?php $layout = get_field('layout_canal'); ?>
 

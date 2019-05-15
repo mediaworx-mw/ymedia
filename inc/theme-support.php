@@ -19,6 +19,15 @@ function ymedia_register_nav_menu() {
 }
 add_action( 'after_setup_theme', 'ymedia_register_nav_menu' );
 
+/* Remove Title Attribute from Menu */
+function my_menu_notitle( $menu ){
+  return $menu = preg_replace('/ title=\"(.*?)\"/', '', $menu );
+}
+
+add_filter( 'wp_nav_menu', 'my_menu_notitle' );
+add_filter( 'wp_page_menu', 'my_menu_notitle' );
+add_filter( 'wp_list_categories', 'my_menu_notitle' );
+
 /* Post Thumbnails and Custom Images Sizes  */
 function setup() {
   add_theme_support( 'post-thumbnails' );
@@ -44,6 +53,8 @@ function string_limit_words($string, $word_limit)
   array_pop($words);
   return implode(' ', $words);
 }
+
+add_filter( 'wpcf7_validate_configuration', '__return_false' );
 
 /* Allow uploading SVG files */
 function cc_mime_types($mimes) {
@@ -82,23 +93,44 @@ function customApi() {
 function queryParameters($data) {
   $terms = (string)$data['terms'];
   $terms = explode(',', $terms);
-  // $date = $data['date'];
-  // $year  = substr($date, 0, 4);
-  // $month = substr($date, 5, 2);
-  // $day   = substr($date, 8);
+
+  $date = $data['date'];
+  if ($date == 'nodate') {
+    $year  = null;
+    $month = null;
+    $day   = null;
+  } else {
+    $year  = substr($date, 0, 4);
+    $month = substr($date, 5, 2);
+    $day   = substr($date, 8);
+  }
+
+  if ($data['terms'] == 'empty') {
+    $terms = null;
+  }
+
 
   $canal = new WP_Query(array(
     'post_type' => 'canal',
     's' => $data['key'],
-    'posts_per_page' => $data['num'],
+    'posts_per_page' => $data['posts'],
+    'offset' => $data['offset'],
+    // 'meta_key' => 'destacado_canal',
+    // 'meta_value'  => false,
     'tax_query' => array(
        array(
         'taxonomy' => 'canal_category',
         'field' => 'id',
         'terms' => $terms
        ),
-    )
-
+    ),
+    'date_query' => array(
+      array(
+        'year'  => $year,
+        'month' => $month,
+        'day'   => $day,
+      ),
+    ),
   ));
 
   $canalResults = array();

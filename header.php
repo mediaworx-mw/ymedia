@@ -16,7 +16,12 @@
 <?php else: ?>
 <body>
 <?php endif; ?>
+
+<?php if (is_page('canal-ymedia')): ?>
+<header class="header header--small">
+<?php else: ?>
 <header class="header">
+<?php endif; ?>
   <div class="header__inner container">
     <a href="<?php bloginfo('url') ?>" class="header__logo">
       <?php get_template_part('svg/logo') ?>
