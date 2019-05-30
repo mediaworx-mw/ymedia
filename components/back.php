@@ -5,8 +5,8 @@
 
   if ($tag == 'Cliente') {
     $url = 'cliente';
-  } elseif ($tag == 'Caso de Estudio') {
-  $url = 'casos-de-estudio';
+  } elseif ( $tag == 'Caso de Exito' || $tag == 'Caso de Estudio') {
+  $url = 'casos-de-exito';
   }
 ?>
 

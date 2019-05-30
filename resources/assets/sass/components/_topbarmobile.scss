@@ -1,0 +1,129 @@
+.topbarm {
+  padding: 3rem 0 1rem 0;
+  background: white;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  z-index: 12;
+  width: 100%;
+  display: none;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__tags {
+    width: 40%;
+    border: 1px solid $gray;
+    border-radius: 6px;
+    position: absolute;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
+    //overflow-x: hidden;
+    padding: 2rem;
+    z-index: 14;
+    background: white;
+    top: 0;
+  }
+  &__tags-title {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    font-weight: $regular;
+    color: $gray-dark;
+    margin: 0 0 2rem 0;
+    position: relative;
+    display: block;
+    width: 100%;
+    i{
+      color: $red;
+      position: absolute;
+      right: 0;
+      top: -2px;
+      font-size: 2.5rem;
+      line-height: 1;
+
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    position: relative;
+    width: 100%;
+
+  }
+  &__tag {
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1;
+    margin: 0 0 1rem 0;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    &--todas {
+      background: $gray-dark;
+    }
+    &:before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      background: white;
+      border: 1px solid $gray;
+      right: 1.2rem;
+      top: 8px;
+      position: absolute;
+    }
+    &--selected {
+      &:after {
+        content: "\f00c";
+        font-family: FontAwesome;
+        color: $red;
+        font-size: 1.4rem;
+        position: absolute;
+        right: 1.5rem;
+        top: 12px;
+      }
+    }
+
+  }
+  &__confirmar {
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1.6rem;
+    line-height: 1;
+    margin: 1rem 0 0 0;
+    border-radius: 5px;
+    width: 100%;
+    background: $gray;
+    display: block;
+    width: 100%;
+    text-align: center;
+
+  }
+
+  &__search {
+    display: none;
+  }
+}
+
+@include desktop {
+  .topbarm {
+    display: block;
+  }
+}
+
+@include tablet {
+  .topbarm {
+    &__tags {
+      width: 65%;
+    }
+  }
+}
+
+@include mobile {
+  .topbarm {
+    &__tags {
+      width: 70%;
+    }
+  }
+}
+
