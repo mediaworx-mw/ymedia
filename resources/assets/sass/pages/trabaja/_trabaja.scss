@@ -1,0 +1,20 @@
+.trabaja {
+  padding: 0 0 4rem 0;
+}
+
+.trabaja-content {
+  &__title {
+    font-size: 4rem;
+    line-height: 5rem;
+    margin: 0 0 3rem 0;
+    color: $red;
+  }
+}
+
+@include desktop {
+  .trabaja-content {
+    &__title {
+      display: none;
+    }
+  }
+}

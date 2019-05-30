@@ -1,6 +1,6 @@
 .single {
   position: relative;
-  padding-top: 3rem;
+  padding-top: 6rem;
   padding-bottom: 6rem;
 }
 
@@ -21,7 +21,7 @@
   }
   &__top-wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-end;
   }
   &__hero {
@@ -32,11 +32,27 @@
     background-size: cover;
     background-position: top center;
     position: relative;
+    &--cover:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0) 45%,
+        rgba(0,0,0,0) 45%,
+        rgba(0,0,0,0.6) 100%
+      );
+
+    }
   }
   &__header {
     position: absolute;
     bottom: 4rem;
     left: 12rem;
+    z-index: 10;
   }
   &__category {
     display: inline-block;
@@ -49,18 +65,12 @@
   }
   &__title {
     color: white;
-    font-size: 7rem;
-    line-height: 8rem;
+    font-size: 4rem;
+    line-height: 5rem;
     font-weight: $bold;
     margin: 0 0 2rem 0;
   }
-  &__subtitle {
-    color: white;
-    font-size: 2rem;
-    line-height: 3rem;
-    font-weight: $bold;
-    max-width: 700px;
-  }
+
   &__meta {
     position: absolute;
     left: 0;
@@ -107,37 +117,71 @@
     }
   }
 
-  &__excerpt {
+  &__main {
     padding-top: 4rem;
     padding-bottom: 4rem;
+    display: flex;
+    justify-content: flex-start;
+    .single-side {
+      width: calc( 100% / 6);
+    }
+
+  }
+
+
+  &__content {
+    width: calc( (100%/ 6 ) * 4);
+  }
+
+  &__excerpt {
     position: relative;
+    padding-bottom: 4rem;
     p {
-      font-size: 3rem;
-      line-height: 4rem;
+      font-size: 2rem;
+      line-height: 3rem;
       font-weight: $bold;
       color: $red;
       max-width: $max-width-content;
     }
     &--small {
-      width: 32%;
-      padding: 0;
+      width: 16%;
+      padding: 0 0 0 1rem;
+      .single-side {
+        display: none;
+      }
       p {
-        font-size: 2rem;
-        line-height: 3rem;
+        font-size: 1.8rem;
+        line-height: 2.6rem;
       }
     }
   }
-  &__content {
+  &__entry {
     margin: 0 auto;
-    padding-top: 4rem;
+    padding-top: 0;
     padding-bottom: 4rem;
   }
 }
 
 @include desktop {
+  .single {
+    position: relative;
+    padding-bottom: 6rem;
+  }
+
   .canal-single {
-    &__hero {
-      height: 80vw;
+    &__top {
+      width: 100%;
+      position: relative;
+      &--small {
+        width: 100%;
+        .canal-single__title{
+          color: $red;
+        }
+        .canal-single__meta{
+          bottom: auto;
+          top: 0;
+        }
+      }
     }
     &__top-wrap {
       display: flex;
@@ -145,76 +189,134 @@
       align-items: flex-start;
       flex-direction: column;
     }
-     &__top {
-      &--small {
-        width: 100%;
+    &__hero {
+      width: 100%;
+      height: 60vw;
+      max-height: 600px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top center;
+      position: relative;
+    }
+    &__header {
+      position: absolute;
+      bottom: 4rem;
+      left: 12rem;
+    }
+    &__category {
+      display: inline-block;
+      text-align: center;
+      color: white;
+      background: $green;
+      padding: 1rem 2rem;
+      margin: 0 0 2rem 0;
+      font-size: 1.6rem;
+    }
+
+    &__title {
+      color: white;
+      font-size: 3rem;
+      line-height: 4rem;
+
+    }
+
+    &__meta {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: flex;
+    }
+    &__date {
+      background: $red;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      h2 {
+        font-size: 1.8rem;
+        line-height: 1;
+        color: white;
+        font-weight: $regular;
+        margin: 0;
       }
+      h3 {
+        font-size: 6rem;
+        color: white;
+        font-weight: $bold;
+      }
+    }
+    &__author {
+      padding: 1rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      display: none;
+      h2 {
+        font-size: 3rem;
+        line-height: 2rem;
+        color: white;
+        font-weight: $bold;
+        margin: 0 0 1rem 0;
+      }
+      span {
+        font-size: 1.8rem;
+        line-height: 2rem;
+        color: white;
+        font-weight: $bold;
+      }
+    }
+
+    &__main {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      .single-side {
+       width: 100%;
+      }
+      &--small {
+        .single-side {
+          display: none;
+        }
+      }
+    }
+    &__content {
+      width: 100%;
     }
     &__excerpt {
       &--small {
         width: 100%;
-        padding: 0;
-        padding: 2rem 0;
-        p {
-          font-size: 2rem;
-          line-height: 3rem;
+        .single-side {
+          display: flex;
         }
       }
-    }
-    &__title {
-      font-size: 6rem;
-      line-height: 6rem;
-    }
-    &__subtitle {
-      color: white;
-      font-size: 2rem;
-      line-height: 3rem;
     }
   }
 }
 
 @include tablet {
   .canal-single {
-    &__title {
-      color: white;
-      font-size: 4rem;
-      line-height: 5rem;
-    }
-    &__subtitle {
+    &__category {
       display: none;
     }
-    &__header {
-      position: absolute;
-      bottom: 10rem;
-      left: 3rem;
-    }
-    &__date {
-      padding: 1rem;
-      h2 {
-        font-size: 1.4rem;
-      }
-      h3 {
-        font-size: 4rem;
-        line-height: 1;
-      }
+    &__title {
+      font-size: 2.5rem;
+      line-height: 3rem;
     }
     &__excerpt {
-       p {
-        font-size: 2rem;
-        line-height: 3rem;
+      p {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
       }
-    }
-  }
-}
-
-@include mobile {
-  .canal-single {
-    &__hero {
-      height: 80vw;
-    }
-    &__title {
-      font-size: 3rem;
-      line-height: 4rem;
+      &--small {
+        width: 100%;
+        padding: 0;
+        p {
+          font-size: 1.6rem;
+          line-height: 2.6rem;
+        }
+      }
     }
   }
 }

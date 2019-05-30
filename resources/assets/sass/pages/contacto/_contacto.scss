@@ -1,7 +1,8 @@
 .contacto {
   width: 100%;
   background: white;
-  padding: 0 0 8rem 0;
+  padding: 0;
+  overflow: hidden;
   &__content {
     display: flex;
   }
@@ -23,7 +24,6 @@
     &__content {
       flex-wrap: wrap;
     }
-
   }
   .contacto-form {
   width: 50%;
@@ -42,7 +42,6 @@
     &__content {
       flex-wrap: wrap;
     }
-
   }
   .contacto-form {
   width: 100%;

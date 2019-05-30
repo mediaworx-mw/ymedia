@@ -18,8 +18,8 @@
   }
 
   &__list {
-     margin: 0;
-     max-width: 50%;
+    margin: 0;
+    max-width: 50%;
     li {
       margin: 0;
       position: relative;
@@ -43,7 +43,6 @@
           -webkit-text-stroke-color: white;
           color: transparent;
           transition: color 0.2s ease;
-
         }
       }
     }
@@ -55,7 +54,6 @@
     position: absolute;
     padding: 0;
     z-index: $zheader;
-
   }
 
   &__small{
@@ -96,6 +94,18 @@
     &__list {
       margin: 4rem 0;
       max-width: 100%;
+      li {
+        a {
+          &:hover{
+            -webkit-text-stroke-width: 1px;
+          }
+        }
+        &.current_page_item {
+          a {
+            -webkit-text-stroke-width: 1px;
+          }
+        }
+      }
     }
     &__bottom {
       position: relative;
@@ -120,7 +130,6 @@
         }
       }
     }
-
   }
 }
 

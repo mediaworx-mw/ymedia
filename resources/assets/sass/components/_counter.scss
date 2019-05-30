@@ -5,9 +5,8 @@
   width: 35px;
   position: absolute;
   right: $right;
-   top: 50%;
-   transform: translateY(-50%);
-   z-index: $zcounter;
+  top: 50%;
+  z-index: $zcounter;
   .counter__number {
     font-size: 3.2rem;
     line-height: 3rem;
@@ -16,6 +15,7 @@
     color: transparent;
     -webkit-text-stroke-width: 1px;
      -webkit-text-stroke-color: $red;
+
   }
   .counter__line {
     height: 5px;
@@ -28,7 +28,7 @@
     }
   }
   &--1 {
-    transform: translateX(700px);
+    transform: translate3d(700px, -50%, 1px);
     .counter__line {
       &:nth-of-type(2), &:nth-of-type(3) {
         opacity: 0.5;
@@ -39,7 +39,7 @@
     }
   }
   &--2 {
-    transform: translateX(-700px);
+    transform: translate3d(-700px, -50%, 1px);
     right: auto;
     left: $left;
     .counter__line {
@@ -53,7 +53,7 @@
     }
   }
   &--3 {
-    transform: translateX(700px);
+     transform: translate3d(700px, -50%, 1px);
     .counter__line {
       opacity: 1;
 

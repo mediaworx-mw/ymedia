@@ -27,4 +27,5 @@
   </div>
   <?php endfor; ?>
 </div>
+<?php get_template_part('components/cookies') ?>
 <?php get_footer(); ?>

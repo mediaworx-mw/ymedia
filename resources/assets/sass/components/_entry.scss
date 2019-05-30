@@ -15,7 +15,11 @@
     font-weight: $regular;
   }
 
-   a {
+  strong {
+    font-weight: $bold;
+  }
+
+  a {
     font-weight: $regular;
     color: $gray;
     &:hover {
@@ -126,7 +130,6 @@
    font-weight: 300;
  }
 
-
  blockquote{
   font-size: 1.8rem;
   line-height: 2.8rem;
@@ -139,8 +142,8 @@
  }
 
  hr {
-     margin: 40px auto;
-     width: 100%;
+    margin: 40px auto;
+    width: 100%;
  }
 
  iframe{
@@ -155,65 +158,65 @@
  }
 
  table {
-     display: table;
-     margin: 40px 0;
-     border-collapse: collapse;
-     border-spacing: 2px;
-     border-color:black;
+    display: table;
+    margin: 40px 0;
+    border-collapse: collapse;
+    border-spacing: 2px;
+    border-color:black;
  }
 
  thead {
-     display: table-header-group;
-     vertical-align: middle;
-     border-color: inherit;
-     text-align: left;
-     color: black;
-     font-weight: 400;
+   display: table-header-group;
+   vertical-align: middle;
+   border-color: inherit;
+   text-align: left;
+   color: black;
+   font-weight: 400;
  }
 
  tbody {
-     display: table-row-group;
-     vertical-align: middle;
-     border-color: inherit
+   display: table-row-group;
+   vertical-align: middle;
+   border-color: inherit
  }
 
  tfoot {
-     display: table-footer-group;
-     vertical-align: middle;
-     border-color: inherit
+   display: table-footer-group;
+   vertical-align: middle;
+   border-color: inherit
  }
 
  table > tr {
-     vertical-align: middle;
+    vertical-align: middle;
  }
 
  col {
-     display: table-column
+    display: table-column
  }
 
  colgroup {
-     display: table-column-group
+    display: table-column-group
  }
 
  tr {
-     display: table-row;
-     vertical-align: inherit;
-     border-color: inherit
+   display: table-row;
+   vertical-align: inherit;
+   border-color: inherit
  }
 
  td, th {
-     display: table-cell;
-     vertical-align: inherit;
-      padding: 15px;
+    display: table-cell;
+    vertical-align: inherit;
+    padding: 15px;
  }
 
  th {
-     font-weight: bold
+    font-weight: bold
  }
 
  caption {
-     display: table-caption;
-     text-align: -webkit-center
+    display: table-caption;
+    text-align: -webkit-center
  }
 
  img.alignright {
@@ -239,8 +242,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
- }
-
+  }
 }
 
 @include mobile {
@@ -262,8 +264,6 @@
       line-height: 3.2rem;
       margin:0 0 2rem 0;
       font-weight: $regular;
-
     }
-
   }
 }

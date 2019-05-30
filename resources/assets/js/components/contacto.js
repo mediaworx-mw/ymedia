@@ -35,13 +35,18 @@ const Contacto = () => {
 
   $video.pause();
 
-  let flag1 = 1;
+  let flag1 = 0;
   let flag2 = 0;
   let flag3 = 0;
   let flag4 = 0;
 
   let stop = 1;
 
+
+  $name.addEventListener('focus', function() {
+    flag1 = 1;
+
+  });
   $name.addEventListener('blur', function() {
     if ( $name.value !=='' ) {
       if (flag1 == 1) {

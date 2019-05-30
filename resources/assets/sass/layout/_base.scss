@@ -1,5 +1,7 @@
 html, body{
   box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
 }
 
 .wrapper {
@@ -29,13 +31,11 @@ html, body{
 
 }
 
-
 .container-back {
   width: 100vw;
   max-width: 100%;
   margin: 0 auto;
 }
-
 
 @include hd {
  .container-grid {

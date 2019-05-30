@@ -1,0 +1,24 @@
+.single-side {
+  display: flex;
+  flex-direction: column;
+  &__pdf {
+    margin: 0 0 3rem 0;
+    a {
+
+    }
+    i {
+      color: $red;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@include desktop {
+  .single-side {
+    flex-direction: row;
+    padding: 2rem 0;
+    &__pdf {
+      margin: 0 2rem 0 0;
+    }
+  }
+}

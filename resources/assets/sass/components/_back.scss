@@ -1,0 +1,17 @@
+.back {
+  display: flex;
+  background: $gray-dark;
+  color: white;
+  padding: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 1;
+  align-items: center;
+  i {
+    font-size: 1.6rem;
+    margin: 0 0.7rem 0 0;
+  }
+}

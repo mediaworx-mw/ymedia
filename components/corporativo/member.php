@@ -29,8 +29,12 @@
 
     <div class="member__info">
       <div class="member__social">
-        <a target="_blank" href="<?php echo $twitter; ?>" class="member__twitter"><i class="fab fa-twitter"></i></a>
-        <a target="_blank" href="<?php echo $linkedin; ?>" class="member__linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <?php if ($twitter): ?>
+          <a target="_blank" href="<?php echo $twitter; ?>" class="member__twitter"><i class="fab fa-twitter"></i></a>
+        <?php endif; ?>
+        <?php if($linkedin): ?>
+          <a target="_blank" href="<?php echo $linkedin; ?>" class="member__linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <?php endif; ?>
       </div>
       <div class="member__data">
         <div class="member__data-top">

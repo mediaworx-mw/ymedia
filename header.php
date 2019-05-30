@@ -15,6 +15,7 @@
 <body class="body--big">
 <?php else: ?>
 <body>
+
 <?php endif; ?>
 
 <?php if (is_page('canal-ymedia')): ?>

@@ -115,7 +115,6 @@
     text-align: right;
     padding: 1rem 0 1rem 1rem;
     z-index: 10;
-
   }
   &__calendar {
     display: flex;
@@ -123,18 +122,14 @@
   }
 }
 
-
-
 @include desktop {
   .sidebar {
    // top: 60vw;
-
   }
 }
 
 @include tablet {
   .sidebar {
-
     max-width: 100%;
   }
 }

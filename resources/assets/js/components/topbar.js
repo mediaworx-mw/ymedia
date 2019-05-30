@@ -1,20 +1,18 @@
 import toggleClass from '../utils/toggle';
 import flatpickr from "flatpickr";
 import { Spanish } from "flatpickr/dist/l10n/es.js";
-
 import { TweenMax } from 'gsap';
 import ScrollMagic from 'scrollmagic';
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 const Topbar = () => {
-
   if(document.body.contains(document.querySelector('.topbar'))){
     const $topbar = document.querySelector('.topbar');
     const $calendar = document.querySelector('.calendar');
     const $calendarWrapper = document.querySelector('.topbar__calendar-wrapper');
     const $calendarButton = document.querySelector('.topbar__calendar-button');
-    const $calendarClear = document.querySelector('.topbar__calendar-clear');
     const $calendarIcon = document.querySelector('.topbar__calendar-icon');
+    const $calendarClear = document.querySelector('.topbar__calendar-clear');
     const $tabs = document.querySelectorAll('.topbar__tag');
     const $merged = document.querySelector('.topbar__merged');
     const $todas = document.querySelector('.topbar__todas');
@@ -27,9 +25,12 @@ const Topbar = () => {
     const baseUrl = location.host;
     const $featured = document.querySelector('.canal-featured__bottom-title');
     const $main = document.querySelector('.canal-main');
+    const dates = document.querySelector('.canal').getAttribute('data-dates');
+    const enabled = dates.split(',');
 
-     let firstTime = 1;
-
+    let firstTime = 1;
+    let items;
+    let totalCount;
 
     const controllerFeatured = new ScrollMagic.Controller();
 
@@ -47,8 +48,6 @@ const Topbar = () => {
     const expand = () => {
       document.querySelector('.canal-featured__list').classList.remove('hidden');
       document.querySelector('.canal-featured__bottom').classList.remove('visible');
-      firstTime = 1;
-
     }
 
     const collapse = () =>  {
@@ -56,29 +55,42 @@ const Topbar = () => {
       document.querySelector('.canal-featured__bottom').classList.add('visible');
     }
 
+   let loadTimes = 0;
 
-    // new ScrollMagic.Scene({
-    //   triggerElement: $placeholder,
-    //   offset: -450,
-    // })
-    // .on('start', function () {
-    //    collapse();
-    // })
-    // .addTo(controllerFeatured);
-
-
-
-
-    const getAllPosts = (data, load) => {
+    const getAllPosts = (data, load, ourRequest) => {
       let article = '';
-      data.forEach(function(item, index) {
-        let title = data[index].title;
-        let permalink = data[index].permalink;
-        let excerpt = data[index].excerpt.split(" ").splice(0, 30).join(" ");
-        let term = data[index].term.name;
-        let image = data[index].thumbnail;
-        let date = data[index].date;
-        let color = data[index].color;
+
+      if (data[0] != null) {
+         items = data[0];
+         totalCount = data[1];
+      }
+
+      items.forEach(function(item, index) {
+        let title = items[index].title;
+        let permalink = items[index].permalink;
+        let excerpt = items[index].excerpt.split(" ").splice(0, 20).join(" ");
+        let image = items[index].thumbnail;
+        let date = items[index].date;
+        let color = '';
+        let termsList = items[index].termsList;
+        let primary = items[index].primary;
+        let term = '';
+        let number = termsList.length;
+        let nameIndex = number/2;
+
+        for (let i = 0; i < nameIndex; i++) {
+          let x = termsList[i].term_id;
+          for (let j = 0; j < termsArray.length; j++) {
+            let y = termsArray[j];
+            if (y == x) {
+              term = termsList[i].name;
+              let colorIndex = i+(number/2);
+              color = termsList[colorIndex][1];
+              break;
+            }
+          }
+        }
+
         article += `
           <a href="${permalink}" class="canal-article canal-article--regular">
             <div class="article-hero canal-article__hero">
@@ -86,7 +98,7 @@ const Topbar = () => {
               <figure style="background-image: url(${image})"></figure>
             </div>
             <div class="canal-article__info">
-              <span style="background: ${color}" class="canal-article__category"> ${term}</span>
+              <span style="background: ${color}" class="canal-article__category">${term}</span>
               <div class="canal-article__content">
                 <h2 class="article-title canal-article__title">${title}</h2>
                 <div class="article-meta canal-article__meta">
@@ -99,8 +111,13 @@ const Topbar = () => {
         `
       });
 
+
+       //$placeholder.children.length ? $load.classList.add('visible') : $load.classList.remove('visible');
+      $load.classList.add('visible')
       if (load) {
-        var elChild = document.createElement('div');
+
+        loadTimes++;
+        let elChild = document.createElement('div');
         let classesToAdd = [ 'canal-main__list', 'canal-main__list--extra'];
         elChild.classList.add(...classesToAdd);
         elChild.innerHTML = article;
@@ -108,6 +125,11 @@ const Topbar = () => {
       } else {
         $placeholder.innerHTML = article;
       }
+
+      if (totalCount/num <= (loadTimes + 2 ) ) {
+        $load.classList.remove('visible');
+      }
+
     }
 
     let num = 18;
@@ -118,7 +140,7 @@ const Topbar = () => {
     let offset = 0;
     let filterDate = 'nodate';
     let inputValue = 'a';
-    let offsetIncrement = num;
+    let offsetIncrement = 0;
 
     const empty = () => {
       fetch('empty', false, 0, inputValue, filterDate);
@@ -126,7 +148,8 @@ const Topbar = () => {
 
     $todas.addEventListener('click', function(){
       showAll();
-      firstTime == 1;
+      firstTime = 1;
+      loadTimes = 0;
     });
 
     $tabs.forEach(function(item, index) {
@@ -134,22 +157,27 @@ const Topbar = () => {
     });
 
     let fetch = (array, load, offset, inputValue, filterDate) => {
-
       let ourRequest = new XMLHttpRequest();
       offset = '&offset='+offset;
       let key = '&key='+inputValue;
       filterDate = '&date='+filterDate;
       let local = url+array+posts+offset+key+filterDate;
       ourRequest.open('GET', local);
+
       ourRequest.onload = () => {
         if (ourRequest.status >= 200  && ourRequest.status < 400) {
           let data = JSON.parse(ourRequest.responseText);
-          getAllPosts(data, load);
 
-          $placeholder.children.length ? $load.classList.add('visible') : $load.classList.remove('visible');
-          animateArticles();
+          if(data == null) {
+            $placeholder.innerHTML= '';
+            $load.classList.remove('visible');
 
+          }
 
+          if(data != null) {
+            getAllPosts(data, load, ourRequest);
+            animateArticles();
+          }
         }
         else {
           console.log('error');
@@ -165,14 +193,15 @@ const Topbar = () => {
     fetch(termsArray, false, 0, inputValue, filterDate);
 
 
-
     //Search by Term
     $tabs.forEach(function(item) {
       item.addEventListener('click', function(){
         collapse();
 
         offset = 0;
-        offsetIncrement = num+1;
+        offsetIncrement = 0;
+        loadTimes = 0;
+        $placeholder.children.length ? $load.classList.add('visible') : $load.classList.remove('visible');
         let loaded = document.getElementsByClassName('canal-main__list--extra');
         while(loaded.length > 0){
           loaded[0].parentNode.removeChild(loaded[0]);
@@ -215,23 +244,29 @@ const Topbar = () => {
       });
     });
 
-    //Load Posts
+
+    //Load More
     $load.addEventListener('click', function(){
       if ( termsArray.length == 0) {
         empty();
       } else {
+        offsetIncrement+= num;
         fetch(termsArray, true, offsetIncrement, inputValue, filterDate);
-        offsetIncrement+= num+1;
       }
     })
 
 
     let submit = () => {
       if ($input.value != '') {
+        $placeholder.innerHTML= '';
+        $load.classList.remove('visible');
+        collapse();
         inputValue = $input.value;
         $clear.classList.add('visible');
+
         offset = 0;
-        offsetIncrement = num+1;
+        offsetIncrement = 0;
+        loadTimes = 0;
         $placeholder.classList.add('canal-main__list--results');
         if ( termsArray.length == 0) {
           empty();
@@ -242,12 +277,16 @@ const Topbar = () => {
     }
 
     let clear = () => {
+      $placeholder.innerHTML= '';
+      $load.classList.remove('visible');
       $clear.classList.remove('visible');
       inputValue = 'a';
       $input.value = "";
       offset = 0;
+      offsetIncrement = 0;
+       loadTimes = 0;
       $placeholder.classList.remove('canal-main__list--results');
-      offsetIncrement = num+1;
+
       if ( termsArray.length == 0) {
         empty();
       } else {
@@ -270,7 +309,7 @@ const Topbar = () => {
 
     $submit.addEventListener('click', function(){
       submit();
-      collapse();
+
     });
 
     $clear.addEventListener('click', function(){
@@ -278,7 +317,7 @@ const Topbar = () => {
 
     });
 
-    $calendarButton.addEventListener('click', () => {
+    $calendarIcon.addEventListener('click', () => {
       toggleClass( $calendarWrapper, 'visible');
       fp.open();
       collapse();
@@ -290,7 +329,8 @@ const Topbar = () => {
       $calendarButton.textContent= 'Fecha';
       filterDate = 'nodate';
       offset = 0;
-      offsetIncrement = num+1;
+      offsetIncrement = 0;
+       loadTimes = 0;
       if ( termsArray.length == 0) {
        empty();
       } else {
@@ -311,7 +351,8 @@ const Topbar = () => {
       filterDate = date;
 
       offset = 0;
-      offsetIncrement = num+1;
+      offsetIncrement = 0;
+       loadTimes = 0;
       if ( termsArray.length == 0) {
         empty();
       } else {
@@ -320,7 +361,6 @@ const Topbar = () => {
     }
 
     const showAll = () => {
-      expand();
       clear();
       $merged.classList.add('selected');
       $tabs.forEach(function(item, index) {
@@ -332,11 +372,12 @@ const Topbar = () => {
 
 
     $featured.addEventListener('click', function(){
-      showAll();
+      expand();
     });
 
     const fp = flatpickr($calendar, {
       enableTime: false,
+      enable: enabled,
       dateFormat: "Y-m-d",
       inline: true,
       "locale": Spanish,
@@ -347,7 +388,6 @@ const Topbar = () => {
   }
 
   const animateArticles = () => {
-    //alert('hello');
     const $articles = document.querySelectorAll('.canal-article');
     const controllerArticles = new ScrollMagic.Controller();
 

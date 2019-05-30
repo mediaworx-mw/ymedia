@@ -22,9 +22,30 @@
 
 @include tablet {
   .corporativo-top {
+    padding: 2rem 0;
     &__tag {
-      font-size: 4rem;
-      line-height: 5rem;
+      margin: 0;
+      span {
+        font-size: 3rem;
+        line-height: 4rem;
+      }
+
+    }
+    &__intro {
+      display: none;
     }
   }
 }
+
+@include mobile {
+  .corporativo-top {
+    &__tag {
+      span {
+        font-size: 2.5rem;
+        line-height: 3rem;
+      }
+    }
+  }
+}
+
+

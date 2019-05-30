@@ -26,8 +26,8 @@
     left: 0;
     z-index: $zhome-overlay;
     background: rgba(255, 255, 255, 0.4);
+    transform: translate3d(0, 0, 0);
   }
-
 }
 
 .home-tag {
@@ -35,7 +35,7 @@
   z-index: $zcounter;
   padding: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateZ(1px);
   display: flex;
   flex-direction: column;
   &__title {
@@ -93,8 +93,6 @@
   }
 }
 
-
-
 @include tablet {
   .home-tag {
     &__title {
@@ -106,7 +104,6 @@
       line-height: 3rem;
        width: 80%;
     }
-
   }
 }
 

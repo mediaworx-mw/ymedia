@@ -10,8 +10,9 @@
 ?>
 
 <?php get_header(); ?>
-<div class="single" data-site-body="single-canal">
 
+<div class="single" data-site-body="single-canal">
+  <?php get_template_part('components/back'); ?>
   <?php while ( have_posts() ) : the_post();?>
   <article id="post-<?php the_ID(); ?>">
     <div class="canal-single">
@@ -20,15 +21,19 @@
       <?php if($layout == 'full'): ?>
         <div class="canal-single__top canal-single__top--full overgrid">
           <?php $thumb = get_the_post_thumbnail_url(); ?>
-          <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
+          <div class="canal-single__hero canal-single__hero--cover" style="background-image: url('<?php echo $thumb;?>')">
             <div class="canal-single__header">
               <?php
                 $terms = get_the_terms($post->ID, 'canal_category' );
-                $color = get_field('color_categoria', $terms[0]);
+                foreach($terms as $key=>$term):
+                  $color = get_field('color_categoria', $terms[$key]);
+                  $link = get_term_link($terms[$key]);
+                  $name = $terms[$key]->name;
               ?>
-              <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
+               <span style="background: <?php echo $color; ?>" class="canal-single__category"> <?php echo $name; ?></span>
+              <?php endforeach; ?>
               <h1 class="canal-single__title"><?php the_title(); ?></h1>
-              <h2 class="canal-single__subtitle"><?php the_field('subtitulo_canal'); ?></h2>
+
             </div>
             <div class="canal-single__meta">
               <div class="canal-single__date">
@@ -43,22 +48,36 @@
             </div>
           </div>
         </div>
-        <div class="canal-single__excerpt canal-single__excerpt--full container">
-          <?php get_template_part('components/canal/single-menu') ?>
-          <?php the_excerpt(); ?>
+
+        <div class="canal-single__main container">
+          <?php get_template_part('components/canal/single-side'); ?>
+          <div class="canal-single__content">
+            <div class="canal-single__excerpt canal-single__excerpt--full">
+              <?php the_excerpt(); ?>
+            </div>
+            <div class="canal-single__entry">
+            <?php get_template_part('components/entry-canal'); ?>
+            </div>
+          </div>
         </div>
+
       <?php endif; ?>
 
       <?php if($layout == 'contained'): ?>
+
         <div class="canal-single__top canal-single__top--contained overgrid container">
           <?php $thumb = get_the_post_thumbnail_url(); ?>
-          <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
+          <div class="canal-single__hero canal-single__hero--cover" style="background-image: url('<?php echo $thumb;?>')">
             <div class="canal-single__header">
-              <?php
+             <?php
                 $terms = get_the_terms($post->ID, 'canal_category' );
-                $color = get_field('color_categoria', $terms[0]);
+                foreach($terms as $key=>$term):
+                  $color = get_field('color_categoria', $terms[$key]);
+                  $link = get_term_link($terms[$key]);
+                  $name = $terms[$key]->name;
               ?>
-              <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
+               <span style="background: <?php echo $color; ?>" class="canal-single__category"> <?php echo $name; ?></span>
+              <?php endforeach; ?>
               <h1 class="canal-single__title"><?php the_title(); ?></h1>
 
             </div>
@@ -74,50 +93,69 @@
               </div>
             </div>
           </div>
+        </div>
 
+        <div class="canal-single__main container">
+          <?php get_template_part('components/canal/single-side'); ?>
+          <div class="canal-single__content">
+            <div class="canal-single__excerpt canal-single__excerpt--full">
+              <?php the_excerpt(); ?>
+            </div>
+            <div class="canal-single__entry">
+            <?php get_template_part('components/entry-canal'); ?>
+            </div>
+          </div>
         </div>
-        <div class="canal-single__excerpt canal-single__excerpt--contained container">
-          <?php get_template_part('components/canal/single-menu') ?>
-          <?php the_excerpt(); ?>
-        </div>
+
       <?php endif; ?>
 
        <?php if($layout == 'small'): ?>
         <div class="canal-single__top-wrap container">
           <div class="canal-single__top canal-single__top--small overgrid">
             <?php
-                $terms = get_the_terms($post->ID, 'canal_category' );
-                $color = get_field('color_categoria', $terms[0]);
-              ?>
-            <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-single__category"> <?php echo $terms[0]->name; ?></a>
+              $terms = get_the_terms($post->ID, 'canal_category' );
+              foreach($terms as $key=>$term):
+                $color = get_field('color_categoria', $terms[$key]);
+                $link = get_term_link($terms[$key]);
+                $name = $terms[$key]->name;
+
+            ?>
+            <span style="background: <?php echo $color; ?>" class="canal-single__category"> <?php echo $name; ?></span>
+            <?php endforeach; ?>
               <h1 class="canal-single__title"><?php the_title(); ?></h1>
 
             <?php $thumb = get_the_post_thumbnail_url(); ?>
             <div class="canal-single__header">
-
-
             </div>
             <div class="canal-single__hero" style="background-image: url('<?php echo $thumb;?>')">
-               <div class="canal-single__meta">
-              <div class="canal-single__date">
-                <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
-                <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
+              <div class="canal-single__meta">
+                <div class="canal-single__date">
+                  <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
+                  <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
+                </div>
               </div>
             </div>
-            </div>
-
-
           </div>
+
           <div class="canal-single__excerpt canal-single__excerpt--small">
-            <?php get_template_part('components/canal/single-menu') ?>
+            <?php get_template_part('components/canal/single-side'); ?>
             <?php the_excerpt(); ?>
           </div>
         </div>
+
+        <div class="canal-single__main canal-single__main--small container">
+          <?php get_template_part('components/canal/single-side'); ?>
+          <div class="canal-single__content">
+            <div class="canal-single__entry">
+            <?php get_template_part('components/entry-canal'); ?>
+            </div>
+          </div>
+        </div>
+
+
       <?php endif; ?>
 
-      <div class="canal-single__content container">
-        <?php get_template_part('components/entry-canal'); ?>
-      </div>
+
     </div>
   </article>
 <?php endwhile;?>

@@ -1,0 +1,95 @@
+.cookies {
+  border-top: 1px solid lighten($gray, 10%);
+  padding: 1.8rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 100%;
+  background: $gray-light;
+  min-height: 100px;
+  z-index: 200;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+  &.hidden {
+    //display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__left {
+    flex-grow: 1;
+    padding: 0 2rem 0 0;
+
+
+  }
+  &__title {
+    color: $red;
+    font-size: 2rem;
+    font-weight: $bold;
+    line-height: 3rem;
+    margin: 0;
+  }
+  &__text {
+    font-size: 1.4rem;
+    color: $gray-dark;
+    line-height: 2.2rem;
+    margin: 0 0 2rem 0;
+  }
+  &__link {
+    font-size: 1.4rem;
+    color: $gray-dark;
+    text-decoration: underline;
+    display: inline-block;
+    &:first-of-type {
+      border-right: 1px solid $gray-dark;
+      padding: 0 1rem 0 0;
+      margin: 0 1rem 0 0;
+    }
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 1rem 1.2rem;
+    background: $gray-dark;
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1;
+    border: 1px solid $gray-dark;
+    cursor: pointer;
+    &:hover {
+      background: darken($gray-dark, 10%);
+    }
+    &:last-child {
+      margin: 0 0 0 2rem;
+      background: white;
+      color: $gray-dark;
+      &:hover {
+        background: $gray-dark;
+        color: white;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .cookies {
+    &__inner {
+      flex-direction: column;
+    }
+    &__left {
+      margin: 0 0 3rem 0;
+    }
+  }
+}
+

@@ -1,0 +1,22 @@
+.trabaja-form {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  &__form {
+    width: 66.6666%;
+
+  }
+}
+
+@include desktop {
+  .trabaja-form {
+    &__form {
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+

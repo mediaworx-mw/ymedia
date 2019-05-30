@@ -78,6 +78,29 @@ function searchfilter($query) {
 }
 add_filter('pre_get_posts','searchfilter');
 
+function acf_get_posts_terms( $field ) {
+
+  $field['choices'] = array();
+  $terms = array();
+
+  $id = get_the_ID();
+  $termNames = get_the_terms( $id, 'canal_category' );
+
+  foreach($termNames as $term){
+    array_push($terms, $term->name);
+  }
+
+  if( is_array($terms) ) {
+    foreach( $terms as $term ) {
+      $field['choices'][$term] = $term;
+    }
+  }
+
+  return $field;
+}
+
+add_filter('acf/load_field/name=main_cat_canal', 'acf_get_posts_terms');
+
 
 //Custom Endpoint for Canal Ymedia
 
@@ -91,6 +114,7 @@ function customApi() {
 }
 
 function queryParameters($data) {
+
   $terms = (string)$data['terms'];
   $terms = explode(',', $terms);
 
@@ -109,14 +133,11 @@ function queryParameters($data) {
     $terms = null;
   }
 
-
-  $canal = new WP_Query(array(
+  $args = array(
     'post_type' => 'canal',
     's' => $data['key'],
     'posts_per_page' => $data['posts'],
     'offset' => $data['offset'],
-    // 'meta_key' => 'destacado_canal',
-    // 'meta_value'  => false,
     'tax_query' => array(
        array(
         'taxonomy' => 'canal_category',
@@ -131,31 +152,143 @@ function queryParameters($data) {
         'day'   => $day,
       ),
     ),
-  ));
+  );
+
+  $args1 = array(
+    'post_type' => 'canal',
+    's' => $data['key'],
+    'posts_per_page' => -1,
+    'offset' => $data['offset'],
+    'tax_query' => array(
+       array(
+        'taxonomy' => 'canal_category',
+        'field' => 'id',
+        'terms' => $terms
+       ),
+    ),
+    'date_query' => array(
+      array(
+        'year'  => $year,
+        'month' => $month,
+        'day'   => $day,
+      ),
+    ),
+  );
+
+
+  $canal = new WP_Query( $args );
+  $totalPosts = new WP_Query( $args1 );
+
+  $results = array();
+
+  $totalCount = $totalPosts->found_posts;
 
   $canalResults = array();
+  $termsList = array();
 
-  while($canal->have_posts()){
+  if($canal->have_posts()){
+    $pupu = $canal->found_posts;
+    while($canal->have_posts()){
+
     $canal->the_post();
-
     $id = get_the_ID();
-    $term = get_the_terms( $id, 'canal_category' )[0];
-    $color = get_field('color_categoria', $term);
+
+    $termsList = get_the_terms( $id, 'canal_category' );
+    foreach($termsList as $termItem) {
+      $termsList[] = array($termItem->name, get_field('color_categoria', $termItem));
+    }
+
+    $term = get_the_terms( $id, 'canal_category' )[0]->name;
+    $primary = get_field('main_cat_canal', $id);
 
     array_push($canalResults, array(
       'title' => get_the_title(),
       'permalink' => get_the_permalink(),
       'excerpt' => get_the_excerpt(),
       'term' => $term,
+      'termsList' => $termsList,
       'thumbnail' => get_the_post_thumbnail_url(),
       'date' => get_the_date( 'd-m-Y' ),
-      'color' => $color
+      'primary' => $primary,
     ));
   }
 
-  return $canalResults;
+  $results[0] = $canalResults;
+  $results[1] = $totalCount;
+
+  return $results;
+}
 }
 
 
+function share_buttons() {
+  global $post;
+  $postURL = get_permalink($post->ID);
+  $postTitle = str_replace( ' ', '%20', get_the_title($post->ID));
+  $twitterURL = 'https://twitter.com/intent/tweet?text='.$postTitle.'&amp;via=&amp;hashtags=&amp;url='.$postURL;
+  $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$postURL;
+  $emailURL = 'mailto:?Subject=' .$postTitle.'&amp;Body=Sharing%20with%20you:%20'.$postURL;
+  $social = '';
+  $social .= '<a class="facebook" href="'.$facebookURL.'" target="_blank"><i class="fab fa-facebook-f"></i></a>';
+  $social .= '<a class="twitter" href="'. $twitterURL .'" target="_blank"><i class="fab fa-twitter"></i></a>';
+  $social .= '<a class="email" href="'.$emailURL.'" target="_blank"><i class="fa fa-envelope"></i></a>';
+  return $social;
+};
 
 
+function get_posts_dates_array() {
+  $terms_date = array(
+    'post_type' => array('canal'),
+    'posts_per_page' => -1
+  );
+
+  $dates = array();
+  $query_date = new WP_Query( $terms_date );
+
+  if ( $query_date->have_posts() ) :
+    while ( $query_date->have_posts() ) : $query_date->the_post();
+      $date = get_the_date('Y-m-j');
+      if(!in_array($date, $dates)){
+        $dates[] = $date;
+      }
+    endwhile;
+    wp_reset_postdata();
+  endif;
+  return $dates;
+}
+
+function filter_canal_by_taxonomies( $post_type, $which ) {
+  if ( 'canal' !== $post_type )
+    return;
+
+  $taxonomies = array( 'canal_category');
+
+  foreach ( $taxonomies as $taxonomy_slug ) {
+
+    $taxonomy_obj = get_taxonomy( $taxonomy_slug );
+    $taxonomy_name = $taxonomy_obj->labels->name;
+
+    $terms = get_terms( $taxonomy_slug );
+
+    echo "<select name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform'>";
+    echo '<option value="">' . sprintf( esc_html__( 'Todas las categorías' ), $taxonomy_name ) . '</option>';
+    foreach ( $terms as $term ) {
+      printf(
+        '<option value="%1$s" %2$s>%3$s (%4$s)</option>',
+        $term->slug,
+        ( ( isset( $_GET[$taxonomy_slug] ) && ( $_GET[$taxonomy_slug] == $term->slug ) ) ? ' selected="selected"' : '' ),
+        $term->name,
+        $term->count
+      );
+    }
+    echo '</select>';
+  }
+}
+add_action( 'restrict_manage_posts', 'filter_canal_by_taxonomies' , 10, 2);
+
+
+
+function reg_tag() {
+  register_taxonomy_for_object_type('post_tag', 'clientes');
+}
+add_action('init', 'reg_tag');

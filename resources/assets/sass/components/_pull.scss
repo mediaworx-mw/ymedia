@@ -87,15 +87,12 @@
 
 @include mobile {
   .pull {
-
     .pull-box {
       &:before {
         display: none;
       }
     }
   }
-
-
 }
 
 @keyframes fadeIn {

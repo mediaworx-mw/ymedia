@@ -15,18 +15,18 @@ const Header = () => {
 
   const controllerHeader = new ScrollMagic.Controller();
 
-  if(document.querySelector('.home') == null && document.querySelector('.canal') == null ) {
-    let offsetHeader = 10;
-    new ScrollMagic.Scene({ offset: offsetHeader })
-    .on('enter', () => {
-      $header.classList.add('header--small');
-    })
-    .on('leave', () => {
-      $header.classList.remove('header--small');
-    })
-    .addTo(controllerHeader);
+  // if(document.querySelector('.home') == null && document.querySelector('.canal') == null ) {
+  //   let offsetHeader = 10;
+  //   new ScrollMagic.Scene({ offset: offsetHeader })
+  //   .on('enter', () => {
+  //     $header.classList.add('header--small');
+  //   })
+  //   .on('leave', () => {s
+  //     $header.classList.remove('header--small');
+  //   })
+  //   .addTo(controllerHeader);
 
-  }
+  // }
 
 
   const openMenu = () => {

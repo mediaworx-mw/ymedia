@@ -8,8 +8,8 @@
     flex-direction: column;
     justify-content: space-between;
     height: auto;
-
   }
+
   &__map {
     height: auto;
     display: flex;
@@ -20,11 +20,12 @@
     &:last-child {
       margin: 0;
     }
-
   }
+
   &__map-inner {
     height: 100%;
   }
+
   &__info {
     height: auto;
     padding: 1rem 0;
@@ -52,7 +53,6 @@
   }
   &__info-bottom {
     padding: 1rem 0 0 0;
-
     a {
       font-size: 1.8rem;
       font-weight: $bold;

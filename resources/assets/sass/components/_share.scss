@@ -1,0 +1,30 @@
+.share {
+  padding: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  a {
+    display: block;
+    margin: 0 0 2rem 0;
+    font-size: 2.5rem;
+    i {
+      color: $gray;
+    }
+  }
+}
+
+@include desktop {
+  .share {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+
+    a {
+      display: block;
+      margin: 0 2rem 0 0;
+      font-size: 2.5rem;
+      i {
+        color: $gray;
+      }
+    }
+  }
+}

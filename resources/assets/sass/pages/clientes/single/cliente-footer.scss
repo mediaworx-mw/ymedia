@@ -5,26 +5,12 @@
   max-width: 100%;
   overflow: hidden;
   &__inner {
-
     display: grid;
     grid-template-columns: 5fr 1fr;
     // grid-template-areas:
     //   'a a a a a b'
     //   'c c c c c d';
     grid-row-gap: 6rem;
-  }
-
-  &__descarga {
-    padding: 0 $half-pad 0 0;
-    transform: translateX(2000px);
-    h3 {
-      font-size: 3rem;
-      color: $red;
-      line-height: 4rem;
-      font-weight: $bold;
-      max-width: 220px;
-      margin: 0 0 2rem 0;
-    }
   }
 
   &__marca {

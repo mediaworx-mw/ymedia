@@ -22,7 +22,7 @@
       <div class="contacto-form__header">
         <h2>Dejanos una nota, sugerencia o consulta.</h2>
       </div>
-      <div class="contacto-form__form">
+      <div class="contacto-form__form contact-form">
       <?php
         //Localhost
         echo do_shortcode('[contact-form-7 id="287" title="Contacto"]');

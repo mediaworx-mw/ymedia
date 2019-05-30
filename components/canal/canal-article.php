@@ -10,7 +10,7 @@ $color = get_field('color_categoria', $terms[0]);
     <figure style="background-image: url('<?php echo $thumb;?>')"></figure>
   </a>
   <div class="canal-article__info">
-    <a style="background: <?php echo $color; ?>" href="<?php echo get_term_link($terms[0]); ?>" class="canal-article__category"> <?php echo $terms[0]->name; ?></a>
+    <span style="background: <?php echo $color; ?>" class="canal-article__category"> <?php echo $terms[0]->name; ?></span>
     <div class="canal-article__content">
       <h2 class="article-title canal-article__title"><?php the_title(); ?></h2>
       <div class="article-meta canal-article__meta">

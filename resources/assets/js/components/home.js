@@ -7,7 +7,9 @@ const Home = () => {
 
  // WebGLHome();
 
-
+  const $cookies = document.querySelector('.cookies');
+  const $accept = document.querySelector('.cookies__button--accept');
+  const $reject = document.querySelector('.cookies__button--reject');
 
   const home1 = document.querySelector('.home1');
   const title1 = document.querySelector('.home1').querySelector('.home-tag__title').getElementsByTagName('span');
@@ -33,6 +35,26 @@ const Home = () => {
   const counterLine3 = document.querySelectorAll('.counter__3');
 
   const controllerHome = new ScrollMagic.Controller();
+
+  $cookies.classList.add('hidden');
+
+  function delayCookies() {
+    setTimeout(
+      function() {
+        $cookies.classList.remove('hidden');
+    }, 3000);
+  }
+
+  delayCookies();
+
+
+  $accept.addEventListener('click', () => {
+    $cookies.classList.add('hidden');
+  });
+
+  $reject.addEventListener('click', () => {
+    $cookies.classList.add('hidden');
+  })
 
   counterLine1.forEach(function(e) {
     e.addEventListener('click', () => {

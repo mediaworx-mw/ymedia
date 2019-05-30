@@ -1,5 +1,5 @@
 <div class="entry">
-  <div class="content-canal">
+  <div class="content">
     <?php the_content(); ?>
   </div>
 </div>

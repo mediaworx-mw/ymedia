@@ -18,7 +18,7 @@
       <p class="corporativo-top__intro"><?php the_field('tag2_corporativos') ?></p>
     </div>
   </div>
-  <?php page_crumb();?>
+
   <div class="members">
     <div class="members__inner container">
     <?php

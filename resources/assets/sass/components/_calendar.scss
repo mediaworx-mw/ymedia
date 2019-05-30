@@ -1,13 +1,8 @@
 .flatpickr-calendar.inline {
   display: block;
-
   padding: 1rem;
   box-sizing: content-box;
-
-
 }
-
-
 
 .flatpickr-calendar {
   border-radius: 0;
@@ -15,7 +10,6 @@
   box-shadow: none;
   z-index: 20;
   border: 1px solid $gray;
-
 }
 
 .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time, .flatpickr-time {
@@ -30,7 +24,6 @@
 .flatpickr-current-month {
   font-size: 180%;
   top: -5px;
-
 }
 
 .flatpickr-weekday, .flatpickr-weekdaycontainer {
@@ -41,7 +34,7 @@
 }
 
 .flatpickr-day {
-  color: black;
+  color: $red;
 }
 
 .flatpickr-day.today {
@@ -63,7 +56,7 @@
 .flatpickr-day.notAllowed,
 .flatpickr-day.notAllowed.prevMonthDay,
 .flatpickr-day.notAllowed.nextMonthDay {
-  color: lighten(black, 30%);
+  color: #bbbbbb;
 }
 
 .flatpickr-months .flatpickr-prev-month,

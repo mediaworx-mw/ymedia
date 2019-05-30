@@ -26,8 +26,13 @@
 @import 'components/sidebar';
 @import 'components/topbar';
 @import 'components/calendar';
+@import 'components/share';
+@import 'components/cookies';
+@import 'components/back';
 
 //@import 'webgl/webgl';
+
+@import 'pages/page/page';
 
 @import 'pages/home/home';
 
@@ -40,6 +45,7 @@
 @import 'pages/resultados/index/resultados-top';
 
 @import 'pages/canal/single/single';
+@import 'pages/canal/single/single-side';
 
 @import 'pages/corporativo/index/corporativo';
 @import 'pages/corporativo/index/corporativo-top';
@@ -69,6 +75,10 @@
 @import 'pages/contacto/contacto-form';
 @import 'pages/contacto/contacto-video';
 @import 'pages/contacto/contacto-maps';
+
+@import 'pages/trabaja/trabaja';
+@import 'pages/trabaja/trabaja-top';
+@import 'pages/trabaja/trabaja-form';
 
 
 

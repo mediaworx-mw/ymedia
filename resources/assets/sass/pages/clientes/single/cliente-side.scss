@@ -1,91 +1,101 @@
 .cliente-side {
-
-  position: absolute;
-  left: 0;
-  top: -130px;
-  background: $gray-dark;
-  width: calc( (1600px / 6 ) + ( (100vw - 1600px) / 2 ) + 2.6rem );
-  display: flex;
-  padding: 2rem;
+  padding: 0;
   flex-direction: column;
-  z-index: 10;
-
-  &__top {
-    text-align: left;
-    width: 100%;
-   h2{
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-    color: transparent;
-    font-size: 6rem;
-    width: 100%;
-    display: block;
-    text-transform: uppercase;
-    }
+  justify-content: flex-start;
+  &--desktop {
+    display: flex;
+  }
+  &--mobile {
+    display: none;
   }
 
-  &__thumb {
-    position: absolute;
-    left: 2rem;
-    top: 10vw;
-    img {
-      width: calc( ( (1600px / 6)*2 ) + ( (100vw - 1600px) / 2 ) - 2rem );
-      height: auto;
-      // min-width: 450px;
-      // max-width: 550px;
-    }
-  }
   &__info {
     width: 100%;
     text-align: left;
-    margin: 32vw 0 0 0;
+    margin: 10vw 0 0 0;
   }
 
   &__logo {
-    height: 30px;
-    margin: 0 0 2rem 0;
+    img {
+      width: 60%;
+
+      height: auto;
+    }
+
   }
   &__section {
-    margin: 0 0 4rem 0;
+    margin: 0 0 2rem 0;
   }
   &__subtitle {
-    font-size: 3rem;
-    font-weight: $bold;
-    color: white;
-    opacity: 0.5;
-    line-height: 3.2rem;
+    font-size: 1.8rem;
+    font-weight: $regular;
+    color: $gray;
+    line-height: 2.8rem;
   }
   &__heading {
-    font-size: 3rem;
+    font-size: 1.8rem;
     font-weight: $bold;
-    color: white;
-    line-height: 3.2rem;
-  }
-
-  &__social {
-    display: flex;
-    flex-direction: column;
-    padding: 400px 0 0 0;
-    a {
-      margin: 0 0 2rem 0;
-      i {
-        font-size: 3rem;
-        color: white;
-      }
-    }
+   color: black;
+    line-height: 2.8rem;
   }
 }
 
-@include desktop-wide {
+@include desktop {
   .cliente-side {
-    width: calc( (100vw / 6 ) + 2.6rem );
-    &__thumb {
-      top: 14vw;
-      img {
-         width: calc( ( (100vw / 6 )*2 ) - 2rem );
-      }
+    padding: 4rem 0 0 0;
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    &--desktop {
+      display: none;
     }
+    &--mobile {
+      display: flex;
+    }
+
+    &__info {
+      width: 50%;
+      text-align: left;
+      margin: 0;
+      order: 1;
+
+    }
+
+    &__logo {
+      width: 50%;
+      order: 2;
+      text-align: center;
+      height: 100%;
+
+      img {
+        width: 70%;
+        max-width: 150px;
+        height: auto;
+      }
+
+
+    }
+    &__section {
+      margin: 0 0 2rem 0;
+    }
+    &__subtitle {
+      font-size: 1.6rem;
+      font-weight: $regular;
+      color: $gray;
+      line-height: 2.6rem;
+    }
+    &__heading {
+      font-size: 1.6rem;
+      font-weight: $bold;
+     color: black;
+      line-height: 2.6rem;
+    }
+
+
   }
+
+
 }
 
 

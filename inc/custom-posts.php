@@ -7,7 +7,6 @@
  * @subpackage Ymedia
  */
 
-
 //Custom Post Type: Canal Ymedia
 function custom_canal() {
 
@@ -147,63 +146,6 @@ function custom_canal_tags() {
 
 }
 add_action( 'init', 'custom_canal_tags', 0 );
-
-
-//Custom Post Type: Casos de Estudio
-function custom_casos() {
-
-  $labels = array(
-    'name'                  => 'Casos',
-    'singular_name'         => 'Caso',
-    'menu_name'             => 'Casos de Estudio',
-    'name_admin_bar'        => 'Casos',
-    'archives'              => 'Casos Archives',
-    'attributes'            => 'Casos Attributes',
-    'parent_item_colon'     => 'Parent Casos:',
-    'all_items'             => 'All Casos',
-    'add_new_item'          => 'Add New Casos',
-    'add_new'               => 'Add New',
-    'new_item'              => 'New Casos',
-    'edit_item'             => 'Edit Casos',
-    'update_item'           => 'Update Casos',
-    'view_item'             => 'View Casos',
-    'view_items'            => 'View Casos',
-    'search_items'          => 'Search Casos',
-    'not_found'             => 'Not found',
-    'not_found_in_trash'    => 'Not found in Trash',
-    'featured_image'        => 'Featured Image',
-    'set_featured_image'    => 'Set featured image',
-    'remove_featured_image' => 'Remove featured image',
-    'use_featured_image'    => 'Use as featured image',
-    'insert_into_item'      => 'Insert into item',
-    'uploaded_to_this_item' => 'Uploaded to this caso',
-    'items_list'            => 'Casos list',
-    'items_list_navigation' => 'Casos list navigation',
-    'filter_items_list'     => 'Filter casos list',
-  );
-  $args = array(
-    'label'                 => 'casos',
-    'description'           => 'Custom Posts for Casos',
-    'labels'                => $labels,
-    'supports'              => array('title', 'editor'),
-    'hierarchical'          => false,
-    'public'                => true,
-    'show_ui'               => true,
-    'show_in_menu'          => true,
-    'menu_position'         => 5,
-    'show_in_admin_bar'     => true,
-    'show_in_nav_menus'     => true,
-    'can_export'            => true,
-    'has_archive'           => false,
-    'exclude_from_search'   => false,
-    'publicly_queryable'    => true,
-    'capability_type'       => 'page',
-  );
-  register_post_type( 'casos', $args );
-
-}
-add_action( 'init', 'custom_casos', 0 );
-
 
 
 //Custom Post Type: Corporativo

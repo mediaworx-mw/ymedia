@@ -1,11 +1,11 @@
 .contacto-top {
-  padding: 4rem 0 4rem 0;
+  padding: 4rem 0 0 0;
   &__title {
     @include font-max-min(5rem, 3rem, 5rem);
     color: $red;
     max-width: 100%;
     margin: 0;
-    border-bottom: 2px solid $red;
+    //border-bottom: 2px solid $red;
     display: block;
     padding: 0 0 3rem 0;
   }

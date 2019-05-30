@@ -1,10 +1,31 @@
 .cliente {
-  padding: 0 0 6rem 0;
+  padding: 9rem 0 6rem 0;
+  position: relative;
 }
 
-.cliente-main {
-  position: relative;
-  width: 100vw;
-  max-width: 100%;
+.cliente-inner {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cliente-side {
+  width: calc( 100% / 6);
+
+}
+
+.cliente-content {
+  width: calc( (100% / 6  * 4 ));
+}
+
+@include desktop {
+  .cliente {
+    padding: 8rem 0 2rem 0;
+  }
+  .cliente-side {
+    width: 100%;
+  }
+  .cliente-content {
+    width: 100%;
+  }
 }
 
