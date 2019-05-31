@@ -52,7 +52,6 @@
     </div>
   </div>
   <?php grid('gray'); ?>
-
 </div>
 
 <div class="topbarm">
@@ -75,20 +74,24 @@
       <span class="topbarm__confirmar">Confirmar</span>
     </div>
     <div class="topbarm__search">
-      <h2 class="topbarm__search-title">Búsqueda</h2>
-      <div class="topbarm__search-buttons">
-        <div class="topbarm__calendar">
-          <span class="topbarm__calendar-button">Fecha</span>
-          <span class="topbarm__calendar-icon"><i class="far fa-calendar-alt"></i></span>
-          <span class="topbarm__calendar-clear"><i class="fas fa-times"></i></span>
-          <div class="topbarm__calendar-wrapper">
-            <div class="calendar"></div>
+      <span class="topbarm__search-toggle">
+        <i class="fas fa-search "></i>
+        <i class="fas fa-times"></i>
+      </span>
+      <div class="topbarm__search-wrapper">
+        <h2 class="topbarm__search-title">Búsqueda</h2>
+        <div class="topbarm__search-buttons">
+          <div class="topbarm__key">
+            <input class="topbarm__key-input" type="text" placeholder="Buscar"></input>
+            <span class="topbarm__key-submit"><i class="fas fa-search"></i></span>
+            <span class="topbarm__key-clear"><i class="fas fa-times"></i></span>
           </div>
-        </div>
-        <div class="topbarm__key">
-          <input class="topbarm__key-input" type="text" placeholder="Buscar"></input>
-          <span class="topbarm__key-submit"><i class="fas fa-search"></i></span>
-          <span class="topbarm__key-clear"><i class="fas fa-times"></i></span>
+          <div class="topbarm__calendar">
+            <div class="calendarm"></div>
+          </div>
+          <div class="topbarm__search-confirm">
+            <span>Confirmar</span>
+          </div>
         </div>
       </div>
     </div>

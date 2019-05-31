@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="cliente-footer">
+  <!-- <div class="cliente-footer">
     <div class="cliente-footer__inner container">
       <div class="cliente-footer__marca">
         <h4><?php the_field('campana_descarga','options') ?></h4>
@@ -74,7 +74,7 @@
         <a href="<?php bloginfo('url'); ?>/contacto"> <?php get_template_part('svg/right'); ?></a>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 <?php grid('gray') ?>
 <?php get_footer(); ?>
