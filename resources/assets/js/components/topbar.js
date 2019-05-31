@@ -41,12 +41,18 @@ const Topbar = () => {
 
     $topbarmTitle.addEventListener('click', function(){
       toggleClass($topbarmTags, 'expanded');
+
+      $topbarmToggle.classList.remove('expanded');
+      $topbarmSearch.classList.remove('visible');
+      $calendarmWrapper.classList.remove('visible');
     });
 
     $topbarmToggle.addEventListener('click', function(){
       toggleClass($topbarmToggle, 'expanded');
       toggleClass($topbarmSearch, 'visible');
       toggleClass($calendarmWrapper, 'visible');
+
+      $topbarmTags.classList.remove('expanded');
     });
 
 

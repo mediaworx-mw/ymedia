@@ -50,6 +50,9 @@
     font-weight: $regular;
     line-height: 1;
     font-family: $main-font;
+    box-shadow: none !important;
+
+    -webkit-apperance: none;
     &::placeholder {
       color: $gray;
       opacity: 1;
@@ -97,6 +100,8 @@
   textarea {
     font-size: 1.8rem;
     max-height: 120px;
+    -webkit-apperance: none;
+    box-shadow: none !important;
   }
 
   select {
@@ -107,6 +112,7 @@
     line-height: 1;
     border: solid 1px $gray;
     border-radius: 0;
+    -webkit-apperance: none;
   }
 
   .aceptar {
@@ -114,6 +120,7 @@
     z-index: -9999;
     position: relative;
      margin: 0;
+     -webkit-apperance: none;
     &+span {
       font-size: 1.6rem;
       color: $gray;
@@ -154,8 +161,11 @@
     color: white;
     font-size: 2.5rem;
     padding: 1rem 2rem;
-     transition: all 0.3s ease;
-     cursor: pointer;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: none;
     &:hover {
       background: $red;
       color: white;

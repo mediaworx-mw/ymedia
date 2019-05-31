@@ -13,19 +13,20 @@
   }
   &__tags {
     width: 40%;
-    border: 1px solid $gray;
+    border: 1px solid darken($gray-light, 5%);
     border-radius: 6px;
     position: absolute;
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
     //overflow-x: hidden;
     padding: 1rem 1rem;
-    z-index: 14;
+    z-index: 10;
     background: white;
     top: 0;
     max-height: 50px;
     overflow-y: hidden;
     &.expanded {
       max-height: 1000px;
+      z-index: 21;
 
     }
   }
@@ -39,6 +40,7 @@
     display: block;
     width: 100%;
     cursor: pointer;
+
     i{
       color: $red;
       position: absolute;
@@ -123,7 +125,7 @@
     width: 55px;
     height: 50px;
     right: -1px;
-    border: 1px solid $gray;
+    border: 1px solid darken($gray-light, 5%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,6 +146,8 @@
       border-bottom: none;
       border-radius: 6px 6px 0 0;
       height: 60px;
+      position: relative;
+     z-index: 16;
       i {
         &:first-child {
           display: none;
@@ -161,7 +165,7 @@
     background: white;
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
     padding: 1rem;
-    border: 1px solid $gray;
+    border: 1px solid darken($gray-light, 5%);
     border-radius: 6px 0 6px 6px;
     display: flex;
     flex-direction: column;
@@ -171,9 +175,14 @@
     margin-right: -1px;
     opcacity: 0;
     visibility: hidden;
+    z-index: -1;
+    display: none;
+    margin-top: -1px;
     &.visible {
-      opcacity: 1;
+      opacity: 1;
       visibility: visible;
+      z-index: 14;
+      display: flex;
     }
   }
 
@@ -200,13 +209,18 @@
     padding: 1rem;
     font-size: 1.6rem;
     color: black;
+    border: 1px solid darken($gray-light, 5%);
     font-weight: $regular;
+    -webkit-apperance: none;
+    box-shadow: none !important;
+    box-shadow: none;
   }
   &__key-submit {
     position: absolute;
     right: 1.5rem;
     z-index: 14;
     top: 14px;
+    -webkit-apperance: none;
     i {
       color: $red;
       font-size: 2rem;

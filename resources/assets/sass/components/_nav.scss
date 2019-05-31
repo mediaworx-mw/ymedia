@@ -26,11 +26,11 @@
       z-index: $zheader;
       a {
         color: white;
-        @include font-max-min(5vw, 3rem, 8rem);
+        @include font-max-min(4.5vw, 3rem, 7rem);
         font-weight: $bold;
         transition: color 0.2s ease;
         white-space: nowrap;
-        &:hover{
+        &:hover, &:active{
           -webkit-text-stroke-width: 2px;
           -webkit-text-stroke-color: white;
           color: transparent;
@@ -96,7 +96,7 @@
       max-width: 100%;
       li {
         a {
-          &:hover{
+          &:hover, &:active{
             -webkit-text-stroke-width: 1px;
           }
         }

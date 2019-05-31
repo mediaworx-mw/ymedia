@@ -3,6 +3,8 @@
   background: white;
   padding: 0;
   overflow: hidden;
+  min-height: 750px;
+    height: 93vh;
   &__content {
     display: flex;
   }
@@ -21,6 +23,8 @@
 
 @include desktop {
   .contacto {
+     min-height: 100%;
+    height: auto;
     &__content {
       flex-wrap: wrap;
     }

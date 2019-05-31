@@ -116,14 +116,14 @@
 }
 
 @include mobile {
-  .clientes-list {
-    &__inner {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    &__block {
-      height: 80vw;
-    }
+  // .clientes-list {
+  //   &__inner {
+  //     grid-template-columns: repeat(1, 1fr);
+  //   }
+  //   &__block {
+  //     height: 80vw;
+  //   }
 
-  }
+  // }
 }
 
