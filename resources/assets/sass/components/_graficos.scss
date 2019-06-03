@@ -41,8 +41,50 @@
   }
 
   .categorias {
+    &.categorias-parent {
+      font-weight: bold;
+    }
+    span {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
     // width: 100%; 
     text-align: left;
+    .numero {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-shrink: 0;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      background-color: #DC241F;
+      border-radius: 50px;
+      width: 2em;
+      height: 2em;
+      font-size: 0.75em;
+      &.numero-oro {
+        background-color: #ffc000;
+        &:before {
+          content: 'spot de oro';
+          position: absolute;
+          display: block;
+          right: -80px;
+          top: 21px;
+          color: #ffffff;
+          background-color: #ffc000;
+          padding: 2px 8px;
+          border-radius: 5px;
+        }
+      }
+    }
+    .numero,
+    .texto {
+      display: inline-block;
+      padding: 5px;
+    }
   }
 
   td img,
@@ -82,6 +124,7 @@
     padding-left: 0 !important;
     padding-right: 20px;
     text-align: center;
+    // white-space: nowrap;
 
     span.colored {
       width: 100%;
@@ -96,17 +139,12 @@
   }
 }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 .grafico {
+  .grafico-inner {
+    width: 100%;
+    min-height: 500px;
+  }
+  
   svg img {
     width: 30px;
     height: 30px;
@@ -131,5 +169,22 @@
       width: 20px;
       height: 20px;
     }
+  }
+
+  .label-centered {
+    // font-size: 12px;
+    display: block;
+    position: relative;
+    text-align: center;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
