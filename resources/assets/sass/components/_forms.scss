@@ -50,12 +50,29 @@
     font-weight: $regular;
     line-height: 1;
     font-family: $main-font;
+    box-shadow: none !important;
+
+    -webkit-apperance: none;
     &::placeholder {
       color: $gray;
       opacity: 1;
     }
     &:focus{
       border: solid 1px $red;
+    }
+  }
+
+  wpcf7-list-item-label {
+    font-size: 1.6rem;
+  }
+
+  input[type=radio] {
+    .wpcf7-list-item-label {
+      font-size: 1.6rem;
+    }
+    span {
+      font-size: 1.6rem;
+      color: $gray-dark;
     }
   }
 
@@ -97,6 +114,8 @@
   textarea {
     font-size: 1.8rem;
     max-height: 120px;
+    -webkit-apperance: none;
+    box-shadow: none !important;
   }
 
   select {
@@ -107,6 +126,9 @@
     line-height: 1;
     border: solid 1px $gray;
     border-radius: 0;
+    font-size: 1.6rem;
+     color: $gray-dark;
+    -webkit-apperance: none;
   }
 
   .aceptar {
@@ -114,6 +136,7 @@
     z-index: -9999;
     position: relative;
      margin: 0;
+     -webkit-apperance: none;
     &+span {
       font-size: 1.6rem;
       color: $gray;
@@ -154,14 +177,22 @@
     color: white;
     font-size: 2.5rem;
     padding: 1rem 2rem;
-     transition: all 0.3s ease;
-     cursor: pointer;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: none;
     &:hover {
       background: $red;
       color: white;
       transition: all 0.3s ease;
     }
   }
+}
+
+span.wpcf7-list-item {
+  font-size: 1.6rem;
+  color: $gray-dark;
 }
 
 span.wpcf7-not-valid-tip {

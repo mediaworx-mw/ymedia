@@ -28,6 +28,38 @@ const Topbar = () => {
     const dates = document.querySelector('.canal').getAttribute('data-dates');
     const enabled = dates.split(',');
 
+    //Topbar Mobile
+
+    const $topbarm = document.querySelector('.topbarm');
+    const $topbarmTitle = document.querySelector('.topbarm__tags-title');
+    const $topbarmTags = document.querySelector('.topbarm__tags');
+    const $topbarmToggle = document.querySelector('.topbarm__search-toggle');
+    const $topbarmSearch = document.querySelector('.topbarm__search-wrapper');
+    const $calendarmWrapper = document.querySelector('.topbarm__calendar');
+    const $calendarm = document.querySelector('.calendarm');
+
+
+    $topbarmTitle.addEventListener('click', function(){
+      toggleClass($topbarmTags, 'expanded');
+
+      $topbarmToggle.classList.remove('expanded');
+      $topbarmSearch.classList.remove('visible');
+      $calendarmWrapper.classList.remove('visible');
+    });
+
+    $topbarmToggle.addEventListener('click', function(){
+      toggleClass($topbarmToggle, 'expanded');
+      toggleClass($topbarmSearch, 'visible');
+      toggleClass($calendarmWrapper, 'visible');
+
+      $topbarmTags.classList.remove('expanded');
+    });
+
+
+
+
+    //Topbar Desktop
+
     let firstTime = 1;
     let items;
     let totalCount;
@@ -376,6 +408,17 @@ const Topbar = () => {
     });
 
     const fp = flatpickr($calendar, {
+      enableTime: false,
+      enable: enabled,
+      dateFormat: "Y-m-d",
+      inline: true,
+      "locale": Spanish,
+      onChange: function(selectedDates, dateStr, instance){
+        fetchDate(selectedDates, dateStr, instance);
+      }
+    });
+
+    const fpm = flatpickr($calendarm, {
       enableTime: false,
       enable: enabled,
       dateFormat: "Y-m-d",

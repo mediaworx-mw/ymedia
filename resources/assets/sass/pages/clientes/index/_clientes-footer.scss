@@ -70,33 +70,34 @@
 
 @include desktop {
   .clientes-footer {
-    &__inner {
-      padding: 10rem 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-row-gap: 6rem;
-    }
-    &__tag {
-      padding: 0 calc( 100vw / 12);
-      h2 {
-        font-size: 6rem;
-        line-height: 7rem;
-      }
-    }
-    &__descarga {
-      padding: 0 calc( 100vw / 12);
-    }
+    display: none;
+    // &__inner {
+    //   padding: 10rem 0;
+    //   display: grid;
+    //   grid-template-columns: 1fr;
+    //   grid-row-gap: 6rem;
+    // }
+    // &__tag {
+    //   padding: 0 calc( 100vw / 12);
+    //   h2 {
+    //     font-size: 6rem;
+    //     line-height: 7rem;
+    //   }
+    // }
+    // &__descarga {
+    //   padding: 0 calc( 100vw / 12);
+    // }
 
-    &__marca {
-      padding: 0 calc( 100vw / 12);
-      h4 {
-        font-size: 2rem;
-        line-height: 3rem;
-        display: inline-block;
-      }
-    }
-    &__contacto {
-      padding: 0 calc( 100vw / 12);
-    }
+    // &__marca {
+    //   padding: 0 calc( 100vw / 12);
+    //   h4 {
+    //     font-size: 2rem;
+    //     line-height: 3rem;
+    //     display: inline-block;
+    //   }
+    // }
+    // &__contacto {
+    //   padding: 0 calc( 100vw / 12);
+    // }
   }
 }

@@ -1,0 +1,160 @@
+.newsletter-section {
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  &__title {
+    font-size: 3rem;
+    color: $red;
+    line-height: 3rem;
+    margin: 0 0 2rem 0;
+    font-weight: $bold;
+    max-width: 700px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    a {
+      background: $gray;
+      padding: 2rem;
+      color: white;
+      border: none;
+      text-align: center;
+      font-size: 2rem;
+      width: 100%;
+      cursor:pointer;
+      cursor: pointer;
+      width: 49.5%;
+    }
+    input[type="submit"] {
+      background: $gray;
+      padding: 2rem;
+      color: white;
+      border: none;
+      text-align: center;
+      font-size: 2rem;
+      width: 100%;
+      cursor:pointer;
+      cursor: pointer;
+      width: 49.5%;
+
+    }
+  }
+
+  &__inputs {
+    width: 100%;
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__input {
+    width: 49.5%;
+    margin: 0 0 1rem 0;
+    input{
+      padding: 2rem;
+      color: $gray-dark;
+      font-size: 2rem;
+      width: 100%;
+      position: relative;
+      z-index: 14;
+      background: white;
+      border: 1px solid $gray;
+    }
+  }
+
+  &__radio {
+    width: 49.5%;
+    margin: 0 0 1rem 0;
+    input[type="radio"]{
+      display:none;
+    }
+    label {
+      display: flex;
+      width: 100%;
+      background: white;
+      border: 1px solid $gray;
+      color: $gray;
+      font-size: 1.6rem;
+      padding: 2rem;
+      color: $gray-dark;
+      cursor: pointer;
+      height: 100%;
+      align-items: center;
+
+    }
+    input[type="radio"]:checked + label {
+      background-color:#bfb;
+      border-color: #4c4;
+      background: $red;
+      color: white;
+      border: 1px solid $red;
+
+    }
+    label:hover {
+      background: $red;
+      color: white;
+      border: 1px solid $red;
+    }
+  }
+}
+
+@include desktop {
+  .newsletter-section {
+    &__title {
+      font-size: 2.3rem;
+      line-height: 2.5rem;
+    }
+  }
+}
+
+@include tablet {
+  .newsletter-section {
+    &__title {
+      font-size: 1.6rem;
+      line-height: 2rem;
+    }
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      a {
+        width: 100%;
+        padding: 2rem;
+        font-size: 1.6rem;
+      }
+      input[type="submit"] {
+
+        width: 100%;
+
+      }
+    }
+
+    &__inputs {
+      padding: 0;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+
+    &__input {
+      width: 100%;
+      margin: 0 0 1rem 0;
+      input {
+        padding: 1rem;
+      }
+    }
+
+    &__radio {
+      width: 100%;
+      label {
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+
+
