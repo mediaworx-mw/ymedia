@@ -56,7 +56,10 @@
               <?php the_excerpt(); ?>
             </div>
             <div class="canal-single__entry">
-            <?php get_template_part('components/entry-canal'); ?>
+              <?php get_template_part('components/entry-canal'); ?>
+            </div>
+             <div class="canal-single__graficos entry">
+              <?php the_field('graficos_canal'); ?>
             </div>
           </div>
         </div>
@@ -102,7 +105,10 @@
               <?php the_excerpt(); ?>
             </div>
             <div class="canal-single__entry">
-            <?php get_template_part('components/entry-canal'); ?>
+              <?php get_template_part('components/entry-canal'); ?>
+            </div>
+             <div class="canal-single__graficos entry">
+              <?php the_field('graficos_canal'); ?>
             </div>
           </div>
         </div>
@@ -147,7 +153,10 @@
           <?php get_template_part('components/canal/single-side'); ?>
           <div class="canal-single__content">
             <div class="canal-single__entry">
-            <?php get_template_part('components/entry-canal'); ?>
+              <?php get_template_part('components/entry-canal'); ?>
+            </div>
+            <div class="canal-single__graficos entry">
+              <?php the_field('graficos_canal'); ?>
             </div>
           </div>
         </div>

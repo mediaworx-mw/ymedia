@@ -62,6 +62,20 @@
     }
   }
 
+  wpcf7-list-item-label {
+    font-size: 1.6rem;
+  }
+
+  input[type=radio] {
+    .wpcf7-list-item-label {
+      font-size: 1.6rem;
+    }
+    span {
+      font-size: 1.6rem;
+      color: $gray-dark;
+    }
+  }
+
 
   // .cv {
   //     display: inline-block;
@@ -112,6 +126,8 @@
     line-height: 1;
     border: solid 1px $gray;
     border-radius: 0;
+    font-size: 1.6rem;
+     color: $gray-dark;
     -webkit-apperance: none;
   }
 
@@ -172,6 +188,11 @@
       transition: all 0.3s ease;
     }
   }
+}
+
+span.wpcf7-list-item {
+  font-size: 1.6rem;
+  color: $gray-dark;
 }
 
 span.wpcf7-not-valid-tip {

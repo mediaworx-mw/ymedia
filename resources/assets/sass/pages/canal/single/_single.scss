@@ -160,6 +160,10 @@
     padding-top: 0;
     padding-bottom: 4rem;
   }
+  &__graficos {
+    position: relative;
+    z-index: 5;
+  }
 }
 
 @include desktop {

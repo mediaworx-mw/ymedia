@@ -1,0 +1,36 @@
+.newsletter {
+  padding: 0 0 4rem 0;
+}
+
+#fp-nav {
+  ul {
+
+  }
+  li {
+    width: 30px !important;
+    height: 10px !important;
+  }
+  a {
+    &.active {
+      li {
+        width: 30px !important;
+        height: 10px !important;
+        transform: scale(0);
+      }
+      span {
+        margin: 0;
+        width: 30px !important;
+        height: 10px !important;
+      }
+    }
+
+  }
+
+  span {
+    border-radius: 0 !important;
+    background: $red !important;
+    width: 100% !important;
+
+
+  }
+}

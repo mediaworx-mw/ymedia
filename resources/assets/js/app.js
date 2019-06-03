@@ -4,6 +4,7 @@ import Main from './components/main.js';
 import Home from './components/home.js';
 import Corporativo from './components/corporativo.js';
 import Contacto from './components/contacto.js';
+import Newsletter from './components/newsletter.js';
 import Clientes from './components/clientes.js';
 import Cliente from './components/cliente.js';
 import Casos from './components/casos.js';
@@ -26,6 +27,7 @@ function detectCurrentPage() {
     .on(x => x.contains('casos'), () => Clientes())
     .on(x => x.contains('caso'), () => Cliente())
     .on(x => x.contains('canal'), () => Canal())
+    .on(x => x.contains('newsletter'), () => Newsletter())
 }
 
 function main() {

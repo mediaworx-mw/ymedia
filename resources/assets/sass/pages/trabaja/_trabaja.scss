@@ -1,5 +1,5 @@
 .trabaja {
-  padding: 0 0 4rem 0;
+  padding: 0 0 8rem 0;
 }
 
 .trabaja-content {
@@ -12,6 +12,9 @@
 }
 
 @include desktop {
+  .trabaja {
+    padding: 0 0 4rem 0;
+  }
   .trabaja-content {
     &__title {
       display: none;
