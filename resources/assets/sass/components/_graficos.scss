@@ -206,6 +206,14 @@
     justify-content: space-between;
     width: 180px;
     font-size: 100%;
+  
+    &.programa-info-col {
+      text-align: center;
+      width: auto;
+      // height: 10px;
+      flex-direction: column;
+      align-items: center;
+    }
     .programa-cadena {
       font-size: 120%;
       font-weight: bold;
@@ -217,7 +225,7 @@
     .programa-autor {
       font-size: 90%;
     }
-    .right {
+    .right, .bottom {
       width: 40px;
       height: 40px;
       font-size: 100%;
