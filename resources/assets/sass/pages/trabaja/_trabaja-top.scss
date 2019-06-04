@@ -1,5 +1,6 @@
 .trabaja-top {
   padding: 4rem 0;
+  position: relative;
   &__inner {
 
   }
@@ -14,6 +15,21 @@
     margin: 0 0 3rem 0;
   }
 
+   &__link {
+    display: flex;
+    background: $red;
+    color: white;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.6rem;
+    text-align: center;
+    line-height: 1;
+    align-items: center;
+    cursor: pointer;
+  }
+
   &__intro {
     p {
       max-width: 700px;
@@ -26,7 +42,7 @@
 
 @include tablet {
   .trabaja-top {
-    padding: 2rem 0;
+    padding: 6rem 0 0 0;
     &__title {
       span {
         font-size: 2.5rem;

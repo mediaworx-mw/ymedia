@@ -15,7 +15,8 @@
 
   <div class="trabaja-top">
     <div class="trabaja-top__inner container">
-      <h1 class="trabaja-top__title"><span>La diferencia la hace el talento</span><span>y la calidad humana</span></h1>
+      <h1 class="trabaja-top__title"><span>La diferencia la hace el talento y la calidad humana</span></h1>
+       <a href="<?php echo site_url('/contacto'); ?>" class="trabaja-top__link">Contacto +</a>
       <div class="trabaja-top__intro">
         <p>Estamos buscando constantemente gente que encaje en ymedia. Buscamos gente activa, gente despierta, personas que saben lo que hacen y que conocen el sector. Déjanos tus datos y ven a formar parte de nuestro gran equipo.</p>
       </div>

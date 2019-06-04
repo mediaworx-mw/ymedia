@@ -59,7 +59,7 @@
     <div class="topbarm__tags">
       <h2 class="topbarm__tags-title">Categorías<i class="fas fa-sort-down"></i></h2>
       <ul class="topbarm__list">
-        <li class="topbarm__tag topbarm__tag--selected" data-termid="<?php echo $ids[0]; ?>" style="background: <?php echo $colors[0] ?>">Diarias</li>
+        <li class="topbarm__tag" data-termid="<?php echo $ids[0]; ?>" style="background: <?php echo $colors[0] ?>">Diarias</li>
         <li class="topbarm__tag" data-termid="<?php echo $ids[1]; ?>" style="background: <?php echo $colors[1] ?>">Mensuales</li>
         <li class="topbarm__tag" data-termid="<?php echo $ids[5]; ?>" style="background: <?php echo $colors[5] ?>"><?php echo $names[5] ?></li>
         <li class="topbarm__tag" data-termid="<?php echo $ids[4]; ?>" style="background: <?php echo $colors[4] ?>"><?php echo $names[4] ?></li>

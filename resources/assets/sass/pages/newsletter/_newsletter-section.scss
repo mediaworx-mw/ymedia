@@ -1,7 +1,9 @@
 .newsletter-section {
+
   &__inner {
     max-width: 1200px;
     margin: 0 auto;
+
   }
   &__title {
     font-size: 3rem;
@@ -39,6 +41,7 @@
       cursor:pointer;
       cursor: pointer;
       width: 49.5%;
+      -webkit-appearance: none;
 
     }
   }
@@ -49,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
   }
 
   &__input {
@@ -63,6 +67,7 @@
       z-index: 14;
       background: white;
       border: 1px solid $gray;
+      -webkit-appearance:none;
     }
   }
 
@@ -84,6 +89,7 @@
       cursor: pointer;
       height: 100%;
       align-items: center;
+      -webkit-appearance:none;
 
     }
     input[type="radio"]:checked + label {
@@ -113,6 +119,9 @@
 
 @include tablet {
   .newsletter-section {
+    &__inner {
+      transform: translateY(-10%);
+    }
     &__title {
       font-size: 1.6rem;
       line-height: 2rem;

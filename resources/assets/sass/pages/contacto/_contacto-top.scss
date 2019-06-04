@@ -1,5 +1,6 @@
 .contacto-top {
   padding: 4rem 0 0 0;
+  position: relative;
   &__title {
     @include font-max-min(5rem, 3rem, 5rem);
     color: $red;
@@ -8,5 +9,19 @@
     //border-bottom: 2px solid $red;
     display: block;
     padding: 0 0 3rem 0;
+  }
+  &__link {
+    display: flex;
+    background: $red;
+    color: white;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.6rem;
+    text-align: center;
+    line-height: 1;
+    align-items: center;
+    cursor: pointer;
   }
 }

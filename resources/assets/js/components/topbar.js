@@ -33,10 +33,14 @@ const Topbar = () => {
     const $topbarm = document.querySelector('.topbarm');
     const $topbarmTitle = document.querySelector('.topbarm__tags-title');
     const $topbarmTags = document.querySelector('.topbarm__tags');
+    const $topbarmTag = document.querySelectorAll('.topbarm__tag');
+    const $topbarmTodas = document.querySelector('.topbarm__tag--todas');
     const $topbarmToggle = document.querySelector('.topbarm__search-toggle');
     const $topbarmSearch = document.querySelector('.topbarm__search-wrapper');
     const $calendarmWrapper = document.querySelector('.topbarm__calendar');
     const $calendarm = document.querySelector('.calendarm');
+    const $confirmar = document.querySelector('.topbarm__confirmar');
+    const $confirmarSearch = document.querySelector('.topbarm__search-confirm');
 
 
     $topbarmTitle.addEventListener('click', function(){
@@ -53,6 +57,31 @@ const Topbar = () => {
       toggleClass($calendarmWrapper, 'visible');
 
       $topbarmTags.classList.remove('expanded');
+    });
+
+    $topbarmTag.forEach(function(tag) {
+      tag.addEventListener('click', () => {
+        toggleClass(tag, 'topbarm__tag--selected');
+      })
+    });
+
+    $topbarmTodas.addEventListener('click', () => {
+      $topbarmTag.forEach(function(tag) {
+        tag.classList.add('topbarm__tag--selected')
+      });
+    });
+
+    $confirmar.addEventListener('click', () => {
+      $topbarmToggle.classList.remove('expanded');
+      $topbarmSearch.classList.remove('visible');
+      $calendarmWrapper.classList.remove('visible');
+      $topbarmTags.classList.remove('expanded');
+    });
+
+    $confirmarSearch.addEventListener('click', () => {
+      $topbarmToggle.classList.remove('expanded');
+      $topbarmSearch.classList.remove('visible');
+      $calendarmWrapper.classList.remove('visible');
     });
 
 

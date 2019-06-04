@@ -68,9 +68,8 @@
     border-radius: 5px;
     position: relative;
     width: 100%;
-    &--todas {
-      background: $gray-dark;
-    }
+    cursor: pointer;
+
     &:before {
       content: '';
       width: 18px;
@@ -83,13 +82,22 @@
     }
     &--selected {
       &:after {
-        content: "\f00c";
-        font-family: FontAwesome;
-        color: $red;
-        font-size: 1.4rem;
+        content: '';
         position: absolute;
         right: 1.5rem;
-        top: 12px;
+        top: 11px;
+        background: url(../images/check.svg) no-repeat right center / contain;
+        width: 14px;
+        height: 14px;
+      }
+    }
+    &--todas {
+      background: $gray-dark;
+      &:before {
+       content: none;
+      }
+      &:after {
+        content: none !important;
       }
     }
 
@@ -106,6 +114,7 @@
     display: block;
     width: 100%;
     text-align: center;
+    cursor: pointer;
 
   }
   &__search {
@@ -274,6 +283,7 @@
     display: block;
     width: 100%;
     text-align: center;
+    cursor: pointer;
   }
 }
 

@@ -52,7 +52,7 @@
     font-family: $main-font;
     box-shadow: none !important;
 
-    -webkit-apperance: none;
+    -webkit-appearance:none;
     &::placeholder {
       color: $gray;
       opacity: 1;
@@ -114,7 +114,7 @@
   textarea {
     font-size: 1.8rem;
     max-height: 120px;
-    -webkit-apperance: none;
+    -webkit-appearance:none;
     box-shadow: none !important;
   }
 
@@ -128,7 +128,8 @@
     border-radius: 0;
     font-size: 1.6rem;
      color: $gray-dark;
-    -webkit-apperance: none;
+    -webkit-appearance:none;
+    background: white;
   }
 
   .aceptar {
@@ -179,7 +180,7 @@
     padding: 1rem 2rem;
     transition: all 0.3s ease;
     cursor: pointer;
-    -webkit-appearance: none;
+    -webkit-appearance:none;
     border-radius: 0;
     border: none;
     &:hover {
