@@ -69,7 +69,7 @@
         <li class="topbarm__tag" data-termid="<?php echo $ids[7]; ?>" style="background: <?php echo $colors[7] ?>"><?php echo $names[7] ?></li>
         <li class="topbarm__tag" data-termid="<?php echo $ids[2]; ?>" style="background: <?php echo $colors[2] ?>"><?php echo $names[2] ?></li>
         <li class="topbarm__tag" data-termid="<?php echo $ids[3]; ?>" style="background: <?php echo $colors[3] ?>"><?php echo $names[3] ?></li>
-        <li class="topbarm__tag topbarm__tag--todas">Ver Todas</li>
+        <li class="topbarm__todas">Ver Todas</li>
       </ul>
       <span class="topbarm__confirmar">Confirmar</span>
     </div>

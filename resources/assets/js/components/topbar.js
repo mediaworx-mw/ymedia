@@ -28,62 +28,20 @@ const Topbar = () => {
     const dates = document.querySelector('.canal').getAttribute('data-dates');
     const enabled = dates.split(',');
 
-    //Topbar Mobile
-
     const $topbarm = document.querySelector('.topbarm');
     const $topbarmTitle = document.querySelector('.topbarm__tags-title');
     const $topbarmTags = document.querySelector('.topbarm__tags');
     const $topbarmTag = document.querySelectorAll('.topbarm__tag');
-    const $topbarmTodas = document.querySelector('.topbarm__tag--todas');
+    const $topbarmTodas = document.querySelector('.topbarm__todas');
     const $topbarmToggle = document.querySelector('.topbarm__search-toggle');
     const $topbarmSearch = document.querySelector('.topbarm__search-wrapper');
     const $calendarmWrapper = document.querySelector('.topbarm__calendar');
     const $calendarm = document.querySelector('.calendarm');
     const $confirmar = document.querySelector('.topbarm__confirmar');
     const $confirmarSearch = document.querySelector('.topbarm__search-confirm');
-
-
-    $topbarmTitle.addEventListener('click', function(){
-      toggleClass($topbarmTags, 'expanded');
-
-      $topbarmToggle.classList.remove('expanded');
-      $topbarmSearch.classList.remove('visible');
-      $calendarmWrapper.classList.remove('visible');
-    });
-
-    $topbarmToggle.addEventListener('click', function(){
-      toggleClass($topbarmToggle, 'expanded');
-      toggleClass($topbarmSearch, 'visible');
-      toggleClass($calendarmWrapper, 'visible');
-
-      $topbarmTags.classList.remove('expanded');
-    });
-
-    $topbarmTag.forEach(function(tag) {
-      tag.addEventListener('click', () => {
-        toggleClass(tag, 'topbarm__tag--selected');
-      })
-    });
-
-    $topbarmTodas.addEventListener('click', () => {
-      $topbarmTag.forEach(function(tag) {
-        tag.classList.add('topbarm__tag--selected')
-      });
-    });
-
-    $confirmar.addEventListener('click', () => {
-      $topbarmToggle.classList.remove('expanded');
-      $topbarmSearch.classList.remove('visible');
-      $calendarmWrapper.classList.remove('visible');
-      $topbarmTags.classList.remove('expanded');
-    });
-
-    $confirmarSearch.addEventListener('click', () => {
-      $topbarmToggle.classList.remove('expanded');
-      $topbarmSearch.classList.remove('visible');
-      $calendarmWrapper.classList.remove('visible');
-    });
-
+    const $topbarmKeySumbit = document.querySelector('.topbarm__key-submit');
+    const $topbarmKeyClear = document.querySelector('.topbarm__key-clear');
+    const $topbarmKeyInput = document.querySelector('.topbarm__key-input');
 
 
 
@@ -99,6 +57,7 @@ const Topbar = () => {
 
     //Clear input on page load
     $input.value = "";
+    $topbarmKeyInput.value = "";
 
     if ( baseUrl.startsWith('localhost') ) {
       var url = 'http://localhost:8888/ymedia/wp-json/canal_ymedia/search?terms=';
@@ -204,6 +163,7 @@ const Topbar = () => {
     let offsetIncrement = 0;
 
     const empty = () => {
+      console.log('pupu');
       fetch('empty', false, 0, inputValue, filterDate);
     }
 
@@ -370,12 +330,10 @@ const Topbar = () => {
 
     $submit.addEventListener('click', function(){
       submit();
-
     });
 
     $clear.addEventListener('click', function(){
       clear();
-
     });
 
     $calendarIcon.addEventListener('click', () => {
@@ -454,9 +412,201 @@ const Topbar = () => {
       inline: true,
       "locale": Spanish,
       onChange: function(selectedDates, dateStr, instance){
-        fetchDate(selectedDates, dateStr, instance);
+        fetchDateMobile(selectedDates, dateStr, instance);
       }
     });
+
+
+
+    //Mobile Functions
+    $topbarmTitle.addEventListener('click', function(){
+      toggleClass($topbarmTags, 'expanded');
+
+      $topbarmToggle.classList.remove('expanded');
+      $topbarmSearch.classList.remove('visible');
+      $calendarmWrapper.classList.remove('visible');
+    });
+
+    $topbarmToggle.addEventListener('click', function(){
+      toggleClass($topbarmToggle, 'expanded');
+      toggleClass($topbarmSearch, 'visible');
+      toggleClass($calendarmWrapper, 'visible');
+
+      $topbarmTags.classList.remove('expanded');
+      fpm.clear();
+    });
+
+    $topbarmTag.forEach(function(item) {
+      item.addEventListener('click', () => {
+        toggleClass(item, 'topbarm__tag--selected');
+
+        let termId = item.getAttribute('data-termid');
+
+        if (firstTime == 1 ) {
+          termsArray = [];
+          termsArray.push(termId);
+          firstTime = 0;
+           console.log('firttime', termsArray);
+
+        } else if (item.classList.contains('topbarm__tag--selected')) {
+          termsArray.push(termId);
+
+          console.log('quitar', termsArray);
+        } else {
+          termsArray = termsArray.filter(e => e !== termId);
+          console.log('poner', termsArray);
+        }
+
+        // if ( termsArray.length == 0) {
+        //   empty();
+        // } else {
+        //   fetch(termsArray, false, 0, inputValue, filterDate);
+        // }
+      });
+
+    });
+
+    let clearm = () => {
+      //$placeholder.innerHTML= '';
+      $load.classList.remove('visible');
+      $topbarmKeyClear.classList.remove('visible');
+      inputValue = 'a';
+      $topbarmKeyInput.value = "";
+      offset = 0;
+      offsetIncrement = 0;
+      loadTimes = 0;
+      filterDate = 'nodate';
+      //$placeholder.classList.remove('canal-main__list--results');
+
+      // if ( termsArray.length == 0) {
+      //   empty();
+      // } else {
+      //   fetch(termsArray, false, offset, inputValue, filterDate);
+      // }
+    }
+
+    $topbarmTodas.addEventListener('click', () => {
+      $topbarmTag.forEach(function(tag, index) {
+        tag.classList.add('topbarm__tag--selected');
+        termsArray[index] = tag.getAttribute('data-termid');
+      });
+
+      //firstTime = 1;
+      loadTimes = 0;
+    });
+
+    $confirmar.addEventListener('click', () => {
+      $topbarmToggle.classList.remove('expanded');
+      $topbarmSearch.classList.remove('visible');
+      $calendarmWrapper.classList.remove('visible');
+      $topbarmTags.classList.remove('expanded');
+
+      collapse();
+      offset = 0;
+      offsetIncrement = 0;
+      loadTimes = 0;
+      $placeholder.children.length ? $load.classList.add('visible') : $load.classList.remove('visible');
+      let loaded = document.getElementsByClassName('canal-main__list--extra');
+      while(loaded.length > 0){
+        loaded[0].parentNode.removeChild(loaded[0]);
+      }
+
+      if ( termsArray.length == 0) {
+        empty();
+      } else {
+        fetch(termsArray, false, 0, inputValue, filterDate);
+      }
+
+
+    });
+
+    $confirmarSearch.addEventListener('click', () => {
+      $placeholder.innerHTML= '';
+      $topbarmToggle.classList.remove('expanded');
+      $topbarmSearch.classList.remove('visible');
+      $calendarmWrapper.classList.remove('visible');
+      collapse();
+
+      //placeholder.classList.remove('canal-main__list--results');
+
+      inputValue = $topbarmKeyInput.value;
+      $topbarmKeyClear.classList.add('visible');
+
+      if ( termsArray.length == 0) {
+        empty();
+      } else {
+        fetch(termsArray, false, 0, inputValue, filterDate);
+      }
+
+
+
+
+
+    });
+
+    $topbarmKeySumbit.addEventListener('click', () => {
+      if ($topbarmKeyInput.value != '') {
+        $placeholder.innerHTML= '';
+        $load.classList.remove('visible');
+        //collapse();
+        inputValue = $topbarmKeyInput.value;
+        console.log(inputValue);
+        $topbarmKeyClear.classList.add('visible');
+
+        offset = 0;
+        offsetIncrement = 0;
+        loadTimes = 0;
+        $placeholder.classList.add('canal-main__list--results');
+        // if ( termsArray.length == 0) {
+        //   empty();
+        // } else {
+        //   fetch(termsArray, false, offset, inputValue, filterDate);
+        // }
+      }
+    });
+
+
+
+    const fetchDateMobile = (selectedDates, dateStr, instance) => {
+      //if ( !$calendarClear.classList.contains('visible')){
+      const format = date => { return date > 9 ? ""+date : "0"+date }
+      let date = selectedDates[0].getFullYear() + "-" + format(selectedDates[0].getMonth() + 1) + "-" + format(selectedDates[0].getDate());
+      $calendarButton.textContent= date;
+      //}
+
+      filterDate = date;
+
+      console.log(filterDate);
+
+      offset = 0;
+      offsetIncrement = 0;
+      loadTimes = 0;
+      // if ( termsArray.length == 0) {
+      //   empty();
+      // } else {
+      //   fetch(termsArray, false, offset, inputValue, filterDate);
+      // }
+    }
+
+    $topbarmKeyClear.addEventListener('click', () => {
+      clearm();
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   const animateArticles = () => {

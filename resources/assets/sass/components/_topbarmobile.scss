@@ -91,15 +91,19 @@
         height: 14px;
       }
     }
-    &--todas {
-      background: $gray-dark;
-      &:before {
-       content: none;
-      }
-      &:after {
-        content: none !important;
-      }
-    }
+  }
+
+  &__todas {
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1;
+    margin: 0 0 1rem 0;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    background: $gray-dark;
 
   }
   &__confirmar {
@@ -226,10 +230,12 @@
   }
   &__key-submit {
     position: absolute;
-    right: 1.5rem;
-    z-index: 14;
-    top: 14px;
+    right: 6px;
+    z-index: 10;
+    top: 6px;
+    padding: 0.6rem;
     -webkit-apperance: none;
+    cursor: pointer;
     i {
       color: $red;
       font-size: 2rem;
@@ -238,11 +244,15 @@
   }
   &__key-clear {
     position: absolute;
-    right: 1.8rem;
+    right: 6px;
     z-index: 14;
-    top: 14px;
+    top: 3px;
     visibility: hidden;
     opacity: 0;
+    background: white;
+    padding: 0.8rem;
+    z-index: 0;
+    cursor: pointer;
     i {
       color: $red;
       font-size: 2rem;
@@ -250,6 +260,7 @@
     &.visible {
       visibility: visible;
       opacity: 1;
+      z-index: 11;
 
     }
   }
