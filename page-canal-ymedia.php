@@ -117,6 +117,10 @@
         <?php wp_reset_postdata(); ?>
       </div>
     </div>
+  <div class="canal-toggles container">
+    <span class="canal-toggles-key">Hola</span>
+    <span class="canal-toggles-cal">01/06/99</span>
+  </div>
   <div class="canal-main">
     <div class="canal-main__inner container">
       <div class="canal-main__list"></div>

@@ -4,3 +4,9 @@
   position: relative;
   padding: 10rem 0;
 }
+
+@include tablet {
+  .canal {
+    padding: 5.5rem 0 10rem 0;
+  }
+}

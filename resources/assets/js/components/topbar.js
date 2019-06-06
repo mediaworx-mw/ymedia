@@ -43,6 +43,10 @@ const Topbar = () => {
     const $topbarmKeyClear = document.querySelector('.topbarm__key-clear');
     const $topbarmKeyInput = document.querySelector('.topbarm__key-input');
 
+    const $togglesKey = document.querySelector('.canal-toggles-key');
+    const $togglesCal = document.querySelector('.canal-toggles-cal');
+
+
 
 
     //Topbar Desktop
@@ -288,7 +292,10 @@ const Topbar = () => {
         offset = 0;
         offsetIncrement = 0;
         loadTimes = 0;
-        $placeholder.classList.add('canal-main__list--results');
+        if (window.innerWidth > 600) {
+          $placeholder.classList.add('canal-main__list--results');
+        }
+
         if ( termsArray.length == 0) {
           empty();
         } else {
@@ -306,6 +313,7 @@ const Topbar = () => {
       offset = 0;
       offsetIncrement = 0;
        loadTimes = 0;
+
       $placeholder.classList.remove('canal-main__list--results');
 
       if ( termsArray.length == 0) {
@@ -433,7 +441,7 @@ const Topbar = () => {
       toggleClass($calendarmWrapper, 'visible');
 
       $topbarmTags.classList.remove('expanded');
-      fpm.clear();
+      //fpm.clear();
     });
 
     $topbarmTag.forEach(function(item) {
@@ -485,6 +493,44 @@ const Topbar = () => {
       // }
     }
 
+    let clearmKey = () => {
+      //$placeholder.innerHTML= '';
+      $load.classList.remove('visible');
+      inputValue = 'a';
+      $topbarmKeyInput.value = "";
+      offset = 0;
+      offsetIncrement = 0;
+      loadTimes = 0;
+
+      //$placeholder.classList.remove('canal-main__list--results');
+
+      if ( termsArray.length == 0) {
+        empty();
+      } else {
+        fetch(termsArray, false, offset, inputValue, filterDate);
+      }
+    }
+
+
+
+    let clearmCal = () => {
+      $placeholder.innerHTML= '';
+      $load.classList.remove('visible');
+      filterDate = 'nodate';
+      offset = 0;
+      offsetIncrement = 0;
+      loadTimes = 0;
+      if ( termsArray.length == 0) {
+       empty();
+      } else {
+        fetch(termsArray, false, offset, inputValue, filterDate);
+      }
+
+
+      fp.destroy();
+
+    }
+
     $topbarmTodas.addEventListener('click', () => {
       $topbarmTag.forEach(function(tag, index) {
         tag.classList.add('topbarm__tag--selected');
@@ -518,6 +564,8 @@ const Topbar = () => {
       }
 
 
+
+
     });
 
     $confirmarSearch.addEventListener('click', () => {
@@ -530,7 +578,7 @@ const Topbar = () => {
       //placeholder.classList.remove('canal-main__list--results');
 
       inputValue = $topbarmKeyInput.value;
-      $topbarmKeyClear.classList.add('visible');
+      //$topbarmKeyClear.classList.add('visible');
 
       if ( termsArray.length == 0) {
         empty();
@@ -538,11 +586,28 @@ const Topbar = () => {
         fetch(termsArray, false, 0, inputValue, filterDate);
       }
 
+      if(inputValue !=="") {
+        $togglesKey.classList.add('show');
+        $togglesKey.textContent = inputValue;
+      }
 
-
-
+      if(filterDate !=="nodate") {
+        $togglesCal.classList.add('show');
+        $togglesCal.textContent = filterDate;
+      }
 
     });
+
+    $togglesKey.addEventListener('click', function() {
+      clearmKey();
+      $togglesKey.classList.remove('show');
+    });
+
+    $togglesCal.addEventListener('click', function() {
+      clearmCal();
+      $togglesCal.classList.remove('show');
+    })
+
 
     $topbarmKeySumbit.addEventListener('click', () => {
       if ($topbarmKeyInput.value != '') {
@@ -551,12 +616,14 @@ const Topbar = () => {
         //collapse();
         inputValue = $topbarmKeyInput.value;
         console.log(inputValue);
-        $topbarmKeyClear.classList.add('visible');
+        //$topbarmKeyClear.classList.add('visible');
 
         offset = 0;
         offsetIncrement = 0;
         loadTimes = 0;
-        $placeholder.classList.add('canal-main__list--results');
+        if (window.innerWidth > 600) {
+          $placeholder.classList.add('canal-main__list--results');
+        }
         // if ( termsArray.length == 0) {
         //   empty();
         // } else {
@@ -588,23 +655,9 @@ const Topbar = () => {
       // }
     }
 
-    $topbarmKeyClear.addEventListener('click', () => {
-      clearm();
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // $topbarmKeyClear.addEventListener('click', () => {
+    //   clearm();
+    // })
 
 
   }

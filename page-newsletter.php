@@ -13,31 +13,31 @@
 <?php get_header(); ?>
 <div class="newsletter"  id="fullpageNews" data-site-body="newsletter">
   <form class="newsletter-form" novalidate>
-    <div class="newsletter-section section section1" data-anchor="section1">
+    <div class="newsletter-section section section1" >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">Newsletter</h2>
         <div class="newsletter-section__inputs">
-         <div class="newsletter-section__input">
-           <input type="text" placholder="Nombre" value="Nombre">
+         <div class="newsletter-section__input nombre">
+           <input type="text" placeholder="Nombre" value="Nombre">
          </div>
 
-         <div class="newsletter-section__input">
-           <input type="email" placholder="Email" value="Email">
+         <div class="newsletter-section__input email">
+           <input type="email" placeholder="Email" value="Email">
          </div>
       </div>
         <div class="newsletter-section__footer">
-          <a class="nav__item" href="#section2">Siguiente</a>
+          <a class="nav__item n1">Siguiente</a>
         </div>
       </div>
     </div>
 
-    <div class="newsletter-section section section2" data-anchor="section2">
+    <div class="newsletter-section section section2" >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">¿Sabrías decirme lo que es un DMP?</h2>
         <div class="newsletter-fields">
           <div class="newsletter-section__inputs">
             <div class="newsletter-section__radio">
-              <input type="radio" id="s2-1" name="s2" value="s2-1" checked>
+              <input type="radio" id="s2-1" name="s2" value="s2-1">
               <label for="s2-1">Ni lo sé, ni me importa</label>
             </div>
             <div class="newsletter-section__radio">
@@ -58,20 +58,20 @@
             </div>
           </div>
          <div class="newsletter-section__footer">
-            <a class="nav__item" href="#section3">Siguiente</a>
+            <a class="nav__item n2">Siguiente</a>
         </div>
         </div>
       </div>
     </div>
 
 
-    <div class="newsletter-section section section3 " data-anchor="section3">
+    <div class="newsletter-section section section3 " >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">Y si te digo que hablemos del consumidor… cómo está evolucionando su comportamiento a lo largo de los años…</h2>
         <div class="newsletter-fields">
           <div class="newsletter-section__inputs">
             <div class="newsletter-section__radio">
-              <input type="radio" id="s3-1" name="s3" value="s3-1" checked>
+              <input type="radio" id="s3-1" name="s3" value="s3-1">
               <label for="s3-1">Ni idea, no me interesa el tema</label>
             </div>
             <div class="newsletter-section__radio">
@@ -92,20 +92,20 @@
             </div>
           </div>
          <div class="newsletter-section__footer">
-           <a class="nav__item" href="#section4">Siguiente</a>
+           <a class="nav__item n3">Siguiente</a>
         </div>
         </div>
       </div>
     </div>
 
 
-    <div class="newsletter-section section section4 " data-anchor="section4">
+    <div class="newsletter-section section section4 " >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">¿Te gusta estar al día de los contenidos de más audiencia de televisión u otros medios?</h2>
         <div class="newsletter-fields">
           <div class="newsletter-section__inputs">
             <div class="newsletter-section__radio">
-              <input type="radio" id="s4-1" name="s4" value="s4-1" checked>
+              <input type="radio" id="s4-1" name="s4" value="s4-1">
               <label for="s4-1">Me da igual, no me interesa</label>
             </div>
             <div class="newsletter-section__radio">
@@ -126,19 +126,19 @@
             </div>
           </div>
          <div class="newsletter-section__footer">
-           <a class="nav__item" href="#section5">Siguiente</a>
+           <a class="nav__item  n4">Siguiente</a>
         </div>
         </div>
       </div>
     </div>
 
-    <div class="newsletter-section section section5 " data-anchor="section5">
+    <div class="newsletter-section section section5 " >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">Las redes sociales han transformado la comunicación entre las personas, las empresas y las marcas, ¿te parece interesante?</h2>
         <div class="newsletter-fields">
           <div class="newsletter-section__inputs">
             <div class="newsletter-section__radio">
-              <input type="radio" id="s5-1" name="s5" value="s5-1" checked>
+              <input type="radio" id="s5-1" name="s5" value="s5-1">
               <label for="s5-1">Nada, no me interesa</label>
             </div>
             <div class="newsletter-section__radio">
@@ -159,19 +159,19 @@
             </div>
           </div>
          <div class="newsletter-section__footer">
-           <a class="nav__item" href="#section6">Siguiente</a>
+           <a class="nav__item n5">Siguiente</a>
         </div>
         </div>
       </div>
     </div>
 
-    <div class="newsletter-section section section6 " data-anchor="section6">
+    <div class="newsletter-section section section6 " >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">¿Hasta qué punto crees que la transformación digital está cambiando el mundo?</h2>
         <div class="newsletter-fields">
           <div class="newsletter-section__inputs">
             <div class="newsletter-section__radio">
-              <input type="radio" id="s6-1" name="s6" value="s6-1" checked>
+              <input type="radio" id="s6-1" name="s6" value="s6-1">
               <label for="s6-1">No me interesa este tema</label>
             </div>
             <div class="newsletter-section__radio">
@@ -192,19 +192,19 @@
             </div>
           </div>
          <div class="newsletter-section__footer">
-           <a class="nav__item active" href="#section7">Siguiente</a>
+           <a class="nav__item active n6">Siguiente</a>
         </div>
         </div>
       </div>
     </div>
 
-     <div class="newsletter-section section section7 " data-anchor="section7">
+     <div class="newsletter-section section section7 " >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">¿Te parece interesante saber cuáles son los anuncios más notorios o saber cuáles se viralizan más, etc…?</h2>
         <div class="newsletter-fields">
           <div class="newsletter-section__inputs">
             <div class="newsletter-section__radio">
-              <input type="radio" id="s7-1" name="s7" value="s7-1" checked>
+              <input type="radio" id="s7-1" name="s7" value="s7-1">
               <label for="s7-1">No me interesa nada</label>
             </div>
             <div class="newsletter-section__radio">
@@ -225,7 +225,7 @@
             </div>
           </div>
          <div class="newsletter-section__footer">
-           <input type="submit" value="Enviar">
+           <input type="submit" class="n7" value="Enviar">
         </div>
         </div>
       </div>

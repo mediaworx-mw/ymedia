@@ -135,6 +135,7 @@
 
 @include tablet {
   .canal-featured {
+     margin: 0;
     &__list {
       flex-wrap: wrap;
       max-height: 100%;

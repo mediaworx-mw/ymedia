@@ -19,29 +19,40 @@
     justify-content: flex-end;
     width: 100%;
     a {
-      background: $gray;
+      background: lighten($gray, 20%);
       padding: 2rem;
       color: white;
       border: none;
       text-align: center;
       font-size: 2rem;
       width: 100%;
-      cursor:pointer;
-      cursor: pointer;
+      cursor: not-allowed;
+      pointer-events: none;
+
       width: 49.5%;
+      &.valid {
+        background: $gray;
+        cursor: pointer;
+        pointer-events: all !important;
+      }
     }
     input[type="submit"] {
-      background: $gray;
+      background: lighten($gray, 20%);
       padding: 2rem;
       color: white;
       border: none;
       text-align: center;
       font-size: 2rem;
       width: 100%;
-      cursor:pointer;
-      cursor: pointer;
+      cursor: not-allowed;
+      pointer-events: none;
       width: 49.5%;
       -webkit-appearance: none;
+      &.valid {
+        background: $gray;
+        cursor: pointer;
+        pointer-events: all !important;
+      }
 
     }
   }
