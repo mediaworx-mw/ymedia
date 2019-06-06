@@ -1,6 +1,6 @@
 .grafico_wrapper {
   max-width: 750px;
-  margin-bottom:2rem;
+  margin-bottom:10rem;
   display:block;
   -webkit-column-break-inside: avoid;
   /* Chrome, Safari */
@@ -144,7 +144,7 @@
   // }
 
   th {
-    white-space: nowrap;
+    // white-space: nowrap;
     font-size: 14px;
     text-align: left;
     color: $red;
@@ -185,7 +185,7 @@
     // padding-left: 0 !important;
     // padding-right: 20px;
     text-align: center;
-    white-space: nowrap;
+    // white-space: nowrap;
 
     span.colored {
       // width: 100%;
