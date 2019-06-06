@@ -1,4 +1,5 @@
 .grafico_wrapper {
+  max-width: 750px;
   margin-bottom:2rem;
   display:block;
   -webkit-column-break-inside: avoid;
@@ -18,14 +19,38 @@
 
 
 .grafico-tabla {
+  background: #fff;
+  box-shadow: 0 0 15px rgba(99,99,99,0.15);
   padding: 10px 0;
-  // border: 1px solid $gray-grid;
-  border-radius: 5px;
+  border-radius: 10px;
+  margin: 10px 0;
   display: inline-block;
   max-width: 100%;
   overflow-x: auto;
   width: 100%;
+
+  tr {
+    border-bottom: 1px solid rgba(99, 99, 99, 0.15);
+    &:hover {
+        background: #fcfcfc;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    td:first-child,
+    th:first-child {
+      padding-left: 20px;
+    }
+
+    td:last-child,
+    th:last-child {
+      padding-right: 20px;
+    }
+  }
 }
+
 
 .grafico_texto {
   font-size: 1.5rem !important;
@@ -43,8 +68,16 @@
 
   &.top-5 {
     margin-bottom: 2em !important;
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
     .categorias {
       min-width: 250px;
+      display: flex;
+      align-items: center;
+      img {
+        margin-left: 10px;
+      }
     }
   }
 
@@ -112,16 +145,18 @@
 
   th {
     white-space: nowrap;
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
     color: $red;
     padding-bottom: 10px !important;
 
     &.barra {
       vertical-align: bottom;
-      padding: 0 10px !important;
+      // padding: 0 10px !important;
       padding-bottom: 5px !important;
       div {
+        max-width: 80px;
+        margin: auto;
         display: flex;
         align-items: flex-end;
         justify-content: center;
@@ -139,8 +174,11 @@
 
   td,
   th {
-    border: 2px solid white;
+    // border: 2px solid white;
+    min-width: 100px;
+    max-width: 200px;
     padding: 5px 10px;
+    height: 42px;
     animation-duration: 1s;
     animation-name: fadein;
     animation-fill-mode: forwards;
@@ -150,7 +188,8 @@
     white-space: nowrap;
 
     span.colored {
-      width: 100%;
+      // width: 100%;
+      min-width: 80px;
       text-align: center;
       display: inline-block;
       position: relative;
