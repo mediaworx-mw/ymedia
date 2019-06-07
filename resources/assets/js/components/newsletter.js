@@ -58,7 +58,7 @@ const Newsletter = () => {
 
   $name.addEventListener('input', function() {
     if ( $name.value !=="" ) {
-      if ( $name.value.length > 5){
+      if ( $name.value.length > 3){
         validName = true;
       }
     } else {

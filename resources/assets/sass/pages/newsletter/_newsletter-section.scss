@@ -1,9 +1,10 @@
 .newsletter-section {
-
+  height: 100vh;
+  display: flex;
+  align-items: center;
   &__inner {
     max-width: 1200px;
     margin: 0 auto;
-
   }
   &__title {
     font-size: 3rem;
@@ -18,6 +19,7 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    padding: 0 5px;
     a {
       background: lighten($gray, 20%);
       padding: 2rem;
@@ -28,7 +30,6 @@
       width: 100%;
       cursor: not-allowed;
       pointer-events: none;
-
       width: 49.5%;
       &.valid {
         background: $gray;
@@ -47,6 +48,7 @@
       cursor: not-allowed;
       pointer-events: none;
       width: 49.5%;
+      border-radius: 0;
       -webkit-appearance: none;
       &.valid {
         background: $gray;
@@ -63,7 +65,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-
+    border-radius: 0;
   }
 
   &__input {
@@ -79,6 +81,7 @@
       background: white;
       border: 1px solid $gray;
       -webkit-appearance:none;
+      border-radius: 0;
     }
   }
 
@@ -141,15 +144,15 @@
       display: flex;
       justify-content: flex-end;
       width: 100%;
+      padding: 0;
       a {
         width: 100%;
-        padding: 2rem;
+        padding: 1.5rem 2rem;
         font-size: 1.6rem;
       }
       input[type="submit"] {
-
         width: 100%;
-
+        padding: 1.5rem 2rem;
       }
     }
 
@@ -164,6 +167,7 @@
       margin: 0 0 1rem 0;
       input {
         padding: 1rem;
+        font-size: 1.6rem;
       }
     }
 
