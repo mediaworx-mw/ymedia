@@ -11,7 +11,7 @@
 ?>
 
 <?php get_header(); ?>
-<div class="newsletter"  id="fullpageNews" data-site-body="newsletter">
+<div class="newsletter" id="fullpageNews" data-site-body="newsletter">
   <form class="newsletter-form" novalidate>
     <div class="newsletter-section section section1" >
       <div class="newsletter-section__inner container">
@@ -232,5 +232,9 @@
     </div>
 
   </form>
+
 </div>
+<div class="progress-bar">
+    <span class="progress-bar__line"></span>
+  </div>
 <?php get_footer(); ?>

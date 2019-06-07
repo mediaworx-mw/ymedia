@@ -1,5 +1,6 @@
 .newsletter {
   padding: 0 0 4rem 0;
+
 }
 
 #fp-nav {
@@ -33,4 +34,20 @@
 
 
   }
+}
+
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  z-index: 13;
+  &__line {
+    background: $red;
+    width: 15%;
+    height: 10px;
+    position: absolute;
+  }
+
 }

@@ -5,6 +5,8 @@ import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 
 const Newsletter = () => {
 
+  const $bar = document.querySelector('.progress-bar__line');
+
   const $n1 = document.querySelector('.n1');
   const $n2 = document.querySelector('.n2');
   const $n3 = document.querySelector('.n3');
@@ -41,7 +43,7 @@ const Newsletter = () => {
   $radios.forEach((radio) => {
     radio.checked = false;
 
-  })
+  });
 
 
 
@@ -93,9 +95,16 @@ const Newsletter = () => {
     }
   });
 
+  $bar.style.width = 0;
+
+  let bar = new TimelineMax();
+
+
+
   $n1.addEventListener('click', () => {
      if ($n1.classList.contains('valid') ) {
       fullpage_api.moveTo(2);
+      bar.to($bar, 1, {width: '14.28%'});
     }
   })
 
@@ -103,12 +112,14 @@ const Newsletter = () => {
   $section2radios.forEach((radio) => {
     radio.addEventListener('click', function() {
       $n2.classList.add('valid');
+
     });
   });
 
   $n2.addEventListener('click', () => {
      if ($n2.classList.contains('valid') ) {
       fullpage_api.moveTo(3);
+      bar.to($bar, 1, {width: '28.5%'});
     }
   });
 
@@ -123,6 +134,7 @@ const Newsletter = () => {
   $n3.addEventListener('click', () => {
      if ($n3.classList.contains('valid') ) {
       fullpage_api.moveTo(4);
+      bar.to($bar, 1, {width: '42.84%'});
     }
   });
 
@@ -137,6 +149,7 @@ const Newsletter = () => {
   $n4.addEventListener('click', () => {
      if ($n4.classList.contains('valid') ) {
       fullpage_api.moveTo(5);
+      bar.to($bar, 1, {width: '59.2%'});
     }
   });
 
@@ -151,6 +164,7 @@ const Newsletter = () => {
   $n5.addEventListener('click', () => {
      if ($n5.classList.contains('valid') ) {
       fullpage_api.moveTo(6);
+      bar.to($bar, 1, {width: '71.4%'});
     }
   });
 
@@ -164,6 +178,7 @@ const Newsletter = () => {
   $n6.addEventListener('click', () => {
      if ($n6.classList.contains('valid') ) {
       fullpage_api.moveTo(7);
+      bar.to($bar, 1, {width: '85.68%'});
     }
   });
 
@@ -171,6 +186,7 @@ const Newsletter = () => {
   $section7radios.forEach((radio) => {
     radio.addEventListener('click', function() {
       $n7.classList.add('valid');
+      bar.to($bar, 1, {width: '100%'});
     });
   });
 
