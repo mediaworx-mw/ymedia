@@ -17,5 +17,10 @@ function ymedia_load_scripts(){
   wp_enqueue_script( 'three-js' );
   wp_register_script( 'main-js', get_template_directory_uri() . '/public/js/app.js', false, '1.0.0', true );
 	wp_enqueue_script( 'main-js' );
+  wp_localize_script( 'main-js', 'ymediaData', array(
+    'root_url' => get_site_url()
+
+
+  ));
 }
 add_action( 'wp_enqueue_scripts', 'ymedia_load_scripts' );

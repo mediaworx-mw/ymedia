@@ -63,6 +63,8 @@ const Topbar = () => {
     $input.value = "";
     $topbarmKeyInput.value = "";
 
+    //let url = `${ymediaData.root_url}/wp-json/canal_ymedia/search?terms=`;
+
     if ( baseUrl.startsWith('localhost') ) {
       var url = 'http://localhost:8888/ymedia/wp-json/canal_ymedia/search?terms=';
     } else {
