@@ -12,7 +12,7 @@
 
 <?php get_header(); ?>
 <div class="newsletter" id="fullpageNews" data-site-body="newsletter">
-  <form class="newsletter-form" novalidate>
+ <!--  <form class="newsletter-form" novalidate>
     <div class="newsletter-section section section1" >
       <div class="newsletter-section__inner container">
         <h2 class="newsletter-section__title">Newsletter</h2>
@@ -231,7 +231,9 @@
       </div>
     </div>
 
-  </form>
+  </form> -->
+
+  <?php echo do_shortcode('[contact-form-7 id="468" title="Newsletter"]') ?>
 
 </div>
 <div class="progress-bar">
