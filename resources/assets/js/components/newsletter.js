@@ -49,7 +49,7 @@ const Newsletter = () => {
 
   new fullpage('#fullpageNews', {navigation: false });
 
-  //fullpage_api.setAllowScrolling(false);
+  fullpage_api.setAllowScrolling(false);
   //fullpage_api.keyboardScrolling(false);
 
   let validSection1 = false;
