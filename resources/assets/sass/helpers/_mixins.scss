@@ -66,8 +66,8 @@
   }
 
   @include tablet {
-    font-size: calc(#{$min} + 1rem);
-    line-height: calc(#{$min} + 2rem });
+    font-size: calc(#{$min} + 0.5rem);
+    line-height: calc(#{$min} + 1rem });
   }
 
   @include mobile {

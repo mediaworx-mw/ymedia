@@ -15,7 +15,6 @@
 <div class="clientes-top">
     <div class="clientes-top__info container">
       <h1 class="clientes-top__tag"><?php the_field('tag_clientes'); ?></h1>
-      <!--<a href="<?php bloginfo('url'); ?>/casos-de-estudio" class="clientes-top__casos">+ Casos de Estudio</a>-->
     </div>
   </div>
   <div class="clientes-list overgrid">

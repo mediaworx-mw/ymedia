@@ -11,10 +11,10 @@
 /* Activate Nav Menu Option */
 function ymedia_register_nav_menu() {
 	register_nav_menus( array(
-		'main' => 'Main',
-    'main small' => 'Main small',
-    'footer 1' => 'Footer 1',
-    'footer 2' => 'Footer 2'
+		'main'        => 'Main',
+    'main small'  => 'Main small',
+    'footer 1'    => 'Footer 1',
+    'footer 2'    => 'Footer 2'
 	));
 }
 add_action( 'after_setup_theme', 'ymedia_register_nav_menu' );
