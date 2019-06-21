@@ -112,7 +112,7 @@ const Home = () => {
   .addTo(controllerHome);
 }
 
-new fullpage('#fullpage', {
+new fullpage('#home', {
   onLeave: function(origin, destination, direction){
     const $header = document.querySelector('.header');
     const $nav = document.querySelector('.nav');

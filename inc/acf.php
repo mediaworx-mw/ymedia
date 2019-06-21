@@ -36,15 +36,4 @@ if( function_exists('acf_add_options_page') ) {
     'position' => '2.1',
     'redirect'    => false
   ));
-
- acf_add_options_page(array(
-    'page_title'  => 'Mapas',
-    'menu_title'  => 'Mapas',
-    'menu_slug'   => 'mapas-theme_settings',
-    'capability'  => 'edit_posts',
-    'position' => '2.1',
-    'redirect'    => false
-  ));
-
 }
-
