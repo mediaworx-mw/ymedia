@@ -157,6 +157,9 @@
             </div>
             <div class="canal-single__graficos entry">
               <?php the_field('graficos_canal'); ?>
+
+              <?php require get_template_directory() . '/inc/graficos-newsletters/master.php'; ?>
+                                  
             </div>
           </div>
         </div>
