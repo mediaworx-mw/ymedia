@@ -75,6 +75,3 @@ function get_canal_category($numposts, $offset, $class, $category) {
   endwhile; endif;
   wp_reset_query();
 }
-
-
-

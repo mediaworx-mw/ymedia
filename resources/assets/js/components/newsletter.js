@@ -36,25 +36,26 @@ const Newsletter = () => {
 
   const $name = document.querySelector('.nombre').querySelector('input');
   const $mail = document.querySelector('.email').querySelector('input');
+  const $acceptance = document.querySelector('.acceptance').querySelector('.accept');
+
 
   $name.value = "";
   $mail.value = "";
+  $acceptance.checked = false;
 
   $radios.forEach((radio) => {
     radio.checked = false;
-
   });
-
-
 
   new fullpage('#fullpageNews', {navigation: false });
 
   fullpage_api.setAllowScrolling(false);
-  //fullpage_api.keyboardScrolling(false);
 
   let validSection1 = false;
   let validName = false;
   let validEmail = false;
+  let validAcceptance = false;
+
 
   $name.addEventListener('input', function() {
     if ( $name.value !=="" ) {
@@ -66,11 +67,19 @@ const Newsletter = () => {
       validName = false;
     }
 
-    if (validEmail == true & validName == true) {
+    if ($acceptance.checked) {
+        validAcceptance = true;
+    } else {
+      validAcceptance = false;
+    }
+
+    if (validEmail == true && validName == true && validAcceptance == true ) {
       $n1.classList.add('valid');
     } else {
       $n1.classList.remove('valid');
     }
+
+
 
   });
 
@@ -88,18 +97,38 @@ const Newsletter = () => {
       $mail.value = "";
       validEmail = false;
     }
-    if (validEmail == true & validName == true) {
+
+    if ($acceptance.checked) {
+        validAcceptance = true;
+    } else {
+      validAcceptance  = false;
+    }
+
+
+    if (validEmail == true && validName == true && validAcceptance == true) {
       $n1.classList.add('valid');
     } else {
       $n1.classList.remove('valid');
     }
   });
 
+
+  $acceptance.addEventListener('click', () => {
+    if ($acceptance.checked == true){
+      validAcceptance = true;
+      if (validEmail == true && validName == true && validAcceptance == true ) {
+        $n1.classList.add('valid');
+      }
+
+    } else {
+       validAcceptance = false;
+      $n1.classList.remove('valid');
+    }
+  })
+
   $bar.style.width = 0;
 
   let bar = new TimelineMax();
-
-
 
   $n1.addEventListener('click', () => {
      if ($n1.classList.contains('valid') ) {
@@ -122,8 +151,6 @@ const Newsletter = () => {
       bar.to($bar, 1, {width: '28.5%'});
     }
   });
-
-
 
   $section3radios.forEach((radio) => {
     radio.addEventListener('click', function() {

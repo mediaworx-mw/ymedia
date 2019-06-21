@@ -21,7 +21,7 @@
 
   a {
     font-weight: $regular;
-    color: $gray;
+    color: $red;
     &:hover {
       text-decoration: underline;
     }
@@ -94,7 +94,7 @@
   }
 
   ol{
-   list-style: decimal outside none;
+   list-style: decimal inside none;
     margin: 0;
     margin:0 0 3rem 0;
      @include tablet{
@@ -110,6 +110,12 @@
    color: black;
    padding: 0 0 0 2rem;
    position: relative;
+  }
+
+  ol {
+    li {
+      padding: 0;
+    }
   }
 
  dd{
@@ -163,7 +169,25 @@
     border-collapse: collapse;
     border-spacing: 2px;
     border-color:black;
-    width: 100%;
+ }
+
+ table.standard {
+  border-collapse: collapse;
+  position: relative;
+  z-index: 10;
+  background: white;
+  max-width: 66.66%;
+  td {
+    border: 1px solid #666666;
+
+  }
+ }
+
+
+
+ table.standard-big {
+  max-width: 100%;
+  min-width: 100%;
  }
 
  thead {
@@ -209,10 +233,12 @@
     display: table-cell;
     vertical-align: inherit;
     padding: 15px;
+    font-size: 1.6rem;
+    line-height: 2rem;
  }
 
  th {
-    font-weight: bold
+    font-weight: bold;
  }
 
  caption {
@@ -246,8 +272,16 @@
   }
 }
 
+@include tablet {
+  .entry{
+    table.standard {
+      max-width: 100%;
+    }
+  }
+}
+
 @include mobile {
-  .entry-content {
+  .entry {
     h1{
       font-size: 5rem;
       line-height: 4rem;

@@ -6,25 +6,21 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="profile" href="http://gmpg.org/xfn/11">
-  <?php if( is_singular() && pings_open( get_queried_object() ) ): ?>
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-  <?php endif; ?>
   <?php wp_head(); ?>
 </head>
-<?php if (!is_front_page()):?>
-<body class="body--big">
+<?php if (!is_front_page()): ?>
+  <body class="body--big">
 <?php else: ?>
-<body>
-
+  <body>
 <?php endif; ?>
 
 <?php if (is_page('canal-ymedia')): ?>
-<header class="header header--small">
+  <header class="header header--small">
 <?php else: ?>
-<header class="header">
+  <header class="header">
 <?php endif; ?>
   <div class="header__inner container">
-    <a href="<?php bloginfo('url') ?>" class="header__logo">
+    <a href="<?php echo site_url('/'); ?>" class="header__logo">
       <?php get_template_part('svg/logo') ?>
     </a>
     <button class="pull" type="button">

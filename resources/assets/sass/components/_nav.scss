@@ -26,7 +26,7 @@
       z-index: $zheader;
       a {
         color: white;
-        @include font-max-min(4.5vw, 3rem, 7rem);
+        @include font-max-min(5rem, 3rem, 7rem);
         font-weight: $bold;
         transition: color 0.2s ease;
         white-space: nowrap;
@@ -92,7 +92,7 @@
 @include desktop {
   .nav {
     &__list {
-      margin: 4rem 0;
+      margin: 4rem 0 2rem 0;
       max-width: 100%;
       li {
         a {
@@ -135,9 +135,6 @@
 
 @include mobile {
   .nav {
-    &__list {
-      margin: 4rem 0 2rem 0;
-    }
     &__small{
       li {
         margin: 0 0 1.5rem 0;

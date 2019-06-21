@@ -136,23 +136,23 @@
   &__excerpt {
     position: relative;
     padding-bottom: 4rem;
-    p {
+
       font-size: 2rem;
       line-height: 3rem;
       font-weight: $bold;
       color: $red;
       max-width: $max-width-content;
-    }
+
     &--small {
       width: 16%;
       padding: 0 0 0 1rem;
       .single-side {
         display: none;
       }
-      p {
-        font-size: 1.8rem;
-        line-height: 2.6rem;
-      }
+
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+
     }
   }
   &__entry {
