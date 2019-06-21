@@ -13,3 +13,4 @@ require get_template_directory() . '/inc/custom-posts.php';
 require get_template_directory() . '/inc/includes.php';
 require get_template_directory() . '/inc/acf.php';
 require get_template_directory() . '/inc/query.php';
+require get_template_directory() . '/inc/graficos-data.php';
