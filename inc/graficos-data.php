@@ -43,8 +43,25 @@ function acf_sheets_fuentes_sheets( $field ) {
         $grupo = get_sub_field('grupo');
         $logo = get_sub_field('logo');
         $color = get_sub_field('color');
+        $logos = get_sub_field('logos');
+        // echo "\"";
+        // print_r($logos);
+        // echo "\"";
+        
+        if( is_array($logos)) {
+          $logos_js = '[';
+          foreach( $logos as $log ) {           
+            $logos_js .= "\"$log[logo]\",";
+          }
+          $logos_js .= ']';
+        } else {
+          $logos_js = '[]';
+        }
 
-        echo "grupos.push({grupo: '$grupo', logo: '$logo', color: '$color'});";
+        $logos_js = str_replace(",]","]",$logos_js);
+        $logos_js = "JSON.parse('$logos_js')";
+
+        echo "grupos.push({grupo: '$grupo', logo: '$logo', logos: $logos_js, color: '$color'});";
 
       endwhile;
     

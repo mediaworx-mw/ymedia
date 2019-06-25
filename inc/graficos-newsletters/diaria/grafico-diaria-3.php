@@ -1,4 +1,5 @@
 <script>
+function  graficoDiaria3() {
 // now all your data is loaded, so you can use it here.
 am4core.useTheme(am4themes_animated);
 
@@ -47,11 +48,13 @@ categoryAxis.dataFields.logo = "Logo";
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.renderer.minGridDistance = 30;
 categoryAxis.renderer.grid.template.disabled = true;
-// categoryAxis.height = 500;
+categoryAxis.renderer.labels.template.disabled = true;
 
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
+valueAxis.renderer.baseGrid.disabled = true;
+
 
 var topContainer = chart.chartContainer.createChild(am4core.Container);
 topContainer.layout = "absolute";
@@ -102,13 +105,10 @@ function createSeries(field) {
   valueLabel.label.truncate = true;
   valueLabel.label.maxWidth = 120;
   valueLabel.label.tooltipText = "{valueY}";
-
-  // console.log(bullet);
-  // console.log(image);
-
   return series;
 }
 
   createSeries('Cuota (%)', 1);
-
+}
+graficoDiaria3();
 </script>

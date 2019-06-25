@@ -1,4 +1,5 @@
 <script>
+function  graficoDiaria2() {
 // now all your data is loaded, so you can use it here.
 am4core.useTheme(am4themes_animated);
 
@@ -47,11 +48,12 @@ categoryAxis.dataFields.logo = "Logo";
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.renderer.minGridDistance = 30;
 categoryAxis.renderer.grid.template.disabled = true;
-// categoryAxis.height = 500;
+categoryAxis.renderer.labels.template.disabled = true;
 
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
+valueAxis.renderer.baseGrid.disabled = true;
 
 var topContainer = chart.chartContainer.createChild(am4core.Container);
 topContainer.layout = "absolute";
@@ -77,15 +79,14 @@ function createSeries(field) {
   series.columns.template.column.cornerRadiusTopRight = 5;
   series.columns.template.column.cornerRadiusBottomLeft = 5;
   series.columns.template.column.cornerRadiusTopLeft = 5;
-  // series.paddingTop = 0;
-  // series.name = field;
 
   var bullet = series.bullets.push(new am4charts.Bullet());
+  bullet.locationY = 1;
   var image = bullet.createChild(am4core.Image);
   image.propertyFields.href = 'Logo';
   image.width = 40;
   image.height = 40;
-  image.dy = 60;
+  image.dy = -10;
   image.dx = 0;
   image.y = am4core.percent(100);
   image.horizontalCenter = "middle";
@@ -103,12 +104,10 @@ function createSeries(field) {
   valueLabel.label.maxWidth = 120;
   valueLabel.label.tooltipText = "{valueY}";
 
-  // console.log(bullet);
-  // console.log(image);
-
   return series;
 }
 
   createSeries('Cuota (%)', 1);
-
+}
+graficoDiaria2();
 </script>

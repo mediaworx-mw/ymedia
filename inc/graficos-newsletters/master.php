@@ -30,13 +30,13 @@ if( $activar_graficos ) {
 
       <div class="grafico_wrapper">
         <h2>Cuota de las cadenas - Top 5</h2>
-        <div id="grafico-diaria-2" class="grafico-inner" style="min-height: 520px"></div>
+        <div id="grafico-diaria-2" class="grafico-inner" style="min-height: 420px"></div>
         <p>Fuente: Kantar Media. Ind 4+ (inv). PyB. Franja total día</p>
       </div>
 
       <div class="grafico_wrapper">
         <h2>Cuota de las temáticas en abierto - Top 5</h2>
-        <div id="grafico-diaria-3" class="grafico-inner" style="min-height: 520px"></div>
+        <div id="grafico-diaria-3" class="grafico-inner" style="min-height: 420px"></div>
         <p>Fuente: Kantar Media. Ind 4+ (inv). PyB. Franja total día</p>
       </div>
 
@@ -48,7 +48,7 @@ if( $activar_graficos ) {
 
       <div class="grafico_wrapper">
         <h2>Spot de oro – Top 3</h2>
-        <div id="grafico-diaria-5" class="grafico-inner" style="min-height: 520px"></div>
+        <div id="grafico-diaria-5" class="grafico-inner" style="min-height: 420px"></div>
         <p>Fuente: Kantar Media. Ind 4+ (inv). PyB. Grp’s a formato</p>
       </div>
 
