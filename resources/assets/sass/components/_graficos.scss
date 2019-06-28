@@ -1,26 +1,48 @@
 .grafico_wrapper {
   max-width: 750px;
-  margin-bottom:10rem;
-  display:block;
+  margin-bottom: 10rem;
+  display: block;
   -webkit-column-break-inside: avoid;
   /* Chrome, Safari */
   page-break-inside: avoid;
   /* Theoretically FF 20+ */
   break-inside: avoid-column;
   /* IE 11 */
+
+  .grupo-de-logos {
+    max-width: 300px;
+    min-width: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .tarta-logos-label {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    img {
+      width: 90px;
+      height: 90px;
+      margin-bottom: -20px;
+    }
+  }
 }
 
 .grafico_fuente {
-  display:block;
-  margin-top:10px;
+  display: block;
+  margin-top: 10px;
   // border-top:solid 1px #CCC;
-  padding-top:10px;
+  padding-top: 10px;
 }
 
 
 .grafico-tabla {
   background: #fff;
-  box-shadow: 0 0 15px rgba(99,99,99,0.15);
+  box-shadow: 0 0 15px rgba(99, 99, 99, 0.15);
   padding: 10px 0;
   border-radius: 10px;
   margin: 10px 0;
@@ -31,8 +53,9 @@
 
   tr {
     border-bottom: 1px solid rgba(99, 99, 99, 0.15);
+
     &:hover {
-        background: #fcfcfc;
+      background: #fcfcfc;
     }
 
     &:last-child {
@@ -68,13 +91,16 @@
 
   &.top-5 {
     margin-bottom: 2em !important;
+
     &:last-child {
       margin-bottom: 0 !important;
     }
+
     .categorias {
       min-width: 250px;
       display: flex;
       align-items: center;
+
       img {
         margin-left: 10px;
       }
@@ -85,14 +111,17 @@
     &.categorias-parent {
       font-weight: bold;
     }
+
     span {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
     }
+
     // width: 100%; 
     text-align: left;
+
     .numero {
       position: relative;
       display: flex;
@@ -106,8 +135,10 @@
       width: 2em;
       height: 2em;
       font-size: 0.75em;
+
       &.numero-oro {
         background-color: #ffc000;
+
         &:before {
           content: 'spot de oro';
           position: absolute;
@@ -121,6 +152,7 @@
         }
       }
     }
+
     .numero,
     .texto {
       display: inline-block;
@@ -154,6 +186,7 @@
       vertical-align: bottom;
       // padding: 0 10px !important;
       padding-bottom: 5px !important;
+
       div {
         max-width: 80px;
         margin: auto;
@@ -206,7 +239,7 @@
     width: 100%;
     min-height: 500px;
   }
-  
+
   svg img {
     width: 30px;
     height: 30px;
@@ -240,12 +273,12 @@
     text-align: center;
   }
 
-  .programa-info  {
+  .programa-info {
     display: flex;
     justify-content: space-between;
     width: 180px;
     font-size: 100%;
-  
+
     &.programa-info-col {
       text-align: center;
       width: auto;
@@ -253,18 +286,23 @@
       flex-direction: column;
       align-items: center;
     }
+
     .programa-cadena {
       font-size: 120%;
       font-weight: bold;
       margin-bottom: 5px;
     }
+
     .programa-nombre {
       margin-bottom: 5px;
     }
+
     .programa-autor {
       font-size: 90%;
     }
-    .right, .bottom {
+
+    .right,
+    .bottom {
       width: 40px;
       height: 40px;
       font-size: 100%;
@@ -282,8 +320,9 @@
 .dataTables_wrapper {
   break-inside: avoid-column;
   min-width: 100%;
-  
-  .dataTables_scroll, table {
+
+  .dataTables_scroll,
+  table {
     min-width: 100%;
   }
 }
