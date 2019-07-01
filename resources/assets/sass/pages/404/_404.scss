@@ -1,0 +1,19 @@
+.page-404 {
+  padding: 2rem 0;
+  &__video {
+    position: relative;
+    height: 40vw;
+    width: 100%;
+    overflow: hidden;
+    video {
+      position: absolute;
+      //@include center;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      height: 100%;
+     // height: auto;
+    }
+  }
+}

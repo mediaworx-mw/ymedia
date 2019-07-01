@@ -12,6 +12,12 @@
 
 <?php get_header(); ?>
 <div class="newsletter" id="fullpageNews" data-site-body="newsletter">
+  <div class="newsletter__inner container">
+    <h1 class="newsletter__title">Newsletter</h1>
+    <div class="contact-form newsletter-form">
+      <?php echo do_shortcode('[contact-form-7 id="490" title="Suscripcion"]'); ?>
+    </div>
+  </div>
  <!--  <form class="newsletter-form" novalidate>
     <div class="newsletter-section section section1" >
       <div class="newsletter-section__inner container">
@@ -233,10 +239,12 @@
 
   </form> -->
 
-  <?php echo do_shortcode('[contact-form-7 id="468" title="Newsletter"]') ?>
+  <?php /*echo do_shortcode('[contact-form-7 id="468" title="Newsletter"]') */?>
+
 
 </div>
-<div class="progress-bar">
+<!-- <div class="progress-bar">
     <span class="progress-bar__line"></span>
-  </div>
+  </div> -->
+<?php grid('gray');?>
 <?php get_footer(); ?>

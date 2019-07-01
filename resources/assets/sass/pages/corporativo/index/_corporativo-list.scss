@@ -25,6 +25,11 @@
   transform: translateY(200px);
   opacity: 0;
   z-index: $z-content;
+  transition: opacity 0.2s ease;
+  &.faded {
+    transition: opacity 0.2s ease;
+    opacity: 0.5 !important;
+  }
   &:nth-child(1), &:nth-child(4), &:nth-child(7), &:nth-child(10), &:nth-child(13), &:nth-child(16), &:nth-child(19), &:nth-child(22), &:nth-child(25) {
     width: 32.6666%;
     margin-right: 1.33%;

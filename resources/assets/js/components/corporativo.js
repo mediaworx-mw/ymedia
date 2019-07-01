@@ -33,10 +33,35 @@ const Corporativo = () => {
   .setTween(tweenMembers.play())
   .addTo(controllerMembers);
 
+  $member.forEach(function(item){
+    item.addEventListener('mouseover', function() {
+      $member.forEach(function(item){
+        item.classList.add('faded');
+      });
+      item.classList.remove('faded');
+    });
+  });
+
+  $member.forEach(function(item){
+    item.addEventListener('mouseleave', function() {
+      $member.forEach(function(item){
+        item.classList.remove('faded');
+      });
+
+    });
+  });
+
+
+
+
   $memberInner.forEach(function(e) {
     const video = e.querySelector('.member__video').querySelector('.video');
 
     e.addEventListener('mouseover', function() {
+
+
+
+
       video.play();
       this.querySelector('.member__data-top').classList.add('over');
       this.querySelector('.member__data-bottom').classList.add('over');

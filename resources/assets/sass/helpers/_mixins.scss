@@ -148,3 +148,12 @@
   }
 
 }
+
+@mixin animateUp {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: translateY(-6px);
+    transition: transform 0.3s ease;
+  }
+}

@@ -250,3 +250,74 @@ div.wpcf7 .ajax-loader {
     }
   }
 }
+
+ .acceptance {
+    display: flex;
+
+    > span {
+      margin: 0;
+      width: 100%;
+      position: relative;
+      span {
+        margin: 0;
+      }
+    }
+
+    label {
+      span {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        margin: 0;
+        color: $gray-dark;
+        display: block;
+        padding: 0 0 0 3rem;
+        a {
+          color: $red;
+        }
+        i {
+          color: $red;
+          font-size: 1.6rem;
+          font-weight: $bold;
+          cursor: pointer;
+          margin: 0 0 0 1rem;
+        }
+        &:before {
+          content: '';
+          margin-right: 10px;
+          display: inline-block;
+          vertical-align: middle;
+          width: 20px;
+          height: 20px;
+          background: white;
+          border: 1px solid $gray;
+          position: absolute;
+          top: -2px;
+          left: 0;
+        }
+      }
+    }
+    input[type="checkbox"] {
+      display: none;
+      position: absolute;
+      &:checked + span:after{
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 8px;
+        background: white;
+        width: 2px;
+        height: 2px;
+        box-shadow:
+          2px 0 0 $red,
+          4px 0 0 $red,
+          4px -2px 0 $red,
+          4px -4px 0 $red,
+          4px -6px 0 $red,
+          4px -8px 0 $red;
+        transform: rotate(45deg) scale(1.1);
+
+      }
+
+    }
+
+  }

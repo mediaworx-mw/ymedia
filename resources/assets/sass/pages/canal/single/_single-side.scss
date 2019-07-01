@@ -3,12 +3,10 @@
   flex-direction: column;
   &__pdf {
     margin: 0 0 3rem 0;
-    a {
-
-    }
     i {
       color: $red;
       font-size: 2.5rem;
+      @include animateUp;
     }
   }
 }
