@@ -1,79 +1,11 @@
 <?php
 
+add_action('init', 'brandpage_form_head');
+function brandpage_form_head(){
+  acf_form_head();
+}
+
 function acf_sheets_fuentes_sheets( $field ) {
-
-    // Tomamos la configuración de las cadenas de la página de opciones       
-    if( have_rows('cadenas', 'option') ):
-
-      ?>
-      <script>
-      var cadenas = [];
-      <?php
-
-      while ( have_rows('cadenas', 'option') ) : the_row();
-
-        $cadena = get_sub_field('cadena');
-        $logo = get_sub_field('logo');
-        $color = get_sub_field('color');
-        $tipologia = get_sub_field('tipologia');
-
-        echo "cadenas.push({cadena: '$cadena', logo: '$logo', color: '$color', tipologia: '$tipologia' });";
-
-      endwhile;
-    
-      ?>
-      // console.log(cadenas);
-      </script>
-      <?php
-
-    else :
-        // no rows found
-    endif;
-
-    // Tomamos la configuración de los grupos de comunicación de la página de opciones
-    if( have_rows('grupos', 'option') ):
-
-      ?>
-      <script>
-      var grupos = [];
-      <?php
-
-      while ( have_rows('grupos', 'option') ) : the_row();
-
-        $grupo = get_sub_field('grupo');
-        $logo = get_sub_field('logo');
-        $color = get_sub_field('color');
-        $logos = get_sub_field('logos');
-        // echo "\"";
-        // print_r($logos);
-        // echo "\"";
-        
-        if( is_array($logos)) {
-          $logos_js = '[';
-          foreach( $logos as $log ) {           
-            $logos_js .= "\"$log[logo]\",";
-          }
-          $logos_js .= ']';
-        } else {
-          $logos_js = '[]';
-        }
-
-        $logos_js = str_replace(",]","]",$logos_js);
-        $logos_js = "JSON.parse('$logos_js')";
-
-        echo "grupos.push({grupo: '$grupo', logo: '$logo', logos: $logos_js, color: '$color'});";
-
-      endwhile;
-    
-      ?>
-      // console.log(grupos);
-      </script>
-      <?php
-
-    else :
-        // no rows found
-    endif;
-
 
     $sheets = get_field('sheets_fuentes', 'option', false);
 
@@ -88,11 +20,10 @@ function acf_sheets_fuentes_sheets( $field ) {
     echo '</div>';
 }
 
-add_filter('acf/load_field/name=sheets_fuentes_pick', 'acf_sheets_fuentes_sheets');
+add_filter('acf/load_field/name=sheets_fuentes_pick', 'acf_sheets_fuentes_sheets', 10, 3);
 
 
-
+add_action('admin_enqueue_scripts', 'pw_load_scripts');
 function pw_load_scripts() {
 	wp_enqueue_script('custom-js', '/wp-content/themes/ymedia/inc/graficos-newsletters/load_data.js');
 }
-add_action('admin_enqueue_scripts', 'pw_load_scripts');

@@ -1,39 +1,43 @@
 <script>
-function  graficoDiaria5() {
-  // now all your data is loaded, so you can use it here.
-  am4core.useTheme(am4themes_animated);
+var dias = [ 'vie', 'sab', 'dom' ];
 
-  // Create chart instance
-  var chart = am4core.create("grafico-diaria-5", am4charts.XYChart);
+function  graficoFDS5(dia) {
+// now all your data is loaded, so you can use it here.
+am4core.useTheme(am4themes_animated);
 
-  // Locale
-  chart.language.locale = am4lang_es_ES;
-  chart.numberFormatter.language = new am4core.Language();
-  chart.numberFormatter.language.locale = am4lang_es_ES;
-  chart.dateFormatter.language = new am4core.Language();
-  chart.dateFormatter.language.locale = am4lang_es_ES;
+// Create chart instance
+var chart = am4core.create("grafico-fds-5-" + dia, am4charts.XYChart);
 
-  enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+// Locale
+chart.language.locale = am4lang_es_ES;
+chart.numberFormatter.language = new am4core.Language();
+chart.numberFormatter.language.locale = am4lang_es_ES;
+chart.dateFormatter.language = new am4core.Language();
+chart.dateFormatter.language.locale = am4lang_es_ES;
 
-  // console.log(datosGraficos);
-
-  // Set data
-  input = datosGraficos['Spot de oro - Top3'].map(x => {
-      const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
-      // console.log(x);
-      if (moreData) {
-        x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
-        x['Color'] = moreData[0].color;
-        x['Logo'] = moreData[0].logo;
-      }
-      return x;
-    }
-  );
+enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
 
-  input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
+// Set data
+if(dia === 'vie') { input = datosGraficos['Spot de oro - Top3'].slice( 1, 4); }
+if(dia === 'sab') { input = datosGraficos['Spot de oro - Top3'].slice( 5, 8); }
+if(dia === 'dom') { input = datosGraficos['Spot de oro - Top3'].slice( 9, 12); }
+
+input = input.map(x => {
+  const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
+  // console.log(x);
+  if (moreData) {
+    x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
+    x['Color'] = moreData[0].color;
+    x['Logo'] = moreData[0].logo;
+  }
+  return x;
+});
+
+ input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
 
   var sorted = input.sort((a, b) => (a['Grp’s a formato'] < b['Grp’s a formato']) ? 1 : -1)
+  
   chart.data = sorted;
   console.log(sorted);
 
@@ -65,7 +69,7 @@ function  graficoDiaria5() {
   var axisTitle = topContainer.createChild(am4core.Label);
   axisTitle.text = "Grp’s a formato";
   axisTitle.fontWeight = 600;
-  axisTitle.fontSize = 12;
+  axisTitle.fontSize = 14;
   axisTitle.align = "left";
   axisTitle.paddingRight = 100;
 
@@ -82,8 +86,13 @@ function  graficoDiaria5() {
     series.columns.template.column.cornerRadiusBottomLeft = 5;
     series.columns.template.column.cornerRadiusTopLeft = 5;
     series.columns.template.tooltipText = "{emision}";
-    // series.paddingTop = 0;
-    // series.name = field;
+    series.tooltip.pointerOrientation = "vertical";
+    series.tooltip.dy = -10;
+
+    var hoverState = series.columns.template.states.create("hover");
+    hoverState.properties.fill = am4core.color("#aaaaaa");
+    hoverState.properties.fillOpacity = 0.8;
+    hoverState.properties.dy  = -5;
 
     var bullet = series.bullets.push(new am4charts.Bullet());
     bullet.locationY = 1;
@@ -103,6 +112,7 @@ function  graficoDiaria5() {
     valueLabel.label.dx = 0;
     valueLabel.label.dy = -10;
     valueLabel.label.fill = "#000";
+    valueLabel.label.fontSize = 14;
     valueLabel.label.rotation = 0;
     valueLabel.label.hideOversized = true;
     valueLabel.label.truncate = true;
@@ -117,6 +127,19 @@ function  graficoDiaria5() {
     createSeries('Grp’s a formato', 1);
 }
 
-graficoDiaria5();
+
+var graficoFDS5_show = {"vie": false, "sab": false, "dom": false};
+
+dias.forEach(dia => {
+  jQuery("#grafico-fds-5-" + dia).waypoint(function() {
+    if(!graficoFDS5_show[dia]) {
+      graficoFDS5(dia);
+    }
+    graficoFDS5_show[dia] = true;
+  }, {
+    offset: '75%'
+  });
+});
+
 
 </script>

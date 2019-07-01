@@ -1,10 +1,12 @@
 <script>
-function  graficoDiaria2() {
+var dias = [ 'vie', 'sab', 'dom' ];
+
+function  graficoFDS3(dia) {
 // now all your data is loaded, so you can use it here.
 am4core.useTheme(am4themes_animated);
 
 // Create chart instance
-var chart = am4core.create("grafico-diaria-2", am4charts.XYChart);
+var chart = am4core.create("grafico-fds-3-" + dia, am4charts.XYChart);
 
 // Locale
 chart.language.locale = am4lang_es_ES;
@@ -18,17 +20,20 @@ enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().ind
 // console.log(datosGraficos);
 
 // Set data
-input = datosGraficos['Cuota de las cadenas - Top5'].map(x => {
-    const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
-    // console.log(x);
-    if (moreData) {
-      x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
-      x['Color'] = moreData[0].color;
-      x['Logo'] = moreData[0].logo;
-    }
-    return x;
+if(dia === 'vie') { input = datosGraficos['Cuota de las tem. en abierto - Top5'].slice( 1,6); }
+if(dia === 'sab') { input = datosGraficos['Cuota de las tem. en abierto - Top5'].slice( 7,12); }
+if(dia === 'dom') { input = datosGraficos['Cuota de las tem. en abierto - Top5'].slice(13,18); }
+
+input = input.map(x => {
+  const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
+  // console.log(x);
+  if (moreData) {
+    x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
+    x['Color'] = moreData[0].color;
+    x['Logo'] = moreData[0].logo;
   }
-);
+  return x;
+});
 
 
 input[input.length] = {"Cuota (%)": input[input.length - 1]["Cuota (%)"] * 0.08};
@@ -55,6 +60,7 @@ valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
 valueAxis.renderer.baseGrid.disabled = true;
 
+
 var topContainer = chart.chartContainer.createChild(am4core.Container);
 topContainer.layout = "absolute";
 topContainer.toBack();
@@ -64,7 +70,7 @@ topContainer.width = am4core.percent(100);
 var axisTitle = topContainer.createChild(am4core.Label);
 axisTitle.text = "Cuota (%)";
 axisTitle.fontWeight = 600;
-axisTitle.fontSize = 12;
+axisTitle.fontSize = 14;
 axisTitle.align = "left";
 axisTitle.paddingRight = 100;
 
@@ -79,6 +85,11 @@ function createSeries(field) {
   series.columns.template.column.cornerRadiusTopRight = 5;
   series.columns.template.column.cornerRadiusBottomLeft = 5;
   series.columns.template.column.cornerRadiusTopLeft = 5;
+  
+  var hoverState = series.columns.template.states.create("hover");
+  hoverState.properties.fill = am4core.color("#aaaaaa");
+  hoverState.properties.fillOpacity = 0.8;
+  hoverState.properties.dy  = -5;
 
   var bullet = series.bullets.push(new am4charts.Bullet());
   bullet.locationY = 1;
@@ -96,6 +107,7 @@ function createSeries(field) {
   valueLabel.label.text = "{valueY}";
   valueLabel.label.horizontalCenter = "middle";
   valueLabel.label.dx = 0;
+  valueLabel.label.fontSize = 14;
   valueLabel.label.dy = -10;
   valueLabel.label.fill = "#000";
   valueLabel.label.rotation = 0;
@@ -103,11 +115,25 @@ function createSeries(field) {
   valueLabel.label.truncate = true;
   valueLabel.label.maxWidth = 120;
   valueLabel.label.tooltipText = "{valueY}";
-
   return series;
 }
 
   createSeries('Cuota (%)', 1);
 }
-graficoDiaria2();
+
+
+var graficoFDS3_show = {"vie": false, "sab": false, "dom": false};
+
+dias.forEach(dia => {
+  jQuery("#grafico-fds-3-" + dia).waypoint(function() {
+    if(!graficoFDS3_show[dia]) {
+      graficoFDS3(dia);
+    }
+    graficoFDS3_show[dia] = true;
+  }, {
+    offset: '75%'
+  });
+});
+
+
 </script>
