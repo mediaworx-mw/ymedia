@@ -1,6 +1,7 @@
 <?php
 /**
- * The template for displaying all pages
+ * The template for displaying Newsletter Confirm / Cancel pages
+ * Template Name: Newsletter Pages
  *
  *
  * @package WordPress
@@ -14,11 +15,10 @@
 
 <div class="page">
   <div class="page__inner container">
-    <h1 class="page_title"><?php the_title(); ?></h1>
-
     <div class="entry">
       <?php the_content(); ?>
     </div>
+    <a class="button button--gray button--back" href="<?php echo get_site_url('/') ?>"><i class="fas fa-arrow-left"></i>Ir a inicio</a>
   </div>
 </div>
 

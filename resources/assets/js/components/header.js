@@ -1,6 +1,8 @@
 import ScrollMagic from 'scrollmagic';
 import toggleClass from '../utils/toggle';
 import { TweenMax } from 'gsap';
+import { scrollTo } from 'scroll-js';
+import scroll from '../utils/scroll';
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 const Header = () => {
@@ -12,6 +14,7 @@ const Header = () => {
   const $navBottom = document.querySelector('.nav__bottom');
   const $headerLogo = document.querySelector('.header__logo');
   const $menuItem = document.querySelector('.nav__list').getElementsByTagName('li');
+  const $up = document.querySelector('.go-top');
 
   const controllerHeader = new ScrollMagic.Controller();
 
@@ -27,6 +30,14 @@ const Header = () => {
   //   .addTo(controllerHeader);
 
   // }
+
+  console.log($up);
+
+  if ($up != null) {
+    $up.addEventListener('click', () => {
+     scroll(0, 300, 'linear');
+    })
+  }
 
 
   const openMenu = () => {

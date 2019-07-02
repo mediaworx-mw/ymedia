@@ -160,7 +160,7 @@
               <?php the_field('graficos_canal'); ?>
 
               <?php require get_template_directory() . '/inc/graficos-newsletters/master.php'; ?>
-                                  
+
             </div>
           </div>
         </div>
@@ -170,8 +170,11 @@
 
 
     </div>
+   <?php get_template_part('components/go-top') ?>
   </article>
+
 <?php endwhile;?>
+
 </div>
 <?php grid('gray') ?>
 <?php get_footer(); ?>

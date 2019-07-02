@@ -1,0 +1,39 @@
+.button {
+  display: inline-block;
+  padding: 2rem;
+  font-size: 2rem;
+  line-height: 1;
+  position: relative;
+  &--red {
+    background: $red;
+    color: white;
+  }
+  &--gray {
+    background: $gray;
+    color: white;
+  }
+  &--back {
+    i {
+      color: white;
+      margin: 0 1rem 0 0;
+      font-size: 2rem;
+    }
+  }
+}
+
+.go-top {
+  text-align: center;
+  background: $red;
+  display: inline-block;
+  position: absolute;
+  padding: 2rem;
+  cursor: pointer;
+  right: 2rem;
+  bottom: 7rem;
+  border: none;
+  z-index: 10;
+  i {
+    color: white;
+    font-size: 3rem;
+  }
+}

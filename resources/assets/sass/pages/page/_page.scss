@@ -1,10 +1,12 @@
 .page {
-  padding: 0 0 8rem 0;
+  padding: 4rem 0 8rem 0;
+  min-height: 750px;
+  height: 93vh;
 
   &__title {
     color: $red;
-    font-size: 3rem;
-    line-height: 4rem;
+    font-size: 5rem;
+    line-height: 6rem;
     margin: 0 0 3rem 0;
   }
 }
