@@ -55,6 +55,7 @@ var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
 valueAxis.renderer.baseGrid.disabled = true;
+valueAxis.extraMax = 0.05;
 
 var topContainer = chart.chartContainer.createChild(am4core.Container);
 topContainer.layout = "absolute";
@@ -115,6 +116,10 @@ function createSeries(field) {
 }
 
   createSeries('Cuota (%)', 1);
+  
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })
 }
 
 var graficoDiaria2_show = false;

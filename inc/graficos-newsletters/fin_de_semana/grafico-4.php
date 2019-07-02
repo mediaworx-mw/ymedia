@@ -36,16 +36,17 @@ function  graficoFDS4(dia) {
         x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
-        x['Logos'] = moreData[0].logos.map(x => "<img style='width:40px;height:40px;margin:10px' src='"+x+"'>").join().replace(/,/g,'');
+        x['Logos'] = moreData[0].logos.map(x => "<img style='width:30px;height:30px;margin:10px' src='"+x+"'>").join().replace(/,/g,'');
       }
       return x;
     }
   ); 
+
   var sorted = input.sort((a, b) => (a[Object.keys(input[0])[1]] > b[Object.keys(input[0])[1]]) ? 1 : -1);
   chart.data = sorted;
-  chart.innerRadius = am4core.percent(20);
+  chart.innerRadius = am4core.percent(10);
   // console.log(sorted);
-  chart.height = am4core.percent(80);
+  chart.height = am4core.percent(50);
   chart.valign = "middle";
   chart.align = "left";
 
@@ -71,9 +72,10 @@ function  graficoFDS4(dia) {
   series.tooltip.label.interactionsEnabled = true;
   // console.log(series.tooltip);
 
+  series.slices.template.radius = 20;
   series.slices.template.cornerRadius = 10;
   series.slices.template.stroke = am4core.color("#fff");
-  series.slices.template.strokeWidth = 3;
+  series.slices.template.strokeWidth = 1;
   series.slices.template.strokeOpacity = 1;
   series.slices.template.tool = 1;
   series.alignLabels = false;
@@ -81,14 +83,13 @@ function  graficoFDS4(dia) {
   series.labels.template.html = '<span class="tarta-logos-label"><span class="logo"><img src={logo}></span><br><span>{value}%</span></span>';
   series.slices.template.tooltipHTML = "<div class=\"grupo-de-logos\">{logos}</div>";
 
-
-  var bullet = series.bullets.push(new am4charts.Bullet());
+  // var bullet = series.bullets.push(new am4charts.Bullet());
   
-  bullet.radius = 1;
-  var image = bullet.createChild(am4core.Image);
-  image.propertyFields.href = 'Logo';
-  image.width = 60;
-  image.height = 60;
+  // bullet.radius = 1;
+  // var image = bullet.createChild(am4core.Image);
+  // image.propertyFields.href = 'Logo';
+  // image.width = 30;
+  // image.height = 30;
 
 
   // Create initial animation
@@ -98,20 +99,35 @@ function  graficoFDS4(dia) {
 
   series.ticks.template.disabled = false;
 
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })
+  
+  return chart;
 }
-
 
 var graficoFDS4_show = {"vie": false, "sab": false, "dom": false};
 
 dias.forEach(dia => {
-  jQuery("#grafico-fds-4-" + dia).waypoint(function() {
-    if(!graficoFDS4_show[dia]) {
-      graficoFDS4(dia);
-    }
-    graficoFDS4_show[dia] = true;
-  }, {
-    offset: '75%'
+
+  ScrollReveal().reveal("#grafico-fds-4-" + dia, {
+    afterReveal: function activar (el) {
+      if(!graficoFDS4_show[dia]) {
+        thischart = graficoFDS4(dia);
+      }
+      graficoFDS4_show[dia] = true;
+    },
+    afterReset: function activar (el) {
+      if(graficoFDS4_show[dia]) {
+        
+        thischart = null;
+        jQuery("#grafico-fds-4-" + dia)[0].innerHTML = "";
+      }
+      graficoFDS4_show[dia] = false;
+    },
+    reset: true
   });
+
 });
 
 

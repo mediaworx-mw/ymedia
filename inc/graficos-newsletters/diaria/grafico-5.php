@@ -19,10 +19,11 @@ function  graficoDiaria5() {
 
   // Set data
   input = [];
-  input = datosGraficos['Spot de oro - Top3'].map(x => {
+  input = datosGraficos['Spot de oro - Top3'].map((x, i) => {
       const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
       // console.log(x);
       if (moreData) {
+        x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' (' + i + ')';        
         x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -50,12 +51,19 @@ function  graficoDiaria5() {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
-  // categoryAxis.height = 500;
+
+  var label = categoryAxis.renderer.labels.template;
+  label.wrap = true;
+  label.maxWidth = 150;
+  label.truncate = true;
+  label.maxHeight = 60;
+  label.tooltipText = "{category}";
 
   var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
+  valueAxis.extraMax = 0.05;
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";
@@ -122,6 +130,11 @@ function  graficoDiaria5() {
   }
 
     createSeries('Grp’s a formato', 1);
+
+    
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })
 }
 
 

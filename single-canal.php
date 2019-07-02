@@ -58,8 +58,10 @@
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
             </div>
-             <div class="canal-single__graficos entry">
+            <div class="canal-single__graficos entry">
               <?php the_field('graficos_canal'); ?>
+
+              <?php require get_template_directory() . '/inc/graficos-newsletters/master.php'; ?>
             </div>
           </div>
         </div>
@@ -107,8 +109,10 @@
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
             </div>
-             <div class="canal-single__graficos entry">
+            <div class="canal-single__graficos entry">
               <?php the_field('graficos_canal'); ?>
+
+              <?php require get_template_directory() . '/inc/graficos-newsletters/master.php'; ?>
             </div>
           </div>
         </div>

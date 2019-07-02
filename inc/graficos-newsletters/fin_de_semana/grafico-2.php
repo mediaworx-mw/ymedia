@@ -18,13 +18,12 @@ chart.dateFormatter.language.locale = am4lang_es_ES;
 enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
 // Set data
-if(dia === 'vie') { input = datosGraficos['Cuota de las cadenas - Top5'].slice( 1,6); }
-if(dia === 'sab') { input = datosGraficos['Cuota de las cadenas - Top5'].slice( 7,12); }
-if(dia === 'dom') { input = datosGraficos['Cuota de las cadenas - Top5'].slice(13,18); }
+if(dia === 'vie') { input = datosGraficos['Cuota de las cadenas - Top5'].slice( 1,6); dayTitle = 'Viernes'};
+if(dia === 'sab') { input = datosGraficos['Cuota de las cadenas - Top5'].slice( 7,12); dayTitle = 'Sábado'};
+if(dia === 'dom') { input = datosGraficos['Cuota de las cadenas - Top5'].slice(13,18); dayTitle = 'Domingo'};
 
 input = input.map(x => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
-  // console.log(x);
   if (moreData) {
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
@@ -57,12 +56,14 @@ var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
 valueAxis.renderer.baseGrid.disabled = true;
+valueAxis.extraMax = 0.05;
 
 var topContainer = chart.chartContainer.createChild(am4core.Container);
 topContainer.layout = "absolute";
 topContainer.toBack();
 topContainer.paddingBottom = 15;
 topContainer.width = am4core.percent(100);
+
 
 var axisTitle = topContainer.createChild(am4core.Label);
 axisTitle.text = "Cuota (%)";
@@ -92,8 +93,8 @@ function createSeries(field) {
   bullet.locationY = 1;
   var image = bullet.createChild(am4core.Image);
   image.propertyFields.href = 'Logo';
-  image.width = 40;
-  image.height = 40;
+  image.width = 30;
+  image.height = 30;
   image.dy = -10;
   image.dx = 0;
   image.y = am4core.percent(100);
@@ -117,20 +118,37 @@ function createSeries(field) {
 }
 
   createSeries('Cuota (%)', 1);
+
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })
+
+  return chart;
 }
 
 
 var graficoFDS2_show = {"vie": false, "sab": false, "dom": false};
 
 dias.forEach(dia => {
-  jQuery("#grafico-fds-2-" + dia).waypoint(function() {
-    if(!graficoFDS2_show[dia]) {
-      graficoFDS2(dia);
-    }
-    graficoFDS2_show[dia] = true;
-  }, {
-    offset: '75%'
+
+  ScrollReveal().reveal("#grafico-fds-2-" + dia, {
+    afterReveal: function activar (el) {
+      if(!graficoFDS2_show[dia]) {
+        thischart = graficoFDS2(dia);
+      }
+      graficoFDS2_show[dia] = true;
+    },
+    afterReset: function activar (el) {
+      if(graficoFDS2_show[dia]) {
+        
+        thischart = null;
+        jQuery("#grafico-fds-2-" + dia)[0].innerHTML = "";
+      }
+      graficoFDS2_show[dia] = false;
+    },
+    reset: true
   });
+
 });
   
 
