@@ -23,10 +23,11 @@ if(dia === 'vie') { input = datosGraficos['Spot de oro - Top3'].slice( 1, 4); }
 if(dia === 'sab') { input = datosGraficos['Spot de oro - Top3'].slice( 5, 8); }
 if(dia === 'dom') { input = datosGraficos['Spot de oro - Top3'].slice( 9, 12); }
 
-input = input.map(x => {
+input = input.map((x, i) => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
   // console.log(x);
   if (moreData) {
+    x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' (' + i + ')';
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;
@@ -39,7 +40,7 @@ input = input.map(x => {
   var sorted = input.sort((a, b) => (a['Grp’s a formato'] < b['Grp’s a formato']) ? 1 : -1)
   
   chart.data = sorted;
-  console.log(sorted);
+  // console.log(sorted);
 
   chart.colors.list = [am4core.color("#dddddd")];
 
@@ -53,12 +54,19 @@ input = input.map(x => {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
-  // categoryAxis.height = 500;
+  
+  var label = categoryAxis.renderer.labels.template;
+  label.wrap = true;
+  label.maxWidth = 110;
+  label.truncate = true;
+  label.maxHeight = 60;
+  label.tooltipText = "{category}";
 
   var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
+  valueAxis.extraMax = 0.05;  
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";
@@ -71,7 +79,7 @@ input = input.map(x => {
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
   axisTitle.align = "left";
-  axisTitle.paddingRight = 100;
+  // axisTitle.paddingRight = 100;
 
 
   // Create series
@@ -117,6 +125,7 @@ input = input.map(x => {
     valueLabel.label.hideOversized = true;
     valueLabel.label.truncate = true;
     valueLabel.label.maxWidth = 120;
+    valueLabel.label.maxHeight = 20;
 
     // console.log(bullet);
     // console.log(image);
@@ -124,20 +133,35 @@ input = input.map(x => {
     return series;
   }
 
-    createSeries('Grp’s a formato', 1);
+  createSeries('Grp’s a formato', 1);
+
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })    
+
+  return chart;
 }
 
 
 var graficoFDS5_show = {"vie": false, "sab": false, "dom": false};
 
 dias.forEach(dia => {
-  jQuery("#grafico-fds-5-" + dia).waypoint(function() {
-    if(!graficoFDS5_show[dia]) {
-      graficoFDS5(dia);
-    }
-    graficoFDS5_show[dia] = true;
-  }, {
-    offset: '75%'
+  ScrollReveal().reveal("#grafico-fds-5-" + dia, {
+    afterReveal: function activar (el) {
+      if(!graficoFDS5_show[dia]) {
+        thischart = graficoFDS5(dia);
+      }
+      graficoFDS5_show[dia] = true;
+    },
+    afterReset: function activar (el) {
+      if(graficoFDS5_show[dia]) {
+        thischart = null;
+        jQuery("#grafico-fds-5-" + dia)[0].innerHTML = "";
+        // thischart = null;
+      }
+      graficoFDS5_show[dia] = false;
+    },
+    reset: true
   });
 });
 

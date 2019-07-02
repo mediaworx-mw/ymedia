@@ -9,6 +9,7 @@ if( $activar_graficos ) {
 
   ?>
     <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha256-jDnOKIOq2KNsQZTcBTEnsp76FnfMEttF6AV2DF2fFNE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.5/scrollreveal.min.js" integrity="sha256-8VU/+18Z5eyYrv12HuV6lH74T2PFmP1ggKi+JkwYDHE=" crossorigin="anonymous"></script>
     <script src="//www.amcharts.com/lib/4/core.js"></script>
     <script src="//www.amcharts.com/lib/4/charts.js"></script>
     <script src="//www.amcharts.com/lib/4/themes/animated.js"></script>
@@ -88,41 +89,56 @@ if( $activar_graficos ) {
       <div class="grafico_wrapper">
         <h2>Programas - Top 10</h2>
         <div id="grafico-diaria-1" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_diaria['programas_-_top_10']['fuente']; ?></p>
+        <p class="graficos-fuente"><?php echo $newsletter_diaria['programas_-_top_10']['fuente']; ?></p>
         <br>
         <div><?php echo $newsletter_diaria['programas_-_top_10']['texto']; ?></div>
+        <br>
+        <br>
+        <br>
       </div>
 
       <div class="grafico_wrapper">
         <h2>Cuota de las cadenas - Top 5</h2>
         <div id="grafico-diaria-2" class="grafico-inner" style="min-height: 420px"></div>
-        <p><?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
+        <p class="graficos-fuente"><?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
         <br>
         <div><?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['texto']; ?></div>
+        <br>
+        <br>
+        <br>
       </div>
 
       <div class="grafico_wrapper">
         <h2>Cuota de las temáticas en abierto - Top 5</h2>
         <div id="grafico-diaria-3" class="grafico-inner" style="min-height: 420px"></div>
-        <p><?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
+        <p class="graficos-fuente"><?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
         <br>
         <div><?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['texto']; ?></div>
+        <br>
+        <br>
+        <br>
       </div>
 
       <div class="grafico_wrapper">
         <h2>Cuota por grupos de comunicación</h2>
-        <div id="grafico-diaria-4" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
+        <div id="grafico-diaria-4" class="grafico-inner" style="min-height: 420px"></div>
+        <p class="graficos-fuente"><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
         <br>
         <div><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['texto']; ?></div>
+        <br>
+        <br>
+        <br>
       </div>
 
       <div class="grafico_wrapper">
         <h2>Spot de oro – Top 3</h2>
         <div id="grafico-diaria-5" class="grafico-inner" style="min-height: 420px"></div>
-        <p><?php echo $newsletter_diaria['spot_de_oro_–_top_3']['fuente']; ?></p>
+        <p class="graficos-fuente"><?php echo $newsletter_diaria['spot_de_oro_–_top_3']['fuente']; ?></p>
         <br>
         <div><?php echo $newsletter_diaria['spot_de_oro_–_top_3']['texto']; ?></div>
+        <br>
+        <br>
+        <br>
       </div>
 
     <?php 
@@ -137,109 +153,111 @@ if( $activar_graficos ) {
       $newsletter_fin_de_semana = get_field( "newsletter_fin_de_semana" );
     ?>
       <h2>Programas - Top 10</h2>
-      <div class="grafico_wrapper">
-        <h3>Viernes</h3>
-        <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['programas_-_top_10']['fuente']; ?></p>
+      <div class="graficos-fds-vertical">
+        <div class="grafico_wrapper">
+          <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 380px"></div>
+          <div id="grafico-fds-1-sab" class="grafico-inner" style="min-height: 380px"></div>
+          <div id="grafico-fds-1-dom" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
       </div>
-      <div class="grafico_wrapper">
-        <h3>Sábado</h3>
-        <div id="grafico-fds-1-sab" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['programas_-_top_10']['fuente']; ?></p>
-      </div>
-      <div class="grafico_wrapper">
-        <h3>Domingo</h3>
-        <div id="grafico-fds-1-dom" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['programas_-_top_10']['fuente']; ?></p>
-      </div>
+      <br>
+      <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['programas_-_top_10']['fuente']; ?></p>
       <br>
       <div><?php echo $newsletter_fin_de_semana['programas_-_top_10']['texto']; ?></div>
       <br>
       <br>
+      <br>
 
       <h2>Cuota de las cadenas - Top 5</h2>
-      <div class="grafico_wrapper">
-        <h3>Viernes</h3>
-        <div id="grafico-fds-2-vie" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
+      <div class="graficos-fds">
+        <div class="grafico_wrapper">
+          <h4>Viernes</h4>
+          <div id="grafico-fds-2-vie" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Sábado</h4>
+          <div id="grafico-fds-2-sab" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Domingo</h4>
+          <div id="grafico-fds-2-dom" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
       </div>
-      <div class="grafico_wrapper">
-        <h3>Sábado</h3>
-        <div id="grafico-fds-2-sab" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
-      </div>
-      <div class="grafico_wrapper">
-        <h3>Domingo</h3>
-        <div id="grafico-fds-2-dom" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
-      </div>
+      <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
       <br>
       <div><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['texto']; ?></div>
       <br>
-      <br>      
+      <br>
+      <br>
       
       <h2>Cuota de las temáticas en abierto - Top 5</h2>
-      <div class="grafico_wrapper">
-        <h3>Viernes</h3>
-        <div id="grafico-fds-3-vie" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
+      <div class="graficos-fds">
+        <div class="grafico_wrapper">
+          <h4>Viernes</h4>
+          <div id="grafico-fds-3-vie" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Sábado</h4>
+          <div id="grafico-fds-3-sab" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Domingo</h4>
+          <div id="grafico-fds-3-dom" class="grafico-inner" style="min-height: 380px"></div>
+          </div>
       </div>
-      <div class="grafico_wrapper">
-        <h3>Sábado</h3>
-        <div id="grafico-fds-3-sab" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
-      </div>
-      <div class="grafico_wrapper">
-        <h3>Domingo</h3>
-        <div id="grafico-fds-3-dom" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
-      </div>
+      <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
       <br>
       <div><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['texto']; ?></div>
       <br>
-      <br>  
+      <br>
+      <br>
 
       <h2>Cuota por grupos de comunicación</h2>
-      <div class="grafico_wrapper">
-        <h3>Viernes</h3>
-        <div id="grafico-fds-4-vie" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
+      <div class="graficos-fds">
+        <div class="grafico_wrapper">
+          <h4>Viernes</h4>
+          <div id="grafico-fds-4-vie" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Sábado</h4>
+          <div id="grafico-fds-4-sab" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Domingo</h4>
+          <div id="grafico-fds-4-dom" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <br>
       </div>
-      <div class="grafico_wrapper">
-        <h3>Sábado</h3>
-        <div id="grafico-fds-4-sab" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
-      </div>
-      <div class="grafico_wrapper">
-        <h3>Domingo</h3>
-        <div id="grafico-fds-4-dom" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
-      </div>
+      <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
       <br>
       <div><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['texto']; ?></div>
       <br>
-      <br>    
-      
+      <br>
+      <br>
+
+
       <h2>Spot de oro – Top 3</h2>
-      <div class="grafico_wrapper">
-        <h3>Viernes</h3>
-        <div id="grafico-fds-5-vie" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['fuente']; ?></p>
+      <div class="graficos-fds">
+        <div class="grafico_wrapper">
+          <h4>Viernes</h4>
+          <div id="grafico-fds-5-vie" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Sábado</h4>
+          <div id="grafico-fds-5-sab" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
+        <div class="grafico_wrapper">
+          <h4>Domingo</h4>
+          <div id="grafico-fds-5-dom" class="grafico-inner" style="min-height: 380px"></div>
+        </div>
       </div>
-      <div class="grafico_wrapper">
-        <h3>Sábado</h3>
-        <div id="grafico-fds-5-sab" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['fuente']; ?></p>
-      </div>
-      <div class="grafico_wrapper">
-        <h3>Domingo</h3>
-        <div id="grafico-fds-5-dom" class="grafico-inner" style="min-height: 520px"></div>
-        <p><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['fuente']; ?></p>
-      </div>
+      <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['fuente']; ?></p>
       <br>
       <div><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['texto']; ?></div>
       <br>
-      <br>    
+      <br>
+      <br>
+
 
 
     <?php 

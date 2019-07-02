@@ -1,13 +1,10 @@
 .grafico_wrapper {
   max-width: 750px;
-  margin-bottom: 10rem;
+  // margin-bottom: 10rem;
   display: block;
   -webkit-column-break-inside: avoid;
-  /* Chrome, Safari */
   page-break-inside: avoid;
-  /* Theoretically FF 20+ */
   break-inside: avoid-column;
-  /* IE 11 */
 
   .grupo-de-logos {
     max-width: 300px;
@@ -24,21 +21,58 @@
     display: block;
     text-align: center;
     font-size: 14px;
+
     img {
-      width: 90px;
-      height: 90px;
+      width: 70px;
+      height: 70px;
+      margin-top: -20px;
       margin-bottom: -20px;
     }
   }
 }
 
-.grafico_fuente {
-  display: block;
-  margin-top: 10px;
-  // border-top:solid 1px #CCC;
-  padding-top: 10px;
+.graficos-fds {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  @include tablet {
+    flex-wrap: wrap;
+  }
+
+  .grafico_wrapper {
+    width: 33%;
+    // margin-bottom: 5rem;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
 }
 
+.graficos-fds-vertical {
+  margin-bottom: 1rem;
+
+  h3 {
+    margin-bottom: -3.8rem;
+  }
+
+  .grafico_wrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+p.graficos-fuente {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 4rem;
+  // border-top:solid 1px #CCC;
+  font-size: 1.2rem;
+}
+
+img[src="[object"] {
+  display: none;
+}
 
 .grafico-tabla {
   background: #fff;

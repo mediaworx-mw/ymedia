@@ -58,9 +58,6 @@
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
             </div>
-             <div class="canal-single__graficos entry">
-              <?php the_field('graficos_canal'); ?>
-            </div>
           </div>
         </div>
 

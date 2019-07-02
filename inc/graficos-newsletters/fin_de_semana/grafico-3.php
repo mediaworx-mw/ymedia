@@ -59,6 +59,7 @@ var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
 valueAxis.renderer.baseGrid.disabled = true;
+valueAxis.extraMax = 0.05;
 
 
 var topContainer = chart.chartContainer.createChild(am4core.Container);
@@ -95,8 +96,8 @@ function createSeries(field) {
   bullet.locationY = 1;
   var image = bullet.createChild(am4core.Image);
   image.propertyFields.href = 'Logo';
-  image.width = 40;
-  image.height = 40;
+  image.width = 30;
+  image.height = 30;
   image.dy = -10;
   image.dx = 0;
   image.y = am4core.percent(100);
@@ -119,20 +120,37 @@ function createSeries(field) {
 }
 
   createSeries('Cuota (%)', 1);
+
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })
+  
+  return chart;
 }
 
 
 var graficoFDS3_show = {"vie": false, "sab": false, "dom": false};
 
 dias.forEach(dia => {
-  jQuery("#grafico-fds-3-" + dia).waypoint(function() {
-    if(!graficoFDS3_show[dia]) {
-      graficoFDS3(dia);
-    }
-    graficoFDS3_show[dia] = true;
-  }, {
-    offset: '75%'
+
+  ScrollReveal().reveal("#grafico-fds-3-" + dia, {
+    afterReveal: function activar (el) {
+      if(!graficoFDS3_show[dia]) {
+        thischart = graficoFDS3(dia);
+      }
+      graficoFDS3_show[dia] = true;
+    },
+    afterReset: function activar (el) {
+      if(graficoFDS3_show[dia]) {
+        
+        thischart = null;
+        jQuery("#grafico-fds-3-" + dia)[0].innerHTML = "";
+      }
+      graficoFDS3_show[dia] = false;
+    },
+    reset: true
   });
+
 });
 
 

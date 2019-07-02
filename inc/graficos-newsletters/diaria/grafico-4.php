@@ -90,7 +90,10 @@ function  graficoDiaria4() {
   series.hiddenState.properties.startAngle = -90;
 
   series.ticks.template.disabled = false;
-
+  
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })
 }
 
 

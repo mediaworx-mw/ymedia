@@ -52,6 +52,11 @@ function  graficoDiaria1() {
   categoryAxis.renderer.grid.template.disabled = true;
   categoryAxis.height = 500;
 
+  var label = categoryAxis.renderer.labels.template;
+  label.wrap = true;
+  label.maxWidth = 110;
+  label.textAlign = 'end';
+
   var categoryAxis2 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis2.dataFields.category = category;
   categoryAxis2.dataFields.cuota = "Cuota (%)";
@@ -68,6 +73,7 @@ function  graficoDiaria1() {
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
+  valueAxis.extraMax = 0.05;
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";
@@ -158,6 +164,10 @@ function  graficoDiaria1() {
 
   createSeries('AM (000)', 1);
 
+  
+  jQuery(document).ready(function(){
+    jQuery("g[aria-labelledby]").hide();
+  })
 }
 
 var graficoDiaria1_show = false;
