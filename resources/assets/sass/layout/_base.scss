@@ -53,6 +53,15 @@ html, body{
 
 }
 
+.trail {
+  position: absolute;
+  height: 8px; width: 8px;
+  border-radius: 0;
+  background: #cccccc;
+  z-index: 10000;
+  pointer-events: none;
+}
+
 @keyframes scale {
   0% { transform: scale(1)}
   100% { transform: scale(0) }
