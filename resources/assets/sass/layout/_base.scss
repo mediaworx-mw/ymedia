@@ -37,6 +37,27 @@ html, body{
   margin: 0 auto;
 }
 
+.cursor-trail {
+  position: absolute;
+  z-index: 10000;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background-color: $gray-light;
+  pointer-events: none;
+  animation: scale 2s forwards;
+
+}
+
+@keyframes scale {
+  0% { transform: scale(1)}
+  100% { transform: scale(0) }
+}
+
 @include hd {
  .container-grid {
     display: grid;

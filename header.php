@@ -9,9 +9,11 @@
   <?php wp_head(); ?>
 </head>
 <?php if (!is_front_page()): ?>
-  <body class="body--big">
+  <body id="trail" class="body--big">
 <?php else: ?>
-  <body>
+  <body id="trail" >
+
+
 <?php endif; ?>
 
 <?php if (is_page('canal-ymedia')): ?>
