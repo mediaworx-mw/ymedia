@@ -22,7 +22,7 @@
   <header class="header">
 <?php endif; ?>
   <div class="header__inner container">
-    <a href="<?php echo site_url('/'); ?>" class="header__logo">
+    <a href="<?php echo bloginfo('url'); ?>" class="header__logo">
       <?php get_template_part('svg/logo') ?>
     </a>
     <button class="pull" type="button">

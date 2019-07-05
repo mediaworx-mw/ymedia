@@ -100,7 +100,10 @@
 
 .canal-main__list--results {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  display: flex;
+
+
   .canal-article {
     width: 83.3333%;
     margin: 0 0 4rem 0;
@@ -130,6 +133,12 @@
       margin: 0 0 1rem 0;
     }
   }
+}
+
+.no-results {
+  font-size: 4rem;
+  color: $red;
+  text-align: center;
 }
 
 @include desktop {
@@ -186,7 +195,12 @@
 
   .canal-main__list--results {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+     .no-results {
+      font-size: 3rem;
+      color: $red;
+      text-align: center;
+    }
     .canal-article {
       width: 100%;
       margin: 0 0 4rem 0;
@@ -229,4 +243,11 @@
       }
     }
   }
+  .no-results {
+    margin: 2rem 0 0 0;
+    font-size: 3rem;
+    color: $red;
+    text-align: center;
+  }
 }
+

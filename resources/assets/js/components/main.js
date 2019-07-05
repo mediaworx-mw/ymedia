@@ -81,7 +81,6 @@ const Main = () => {
     let y = mouse.y;
 
     dots.forEach(function(dot, index, dots) {
-
       let nextDot = dots[index + 1] || dots[0];
       dot.x = x;
       dot.y = y;

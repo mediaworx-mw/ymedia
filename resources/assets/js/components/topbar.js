@@ -6,6 +6,7 @@ import ScrollMagic from 'scrollmagic';
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 const Topbar = () => {
+
   if(document.body.contains(document.querySelector('.topbar'))){
     const $topbar = document.querySelector('.topbar');
     const $calendar = document.querySelector('.calendar');
@@ -27,7 +28,6 @@ const Topbar = () => {
     const $main = document.querySelector('.canal-main');
     const dates = document.querySelector('.canal').getAttribute('data-dates');
     const enabled = dates.split(',');
-
     const $topbarm = document.querySelector('.topbarm');
     const $topbarmTitle = document.querySelector('.topbarm__tags-title');
     const $topbarmTags = document.querySelector('.topbarm__tags');
@@ -42,12 +42,8 @@ const Topbar = () => {
     const $topbarmKeySumbit = document.querySelector('.topbarm__key-submit');
     const $topbarmKeyClear = document.querySelector('.topbarm__key-clear');
     const $topbarmKeyInput = document.querySelector('.topbarm__key-input');
-
     const $togglesKey = document.querySelector('.canal-toggles-key');
     const $togglesCal = document.querySelector('.canal-toggles-cal');
-
-
-
 
     //Topbar Desktop
 
@@ -169,7 +165,8 @@ const Topbar = () => {
     let offsetIncrement = 0;
 
     const empty = () => {
-      console.log('pupu');
+
+
       fetch('empty', false, 0, inputValue, filterDate);
     }
 
@@ -196,7 +193,7 @@ const Topbar = () => {
           let data = JSON.parse(ourRequest.responseText);
 
           if(data == null) {
-            $placeholder.innerHTML= '';
+            $placeholder.innerHTML= '<h1 class="no-results">Ups!! No hay noticias disponibles.</h1>';
             $load.classList.remove('visible');
 
           }
@@ -265,6 +262,7 @@ const Topbar = () => {
 
         if ( termsArray.length == 0) {
           empty();
+
         } else {
           fetch(termsArray, false, 0, inputValue, filterDate);
         }
@@ -300,6 +298,7 @@ const Topbar = () => {
 
         if ( termsArray.length == 0) {
           empty();
+
         } else {
           fetch(termsArray, false, offset, inputValue, filterDate);
         }
