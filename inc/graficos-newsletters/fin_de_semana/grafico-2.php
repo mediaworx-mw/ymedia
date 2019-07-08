@@ -25,6 +25,7 @@ if(dia === 'dom') { input = datosGraficos['Cuota de las cadenas - Top5'].slice(1
 input = input.map(x => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
   if (moreData) {
+    x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;

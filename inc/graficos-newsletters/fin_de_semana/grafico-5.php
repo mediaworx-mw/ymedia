@@ -28,6 +28,7 @@ input = input.map((x, i) => {
   // console.log(x);
   if (moreData) {
     x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' (' + i + ')';
+    x['Grp’s a formato'] = x['Grp’s a formato'].toString().replace(/\./g, '').replace(/,/g, '.');   
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;

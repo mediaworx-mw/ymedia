@@ -33,6 +33,7 @@ function  graficoFDS4(dia) {
       // console.log(x);
       if (moreData.length !== 0) {
         // console.log(moreData)
+        x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
         x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;

@@ -4,13 +4,6 @@
   align-items: flex-start;
 }
 
-.graficos-fds-vertical {
-  .grafico_wrapper  {
-    width: 100%;
-  }
-}
-
-
 .grafico_wrapper {
   // max-width: 750px;
   // margin-bottom: 10rem;
@@ -21,8 +14,9 @@
 
   width: 49%;
   display: inline-block;
+  padding-right: 3rem;
 
-  @include tablet {
+  @include desktop {
     width: 100%;
   }
 
@@ -68,7 +62,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  @include tablet {
+
+  @include desktop {
     flex-wrap: wrap;
   }
 
@@ -76,8 +71,8 @@
     width: 33%;
     // margin-bottom: 5rem;
 
-    @include tablet {
-      width: 100%;
+    @include desktop {
+      width: 100% !important;
     }
   }
 }
