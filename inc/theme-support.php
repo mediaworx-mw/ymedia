@@ -56,6 +56,10 @@ function string_limit_words($string, $word_limit)
 
 add_filter( 'wpcf7_validate_configuration', '__return_false' );
 
+add_filter( 'excerpt_length', function($length) {
+    return 999;
+} );
+
 /* Allow uploading SVG files */
 function cc_mime_types($mimes) {
   $mimes['svg'] = 'image/svg+xml';

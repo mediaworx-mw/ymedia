@@ -90,7 +90,8 @@ const Topbar = () => {
       items.forEach(function(item, index) {
         let title = items[index].title;
         let permalink = items[index].permalink;
-        let excerpt = items[index].excerpt.split(" ").splice(0, 20).join(" ");
+        //let excerpt = items[index].excerpt.split(" ").splice(0, 20).join(" ");
+        let excerpt = items[index].excerpt;
         let image = items[index].thumbnail;
         let date = items[index].date;
         let color = '';

@@ -3,13 +3,12 @@
   padding-top: 6rem;
   padding-bottom: 10rem;
 }
-
 .canal-single {
   &__top {
     width: 100%;
     position: relative;
     &--small {
-      width: 66.66%;
+      width: 83.3333%;
       .canal-single__title{
         color: $red;
       }
@@ -45,7 +44,6 @@
         rgba(0,0,0,0) 45%,
         rgba(0,0,0,0.6) 100%
       );
-
     }
   }
   &__header {
@@ -118,25 +116,19 @@
   }
 
   &__main {
+    position: relative;
     padding-top: 4rem;
     padding-bottom: 4rem;
     display: flex;
     justify-content: flex-start;
-    .single-side {
-      width: calc( 100% / 6);
-    }
-
   }
-
-
   &__content {
     width: calc( (100%/ 6 ) * 4);
+    width: 100%;
   }
-
   &__excerpt {
     position: relative;
     padding-bottom: 4rem;
-
       font-size: 2rem;
       line-height: 3rem;
       font-weight: $bold;
@@ -149,10 +141,8 @@
       .single-side {
         display: none;
       }
-
       font-size: 1.8rem;
       line-height: 2.6rem;
-
     }
   }
   &__entry {
@@ -166,7 +156,7 @@
   }
 }
 
-@include desktop {
+@include desktop-wide {
   .single {
     position: relative;
     padding-bottom: 6rem;
@@ -185,6 +175,11 @@
           bottom: auto;
           top: 0;
         }
+      }
+    }
+    &__excerpt {
+      &--small {
+        padding: 0;
       }
     }
     &__top-wrap {
@@ -216,14 +211,11 @@
       margin: 0 0 2rem 0;
       font-size: 1.6rem;
     }
-
     &__title {
       color: white;
       font-size: 3rem;
       line-height: 4rem;
-
     }
-
     &__meta {
       position: absolute;
       left: 0;
@@ -269,7 +261,6 @@
         font-weight: $bold;
       }
     }
-
     &__main {
       display: flex;
       justify-content: flex-start;

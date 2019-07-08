@@ -53,7 +53,7 @@
           <?php get_template_part('components/canal/single-side'); ?>
           <div class="canal-single__content">
             <div class="canal-single__excerpt canal-single__excerpt--full">
-              <?php echo wp_trim_words(get_the_excerpt(), 40, '[…]'); ?>
+              <?php the_excerpt(); ?>
             </div>
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
@@ -104,7 +104,7 @@
           <?php get_template_part('components/canal/single-side'); ?>
           <div class="canal-single__content">
             <div class="canal-single__excerpt canal-single__excerpt--full">
-              <?php echo wp_trim_words(get_the_excerpt(), 40, '[…]'); ?>
+              <?php the_excerpt(); ?>
             </div>
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
@@ -150,7 +150,7 @@
           <div class="canal-single__excerpt canal-single__excerpt--small">
             <?php get_template_part('components/canal/single-side'); ?>
 
-            <?php echo wp_trim_words(get_the_excerpt(), 40, ' […]'); ?>
+            <?php the_excerpt(); ?>
           </div>
         </div>
 

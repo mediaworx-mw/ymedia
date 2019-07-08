@@ -100,7 +100,11 @@ const Main = () => {
     requestAnimationFrame(animate);
   }
 
-  animate();
+  if (window.innerWidth >=780) {
+    animate();
+  }
+
+
 }
 
 export default Main;
