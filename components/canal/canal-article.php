@@ -16,7 +16,7 @@ $color = get_field('color_categoria', $terms[0]);
       <div class="article-meta canal-article__meta">
         <span class="article-date canal-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
       </div>
-      <div class="canal-article__excerpt article-excerpt"><?php the_excerpt(); ?></div>
+      <div class="canal-article__excerpt article-excerpt"> <?php the_field('resumen_canal') ?></div>
     </div>
   </div>
 </article>

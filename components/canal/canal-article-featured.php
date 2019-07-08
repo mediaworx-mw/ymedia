@@ -36,7 +36,7 @@ foreach($terms as $key=>$term){
         <span class="article-date canal-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
       </div>
       <div class="canal-article__excerpt article-excerpt">
-        <?php the_excerpt(); ?>
+         <?php the_field('resumen_canal') ?>
 
       </div>
     </div>

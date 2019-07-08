@@ -53,7 +53,7 @@
           <?php get_template_part('components/canal/single-side'); ?>
           <div class="canal-single__content">
             <div class="canal-single__excerpt canal-single__excerpt--full">
-              <?php the_excerpt(); ?>
+              <?php the_field('resumen_canal') ?>
             </div>
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
@@ -104,7 +104,7 @@
           <?php get_template_part('components/canal/single-side'); ?>
           <div class="canal-single__content">
             <div class="canal-single__excerpt canal-single__excerpt--full">
-              <?php the_excerpt(); ?>
+              <?php the_field('resumen_canal') ?>
             </div>
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
@@ -150,7 +150,7 @@
           <div class="canal-single__excerpt canal-single__excerpt--small">
             <?php get_template_part('components/canal/single-side'); ?>
 
-            <?php the_excerpt(); ?>
+             <?php the_field('resumen_canal') ?>
           </div>
         </div>
 

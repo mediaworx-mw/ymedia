@@ -8,6 +8,6 @@
     <div class="resultados-article__meta">
       <span class="resultados-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
     </div>
-    <div class="resultados-article__excerpt"><?php the_excerpt(); ?></div>
+    <div class="resultados-article__excerpt"> <?php the_field('resumen_canal') ?></div>
   </div>
 </article>
