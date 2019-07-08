@@ -1,11 +1,13 @@
 <script>
 
-function  graficoDiaria1() {
+var dias = [ 'vie', 'sab', 'dom' ];
+
+function  graficoMensual1(dia) {
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
   
   // Create chart instance
-  var chart = am4core.create("grafico-diaria-1", am4charts.XYChart);
+  var chart = am4core.create("grafico-mensual-1-" + dia, am4charts.XYChart);
   
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -17,26 +19,25 @@ function  graficoDiaria1() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = [];
-  input = datosGraficos['Programas - Top10'].map(x => {
+  input = datosGraficos['Programas - Top10'].slice( 1,11);
+
+  input = input.map(x => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
     if (moreData) {
-      // x["Cuota (%)"] = x["Cuota (%)"];
-      x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "").toUpperCase();
+      x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;
     }
     return x;
   });
 
+  console.log(input);
 
   input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
 
   var sorted = input.sort((a, b) => (a['AM (000)'] > b['AM (000)']) ? 1 : -1)
   chart.data = sorted;
-
-  // console.log(chart.data);
 
   chart.colors.list = [am4core.color("#dddddd")];
 
@@ -50,12 +51,13 @@ function  graficoDiaria1() {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
-  categoryAxis.height = 500;
+  categoryAxis.height = 350;
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 110;
+  label.maxWidth = 120;
   label.textAlign = 'end';
+  // console.log(label);
 
   var categoryAxis2 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis2.dataFields.category = category;
@@ -66,8 +68,7 @@ function  graficoDiaria1() {
   categoryAxis2.renderer.labels.template.html = "{cuota}";
   categoryAxis2.renderer.labels.template.fontSize = 14;
   categoryAxis2.renderer.opposite = true;
-  categoryAxis2.height = 500;
-
+  categoryAxis2.height = 350;
 
   var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
   valueAxis.renderer.grid.template.disabled = true;
@@ -81,12 +82,20 @@ function  graficoDiaria1() {
   topContainer.paddingBottom = 15;
   topContainer.width = am4core.percent(100);
 
+  var diaTitle = topContainer.createChild(am4core.Label);
+  diaTitle.text = dayTitle;
+  diaTitle.fontWeight = 600;
+  diaTitle.fontSize = 16;
+  diaTitle.fill = '#DC241F';
+  diaTitle.align = "left";
+  diaTitle.paddingRight = 100;
+
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.html = "AM (000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  axisTitle.text = "AM (000)";
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
-  axisTitle.align = "left";
-  axisTitle.paddingLeft = 110;
+  axisTitle.align = "right";
+  axisTitle.paddingRight = 100;
 
   var dateTitle = topContainer.createChild(am4core.Label);
   dateTitle.text = "Cuota (%)";
@@ -115,10 +124,10 @@ function  graficoDiaria1() {
     bullet.locationX = 1;
     var image = bullet.createChild(am4core.Image);
     image.propertyFields.href = 'Logo';
-    image.width = 30;
-    image.height = 30;
-    image.dx = 45;
-    image.dy = 15;
+    image.width = 20;
+    image.height = 20;
+    image.dx = 30;
+    image.dy = 10;
     image.horizontalCenter = "right";
     image.verticalCenter = "bottom";
 
@@ -161,26 +170,38 @@ function  graficoDiaria1() {
     
     return series;
   }
-
   createSeries('AM (000)', 1);
 
-  
   jQuery(document).ready(function(){
     jQuery("g[aria-labelledby]").hide();
   })
+
+  return chart;
 }
 
-var graficoDiaria1_show = false;
+var graficoMensual1_show = {"vie": false, "sab": false, "dom": false};
 
-jQuery('#grafico-diaria-1').waypoint(function() {
-  if(!graficoDiaria1_show) {
-    graficoDiaria1();
-  }
-  graficoDiaria1_show = true;
-}, {
-  offset: '75%'
+dias.forEach(dia => {
+
+  ScrollReveal().reveal("#grafico-mensual-1-" + dia, {
+    afterReveal: function activar (el) {
+      if(!graficoMensual1_show[dia]) {
+        thischart = graficoMensual1(dia);
+      }
+      graficoMensual1_show[dia] = true;
+    },
+    afterReset: function activar (el) {
+      if(graficoMensual1_show[dia]) {
+        
+        thischart = null;
+        jQuery("#grafico-mensual-1-" + dia)[0].innerHTML = "";
+      }
+      graficoMensual1_show[dia] = false;
+    },
+    reset: true
+  });
+
 });
+  
 
 </script>
-
-

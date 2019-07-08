@@ -23,6 +23,7 @@ function  graficoDiaria5() {
       const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
       // console.log(x);
       if (moreData) {
+        x['Grp’s a formato'] = x['Grp’s a formato'].toString().replace(/\./g, '').replace(/,/g, '.');   
         x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' (' + i + ')';        
         x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;

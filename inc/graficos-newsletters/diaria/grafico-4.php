@@ -26,6 +26,7 @@ function  graficoDiaria4() {
       // console.log(x);
       if (moreData.length !== 0) {
         // console.log(moreData)
+        x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
         x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -34,29 +35,29 @@ function  graficoDiaria4() {
       return x;
     }
   ); 
-  var sorted = input.sort((a, b) => (a[Object.keys(input[0])[1]] > b[Object.keys(input[0])[1]]) ? 1 : -1);
+  var sorted = input.sort((a, b) => (a["Cuota (%)"] > b["Cuota (%)"]) ? 1 : -1);
   chart.data = sorted;
   chart.innerRadius = am4core.percent(20);
-  // console.log(sorted);
+  console.log(sorted);
   chart.height = am4core.percent(80);
   chart.valign = "middle";
   chart.align = "left";
 
 
   // var num_of_series = 2;
-  var num_of_series = Object.keys(chart.data[0]).length - 1;
+  // var num_of_series = Object.keys(chart.data[0]).length - 1;
 
   // Add series
 
-  var key = Object.keys(chart.data[0])[1];
+  var key = "Cuota (%)";
 
   series = chart.series.push(new am4charts.PieSeries());
 
   // Modify chart's colors
   series.colors.list = sorted.map((x) => am4core.color(x["Color"]) );
 
-  series.dataFields.category = Object.keys(chart.data[0])[0];
-  series.dataFields.value = Object.keys(chart.data[0])[1];
+  series.dataFields.category = "Grupo";
+  series.dataFields.value = "Cuota (%)";
   series.dataFields.logo = "Logo";
   series.dataFields.logos = "Logos";
   series.tooltip.getFillFromObject = false;

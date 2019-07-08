@@ -1,10 +1,30 @@
+.canal-single__grafico {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.graficos-fds-vertical {
+  .grafico_wrapper  {
+    width: 100%;
+  }
+}
+
+
 .grafico_wrapper {
-  max-width: 750px;
+  // max-width: 750px;
   // margin-bottom: 10rem;
   display: block;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
   break-inside: avoid-column;
+
+  width: 49%;
+  display: inline-block;
+
+  @include tablet {
+    width: 100%;
+  }
 
   .grupo-de-logos {
     max-width: 300px;
@@ -27,6 +47,18 @@
       height: 70px;
       margin-top: -20px;
       margin-bottom: -20px;
+    }
+  }
+  .small-text {
+    font-size: 12px;
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 !important;
+      transform:  translateY(-2px);
+      margin-left: 20px !important;
+      width: 15px !important;
+      height: 15px !important;
     }
   }
 }
@@ -65,7 +97,7 @@
 p.graficos-fuente {
   display: block;
   margin-top: 10px;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   // border-top:solid 1px #CCC;
   font-size: 1.2rem;
 }
