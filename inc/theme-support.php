@@ -204,11 +204,13 @@ function queryParameters($data) {
 
     $term = get_the_terms( $id, 'canal_category' )[0]->name;
     $primary = get_field('main_cat_canal', $id);
+    $excerpt = get_field('resumen_canal');
+    $excerpt ? $excerpt = get_field('resumen_canal') : $excerpt = '';
 
     array_push($canalResults, array(
       'title' => get_the_title(),
       'permalink' => get_the_permalink(),
-      'excerpt' => get_the_excerpt(),
+      'excerpt' => $excerpt,
       'term' => $term,
       'termsList' => $termsList,
       'thumbnail' => get_the_post_thumbnail_url(),

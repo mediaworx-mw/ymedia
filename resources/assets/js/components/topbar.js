@@ -59,8 +59,6 @@ const Topbar = () => {
     $input.value = "";
     $topbarmKeyInput.value = "";
 
-    //let url = `${ymediaData.root_url}/wp-json/canal_ymedia/search?terms=`;
-
     if ( baseUrl.startsWith('localhost') ) {
       var url = 'http://localhost:8888/ymedia/wp-json/canal_ymedia/search?terms=';
     } else {
@@ -134,8 +132,6 @@ const Topbar = () => {
         `
       });
 
-
-       //$placeholder.children.length ? $load.classList.add('visible') : $load.classList.remove('visible');
       $load.classList.add('visible')
       if (load) {
 
@@ -156,7 +152,6 @@ const Topbar = () => {
     }
 
     let num = 18;
-
     let termsArray = [];
     let array = termsArray;
     let posts = '&posts='+num;
@@ -166,8 +161,6 @@ const Topbar = () => {
     let offsetIncrement = 0;
 
     const empty = () => {
-
-
       fetch('empty', false, 0, inputValue, filterDate);
     }
 
@@ -196,7 +189,6 @@ const Topbar = () => {
           if(data == null) {
             $placeholder.innerHTML= '<h1 class="no-results">Ups!! No hay noticias disponibles.</h1>';
             $load.classList.remove('visible');
-
           }
 
           if(data != null) {
@@ -217,12 +209,10 @@ const Topbar = () => {
     //initial load
     fetch(termsArray, false, 0, inputValue, filterDate);
 
-
     //Search by Term
     $tabs.forEach(function(item) {
       item.addEventListener('click', function(){
         collapse();
-
         offset = 0;
         offsetIncrement = 0;
         loadTimes = 0;
@@ -233,7 +223,6 @@ const Topbar = () => {
         }
 
         let termId = item.getAttribute('data-termid');
-
         if (firstTime == 1 ) {
           $tabs.forEach(function(item) {
             item.classList.add('deselected');
@@ -281,7 +270,6 @@ const Topbar = () => {
       }
     })
 
-
     let submit = () => {
       if ($input.value != '') {
         $placeholder.innerHTML= '';
@@ -314,7 +302,7 @@ const Topbar = () => {
       $input.value = "";
       offset = 0;
       offsetIncrement = 0;
-       loadTimes = 0;
+      loadTimes = 0;
 
       $placeholder.classList.remove('canal-main__list--results');
 
@@ -336,7 +324,6 @@ const Topbar = () => {
         }
       }
     });
-
 
     $submit.addEventListener('click', function(){
       submit();
@@ -369,16 +356,12 @@ const Topbar = () => {
     });
 
     const fetchDate = (selectedDates, dateStr, instance) => {
-      //if ( !$calendarClear.classList.contains('visible')){
       const format = date => { return date > 9 ? ""+date : "0"+date }
       let date = selectedDates[0].getFullYear() + "-" + format(selectedDates[0].getMonth() + 1) + "-" + format(selectedDates[0].getDate());
       $calendarButton.textContent= date;
-      //}
       $calendarWrapper.classList.remove('visible');
       $calendarClear.classList.add('visible');
-
       filterDate = date;
-
       offset = 0;
       offsetIncrement = 0;
        loadTimes = 0;
@@ -398,7 +381,6 @@ const Topbar = () => {
       });
       fetch(termsArray, false, 0, inputValue, filterDate);
     }
-
 
     $featured.addEventListener('click', function(){
       expand();
@@ -426,8 +408,6 @@ const Topbar = () => {
       }
     });
 
-
-
     //Mobile Functions
     $topbarmTitle.addEventListener('click', function(){
       toggleClass($topbarmTags, 'expanded');
@@ -449,7 +429,6 @@ const Topbar = () => {
     $topbarmTag.forEach(function(item) {
       item.addEventListener('click', () => {
         toggleClass(item, 'topbarm__tag--selected');
-
         let termId = item.getAttribute('data-termid');
 
         if (firstTime == 1 ) {
@@ -466,18 +445,11 @@ const Topbar = () => {
           termsArray = termsArray.filter(e => e !== termId);
           console.log('poner', termsArray);
         }
-
-        // if ( termsArray.length == 0) {
-        //   empty();
-        // } else {
-        //   fetch(termsArray, false, 0, inputValue, filterDate);
-        // }
       });
 
     });
 
     let clearm = () => {
-      //$placeholder.innerHTML= '';
       $load.classList.remove('visible');
       $topbarmKeyClear.classList.remove('visible');
       inputValue = 'a';
@@ -486,34 +458,21 @@ const Topbar = () => {
       offsetIncrement = 0;
       loadTimes = 0;
       filterDate = 'nodate';
-      //$placeholder.classList.remove('canal-main__list--results');
-
-      // if ( termsArray.length == 0) {
-      //   empty();
-      // } else {
-      //   fetch(termsArray, false, offset, inputValue, filterDate);
-      // }
     }
 
     let clearmKey = () => {
-      //$placeholder.innerHTML= '';
       $load.classList.remove('visible');
       inputValue = 'a';
       $topbarmKeyInput.value = "";
       offset = 0;
       offsetIncrement = 0;
       loadTimes = 0;
-
-      //$placeholder.classList.remove('canal-main__list--results');
-
       if ( termsArray.length == 0) {
         empty();
       } else {
         fetch(termsArray, false, offset, inputValue, filterDate);
       }
     }
-
-
 
     let clearmCal = () => {
       $placeholder.innerHTML= '';
@@ -528,9 +487,7 @@ const Topbar = () => {
         fetch(termsArray, false, offset, inputValue, filterDate);
       }
 
-
       fp.destroy();
-
     }
 
     $topbarmTodas.addEventListener('click', () => {
@@ -538,8 +495,6 @@ const Topbar = () => {
         tag.classList.add('topbarm__tag--selected');
         termsArray[index] = tag.getAttribute('data-termid');
       });
-
-      //firstTime = 1;
       loadTimes = 0;
     });
 
@@ -548,7 +503,6 @@ const Topbar = () => {
       $topbarmSearch.classList.remove('visible');
       $calendarmWrapper.classList.remove('visible');
       $topbarmTags.classList.remove('expanded');
-
       collapse();
       offset = 0;
       offsetIncrement = 0;
@@ -565,9 +519,6 @@ const Topbar = () => {
         fetch(termsArray, false, 0, inputValue, filterDate);
       }
 
-
-
-
     });
 
     $confirmarSearch.addEventListener('click', () => {
@@ -576,11 +527,7 @@ const Topbar = () => {
       $topbarmSearch.classList.remove('visible');
       $calendarmWrapper.classList.remove('visible');
       collapse();
-
-      //placeholder.classList.remove('canal-main__list--results');
-
       inputValue = $topbarmKeyInput.value;
-      //$topbarmKeyClear.classList.add('visible');
 
       if ( termsArray.length == 0) {
         empty();
@@ -610,67 +557,37 @@ const Topbar = () => {
       $togglesCal.classList.remove('show');
     })
 
-
     $topbarmKeySumbit.addEventListener('click', () => {
       if ($topbarmKeyInput.value != '') {
         $placeholder.innerHTML= '';
         $load.classList.remove('visible');
-        //collapse();
         inputValue = $topbarmKeyInput.value;
-        console.log(inputValue);
-        //$topbarmKeyClear.classList.add('visible');
-
         offset = 0;
         offsetIncrement = 0;
         loadTimes = 0;
         if (window.innerWidth > 600) {
           $placeholder.classList.add('canal-main__list--results');
         }
-        // if ( termsArray.length == 0) {
-        //   empty();
-        // } else {
-        //   fetch(termsArray, false, offset, inputValue, filterDate);
-        // }
+
       }
     });
 
-
-
     const fetchDateMobile = (selectedDates, dateStr, instance) => {
-      //if ( !$calendarClear.classList.contains('visible')){
       const format = date => { return date > 9 ? ""+date : "0"+date }
       let date = selectedDates[0].getFullYear() + "-" + format(selectedDates[0].getMonth() + 1) + "-" + format(selectedDates[0].getDate());
       $calendarButton.textContent= date;
-      //}
-
       filterDate = date;
-
-      console.log(filterDate);
-
       offset = 0;
       offsetIncrement = 0;
       loadTimes = 0;
-      // if ( termsArray.length == 0) {
-      //   empty();
-      // } else {
-      //   fetch(termsArray, false, offset, inputValue, filterDate);
-      // }
     }
-
-    // $topbarmKeyClear.addEventListener('click', () => {
-    //   clearm();
-    // })
-
-
   }
 
   const animateArticles = () => {
     const $articles = document.querySelectorAll('.canal-article');
     const controllerArticles = new ScrollMagic.Controller();
-
     $articles.forEach(article => {
       let tweenArticles = TweenMax.to(article, 0.7, {y: 0, opacity: 1, zIndex: 10 });
-
       new ScrollMagic.Scene({
         triggerElement: article,
         offset: -(window.innerHeight * 0.6)
@@ -679,8 +596,6 @@ const Topbar = () => {
       .addTo(controllerArticles);
     });
   }
-
-
 
 }
 
