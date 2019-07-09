@@ -19,9 +19,6 @@ foreach($terms as $key=>$term){
     <?php
       $terms = get_the_terms($id, 'canal_category' );
      foreach($terms as $key=>$term):
-      //   $color = get_field('color_categoria', $terms[$key]);
-      //   $link = get_term_link($terms[$key]);
-      //   $name = $terms[$key]->name;
       endforeach;
       $color = get_field('color_categoria', $terms[0]);
       $link =  get_term_link($terms[0]);

@@ -2,6 +2,7 @@
   $newsletter_fin_de_semana = get_field( "newsletter_fin_de_semana" );
 ?>
   <h2>Programas - Top 10</h2>
+  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['programas_-_top_10']['fuente']; ?></p>
   <div class="graficos-fds-vertical">
     <div class="grafico_wrapper">
       <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 380px"></div>
@@ -10,7 +11,6 @@
     </div>
   </div>
   <br>
-  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['programas_-_top_10']['fuente']; ?></p>
   <br>
   <div><?php echo $newsletter_fin_de_semana['programas_-_top_10']['texto']; ?></div>
   <br>
@@ -18,6 +18,7 @@
   <br>
 
   <h2>Cuota de las cadenas - Top 5</h2>
+  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
   <div class="graficos-fds">
     <div class="grafico_wrapper">
       <h4>Viernes</h4>
@@ -32,7 +33,6 @@
       <div id="grafico-fds-2-dom" class="grafico-inner" style="min-height: 380px"></div>
     </div>
   </div>
-  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
   <br>
   <div><?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['texto']; ?></div>
   <br>
@@ -40,6 +40,7 @@
   <br>
 
   <h2>Cuota de las temáticas en abierto - Top 5</h2>
+  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
   <div class="graficos-fds">
     <div class="grafico_wrapper">
       <h4>Viernes</h4>
@@ -54,7 +55,6 @@
       <div id="grafico-fds-3-dom" class="grafico-inner" style="min-height: 380px"></div>
       </div>
   </div>
-  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
   <br>
   <div><?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['texto']; ?></div>
   <br>
@@ -62,6 +62,7 @@
   <br>
 
   <h2>Cuota por grupos de comunicación</h2>
+  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
   <div class="graficos-fds">
     <div class="grafico_wrapper">
       <h4>Viernes</h4>
@@ -77,7 +78,6 @@
     </div>
     <br>
   </div>
-  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
   <br>
   <div><?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['texto']; ?></div>
   <br>
@@ -86,6 +86,7 @@
 
 
   <h2>Spot de oro – Top 3</h2>
+  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['fuente']; ?></p>
   <div class="graficos-fds">
     <div class="grafico_wrapper">
       <h4>Viernes</h4>
@@ -100,7 +101,6 @@
       <div id="grafico-fds-5-dom" class="grafico-inner" style="min-height: 380px"></div>
     </div>
   </div>
-  <p class="graficos-fuente"><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['fuente']; ?></p>
   <br>
   <div><?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['texto']; ?></div>
   <br>

@@ -93,11 +93,11 @@ function  graficoFDS1(dia) {
   diaTitle.paddingRight = 100;
 
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.text = "AM (000)";
+  axisTitle.html = "AM (000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
-  axisTitle.align = "right";
-  axisTitle.paddingRight = 100;
+  axisTitle.align = "left";
+  axisTitle.paddingLeft = 110;
 
   var dateTitle = topContainer.createChild(am4core.Label);
   dateTitle.text = "Cuota (%)";
@@ -121,6 +121,12 @@ function  graficoFDS1(dia) {
     series.columns.template.column.cornerRadiusTopLeft = 5;
     series.tooltip.pointerOrientation = "vertical";
     series.tooltip.dy = -10;
+    series.columns.template.events.clickable = false;
+
+    series.columns.template.events.on("hit", function(ev) {
+      ev.target.disabled = true;
+      console.log("clicked on ", ev.target);
+    }, this);
 
     var bullet = series.bullets.push(new am4charts.Bullet());
     bullet.locationX = 1;
