@@ -14,7 +14,7 @@
 <div class="corporativo" data-site-body="corporativo">
   <div class="corporativo-top">
     <div class="corporativo-top__inner container">
-      <h1 class="corporativo-top__tag"><?php the_field('tag1_corporativos') ?></h1>
+      <h1 class="corporativo-top__tag variable"><?php the_field('tag1_corporativos') ?></h1>
       <p class="corporativo-top__intro"><?php the_field('tag2_corporativos') ?></p>
     </div>
   </div>

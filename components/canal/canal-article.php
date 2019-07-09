@@ -12,7 +12,7 @@ $color = get_field('color_categoria', $terms[0]);
   <div class="canal-article__info">
     <span style="background: <?php echo $color; ?>" class="canal-article__category"> <?php echo $terms[0]->name; ?></span>
     <div class="canal-article__content">
-      <h2 class="article-title canal-article__title"><?php the_title(); ?></h2>
+      <h2 class="article-title canal-article__title variable"><?php the_title(); ?></h2>
       <div class="article-meta canal-article__meta">
         <span class="article-date canal-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
       </div>

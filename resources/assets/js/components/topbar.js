@@ -121,7 +121,7 @@ const Topbar = () => {
             <div class="canal-article__info">
               <span style="background: ${color}" class="canal-article__category">${term}</span>
               <div class="canal-article__content">
-                <h2 class="article-title canal-article__title">${title}</h2>
+                <h2 class="article-title canal-article__title variable">${title}</h2>
                 <div class="article-meta canal-article__meta">
                   <span class="article-date canal-article__date">${date}</span>
                 </div>
