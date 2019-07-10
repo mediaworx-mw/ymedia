@@ -49,18 +49,19 @@ video::-webkit-media-controls-overlay-play-button {
 }
 
 video::-webkit-media-controls {
-    display:none !important;
+  display:none !important;
 }
 
 
 
-img, h1, h2, h3, h4, h5, h6, p, a, figure, input, textarea, video {
-  //position: relative;
+img, h1, h2, h3, h4, h5, h6, p, a, figure, input, textarea, video, .entry, .overgrid {
+  position: relative;
   z-index: $z-content;
 }
 
-.overgrid {
-   z-index: $z-content;
+.entry p {
+  position: static !important;
 }
+
 
 
