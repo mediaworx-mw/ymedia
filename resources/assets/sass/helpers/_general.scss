@@ -54,9 +54,13 @@ video::-webkit-media-controls {
 
 
 
-img, h1, h2, h3, h4, h5, h6, p, a, figure, input, textarea, video, .overgrid {
-  position: relative;
+img, h1, h2, h3, h4, h5, h6, p, a, figure, input, textarea, video {
+  //position: relative;
   z-index: $z-content;
+}
+
+.overgrid {
+   z-index: $z-content;
 }
 
 
