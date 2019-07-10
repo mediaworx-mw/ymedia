@@ -151,9 +151,14 @@
   }
   &__calendar-icon {
     position: absolute;
-    background: white;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     right: 7px;
-    top: 2px;
+    height: 100%;
+    top: 0;
     padding: 0.8rem;
     z-index: 10;
     cursor: pointer;

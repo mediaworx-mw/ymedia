@@ -9,6 +9,7 @@ const Topbar = () => {
 
   if(document.body.contains(document.querySelector('.topbar'))){
     const $topbar = document.querySelector('.topbar');
+    const $canal = document.querySelector('.canal');
     const $calendar = document.querySelector('.calendar');
     const $calendarWrapper = document.querySelector('.topbar__calendar-wrapper');
     const $calendarButton = document.querySelector('.topbar__calendar-button');
@@ -121,7 +122,7 @@ const Topbar = () => {
             <div class="canal-article__info">
               <span style="background: ${color}" class="canal-article__category">${term}</span>
               <div class="canal-article__content">
-                <h2 class="article-title canal-article__title variable">${title}</h2>
+                <h2 class="article-title canal-article__title">${title}</h2>
                 <div class="article-meta canal-article__meta">
                   <span class="article-date canal-article__date">${date}</span>
                 </div>
@@ -175,6 +176,7 @@ const Topbar = () => {
     });
 
     let fetch = (array, load, offset, inputValue, filterDate) => {
+       $canal.classList.remove('fixed');
       let ourRequest = new XMLHttpRequest();
       offset = '&offset='+offset;
       let key = '&key='+inputValue;
@@ -189,6 +191,7 @@ const Topbar = () => {
           if(data == null) {
             $placeholder.innerHTML= '<h1 class="no-results">Ups!! No hay noticias disponibles.</h1>';
             $load.classList.remove('visible');
+            $canal.classList.add('fixed');
           }
 
           if(data != null) {

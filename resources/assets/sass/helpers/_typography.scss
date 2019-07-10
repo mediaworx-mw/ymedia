@@ -32,27 +32,27 @@ p {
 }
 
 
-.variable {
-  font-family: 'Source Sans';
-  transition: font-weight .45s ease-out;
-  color: $red;
-}
+// .variable {
+//   font-family: 'Source Sans';
+//   transition: font-weight .45s ease-out;
+//   color: $red;
+// }
 
-.variable:hover{
-  font-weight: 999;
-}
+// .variable:hover{
+//   font-weight: 999;
+// }
 
-.variableiA {
-  font-family: 'iA';
-  transition: font-variation-settings .45s ease-out;
-  color: $red;
-  font-variation-settings: "wght" 400, "SPCG" 0;
-}
+// .variableiA {
+//   font-family: 'iA';
+//   transition: font-variation-settings .45s ease-out;
+//   color: $red;
+//   font-variation-settings: "wght" 400, "SPCG" 0;
+// }
 
-.variableiA:hover{
+// .variableiA:hover{
 
-  font-variation-settings: "wght" 600, "SPCG" 10;
-  transition: font-variation-settings .45s ease-out;
-}
+//   font-variation-settings: "wght" 600, "SPCG" 10;
+//   transition: font-variation-settings .45s ease-out;
+// }
 
 

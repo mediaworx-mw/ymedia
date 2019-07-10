@@ -28,7 +28,7 @@ foreach($terms as $key=>$term){
     ?>
   <span style="background: <?php echo $color; ?>" class="canal-article__category"> <?php echo $name; ?></span>
     <div class="canal-article__content">
-      <a href="<?php the_permalink(); ?>" class="article-title canal-article__title variable"><?php the_title(); ?></a>
+      <a href="<?php the_permalink(); ?>" class="article-title canal-article__title"><?php the_title(); ?></a>
       <div class="article-meta canal-article__meta">
         <span class="article-date canal-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
       </div>

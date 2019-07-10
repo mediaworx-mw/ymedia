@@ -3,6 +3,21 @@
   background: white;
   position: relative;
   padding: 10rem 0;
+  &.fixed {
+    overflow: hidden;
+    min-height: 750px;
+    height: 93vh;
+  }
+}
+
+@include desktop {
+  .canal {
+     &.fixed {
+      min-height: 100%;
+      height: auto;
+    }
+  }
+
 }
 
 @include tablet {
