@@ -34,29 +34,36 @@
   width: 100%;
   visibilty: hidden;
   opacity: 0;
-
 }
 
 .canal-article {
   width: 32.6666%;
- transform: translateY(100px);
+  transform: translateY(100px);
   position: relative;
   margin: 0 1% 4rem 0;
   opacity: 0;
-  //border-bottom: 1px solid $red;
   padding: 0 0 3rem 0;
   &:nth-child(3n) {
     margin: 0 0 4rem 0;
   }
   &__hero {
     display: block;
+    overflow: hidden;
     figure {
       height: 30vw;
       max-height: 300px;
       margin: 0 0 1rem 0;
       @include backgroundCover;
-    width: 100%;
-  }
+      width: 100%;
+      transform: scale3d(1, 1, 1);
+      transition: transform 0.2s ease;
+    }
+    &:hover {
+      figure {
+        transform: scale3d(1.05, 1.05, 1);
+        transition: transform 0.2s ease;
+      }
+    }
   }
   &__title {
     font-size: 3rem;
@@ -89,12 +96,11 @@
   &__excerpt {
     color: $gray;
     font-size: 1.6rem;
-    line-height: 2.6rem;
+    line-height: 2rem;
     font-weight: $regular;
-    // &:after {
-    //   content: ' [...]';
-    //   color: $red;
-    // }
+    p {
+      line-height: 2rem;
+    }
   }
 }
 
@@ -102,8 +108,6 @@
   flex-direction: column;
   align-items: center;
   display: flex;
-
-
   .canal-article {
     width: 83.3333%;
     margin: 0 0 4rem 0;

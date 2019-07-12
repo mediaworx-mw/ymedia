@@ -129,11 +129,14 @@
   &__excerpt {
     position: relative;
     padding-bottom: 4rem;
-      font-size: 2rem;
-      line-height: 3rem;
-      font-weight: $bold;
-      color: $red;
-      max-width: $max-width-content;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: $bold;
+    color: $red;
+    width: 50%;
+    p {
+      line-height: 2rem;
+    }
 
     &--small {
       width: 16%;
@@ -178,6 +181,7 @@
       }
     }
     &__excerpt {
+      width: 100%;
       &--small {
         padding: 0;
       }
