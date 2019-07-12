@@ -1,24 +1,27 @@
     <?php
       $newsletter_mensual = get_field( "newsletter_mensual" );
     ?>
-      <h2>Consumo TV</h2>
-      <p class="graficos-fuente"><?php echo $newsletter_mensual['consumo_de_tv']['fuente']; ?></p>
-      <p>Minutos</p>
-      <div class="graficos-multi graficos-multi-2">
-        <div class="grafico_wrapper">
-          <h4>Lunes - Viernes</h4>
-          <div id="grafico-mensual-1-lv" class="grafico-inner" style="min-height: 520px"></div>
+      <div>
+        <h2>Consumo TV</h2>
+        <p class="graficos-fuente"><?php echo $newsletter_mensual['consumo_de_tv']['fuente']; ?></p>
+        <p>Minutos</p>
+        <div class="graficos-multi graficos-multi-2">
+          <div class="grafico_wrapper">
+            <h4>Lunes - Viernes</h4>
+            <div id="grafico-mensual-1-lv" class="grafico-inner" style="min-height: 520px"></div>
+          </div>
+          <div class="grafico_wrapper">
+            <h4>Sábado - Domingo</h4>
+            <div id="grafico-mensual-1-sd" class="grafico-inner" style="min-height: 520px"></div>
+          </div>
         </div>
-        <div class="grafico_wrapper">
-          <h4>Sábado - Domingo</h4>
-          <div id="grafico-mensual-1-sd" class="grafico-inner" style="min-height: 520px"></div>
-        </div>
+        <br>
+        <div class="descripcion"><?php echo $newsletter_mensual['consumo_de_tv']['texto']; ?></div>
+        <br>
+        <br>
+        <br>
       </div>
-      <br>
-      <div class="descripcion"><?php echo $newsletter_mensual['consumo_de_tv']['texto']; ?></div>
-      <br>
-      <br>
-      <br>
+
 
       <div class="grafico_wrapper">
         <h2>Cuota de las cadenas</h2>
@@ -64,43 +67,48 @@
         <br>
       </div>       
       
-      <h2>Presión publicitaria por cadenas</h2>
-      <p class="graficos-fuente"><?php echo $newsletter_mensual['presion_publicitaria_por_cadenas']['fuente']; ?></p>
-      <p>Minutos</p>
-      <div class="graficos-multi graficos-multi-2">
-        <div class="grafico_wrapper">
-          <h4>Grp's formato</h4>
-          <div id="grafico-mensual-6-lv" class="grafico-inner" style="min-height: 520px"></div>
+      <div>
+        <h2>Presión publicitaria por cadenas</h2>
+        <p class="graficos-fuente"><?php echo $newsletter_mensual['presion_publicitaria_por_cadenas']['fuente']; ?></p>
+        <p>Minutos</p>
+        <div class="graficos-multi graficos-multi-2">
+          <div class="grafico_wrapper">
+            <h4>Grp's formato</h4>
+            <div id="grafico-mensual-6-lv" class="grafico-inner" style="min-height: 520px"></div>
+          </div>
+          <div class="grafico_wrapper">
+            <h4>Grp's 20"</h4>
+            <div id="grafico-mensual-6-sd" class="grafico-inner" style="min-height: 520px"></div>
+          </div>
         </div>
-        <div class="grafico_wrapper">
-          <h4>Grp's 20"</h4>
-          <div id="grafico-mensual-6-sd" class="grafico-inner" style="min-height: 520px"></div>
-        </div>
+        <br>
+        <div class="descripcion"><?php echo $newsletter_mensual['presion_publicitaria_por_cadenas']['texto']; ?></div>
+        <br>
+        <br>
+        <br>  
       </div>
-      <br>
-      <div class="descripcion"><?php echo $newsletter_mensual['presion_publicitaria_por_cadenas']['texto']; ?></div>
-      <br>
-      <br>
-      <br>      
+    
       
-      <h2>Presión publicitaria por targets</h2>
-      <p class="graficos-fuente"><?php echo $newsletter_mensual['presion_publicitaria_por_targets']['fuente']; ?></p>
-      <p>Minutos</p>
-      <div class="graficos-multi graficos-multi-2">
-        <div class="grafico_wrapper">
-          <h4>Grp's formato</h4>
-          <div id="grafico-mensual-7-lv" class="grafico-inner" style="min-height: 520px"></div>
+      <div>
+        <h2>Presión publicitaria por targets</h2>
+        <p class="graficos-fuente"><?php echo $newsletter_mensual['presion_publicitaria_por_targets']['fuente']; ?></p>
+        <p>Minutos</p>
+        <div class="graficos-multi graficos-multi-2">
+          <div class="grafico_wrapper">
+            <h4>Grp's formato</h4>
+            <div id="grafico-mensual-7-lv" class="grafico-inner" style="min-height: 520px"></div>
+          </div>
+          <div class="grafico_wrapper">
+            <h4>Grp's 20"</h4>
+            <div id="grafico-mensual-7-sd" class="grafico-inner" style="min-height: 520px"></div>
+          </div>
         </div>
-        <div class="grafico_wrapper">
-          <h4>Grp's 20"</h4>
-          <div id="grafico-mensual-7-sd" class="grafico-inner" style="min-height: 520px"></div>
-        </div>
+        <br>
+        <div class="descripcion"><?php echo $newsletter_mensual['presion_publicitaria_por_targets']['texto']; ?></div>
+        <br>
+        <br>
+        <br>
       </div>
-      <br>
-      <div class="descripcion"><?php echo $newsletter_mensual['presion_publicitaria_por_targets']['texto']; ?></div>
-      <br>
-      <br>
-      <br>
       
       <div class="grafico_wrapper">
         <h2>Campañas más activas</h2>
