@@ -1,24 +1,16 @@
-.canal-single__grafico {
+.canal-single__graficos {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .grafico_wrapper {
-  // max-width: 750px;
-  // margin-bottom: 10rem;
   display: block;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
   break-inside: avoid-column;
-
   width: 49%;
-  display: inline-block;
-  padding-right: 3rem;
 
-  @include desktop {
-    width: 100%;
-  }
 
   .grupo-de-logos {
     max-width: 300px;
@@ -35,7 +27,6 @@
     display: block;
     text-align: center;
     font-size: 14px;
-
     img {
       position: static;
       width: 70px;
@@ -52,7 +43,6 @@
     display: block;
     text-align: center;
     font-size: 14px;
-
     img {
       margin: 0;
       width: 50px;
@@ -83,11 +73,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
   @include desktop {
     flex-wrap: wrap;
   }
-  
   &.graficos-multi-3 {
     .grafico_wrapper {
       width: 33%;
@@ -122,7 +110,6 @@ p.graficos-fuente {
   display: block;
   margin-top: 10px;
   margin-bottom: 1rem;
-  // border-top:solid 1px #CCC;
   font-size: 1.2rem;
 }
 
@@ -145,7 +132,6 @@ img[src="[object"] {
 
   tr {
     border-bottom: 1px solid rgba(99, 99, 99, 0.15);
-
     &:hover {
       background: #fcfcfc;
     }
@@ -166,14 +152,12 @@ img[src="[object"] {
   }
 }
 
-
 .grafico_texto {
   font-size: 1.5rem !important;
 }
 
 .custom-tabla {
   margin: 0 !important;
-  // width: 100%;
   font-size: 12px;
   color: $gray-darker;
 
@@ -183,7 +167,6 @@ img[src="[object"] {
 
   &.top-5 {
     margin-bottom: 2em !important;
-
     &:last-child {
       margin-bottom: 0 !important;
     }
@@ -210,10 +193,7 @@ img[src="[object"] {
       justify-content: flex-start;
       align-items: center;
     }
-
-    // width: 100%; 
     text-align: left;
-
     .numero {
       position: relative;
       display: flex;
@@ -227,10 +207,8 @@ img[src="[object"] {
       width: 2em;
       height: 2em;
       font-size: 0.75em;
-
       &.numero-oro {
         background-color: #ffc000;
-
         &:before {
           content: 'spot de oro';
           position: absolute;
@@ -244,7 +222,6 @@ img[src="[object"] {
         }
       }
     }
-
     .numero,
     .texto {
       display: inline-block;
@@ -412,7 +389,6 @@ img[src="[object"] {
 .dataTables_wrapper {
   break-inside: avoid-column;
   min-width: 100%;
-
   .dataTables_scroll,
   table {
     min-width: 100%;
@@ -431,4 +407,12 @@ img[src="[object"] {
   to {
     opacity: 1;
   }
+}
+
+@include desktop {
+  .grafico_wrapper {
+    width: 100%;
+
+  }
+
 }
