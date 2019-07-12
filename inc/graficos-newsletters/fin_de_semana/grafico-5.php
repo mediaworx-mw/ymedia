@@ -17,18 +17,19 @@ chart.dateFormatter.language.locale = am4lang_es_ES;
 
 enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
+const datosGraficosX = datosGraficos;
 
 // Set data
-if(dia === 'vie') { input = datosGraficos['Spot de oro - Top3'].slice( 1, 4); }
-if(dia === 'sab') { input = datosGraficos['Spot de oro - Top3'].slice( 5, 8); }
-if(dia === 'dom') { input = datosGraficos['Spot de oro - Top3'].slice( 9, 12); }
+if(dia === 'vie') { input = datosGraficosX['Spot de oro - Top3'].slice( 1, 4); }
+if(dia === 'sab') { input = datosGraficosX['Spot de oro - Top3'].slice( 5, 8); }
+if(dia === 'dom') { input = datosGraficosX['Spot de oro - Top3'].slice( 9, 12); }
 
 input = input.map((x, i) => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
   // console.log(x);
   if (moreData) {
-    x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' (' + i + ')';
-    x['Grp’s a formato'] = x['Grp’s a formato'].toString().replace(/\./g, '').replace(/,/g, '.');   
+    x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);
+    x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;

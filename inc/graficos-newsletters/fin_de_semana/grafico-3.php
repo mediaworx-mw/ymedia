@@ -17,18 +17,20 @@ chart.dateFormatter.language.locale = am4lang_es_ES;
 
 enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
-// console.log(datosGraficos);
+// console.log(datosGraficosX);
+
+const datosGraficosX = datosGraficos;
 
 // Set data
-if(dia === 'vie') { input = datosGraficos['Cuota de las tem. en abierto - Top5'].slice( 1,6); }
-if(dia === 'sab') { input = datosGraficos['Cuota de las tem. en abierto - Top5'].slice( 7,12); }
-if(dia === 'dom') { input = datosGraficos['Cuota de las tem. en abierto - Top5'].slice(13,18); }
+if(dia === 'vie') { input = datosGraficosX['Cuota de las tem. en abierto - Top5'].slice( 1,6); }
+if(dia === 'sab') { input = datosGraficosX['Cuota de las tem. en abierto - Top5'].slice( 7,12); }
+if(dia === 'dom') { input = datosGraficosX['Cuota de las tem. en abierto - Top5'].slice(13,18); }
 
 input = input.map(x => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
   // console.log(x);
   if (moreData) {
-    x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
+    x["Cuota (%)"] = Number(x["Cuota (%)"].toString().replace(/,/g, '.'));
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;

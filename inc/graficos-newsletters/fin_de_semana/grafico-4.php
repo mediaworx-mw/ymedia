@@ -21,19 +21,19 @@ function  graficoFDS4(dia) {
   enGrupos = (grupo, grupos) => grupos.filter( x => x.grupo.toLowerCase().indexOf(grupo.toLowerCase()) > -1 );
 
   // Set data
-  input = datosGraficos['Cuota por grupos de com. - VIE'];
+  const datosGraficosX = datosGraficos;
 
   // Set data
-  if(dia === 'vie') { input = datosGraficos['Cuota por grupos de com. - VIE']; }
-  if(dia === 'sab') { input = datosGraficos['Cuota por grupos de com. - SAB']; }
-  if(dia === 'dom') { input = datosGraficos['Cuota por grupos de com. - DOM']; }
+  if(dia === 'vie') { input = datosGraficosX['Cuota por grupos de com. - VIE']; }
+  if(dia === 'sab') { input = datosGraficosX['Cuota por grupos de com. - SAB']; }
+  if(dia === 'dom') { input = datosGraficosX['Cuota por grupos de com. - DOM']; }
 
   input = input.map(x => {
       const moreData = x.Grupo !== undefined ? enGrupos(x.Grupo, grupos) : false;
       // console.log(x);
       if (moreData.length !== 0) {
         // console.log(moreData)
-        x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
+        x["Cuota (%)"] = Number(x["Cuota (%)"].toString().replace(/,/g, '.'));
         x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -41,9 +41,14 @@ function  graficoFDS4(dia) {
       }
       return x;
     }
-  ); 
+  );
 
-  var sorted = input.sort((a, b) => (a[Object.keys(input[0])[1]] > b[Object.keys(input[0])[1]]) ? 1 : -1);
+  var sorted = input.sort((a, b) => (Number(a["Cuota (%)"]) > Number(b["Cuota (%)"])) ? 1 : -1);
+
+  sorted = [...sorted.filter( x => x["Grupo"] !== 'Resto'), ...sorted.filter( x => x["Grupo"] === 'Resto')];
+
+  // console.log(sorted);
+
   chart.data = sorted;
   chart.innerRadius = am4core.percent(10);
   // console.log(sorted);
@@ -81,7 +86,7 @@ function  graficoFDS4(dia) {
   series.slices.template.tool = 1;
   series.alignLabels = false;
   series.labels.template.radius = 1;
-  series.labels.template.html = '<span class="tarta-logos-label"><span class="logo"><img src={logo}></span><br><span>{value}%</span></span>';
+  series.labels.template.html = '<span class="tarta-logos-label" data-src={logo}><span class="logo"><img src={logo}></span><br><span>{value}%</span></span>';
   series.slices.template.tooltipHTML = "<div class=\"grupo-de-logos\">{logos}</div>";
 
   // var bullet = series.bullets.push(new am4charts.Bullet());

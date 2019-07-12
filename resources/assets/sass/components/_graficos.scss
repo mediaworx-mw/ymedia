@@ -30,19 +30,36 @@
     height: auto;
   }
 
-  .tarta-logos-label {
-    position: relative;
+  .tarta-logos-label{
+    position: static;
     display: block;
     text-align: center;
     font-size: 14px;
 
     img {
+      position: static;
       width: 70px;
       height: 70px;
       margin-top: -20px;
       margin-bottom: -20px;
     }
   }
+
+  .logos-label {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+
+    img {
+      margin: 0;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
   .small-text {
     font-size: 12px;
     img {
@@ -55,9 +72,13 @@
       height: 15px !important;
     }
   }
+
+  foreignObject {
+    position: relative;
+  }
 }
 
-.graficos-fds {
+.graficos-multi {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -66,18 +87,26 @@
   @include desktop {
     flex-wrap: wrap;
   }
-
-  .grafico_wrapper {
-    width: 33%;
-    // margin-bottom: 5rem;
-
-    @include desktop {
-      width: 100% !important;
+  
+  &.graficos-multi-3 {
+    .grafico_wrapper {
+      width: 33%;
+      @include desktop {
+        width: 100% !important;
+      }
+    }
+  }
+  &.graficos-multi-2 {
+    .grafico_wrapper {
+      width: 50%;
+      @include desktop {
+        width: 100% !important;
+      }
     }
   }
 }
 
-.graficos-fds-vertical {
+.graficos-multi-vertical {
   margin-bottom: 1rem;
 
   h3 {
@@ -97,8 +126,10 @@ p.graficos-fuente {
   font-size: 1.2rem;
 }
 
+[data-src="[object"],
+img[src="[object"],
 img[src="[object"] {
-  display: none;
+  display: none !important;
 }
 
 .grafico-tabla {
@@ -223,9 +254,9 @@ img[src="[object"] {
 
   td img,
   th img {
-    width: 20px;
-    height: 20px;
-    display: block-inline;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
     margin: auto;
   }
 

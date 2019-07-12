@@ -26,7 +26,7 @@ function  graficoDiaria4() {
       // console.log(x);
       if (moreData.length !== 0) {
         // console.log(moreData)
-        x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
+        x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/,/g, '.');
         x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -35,10 +35,12 @@ function  graficoDiaria4() {
       return x;
     }
   ); 
-  var sorted = input.sort((a, b) => (a["Cuota (%)"] > b["Cuota (%)"]) ? 1 : -1);
+  var sorted = input.sort((a, b) => (Number(a["Cuota (%)"]) > Number(b["Cuota (%)"])) ? 1 : -1);
+  sorted = [...sorted.filter( x => x["Grupo"] !== 'Resto'), ...sorted.filter( x => x["Grupo"] === 'Resto')];
+
   chart.data = sorted;
+
   chart.innerRadius = am4core.percent(20);
-  console.log(sorted);
   chart.height = am4core.percent(80);
   chart.valign = "middle";
   chart.align = "left";
@@ -72,8 +74,9 @@ function  graficoDiaria4() {
   series.slices.template.tool = 1;
   series.alignLabels = false;
   series.labels.template.radius = 1;
-  series.labels.template.html = '<span class="tarta-logos-label"><span class="logo"><img src={logo}></span><br><span>{value}%</span></span>';
-  series.slices.template.tooltipHTML = "<div class=\"grupo-de-logos\">{logos}</div>";
+  // series.labels.template.html = '<span class="tarta-logos-label" data-src={logo}><span class="logo"><image src="{logo}"></image></span><br><span>{value}%</span></span>'; 
+  series.labels.template.html = '<body xmlns=\"http://www.w3.org/1999/xhtml\"><span class="tarta-logos-label" data-src={logo}><span class="logo"><img src={logo}></span><br><span>{value}%</span></span></body>';
+  series.slices.template.tooltipHTML = "<body xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"grupo-de-logos\">{logos}</div></body>";
 
 
   var bullet = series.bullets.push(new am4charts.Bullet());

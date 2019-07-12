@@ -1,5 +1,7 @@
 
 jQuery(document).ready(function () {
+
+  var recargador = "<br><br><div id=\"RECARGAR\" class=\"acf-switch -on\"><span class=\"acf-switch-on\">Recargar Datos</span></div>";
   
   if (jQuery('body').hasClass('post-type-canal') && jQuery('body').hasClass('wp-admin') && (jQuery('body').hasClass('post-new-php') || jQuery('body').hasClass('post-php'))) { 
     
@@ -17,24 +19,24 @@ jQuery(document).ready(function () {
     var ACTIVAR_GRAFICOS = document.querySelector('#ACTIVAR_GRAFICOS input[type=checkbox]');
     var DATOS_NEWSLETTER = jQuery('#DATOS_NEWSLETTER textarea');
     var TIPOS_DE_NEWSLETTER = document.querySelectorAll('#TIPOS_DE_NEWSLETTER input[type=radio]');
-    var TIPOS_DE_NEWSLETTER_SELECTED;
+    window.TIPOS_DE_NEWSLETTER_SELECTED;
 
-    jQuery('#STATUS_DE_CARGA .acf-input p')[0].innerText = DATOS_NEWSLETTER.text() !== '' ? 'DATOS CARGADOS' : 'CARGANDO...';
+    jQuery('#STATUS_DE_CARGA .acf-input p')[0].innerHTML = DATOS_NEWSLETTER.text() !== '' ? 'DATOS CARGADOS' + recargador : 'CARGANDO...';
+    jQuery('#RECARGAR').click((x) => cargarDatos(window.TIPOS_DE_NEWSLETTER_SELECTED));
 
     for (i = 0; i < TIPOS_DE_NEWSLETTER.length; i++) {
       if (TIPOS_DE_NEWSLETTER[i].checked) {
-        TIPOS_DE_NEWSLETTER_SELECTED = TIPOS_DE_NEWSLETTER[i].value;
+        window.TIPOS_DE_NEWSLETTER_SELECTED = TIPOS_DE_NEWSLETTER[i].value;
       }
       TIPOS_DE_NEWSLETTER[i].addEventListener('change', (e) => {
-        TIPOS_DE_NEWSLETTER_SELECTED = e.target.value;
-        cargarDatos(TIPOS_DE_NEWSLETTER_SELECTED);
+        window.TIPOS_DE_NEWSLETTER_SELECTED = e.target.value;
+        cargarDatos(window.TIPOS_DE_NEWSLETTER_SELECTED);
       });
     }
     
     ACTIVAR_GRAFICOS.addEventListener('change', (e) => {
-      cargarDatos(TIPOS_DE_NEWSLETTER_SELECTED);
+      cargarDatos(window.TIPOS_DE_NEWSLETTER_SELECTED);
     });
-
   }
 
   function cargarDatos(tipoDeNewsletter) {
@@ -191,6 +193,7 @@ jQuery(document).ready(function () {
             graficos[sheet_title] = {};
             graficos[sheet_title] = responseObj['rows'];
             sheetsConfig[sheet_title] = configObj;
+            // console.log(graficos, sheetsConfig);
           }
         });
       });
@@ -204,14 +207,15 @@ jQuery(document).ready(function () {
       var graficosString = escapeDoubleQuotes(JSON.stringify(graficosNew));
       DATOS_NEWSLETTER.text(graficosString);
 
-      jQuery('#STATUS_DE_CARGA .acf-input p')[0].innerText = graficosString !== '{}' ? 'CARGA EXITOSA' : 'ERROR EN DATOS';
+      jQuery('#STATUS_DE_CARGA .acf-input p')[0].innerHTML = graficosString !== '{}' ? 'CARGA EXITOSA' + recargador : 'ERROR EN DATOS <br> <small style="color:#DD0000">Por favor revisar la hoja de datos.</small>';
+      jQuery('#RECARGAR').click((x) => cargarDatos(window.TIPOS_DE_NEWSLETTER_SELECTED));
       
       UPDATE_BOX = false;
     }
   });
 
   function escapeDoubleQuotes(str) {
-    return str.replace(/\\([\s\S])|(")/g, "\\$1$2"); // thanks @slevithan!
+    return str.replace(/\\([\s\S])|(')/g, "\\$1$2"); // thanks @slevithan!
   }
 
 });

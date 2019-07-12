@@ -18,11 +18,12 @@ function  graficoDiaria1() {
 
   // Set data
   input = [];
-  input = datosGraficos['Programas - Top10'].map(x => {
+  input = datosGraficos['Programas - Top10'].map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
     if (moreData) {
       // x["Cuota (%)"] = x["Cuota (%)"];
+      x['Título'] = x['Título'].replace(/\//g, " / ") + ' '.repeat(i);
       x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "").toUpperCase();
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;

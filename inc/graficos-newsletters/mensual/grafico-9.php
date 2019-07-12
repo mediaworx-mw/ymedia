@@ -1,10 +1,10 @@
 <script>
-function  graficoDiaria5() {
+function  graficoMensual9() {
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
 
   // Create chart instance
-  var chart = am4core.create("grafico-diaria-5", am4charts.XYChart);
+  var chart = am4core.create("grafico-mensual-9", am4charts.XYChart);
 
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -19,12 +19,12 @@ function  graficoDiaria5() {
 
   // Set data
   input = [];
-  input = datosGraficos['Spot de oro - Top3'].map((x, i) => {
+  input = datosGraficos['Spot de oro – Top 3'].map((x, i) => {
       const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
       // console.log(x);
       if (moreData) {
         x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
-        x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
+        x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);
         x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -55,7 +55,7 @@ function  graficoDiaria5() {
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 130;
+  label.maxWidth = 150;
   label.truncate = true;
   label.maxHeight = 60;
   label.tooltipText = "{category}";
@@ -139,13 +139,13 @@ function  graficoDiaria5() {
 }
 
 
-var graficoDiaria5_show = false;
+var graficoMensual9_show = false;
 
-jQuery('#grafico-diaria-5').waypoint(function() {
-  if(!graficoDiaria5_show) {
-    graficoDiaria5();
+jQuery('#grafico-mensual-9').waypoint(function() {
+  if(!graficoMensual9_show) {
+    graficoMensual9();
   }
-  graficoDiaria5_show = true;
+  graficoMensual9_show = true;
 }, {
   offset: '75%'
 });

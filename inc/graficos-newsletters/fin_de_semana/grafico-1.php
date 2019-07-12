@@ -18,15 +18,18 @@ function  graficoFDS1(dia) {
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
-  // Set data
-  if(dia === 'vie') { input = datosGraficos['Programas - Top10'].slice( 1,11); dayTitle = 'Viernes'};
-  if(dia === 'sab') { input = datosGraficos['Programas - Top10'].slice(12,22); dayTitle = 'Sábado'};
-  if(dia === 'dom') { input = datosGraficos['Programas - Top10'].slice(23,33); dayTitle = 'Domingo'};
+  const datosGraficosX = datosGraficos;
 
-  input = input.map(x => {
+  // Set data
+  if(dia === 'vie') { input = datosGraficosX['Programas - Top10'].slice( 1,11); dayTitle = 'Viernes'};
+  if(dia === 'sab') { input = datosGraficosX['Programas - Top10'].slice(12,22); dayTitle = 'Sábado'};
+  if(dia === 'dom') { input = datosGraficosX['Programas - Top10'].slice(23,33); dayTitle = 'Domingo'};
+
+  input = input.map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
     if (moreData) {
+      x['Título'] = x['Título'].replace(/\//g, " / ") + ' '.repeat(i);
       x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;

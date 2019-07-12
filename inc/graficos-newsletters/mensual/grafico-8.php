@@ -1,10 +1,10 @@
 <script>
-function  graficoDiaria5() {
+function  graficoMensual8() {
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
 
   // Create chart instance
-  var chart = am4core.create("grafico-diaria-5", am4charts.XYChart);
+  var chart = am4core.create("grafico-mensual-8", am4charts.XYChart);
 
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -19,12 +19,14 @@ function  graficoDiaria5() {
 
   // Set data
   input = [];
-  input = datosGraficos['Spot de oro - Top3'].map((x, i) => {
+  input = datosGraficos['Campañas más activas']
+    .filter( (x, i) => i < 3)
+    .map((x, i) => {
       const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
       // console.log(x);
       if (moreData) {
-        x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
-        x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
+        x['GRP 20\"'] = Number(x['GRP 20\"'].toString().replace(/,/g, '.'));
+        x['Campaña'] = x['Campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
         x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -34,15 +36,15 @@ function  graficoDiaria5() {
   );
 
 
-  input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
+  input[input.length] = {"GRP 20\"": input[input.length - 1]["GRP 20\""] * 0.08};
 
-  var sorted = input.sort((a, b) => (a['Grp’s a formato'] < b['Grp’s a formato']) ? 1 : -1)
+  var sorted = input.sort((a, b) => (a['GRP 20\"'] < b['GRP 20\"']) ? 1 : -1)
   chart.data = sorted;
   // console.log(sorted);
 
   chart.colors.list = [am4core.color("#dddddd")];
 
-  var category = "Títulos campaña";
+  var category = "Campaña";
 
 
   // Create axes
@@ -55,7 +57,7 @@ function  graficoDiaria5() {
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 130;
+  label.maxWidth = 150;
   label.truncate = true;
   label.maxHeight = 60;
   label.tooltipText = "{category}";
@@ -73,7 +75,7 @@ function  graficoDiaria5() {
   topContainer.width = am4core.percent(100);
 
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.text = "Grp’s a formato";
+  axisTitle.text = "GRP 20\"";
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
   axisTitle.align = "left";
@@ -130,7 +132,7 @@ function  graficoDiaria5() {
     return series;
   }
 
-    createSeries('Grp’s a formato', 1);
+    createSeries('GRP 20\"', 1);
 
     
   jQuery(document).ready(function(){
@@ -139,13 +141,13 @@ function  graficoDiaria5() {
 }
 
 
-var graficoDiaria5_show = false;
+var graficoMensual8_show = false;
 
-jQuery('#grafico-diaria-5').waypoint(function() {
-  if(!graficoDiaria5_show) {
-    graficoDiaria5();
+jQuery('#grafico-mensual-8').waypoint(function() {
+  if(!graficoMensual8_show) {
+    graficoMensual8();
   }
-  graficoDiaria5_show = true;
+  graficoMensual8_show = true;
 }, {
   offset: '75%'
 });

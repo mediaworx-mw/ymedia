@@ -16,7 +16,7 @@ if( $activar_graficos ) {
     <script src="//www.amcharts.com/lib/4/lang/es_ES.js"></script>
     <script>
       var newsletter_tipo = '<?php echo $newsletter_tipo; ?>'; 
-      var datosGraficos = JSON.parse('<?php echo $datos; ?>');
+      var datosGraficos = <?php echo $datos; ?>;
     </script>
 
   <?php 

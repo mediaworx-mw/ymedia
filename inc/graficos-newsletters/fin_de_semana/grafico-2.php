@@ -17,15 +17,19 @@ chart.dateFormatter.language.locale = am4lang_es_ES;
 
 enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
+var input = null;
+const datosGraficosX = datosGraficos;
+
 // Set data
-if(dia === 'vie') { input = datosGraficos['Cuota de las cadenas - Top5'].slice( 1,6); dayTitle = 'Viernes'};
-if(dia === 'sab') { input = datosGraficos['Cuota de las cadenas - Top5'].slice( 7,12); dayTitle = 'Sábado'};
-if(dia === 'dom') { input = datosGraficos['Cuota de las cadenas - Top5'].slice(13,18); dayTitle = 'Domingo'};
+if(dia === 'vie') { input = datosGraficosX['Cuota de las cadenas - Top5'].slice( 1,6); dayTitle = 'Viernes'};
+if(dia === 'sab') { input = datosGraficosX['Cuota de las cadenas - Top5'].slice( 7,12); dayTitle = 'Sábado'};
+if(dia === 'dom') { input = datosGraficosX['Cuota de las cadenas - Top5'].slice(13,18); dayTitle = 'Domingo'};
+
 
 input = input.map(x => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
   if (moreData) {
-    x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
+    x["Cuota (%)"] = Number(x["Cuota (%)"].toString().replace(/,/g, '.'));
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;
@@ -133,15 +137,14 @@ var graficoFDS2_show = {"vie": false, "sab": false, "dom": false};
 dias.forEach(dia => {
 
   ScrollReveal().reveal("#grafico-fds-2-" + dia, {
-    afterReveal: function activar (el) {
+    afterReveal: function(el) {
       if(!graficoFDS2_show[dia]) {
         thischart = graficoFDS2(dia);
       }
       graficoFDS2_show[dia] = true;
     },
-    afterReset: function activar (el) {
+    afterReset: function(el) {
       if(graficoFDS2_show[dia]) {
-        
         thischart = null;
         jQuery("#grafico-fds-2-" + dia)[0].innerHTML = "";
       }

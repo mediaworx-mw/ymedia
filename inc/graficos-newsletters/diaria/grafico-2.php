@@ -23,7 +23,7 @@ input = datosGraficos['Cuota de las cadenas - Top5'].map(x => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
     if (moreData) {
-      x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/\./g, '').replace(/,/g, '.');
+      x["Cuota (%)"] = Number(x["Cuota (%)"].toString().replace(/,/g, '.'));
       x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;
@@ -35,8 +35,14 @@ input = datosGraficos['Cuota de las cadenas - Top5'].map(x => {
 
 input[input.length] = {"Cuota (%)": input[input.length - 1]["Cuota (%)"] * 0.08};
 
-var sorted = input.sort((a, b) => (a['Cuota (%)'] < b['Cuota (%)']) ? 1 : -1)
+
+
+var sorted = input.sort((a, b) => (a['Cuota (%)'] < b['Cuota (%)']) ? 1 : -1);
+// console.log(sorted);
+
 chart.data = sorted;
+
+
 
 chart.colors.list = [am4core.color("#dddddd")];
 

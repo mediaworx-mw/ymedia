@@ -6,7 +6,7 @@
         <p class="graficos-fuente"><?php echo $newsletter_diaria['programas_-_top_10']['fuente']; ?></p>
         <div id="grafico-diaria-1" class="grafico-inner" style="min-height: 520px"></div>
         <br>
-        <div><?php echo $newsletter_diaria['programas_-_top_10']['texto']; ?></div>
+        <div class="descripcion"><?php echo $newsletter_diaria['programas_-_top_10']['texto']; ?></div>
         <br>
         <br>
         <br>
@@ -17,7 +17,7 @@
         <p class="graficos-fuente"><?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
         <div id="grafico-diaria-2" class="grafico-inner" style="min-height: 520px"></div>
         <br>
-        <div><?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['texto']; ?></div>
+        <div class="descripcion"><?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['texto']; ?></div>
         <br>
         <br>
         <br>
@@ -28,7 +28,7 @@
         <p class="graficos-fuente"><?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
         <div id="grafico-diaria-3" class="grafico-inner" style="min-height: 420px"></div>
         <br>
-        <div><?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['texto']; ?></div>
+        <div class="descripcion"><?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['texto']; ?></div>
         <br>
         <br>
         <br>
@@ -39,7 +39,7 @@
         <p class="graficos-fuente"><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
         <div id="grafico-diaria-4" class="grafico-inner" style="min-height: 420px"></div>
         <br>
-        <div><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['texto']; ?></div>
+        <div class="descripcion"><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['texto']; ?></div>
         <br>
         <br>
         <br>
@@ -50,7 +50,7 @@
         <p class="graficos-fuente"><?php echo $newsletter_diaria['spot_de_oro_–_top_3']['fuente']; ?></p>
         <div id="grafico-diaria-5" class="grafico-inner" style="min-height: 420px"></div>
         <br>
-        <div><?php echo $newsletter_diaria['spot_de_oro_–_top_3']['texto']; ?></div>
+        <div class="descripcion"><?php echo $newsletter_diaria['spot_de_oro_–_top_3']['texto']; ?></div>
         <br>
         <br>
         <br>
