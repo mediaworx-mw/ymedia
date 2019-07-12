@@ -133,7 +133,9 @@
     line-height: 2rem;
     font-weight: $bold;
     color: $red;
-    width: 50%;
+    column-count: 2;
+    column-gap: 20px;
+
     p {
       line-height: 2rem;
     }
@@ -181,7 +183,8 @@
       }
     }
     &__excerpt {
-      width: 100%;
+      column-count: 1;
+      column-gap: 0;
       &--small {
         padding: 0;
       }

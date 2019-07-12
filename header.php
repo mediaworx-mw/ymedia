@@ -21,6 +21,7 @@
 <?php else: ?>
   <header class="header">
 <?php endif; ?>
+  <?php get_template_part('components/contacto-info'); ?>
   <div class="header__inner container">
     <a href="<?php echo bloginfo('url'); ?>" class="header__logo">
       <?php get_template_part('svg/logo') ?>

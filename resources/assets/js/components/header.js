@@ -15,23 +15,12 @@ const Header = () => {
   const $headerLogo = document.querySelector('.header__logo');
   const $menuItem = document.querySelector('.nav__list').getElementsByTagName('li');
   const $up = document.querySelector('.go-top');
+  const $contactModal = document.querySelector('.contacto-info');
+  const $contactModalClose = document.querySelector('.contacto-info__close');
+  const $contactInfoButton = document.querySelector('.acceptance-info');
 
   const controllerHeader = new ScrollMagic.Controller();
 
-  // if(document.querySelector('.home') == null && document.querySelector('.canal') == null ) {
-  //   let offsetHeader = 10;
-  //   new ScrollMagic.Scene({ offset: offsetHeader })
-  //   .on('enter', () => {
-  //     $header.classList.add('header--small');
-  //   })
-  //   .on('leave', () => {s
-  //     $header.classList.remove('header--small');
-  //   })
-  //   .addTo(controllerHeader);
-
-  // }
-
-  console.log($up);
 
   if ($up != null) {
     $up.addEventListener('click', () => {
@@ -77,6 +66,18 @@ const Header = () => {
   });
 
   headerAnimation();
+
+  if($contactInfoButton != null) {
+    $contactInfoButton.addEventListener('click', () => {
+      $contactModal.classList.add('visible');
+    });
+
+    $contactModalClose.addEventListener('click', () => {
+      $contactModal.classList.remove('visible');
+    });
+
+
+  }
 
 }
 

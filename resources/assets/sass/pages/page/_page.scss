@@ -1,7 +1,7 @@
 .page {
   padding: 4rem 0 8rem 0;
   min-height: 750px;
-  height: 93vh;
+  //height: 93vh;
 
   &__title {
     color: $red;
@@ -13,6 +13,7 @@
 
 @include mobile {
   .page {
+    min-height: 100%;
     padding: 3rem 0;
     &__title {
       font-size: 2.5rem;
