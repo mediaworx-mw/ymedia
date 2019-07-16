@@ -60,8 +60,9 @@ input = input.map((x, i) => {
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
   label.maxWidth = 110;
-  label.truncate = true;
+  // label.truncate = true;
   label.maxHeight = 60;
+  label.height = 80;
   label.tooltipText = "{category}";
 
   var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -125,7 +126,7 @@ input = input.map((x, i) => {
     valueLabel.label.fontSize = 14;
     valueLabel.label.rotation = 0;
     valueLabel.label.hideOversized = true;
-    valueLabel.label.truncate = true;
+    valueLabel.label.truncate = false;
     valueLabel.label.maxWidth = 120;
     valueLabel.label.maxHeight = 20;
 

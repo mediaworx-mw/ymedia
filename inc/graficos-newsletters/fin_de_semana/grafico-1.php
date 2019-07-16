@@ -96,11 +96,16 @@ function  graficoFDS1(dia) {
   diaTitle.paddingRight = 100;
 
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.html = "AM (000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  if(false) {
+  // if(dia === 'vie') {
+    axisTitle.html = "AM (000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  } else {
+    axisTitle.html = "AM (000)";
+  }
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
   axisTitle.align = "left";
-  axisTitle.paddingLeft = 110;
+  axisTitle.paddingLeft = 120;
 
   var dateTitle = topContainer.createChild(am4core.Label);
   dateTitle.text = "Cuota (%)";

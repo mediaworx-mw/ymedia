@@ -35,7 +35,7 @@ function  graficoDiaria4() {
       return x;
     }
   ); 
-  var sorted = input.sort((a, b) => (Number(a["Cuota (%)"]) > Number(b["Cuota (%)"])) ? 1 : -1);
+  var sorted = input.sort((a, b) => (Number(a["Cuota (%)"]) < Number(b["Cuota (%)"])) ? 1 : -1);
   sorted = [...sorted.filter( x => x["Grupo"] !== 'Resto'), ...sorted.filter( x => x["Grupo"] === 'Resto')];
 
   chart.data = sorted;
