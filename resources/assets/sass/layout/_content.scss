@@ -2,10 +2,18 @@
   padding: 0 0 4rem 0;
   column-count: 2;
   column-gap: 20px;
+  width: 98.6%;
+}
+
+@include desktop {
+  .content {
+    width: calc( (100vw - 16.6666vw) - 2vw );
+  }
 }
 
 @include tablet {
   .content {
+    width: 100%;
     column-count: 1;
     column-gap: 0;
   }

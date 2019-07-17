@@ -292,8 +292,6 @@ function filter_canal_by_taxonomies( $post_type, $which ) {
 }
 add_action( 'restrict_manage_posts', 'filter_canal_by_taxonomies' , 10, 2);
 
-
-
 function reg_tag() {
   register_taxonomy_for_object_type('post_tag', 'clientes');
 }
