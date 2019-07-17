@@ -23,6 +23,11 @@
   page-break-inside: avoid;
   break-inside: avoid-column;
   width: 49%;
+  margin: 0 1% 0 0;
+  &:nth-child(2) {
+    width: 50%;
+    margin: 0;
+  }
 
 
   .grupo-de-logos {
@@ -427,6 +432,11 @@ img[src="[object"] {
 @include desktop {
   .grafico_wrapper {
     width: 100%;
+    margin: 0;
+    &:nth-child(2) {
+      width: 100%;
+      margin: 0;
+    }
 
   }
 }

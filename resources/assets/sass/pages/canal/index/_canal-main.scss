@@ -37,18 +37,20 @@
 }
 
 .canal-article {
-  width: 32.6666%;
+  width: 32.5%;
   transform: translateY(100px);
   position: relative;
-  margin: 0 1% 4rem 0;
+  margin: 0 0.8% 4rem 0;
   opacity: 0;
   padding: 0 0 3rem 0;
   &:nth-child(3n) {
+    width: 33.3333%;
     margin: 0 0 4rem 0;
   }
   &__hero {
     display: block;
     overflow: hidden;
+    margin-bottom: 1rem;
     figure {
       height: 30vw;
       max-height: 300px;
@@ -71,7 +73,7 @@
     color: $red;
     font-weight: $bold;
     margin: 0 0 0.5rem 0;
-    min-height: 100px;
+   // min-height: 100px;
     display: block;
   }
   &__meta {
@@ -192,9 +194,16 @@
 
   }
   .canal-article {
-    width: 49%;
-    margin: 0 0 4rem 0;
+    width: 48%;
+    margin: 0 1% 4rem 0;
+
     &:nth-child(3n) {
+      width: 48%;
+      margin: 0 1% 4rem 0;
+    }
+
+    &:nth-child(2n) {
+      width: 50%;
       margin: 0 0 4rem 0;
     }
   }
@@ -246,6 +255,11 @@
 @include tablet {
   .canal-article {
     width: 100%;
+    margin: 0 0 4rem 0;
+    &:nth-child(2n), &:nth-child(3n) {
+      width: 100%;
+      margin: 0 0 4rem 0;
+    }
     &__hero {
       figure {
         height: 50vw;
@@ -253,7 +267,7 @@
       }
     }
     &__title {
-      min-height: 100%;
+      //min-height: 100%;
     }
   }
   .no-results {
