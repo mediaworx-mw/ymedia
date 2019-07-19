@@ -33,7 +33,7 @@ function  graficoFDS4(dia) {
       // console.log(x);
       if (moreData.length !== 0) {
         // console.log(moreData)
-        x["Cuota (%)"] = Number(x["Cuota (%)"].toString().replace(/,/g, '.'));
+        x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/,/g, '.').replace(/%/g, '');
         x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -44,7 +44,6 @@ function  graficoFDS4(dia) {
   );
 
   var sorted = input.sort((a, b) => (Number(a["Cuota (%)"]) < Number(b["Cuota (%)"])) ? 1 : -1);
-
   sorted = [...sorted.filter( x => x["Grupo"] !== 'Resto'), ...sorted.filter( x => x["Grupo"] === 'Resto')];
 
   // console.log(sorted);
@@ -52,7 +51,7 @@ function  graficoFDS4(dia) {
   chart.data = sorted;
   chart.innerRadius = am4core.percent(10);
   // console.log(sorted);
-  chart.height = am4core.percent(50);
+  chart.height = am4core.percent(70);
   chart.valign = "middle";
   chart.align = "left";
 
@@ -103,7 +102,7 @@ function  graficoFDS4(dia) {
   series.hiddenState.properties.endAngle = -90;
   series.hiddenState.properties.startAngle = -90;
 
-  series.ticks.template.disabled = false;
+  // series.ticks.template.disabled = false;
 
   jQuery(document).ready(function(){
     jQuery("g[aria-labelledby]").hide();

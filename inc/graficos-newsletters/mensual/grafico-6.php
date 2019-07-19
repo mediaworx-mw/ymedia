@@ -18,11 +18,11 @@ function  graficoMensual6(dia) {
   chart.dateFormatter.language = new am4core.Language();
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
-  enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+  enGrupos = (grupo, grupos) => grupos.filter( x => x.grupo.toLowerCase().indexOf(grupo.toLowerCase()) > -1 );
 
   // Set data
-  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por cadenas'].slice( 1, 6); dayTitle = 'LUNES-VIERNES' };
-  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por cadenas'].slice( 7,12); dayTitle = 'SÁBADO-DOMINGO' };
+  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por grupos'].slice( 1, 3); dayTitle = 'LUNES-VIERNES' };
+  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por grupos'].slice( 4, 6); dayTitle = 'SÁBADO-DOMINGO' };
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -31,13 +31,13 @@ function  graficoMensual6(dia) {
   // console.log(col1,col2,col3);
 
   input = input.map(x => {
-    const moreData = x.Categoria !== undefined ? enCadenas(x.Categoria, cadenas) : false;
+    const moreData = x['Categoría'] !== undefined ? enGrupos(x['Categoría'], grupos) : false;
     // console.log(x);
     if (moreData) {
       x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
       x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-      x[col3] = Number(x[col3].toString().replace(/,/g, '.'));
-      x['Categoria'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
+      x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
+      x['Categoría'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;
     }
@@ -60,7 +60,7 @@ function  graficoMensual6(dia) {
   // Add legend
   chart.legend = new am4charts.Legend();
 
-  var category = "Categoria";
+  var category = "Categoría";
 
   // Num of series
   var num_of_series = Object.keys(chart.data[0]).length - 1;
@@ -74,7 +74,7 @@ function  graficoMensual6(dia) {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
-  categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\"><img width=\"32\" height=\"32\" src=\"{logo}\" title=\"{category}\" /></div>";
+  categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\"><img width=\"48\" height=\"48\" src=\"{logo}\" title=\"{category}\" /></div>";
   categoryAxis.renderer.labels.template.fontSize = 14;
   // categoryAxis.renderer.labels.template.text = "{category}";
   // console.log(categoryAxis.renderer.labels.template);
@@ -84,7 +84,7 @@ function  graficoMensual6(dia) {
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
-  valueAxis.extraMax = 0.05;
+  valueAxis.extraMax = 0.08;
 
 
   // Create series
@@ -106,7 +106,7 @@ function  graficoMensual6(dia) {
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
-      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}</span><br></p></div>";
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}%</span><br></p></div>";
     }
 
    
@@ -177,7 +177,6 @@ var graficoMensual6_show = {"lv": false, "sd": false};
 
 dias.forEach(dia => {
 
-  // console.log('wut')
   ScrollReveal().reveal("#grafico-mensual-6-" + dia, {
     afterReveal: function activar (el) {
       if(!graficoMensual6_show[dia]) {

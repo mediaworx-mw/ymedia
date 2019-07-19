@@ -17,7 +17,11 @@ function  graficoMensual3() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = datosGraficos['Cuota temáticas en abierto'];
+  input = datosGraficos['Cuota temáticas en abierto'].slice(1);
+
+  dayTitle = datosGraficos['Cuota temáticas en abierto'][0]['Cadenas Tematicas TDT'];
+
+  jQuery(".grafico-mensual-3-title")[0].innerText = dayTitle.toUpperCase();
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -33,7 +37,7 @@ function  graficoMensual3() {
     if (moreData) {
       x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
       x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-      x[col3] = Number(x[col3].toString().replace(/,/g, '.'));
+      x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
       // console.log(x['Cadenas Tematicas TDT'], moreData[0]);
       x['Cadenas Tematicas TDT'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
@@ -51,26 +55,6 @@ function  graficoMensual3() {
   chart.data = sorted;
 
   chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999")];
-
-  // Set data
-  config = input.configuracion || [];
-
-  // // Modify chart's colors
-  // var colores = config.filter((x, i) => {
-  //   return x.CONFIG === 'COLORES';
-  // })[0];
-
-  // console.log(colores);
-
-  // if (colores !== undefined) {
-  //   var cols = Object.keys(colores);
-  //   cols.shift();
-  //   chart.colors.list = cols.map((x, i) => am4core.color(colores[x]));
-  // } else {
-  //   chart.colors.list = [am4core.color("#e64b3e"), am4core.color("#9bd6f3"), am4core.color("#74bb55"), am4core.color("#f8c32f"), am4core.color("#3ee697"), am4core.color("#f39bae"), am4core.color("#6455bb"), am4core.color("#2fd2f8"), am4core.color("#f3bb9b"), am4core.color("#a055bb"), am4core.color("#2f5df8"), ];
-  // }
-
-
 
   // Add legend
   chart.legend = new am4charts.Legend();
@@ -120,7 +104,7 @@ function  graficoMensual3() {
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
-      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}</span><br></p></div>";
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}%</span><br></p></div>";
     }
 
    

@@ -1,10 +1,10 @@
 <script>
-function  graficoMensual9() {
+function  graficoMensual10() {
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
 
   // Create chart instance
-  var chart = am4core.create("grafico-mensual-9", am4charts.XYChart);
+  var chart = am4core.create("grafico-mensual-10", am4charts.XYChart);
 
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -19,14 +19,12 @@ function  graficoMensual9() {
 
   // Set data
   input = [];
-  input = datosGraficos['Campañas más activas']
-    .filter( (x, i) => i < 5)
-    .map((x, i) => {
+  input = datosGraficos['Spot de oro – Top 3'].map((x, i) => {
       const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
       // console.log(x);
       if (moreData) {
-        x['GRP 20\"'] = Number(x['GRP 20\"'].toString().replace(/,/g, '.'));
-        x['Campaña'] = x['Campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
+        x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
+        x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);
         x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
@@ -36,15 +34,15 @@ function  graficoMensual9() {
   );
 
 
-  // input[input.length] = {"GRP 20\"": input[input.length - 1]["GRP 20\""] * 0.08};
+  input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
 
-  var sorted = input.sort((a, b) => (a['GRP 20\"'] < b['GRP 20\"']) ? 1 : -1)
+  var sorted = input.sort((a, b) => (a['Grp’s a formato'] < b['Grp’s a formato']) ? 1 : -1)
   chart.data = sorted;
   // console.log(sorted);
 
   chart.colors.list = [am4core.color("#dddddd")];
 
-  var category = "Campaña";
+  var category = "Títulos campaña";
 
 
   // Create axes
@@ -76,7 +74,7 @@ function  graficoMensual9() {
   topContainer.width = am4core.percent(100);
 
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.text = "GRP 20\"";
+  axisTitle.text = "Grp’s a formato";
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
   axisTitle.align = "left";
@@ -89,12 +87,14 @@ function  graficoMensual9() {
     series.dataFields.valueY = field;
     series.dataFields.categoryX = category;
     series.dataFields.emision = "Título emisión";
+    series.dataFields.dia = "Día";
+    series.dataFields.logo = "Logo";
     series.columns.template.strokeWidth = 0;
     series.columns.template.column.cornerRadiusBottomRight = 5;
     series.columns.template.column.cornerRadiusTopRight = 5;
     series.columns.template.column.cornerRadiusBottomLeft = 5;
     series.columns.template.column.cornerRadiusTopLeft = 5;
-    series.columns.template.tooltipText = "{emision}";
+    series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><p>{emision}<br>{dia}</p></div>";
     series.tooltip.pointerOrientation = "vertical";
     series.tooltip.dy = -10;
 
@@ -111,7 +111,7 @@ function  graficoMensual9() {
     image.height = 40;
     image.dy = -10;
     image.dx = 0;
-    image.y = am4core.percent(100);
+    // image.y = am4core.percent(100);
     image.horizontalCenter = "middle";
     image.verticalCenter = "bottom";
 
@@ -133,7 +133,7 @@ function  graficoMensual9() {
     return series;
   }
 
-    createSeries('GRP 20\"', 1);
+    createSeries('Grp’s a formato', 1);
 
     
   jQuery(document).ready(function(){
@@ -142,13 +142,13 @@ function  graficoMensual9() {
 }
 
 
-var graficoMensual9_show = false;
+var graficoMensual10_show = false;
 
-jQuery('#grafico-mensual-9').waypoint(function() {
-  if(!graficoMensual9_show) {
-    graficoMensual9();
+jQuery('#grafico-mensual-10').waypoint(function() {
+  if(!graficoMensual10_show) {
+    graficoMensual10();
   }
-  graficoMensual9_show = true;
+  graficoMensual10_show = true;
 }, {
   offset: '75%'
 });

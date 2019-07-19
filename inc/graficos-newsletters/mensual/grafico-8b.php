@@ -1,16 +1,15 @@
 <script>
 
-
 var dias = [ 'lv', 'sd' ];
 
-function  graficoMensual1(dia) {
+function  graficoMensual8b(dia) {
 
   // console.log('wat1', dia);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
   
   // Create chart instance
-  var chart = am4core.create("grafico-mensual-1-" + dia, am4charts.XYChart);
+  var chart = am4core.create("grafico-mensual-8b-" + dia, am4charts.XYChart);
   
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -22,12 +21,8 @@ function  graficoMensual1(dia) {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  if(dia === 'lv') { input = datosGraficos['ConsumoTV'].slice(1); dayTitle = datosGraficos['ConsumoTV'][0]['Categoría'] };
-  if(dia === 'sd') { input = datosGraficos['ConsumoTV (acumulado)'].slice(1); dayTitle = datosGraficos['ConsumoTV (acumulado)'][0]['Categoría'] };
-
-// console.log(dayTitle);
-
-  jQuery(".grafico-mensual-1-" + dia + "-title")[0].innerText = dayTitle.toUpperCase();
+  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por targets (acumulado)'].slice( 1, 4); dayTitle = 'LUNES-VIERNES' };
+  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por targets (acumulado)'].slice( 5, 8); dayTitle = 'SÁBADO-DOMINGO' };
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -62,7 +57,6 @@ function  graficoMensual1(dia) {
   // Add legend
   chart.legend = new am4charts.Legend();
 
-
   var category = "Categoría";
 
   // Num of series
@@ -78,8 +72,8 @@ function  graficoMensual1(dia) {
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
   // categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\"><img width=\"32\" height=\"32\" src=\"{logo}\" title=\"{category}\" /></div>";
-  categoryAxis.renderer.labels.template.text = "{category}";
   categoryAxis.renderer.labels.template.fontSize = 14;
+  categoryAxis.renderer.labels.template.text = "{category}";
   // console.log(categoryAxis.renderer.labels.template);
 
 
@@ -87,7 +81,7 @@ function  graficoMensual1(dia) {
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
-  valueAxis.extraMax = 0.05;
+  valueAxis.extraMax = 0.08;
 
 
   // Create series
@@ -109,7 +103,7 @@ function  graficoMensual1(dia) {
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
-      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo} min</span><br></p></div>";
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}%</span><br></p></div>";
     }
 
    
@@ -176,24 +170,24 @@ function  graficoMensual1(dia) {
 }
 
 
-var graficoMensual1_show = {"lv": false, "sd": false};
+var graficoMensual8b_show = {"lv": false, "sd": false};
 
 dias.forEach(dia => {
 
-  ScrollReveal().reveal("#grafico-mensual-1-" + dia, {
+  ScrollReveal().reveal("#grafico-mensual-8b-" + dia, {
     afterReveal: function activar (el) {
-      if(!graficoMensual1_show[dia]) {
-        thischart = graficoMensual1(dia);
+      if(!graficoMensual8b_show[dia]) {
+        thischart = graficoMensual8b(dia);
       }
-      graficoMensual1_show[dia] = true;
+      graficoMensual8b_show[dia] = true;
     },
     afterReset: function activar (el) {
-      if(graficoMensual1_show[dia]) {
+      if(graficoMensual8b_show[dia]) {
         
         thischart = null;
-        jQuery("#grafico-mensual-1-" + dia)[0].innerHTML = "";
+        jQuery("#grafico-mensual-8b-" + dia)[0].innerHTML = "";
       }
-      graficoMensual1_show[dia] = false;
+      graficoMensual8b_show[dia] = false;
     },
     reset: true
   });

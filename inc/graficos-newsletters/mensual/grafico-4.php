@@ -32,9 +32,9 @@ function  graficoMensual4() {
   });
 
 
-  input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
+  input[input.length] = {"AM(000)": input[input.length - 1]["AM(000)"] * 0.08};
 
-  var sorted = input.sort((a, b) => (a['AM (000)'] > b['AM (000)']) ? 1 : -1)
+  var sorted = input.sort((a, b) => (a['AM(000)'] > b['AM(000)']) ? 1 : -1)
   chart.data = sorted;
 
   // console.log(chart.data);
@@ -71,7 +71,7 @@ function  graficoMensual4() {
 
   var categoryAxis2 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis2.dataFields.category = category;
-  categoryAxis2.dataFields.cuota = "Cuota (%)";
+  categoryAxis2.dataFields.cuota = "Cuota";
   categoryAxis2.renderer.grid.template.location = 0;
   categoryAxis2.renderer.minGridDistance = 30;
   categoryAxis2.renderer.grid.template.disabled = true;
@@ -95,7 +95,7 @@ function  graficoMensual4() {
   topContainer.width = am4core.percent(100);
 
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.html = "AM (000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  axisTitle.html = "AM(000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
   axisTitle.align = "left";
@@ -122,6 +122,7 @@ function  graficoMensual4() {
     series.dataFields.categoryY = category;
     series.dataFields.minOro = "Minuto de oro";
     series.dataFields.minOroValue = "Valor";
+    series.dataFields.minOroDia = "Día";
     series.columns.template.strokeWidth = 0;
     series.columns.template.column.cornerRadiusBottomRight = 5;
     series.columns.template.column.cornerRadiusTopRight = 5;
@@ -167,7 +168,7 @@ function  graficoMensual4() {
     imageEstrella.dy = 15;
     imageEstrella.horizontalCenter = "right";
     imageEstrella.verticalCenter = "bottom";
-    imageEstrella.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Minuto de oro:</h4><p><span>{minOro}h</span><br><span>{minOroValue}</span></p></div>";
+    imageEstrella.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Minuto de oro:</h4><p><span>{minOroDia}</span><br><span>{minOro}h</span><br><span>{minOroValue}</span></p></div>";
 
     imageEstrella.adapter.add("href", function(html, target) {
       if (target.dataItem._dataContext["Minuto de oro"] !== undefined) {
@@ -181,7 +182,7 @@ function  graficoMensual4() {
     return series;
   }
 
-  createSeries('AM (000)', 1);
+  createSeries('AM(000)', 1);
 
   
   jQuery(document).ready(function(){

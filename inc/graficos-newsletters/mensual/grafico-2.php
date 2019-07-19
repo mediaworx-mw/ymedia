@@ -17,22 +17,24 @@ function  graficoMensual2() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = datosGraficos['Cuota de las cadenas'];
+  input = datosGraficos['Cuota de las cadenas'].slice(1);
+
+  dayTitle = datosGraficos['Cuota de las cadenas'][0]['Cadenas'];
+
+  jQuery(".grafico-mensual-2-title")[0].innerText = dayTitle.toUpperCase();
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
   col3 = Object.keys(input[0])[3];
 
-  // console.log(col1,col2,col3);
 
   input = input.map(x => {
-    const moreData = x.Franjas !== undefined ? enCadenas(x.Franjas, cadenas) : false;
-    // console.log(x);
+    const moreData = x.Cadenas !== undefined ? enCadenas(x.Cadenas, cadenas) : false;
     if (moreData) {
       x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
       x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-      x[col3] = Number(x[col3].toString().replace(/,/g, '.'));
-      x['Franjas'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
+      x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
+      x['Cadenas'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['LOGO'] = moreData[0].logo;
     }
@@ -52,7 +54,7 @@ function  graficoMensual2() {
   // Add legend
   chart.legend = new am4charts.Legend();
 
-  var category = "Franjas";
+  var category = "Cadenas";
 
   // Num of series
   var num_of_series = Object.keys(chart.data[0]).length - 1;
@@ -97,7 +99,7 @@ function  graficoMensual2() {
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
-      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}</span><br></p></div>";
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}%</span><br></p></div>";
     }
 
    

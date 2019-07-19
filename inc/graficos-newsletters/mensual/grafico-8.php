@@ -1,11 +1,16 @@
 <script>
-function  graficoMensual8() {
+
+var dias = [ 'lv', 'sd' ];
+
+function  graficoMensual8(dia) {
+
+  // console.log('wat1', dia);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
-
+  
   // Create chart instance
-  var chart = am4core.create("grafico-mensual-8", am4charts.XYChart);
-
+  var chart = am4core.create("grafico-mensual-8-" + dia, am4charts.XYChart);
+  
   // Locale
   chart.language.locale = am4lang_es_ES;
   chart.numberFormatter.language = new am4core.Language();
@@ -15,143 +20,179 @@ function  graficoMensual8() {
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
-  // console.log(datosGraficos);
-
   // Set data
-  input = [];
-  input = datosGraficos['Campañas más activas']
-    .filter( (x, i) => i < 3)
-    .map((x, i) => {
-      const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
-      // console.log(x);
-      if (moreData) {
-        x['GRP 20\"'] = Number(x['GRP 20\"'].toString().replace(/,/g, '.'));
-        x['Campaña'] = x['Campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
-        x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
-        x['Color'] = moreData[0].color;
-        x['Logo'] = moreData[0].logo;
-      }
-      return x;
+  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por targets'].slice( 1, 4); dayTitle = 'LUNES-VIERNES' };
+  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por targets'].slice( 5, 8); dayTitle = 'SÁBADO-DOMINGO' };
+
+  col1 = Object.keys(input[0])[1];
+  col2 = Object.keys(input[0])[2];
+  col3 = Object.keys(input[0])[3];
+
+  // console.log(col1,col2,col3);
+
+  input = input.map(x => {
+    const moreData = x.Categoria !== undefined ? enCadenas(x.Categoria, cadenas) : false;
+    // console.log(x);
+    if (moreData) {
+      x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
+      x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
+      x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
     }
-  );
+    return x;
+  });
 
 
-  input[input.length] = {"GRP 20\"": input[input.length - 1]["GRP 20\""] * 0.08};
+  var sorted = input.sort((a, b) => (a[col1] < b[col1]) ? 1 : -1);
 
-  var sorted = input.sort((a, b) => (a['GRP 20\"'] < b['GRP 20\"']) ? 1 : -1)
-  chart.data = sorted;
   // console.log(sorted);
 
-  chart.colors.list = [am4core.color("#dddddd")];
+  chart.data = sorted;
 
-  var category = "Campaña";
+  chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999")];
 
+  // Set data
+  config = input.configuracion || [];
+
+
+  // Add legend
+  chart.legend = new am4charts.Legend();
+
+  var category = "Categoría";
+
+  // Num of series
+  var num_of_series = Object.keys(chart.data[0]).length - 1;
 
   // Create axes
-  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+  // var i = 0;
   categoryAxis.dataFields.category = category;
-  categoryAxis.dataFields.logo = "Logo";
+  categoryAxis.dataFields.logo = "LOGO";
+  // console.log(categoryAxis.dataFields, category);
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
+  // categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\"><img width=\"32\" height=\"32\" src=\"{logo}\" title=\"{category}\" /></div>";
+  categoryAxis.renderer.labels.template.fontSize = 14;
+  categoryAxis.renderer.labels.template.text = "{category}";
+  // console.log(categoryAxis.renderer.labels.template);
 
-  var label = categoryAxis.renderer.labels.template;
-  label.wrap = true;
-  label.maxWidth = 150;
-  label.truncate = true;
-  label.maxHeight = 60;
-  label.tooltipText = "{category}";
 
-  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
-  valueAxis.extraMax = 0.05;
-
-  var topContainer = chart.chartContainer.createChild(am4core.Container);
-  topContainer.layout = "absolute";
-  topContainer.toBack();
-  topContainer.paddingBottom = 15;
-  topContainer.width = am4core.percent(100);
-
-  var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.text = "GRP 20\"";
-  axisTitle.fontWeight = 600;
-  axisTitle.fontSize = 14;
-  axisTitle.align = "left";
-  axisTitle.paddingRight = 100;
+  valueAxis.extraMax = 0.08;
 
 
   // Create series
-  function createSeries(field) {
+  function createSeries(field, multiple = 0) {
+
     var series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.valueY = field;
-    series.dataFields.categoryX = category;
-    series.dataFields.emision = "Título emisión";
+    series.dataFields.valueX = field;
+    series.dataFields.categoryY = category;
     series.columns.template.strokeWidth = 0;
-    series.columns.template.column.cornerRadiusBottomRight = 5;
-    series.columns.template.column.cornerRadiusTopRight = 5;
-    series.columns.template.column.cornerRadiusBottomLeft = 5;
-    series.columns.template.column.cornerRadiusTopLeft = 5;
-    series.columns.template.tooltipText = "{emision}";
-    series.tooltip.pointerOrientation = "vertical";
-    series.tooltip.dy = -10;
+    series.columns.template.column.cornerRadiusBottomRight = 20;
+    series.columns.template.column.cornerRadiusTopRight = 20;
+    series.columns.template.column.cornerRadiusBottomLeft = 20;
+    series.columns.template.column.cornerRadiusTopLeft = 20;
+    series.paddingTop = 0;
+    // console.log(field);
+    series.name = field;
+    if (field === col1) {
+      series.dataFields.evo = "Evolución";
+      // series.columns.template.tooltipText = "{evo}";
+      series.tooltip.getFillFromObject = false;
+      series.tooltip.background.fill = am4core.color("#fff");
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}%</span><br></p></div>";
+    }
 
-    var hoverState = series.columns.template.states.create("hover");
-    hoverState.properties.fill = am4core.color("#aaaaaa");
-    hoverState.properties.fillOpacity = 0.8;
-    hoverState.properties.dy  = -5;
-
-    var bullet = series.bullets.push(new am4charts.Bullet());
-    bullet.locationY = 1;
-    var image = bullet.createChild(am4core.Image);
-    image.propertyFields.href = 'Logo';
-    image.width = 40;
-    image.height = 40;
-    image.dy = -10;
-    image.dx = 0;
-    image.y = am4core.percent(100);
-    image.horizontalCenter = "middle";
-    image.verticalCenter = "bottom";
-
+   
     var valueLabel = series.bullets.push(new am4charts.LabelBullet());
-    valueLabel.label.text = "{valueY}";
-    valueLabel.label.horizontalCenter = "middle";
-    valueLabel.label.dx = 0;
-    valueLabel.label.dy = -10;
-    valueLabel.label.fill = "#000";
+    valueLabel.label.text = "{valueX}";
+    valueLabel.label.horizontalCenter = "left";
+    valueLabel.label.dx = 10;
     valueLabel.label.fontSize = 14;
     valueLabel.label.rotation = 0;
-    valueLabel.label.hideOversized = true;
-    valueLabel.label.truncate = true;
-    valueLabel.label.maxWidth = 120;
+    valueLabel.label.truncate = false;
 
-    // console.log(bullet);
-    // console.log(image);
+
+    categoryAxis.renderer.cellStartLocation = 0.1;
+    categoryAxis.renderer.cellEndLocation = 0.9;
 
     return series;
   }
 
-    createSeries('GRP 20\"', 1);
+  // Add series
+  for (var i = 0; i < num_of_series; i++) {
+    var key = Object.keys(chart.data[0])[i + 1];
+    var exceptions = 0;
+    if (chart.data[0]["Evolución"] !== undefined) {
+      exceptions++;
+    }
+    if (chart.data[0]["COLOR"] !== undefined) {
+      exceptions++;
+    }
+    if (chart.data[0]["LOGO"] !== undefined) {
+      exceptions++;
+    }
+    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== 'Evolución') {
+      createSeries(key, num_of_series - exceptions);
+    }
+  }
 
-    
+  // Set cell size in pixels
+  var cellSize = 100;
+  chart.events.on("datavalidated", function (ev) {
+
+    // console.log('ajustando');
+
+    // Get objects of interest
+    var chart = ev.target;
+    var categoryAxis = chart.yAxes.getIndex(0);
+
+    // Calculate how we need to adjust chart height
+    var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+
+    // get current chart height
+    var targetHeight = chart.pixelHeight + adjustHeight;
+
+    // Set it on chart's container
+    chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+  });
+  // Cursor
+  // chart.cursor = new am4charts.XYCursor();
+
   jQuery(document).ready(function(){
     jQuery("g[aria-labelledby]").hide();
   })
+
+  return chart;
 }
 
 
-var graficoMensual8_show = false;
+var graficoMensual8_show = {"lv": false, "sd": false};
 
-jQuery('#grafico-mensual-8').waypoint(function() {
-  if(!graficoMensual8_show) {
-    graficoMensual8();
-  }
-  graficoMensual8_show = true;
-}, {
-  offset: '75%'
+dias.forEach(dia => {
+
+  ScrollReveal().reveal("#grafico-mensual-8-" + dia, {
+    afterReveal: function activar (el) {
+      if(!graficoMensual8_show[dia]) {
+        thischart = graficoMensual8(dia);
+      }
+      graficoMensual8_show[dia] = true;
+    },
+    afterReset: function activar (el) {
+      if(graficoMensual8_show[dia]) {
+        
+        thischart = null;
+        jQuery("#grafico-mensual-8-" + dia)[0].innerHTML = "";
+      }
+      graficoMensual8_show[dia] = false;
+    },
+    reset: true
+  });
+
 });
-
-
+  
 
 </script>
