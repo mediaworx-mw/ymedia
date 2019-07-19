@@ -108,11 +108,12 @@
     form {
       position: relative;
     }
-    input[type=text] {
+    input[type=email] {
       padding: 1rem;
       width: 100%;
+      font-size: 1.6rem;
     }
-    input[type=submit] {
+    button {
       @include centerY;
       background: $gray-dark;
       border: none;
@@ -120,6 +121,10 @@
       padding: 0.5rem 2rem;
       position: absolute;
       right: 0.5rem;
+      height: 80%;
+      z-index: 10;
+      cursor: pointer;
+      font-size: 1.6rem;
     }
   }
   &__nav {
