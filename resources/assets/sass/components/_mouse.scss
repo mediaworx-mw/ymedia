@@ -1,0 +1,22 @@
+.mouse {
+  position: fixed;
+  bottom: 10rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 11;
+  animation: scroll 1s infinite;
+  svg {
+    fill: $red;
+  }
+  &:hidden {
+    display: none;
+  }
+}
+
+
+@keyframes scroll {
+  0%   { transform: translate(-50%, 0) }
+  90% { transform: translate(-50%, 10px) }
+  100% { trasnfrom: translate(-50%, 0)}
+}
+

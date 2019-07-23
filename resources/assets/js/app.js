@@ -12,6 +12,7 @@ import Caso from './components/caso.js';
 import Canal from './components/canal.js';
 import Sidebar from './components/sidebar.js';
 import Topbar from './components/topbar.js';
+import Cookies from './components/cookies.js';
 import match from './utils/match';
 
 function detectCurrentPage() {
@@ -36,6 +37,7 @@ function main() {
   Sidebar();
   Topbar();
   Main();
+  Cookies();
 }
 
 function init() {

@@ -27,5 +27,8 @@
   </div>
   <?php endfor; ?>
 </div>
+<div class="mouse">
+  <?php get_template_part('svg/mouse'); ?>
+</div>
 <?php get_template_part('components/cookies') ?>
 <?php get_footer(); ?>
