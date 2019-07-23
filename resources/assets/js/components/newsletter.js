@@ -5,6 +5,14 @@ import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 
 const Newsletter = () => {
 
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  var email = url.searchParams.get("email");
+  if(email) {
+    document.querySelector('.wpcf7-email').value = email;
+  }
+
+
   // const $bar = document.querySelector('.progress-bar__line');
 
   // const $n1 = document.querySelector('.n1');

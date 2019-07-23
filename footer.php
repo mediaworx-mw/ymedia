@@ -21,9 +21,9 @@
           <h3><?php echo $subscripcion['tag_subscripcion']; ?></h3>
           <div class="footer__box">
             <h5><?php echo $subscripcion['texto_subscripcion']; ?></h5>
-            <form>
-              <input type="text" placeholder="Dirección de email">
-              <input type="submit" value="Enviar">
+            <form onsubmit="return validateMyForm();" class="footer__news" method="GET" action="<?php bloginfo('url'); ?>/newsletter" novalidate>
+              <input class="footer__news-input" type="email" id="email" name="email" placeholder="Dirección de email"></input>
+              <button type="submit">Enviar</button>
             </form>
           </div>
         </div>
@@ -37,10 +37,10 @@
       <div class="footer__bottom">
         <div class="footer__social">
           <?php $social = get_field('social', 'options'); ?>
-          <a href="<?php echo $social['twitter']; ?>"><i class="fab fa-twitter"></i></a>
-          <a href="<?php echo $social['facebook']; ?>"><i class="fab fa-facebook-f"></i></a>
-          <a href="<?php echo $social['linkedin']; ?>"><i class="fab fa-linkedin-in"></i></a>
-          <a href="<?php echo $social['youtube']; ?>"><i class="fab fa-youtube"></i></a>
+          <a target="_blank" href="<?php echo $social['twitter']; ?>"><i class="fab fa-twitter"></i></a>
+          <a target="_blank" href="<?php echo $social['facebook']; ?>"><i class="fab fa-facebook-f"></i></a>
+          <a target="_blank" href="<?php echo $social['linkedin']; ?>"><i class="fab fa-linkedin-in"></i></a>
+          <a target="_blank" href="<?php echo $social['youtube']; ?>"><i class="fab fa-youtube"></i></a>
         </div>
 
         <div><p class="footer__copy">© <?php echo date("Y"); ?>
@@ -56,6 +56,26 @@
     </div>
   </div>
 </footer>
+<script>
+
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+  function validateMyForm() {
+    const email = document.querySelector('.footer__news-input').value;
+    if(!email){
+      return false;
+    } else {
+      if ( !validateEmail(email) ) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
+</script>
+
 <?php wp_footer(); ?>
 </body>
 </html>

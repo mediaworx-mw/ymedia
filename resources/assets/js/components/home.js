@@ -7,10 +7,6 @@ const Home = () => {
 
  // WebGLHome();
 
-  const $cookies = document.querySelector('.cookies');
-  const $accept = document.querySelector('.cookies__button--accept');
-  const $reject = document.querySelector('.cookies__button--reject');
-
   const home1 = document.querySelector('.home1');
   const title1 = document.querySelector('.home1').querySelector('.home-tag__title').getElementsByTagName('span');
   const text1 = document.querySelector('.home1').querySelector('.home-tag__text');
@@ -36,25 +32,7 @@ const Home = () => {
 
   const controllerHome = new ScrollMagic.Controller();
 
-  $cookies.classList.add('hidden');
-
-  function delayCookies() {
-    setTimeout(
-      function() {
-        $cookies.classList.remove('hidden');
-    }, 3000);
-  }
-
-  delayCookies();
-
-
-  $accept.addEventListener('click', () => {
-    $cookies.classList.add('hidden');
-  });
-
-  $reject.addEventListener('click', () => {
-    $cookies.classList.add('hidden');
-  })
+  const $mouse = document.querySelector('.mouse');
 
   counterLine1.forEach(function(e) {
     e.addEventListener('click', () => {
@@ -65,6 +43,7 @@ const Home = () => {
   counterLine2.forEach(function(e) {
     e.addEventListener('click', () => {
       fullpage_api.moveTo(2);
+      document.querySelector('.mouse').classList.add('hidden');
     })
   });
 
@@ -121,6 +100,9 @@ new fullpage('#home', {
     }
     if(origin.index == 1 && direction =='up'){
       $header.classList.remove('header--small');
+    }
+    if( origin.index == 0 && direction == 'down') {
+      document.querySelector('.mouse').classList.add('hidden');
     }
   }
 });

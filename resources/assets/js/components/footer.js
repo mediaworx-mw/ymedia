@@ -6,7 +6,7 @@ const Footer = () => {
   const $footerCross = document.querySelector('.footer__cross-button');
   const $footerElementsTop = document.querySelector('.footer__top').getElementsByTagName('div');
   const $footerElementsBottom = document.querySelector('.footer__bottom').getElementsByTagName('div');
-  //const $footerWrapper = document.querySelector('.footer__wrapper');
+  const $footerWrapper = document.querySelector('.footer__wrapper');
 
 
   const footerTween = new TimelineLite({paused: true});
@@ -20,8 +20,6 @@ const Footer = () => {
     toggleClass($footerCross, 'open');
     footerTween.play();
   });
-
-
 
 }
 

@@ -5,17 +5,17 @@
   left: 0;
   max-width: 100%;
   min-height: 100px;
-  opacity: 1;
+  opacity: 0;
   padding: 2rem 0;
   position: fixed;
   transition: opacity 0.3s ease;
   visibility: visible;
   width: 100vw;
   z-index: 200;
-  &.hidden {
-    opacity: 0;
+  &.visible {
+    opacity: 1;
     transition: opacity 0.3s ease;
-    visibility: hidden;
+    visibility: visible;
   }
   &__inner {
     display: flex;
