@@ -6,16 +6,19 @@
   max-width: 100%;
   min-height: 100px;
   opacity: 0;
+  visibility: hidden;
   padding: 2rem 0;
   position: fixed;
   transition: opacity 0.3s ease;
   visibility: visible;
   width: 100vw;
   z-index: 200;
+  pointer-events: none;
   &.visible {
     opacity: 1;
     transition: opacity 0.3s ease;
     visibility: visible;
+    pointer-events: inherit;
   }
   &__inner {
     display: flex;

@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="profile" href="http://gmpg.org/xfn/11">
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144332668-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144335596-1"></script>
 
   <script>
     if (document.cookie.indexOf('reject_ymedia_cookies') != -1) {
-      window['ga-disable-UA-144332668-1'] = true;
+      window['ga-disable-UA-144335596-1'] = true;
     } else {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-144332668-1');
+      gtag('config', 'UA-144335596-1');
     }
   </script>
 
@@ -57,10 +57,10 @@
         </nav>
         <div class="nav__social">
           <?php $social = get_field('social', 'options'); ?>
-          <a href="<?php echo $social['twitter']; ?>"><i class="fab fa-twitter"></i></a>
-          <a href="<?php echo $social['facebook']; ?>"><i class="fab fa-facebook-f"></i></a>
-          <a href="<?php echo $social['linkedin']; ?>"><i class="fab fa-linkedin-in"></i></a>
-          <a href="<?php echo $social['youtube']; ?>"><i class="fab fa-youtube"></i></a>
+          <a target="_blank" href="<?php echo $social['twitter']; ?>"><i class="fab fa-twitter"></i></a>
+          <a target="_blank" href="<?php echo $social['facebook']; ?>"><i class="fab fa-facebook-f"></i></a>
+          <a target="_blank" href="<?php echo $social['linkedin']; ?>"><i class="fab fa-linkedin-in"></i></a>
+          <a target="_blank" href="<?php echo $social['youtube']; ?>"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
     </div>

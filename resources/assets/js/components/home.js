@@ -43,13 +43,14 @@ const Home = () => {
   counterLine2.forEach(function(e) {
     e.addEventListener('click', () => {
       fullpage_api.moveTo(2);
-      document.querySelector('.mouse').classList.add('hidden');
+      //document.querySelector('.mouse').classList.add('hidden');
     })
   });
 
   counterLine3.forEach(function(e) {
     e.addEventListener('click', () => {
       fullpage_api.moveTo(3);
+      document.querySelector('.mouse').classList.add('hidden');
     })
   });
 
@@ -101,7 +102,7 @@ new fullpage('#home', {
     if(origin.index == 1 && direction =='up'){
       $header.classList.remove('header--small');
     }
-    if( origin.index == 0 && direction == 'down') {
+    if( origin.index == 1 && direction == 'down') {
       document.querySelector('.mouse').classList.add('hidden');
     }
   }

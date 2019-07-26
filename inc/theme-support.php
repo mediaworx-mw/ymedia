@@ -296,3 +296,21 @@ function reg_tag() {
   register_taxonomy_for_object_type('post_tag', 'clientes');
 }
 add_action('init', 'reg_tag');
+
+
+// Get first image
+function get_first_image() {
+  global $post, $posts;
+  $first_image = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_image = $matches [1] [0];
+
+  if(empty($first_image)){ //Defines a default image
+    // Set the default image if there are no image available inside post content
+    $first_image = "/img/default.jpg";
+  }
+  return $first_image;
+  }
+// End Get First Image
