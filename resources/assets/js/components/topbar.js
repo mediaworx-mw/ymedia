@@ -89,8 +89,11 @@ const Topbar = () => {
       items.forEach(function(item, index) {
         let title = items[index].title;
         let permalink = items[index].permalink;
-        //let excerpt = items[index].excerpt.split(" ").splice(0, 20).join(" ");
-        let excerpt = items[index].excerpt;
+        let excerpt = items[index].excerpt.split(" ").splice(0, 20).join(" ");
+        if(excerpt) {
+          excerpt = excerpt+'...';
+        }
+        //let excerpt = items[index].excerpt;
         let image = items[index].thumbnail;
         let date = items[index].date;
         let color = '';
@@ -112,6 +115,7 @@ const Topbar = () => {
             }
           }
         }
+        //<span class="article-date canal-article__date">${date}</span>
 
         article += `
           <a href="${permalink}" class="canal-article canal-article--regular">
@@ -124,7 +128,7 @@ const Topbar = () => {
               <div class="canal-article__content">
                 <h2 class="article-title canal-article__title">${title}</h2>
                 <div class="article-meta canal-article__meta">
-                  <span class="article-date canal-article__date">${date}</span>
+
                 </div>
                 <div class="canal-article__excerpt article-excerpt">${excerpt}</div>
               </div>

@@ -33,8 +33,7 @@ foreach($terms as $key=>$term){
         <span class="article-date canal-article__date"><?php echo get_the_date( 'd-m-Y' ); ?></span>
       </div>
       <div class="canal-article__excerpt article-excerpt">
-         <?php the_field('resumen_canal') ?>
-
+        <?php echo wp_trim_words( get_the_excerpt(), 20, '...' ); ?>
       </div>
     </div>
   </div>

@@ -31,10 +31,10 @@ const Cookies = () => {
   }
 
   const delayCookies = () => {
-    setTimeout(
-      function() {
+    //setTimeout(
+     // function() {
         $cookies.classList.add('visible');
-    }, 1000);
+    //}, 1);
   }
 
   if ($accept != null) {

@@ -11,6 +11,7 @@
 ?>
 
 <?php get_header(); ?>
+
 <div class="home" id="home" data-site-body="home">
   <?php for ($i = 1; $i <= 3; $i++): ?>
     <div class="home-section home<?php echo $i; ?> section">
@@ -30,5 +31,4 @@
 <div class="mouse">
   <?php get_template_part('svg/mouse'); ?>
 </div>
-<?php get_template_part('components/cookies') ?>
 <?php get_footer(); ?>
