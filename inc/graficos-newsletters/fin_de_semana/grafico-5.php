@@ -17,19 +17,43 @@ chart.dateFormatter.language.locale = am4lang_es_ES;
 
 enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
-const datosGraficosX = datosGraficos;
+const datosGraficosX = datosGraficos['Spot de oro - Top3'];
+
+// console.log(datosGraficosX);
+position = {};
+
+for ( ii = 0; ii < datosGraficosX.length; ii++){
+  // console.log(datosGraficosX[ii], ii);
+  if (datosGraficosX[ii]["Títulos campaña"] === 'VIERNES') {
+    position["VIERNES"] = ii;
+  }
+  if (datosGraficosX[ii]["Títulos campaña"] === 'SÁBADO') {
+    position["SÁBADO"] = ii;
+  }
+  if (datosGraficosX[ii]["Títulos campaña"] === 'DOMINGO') {
+    position["DOMINGO"] = ii;
+  }  
+}
 
 // Set data
-if(dia === 'vie') { input = datosGraficosX['Spot de oro - Top3'].slice( 1, 4); }
-if(dia === 'sab') { input = datosGraficosX['Spot de oro - Top3'].slice( 5, 8); }
-if(dia === 'dom') { input = datosGraficosX['Spot de oro - Top3'].slice( 9, 12); }
+input = [];
+if(dia === 'vie') { 
+  input = datosGraficosX.slice( 1, position['SÁBADO']);
+}
+if(dia === 'sab') { 
+  input = datosGraficosX.slice( position['SÁBADO'] + 1, position['DOMINGO']); 
+}
+if(dia === 'dom') { 
+  input = datosGraficosX.slice( position['DOMINGO'] + 1); 
+}
 
 input = input.map((x, i) => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
   // console.log(x);
-  if (moreData) {
-    x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);
-    x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
+  x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);
+  x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
+
+  if (moreData && moreData.length !== 0) {
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;

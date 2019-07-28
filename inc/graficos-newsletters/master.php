@@ -42,6 +42,27 @@ if( $activar_graficos ) {
         // no rows found
     endif;
 
+    // Tomamos la configuración de las cadenas de la página de opciones       
+    if( have_rows('marcas', 'option') ):
+      echo "<script>";
+      echo "var marcas = [];";
+
+      while ( have_rows('marcas', 'option') ) : the_row();
+
+        $marca = get_sub_field('marca');
+        $logo = get_sub_field('logo');
+        $color = get_sub_field('color');
+
+        echo "marcas.push({marca: '$marca', logo: '$logo', color: '$color' });";
+
+      endwhile;
+
+      echo "</script>";
+
+    else :
+        // no rows found
+    endif;
+
      // Tomamos la configuración de los grupos de comunicación de la página de opciones
     if( have_rows('grupos', 'option') ):
 
@@ -97,16 +118,10 @@ if( $activar_graficos ) {
 
     case 'EGM':
       echo 'EGM';
-    ?>
-      <div id="grafico-egm-1" class="grafico-inner"></div>
-    <?php 
       break;   
 
     case 'Inversión':
-      echo 'Inversión';
-    ?>
-      <div id="grafico-inversion-1" class="grafico-inner"></div>
-    <?php 
+      require get_template_directory() . '/inc/graficos-newsletters/inversion/case.php';
       break;
 
     default:

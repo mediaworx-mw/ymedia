@@ -1,13 +1,13 @@
 <script>
 
-function  graficoMensual5() {
+function  graficoInversion1() {
   
   enCadenas = (cadena, cadenas) => cadenas.filter( 
       x => (x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1) );
 
   // Set data
   input = [];
-  input = datosGraficos['Ocupación por cadenas'];
+  input = datosGraficos['Inversión'];
   
   var medios = Object.keys(input[0]).filter( x => x !== 'Medio');
 
@@ -20,8 +20,8 @@ function  graficoMensual5() {
       var medio = {};
       // x["Cuota (%)"] = x["Cuota (%)"];
       medio['Medio'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "").toUpperCase();
-      medio['Color'] = moreData[0].color;
-      medio['Logo'] = moreData[0].logo;
+      // medio['Color'] = moreData[0].color;
+      // medio['Logo'] = moreData[0].logo;
       // console.log(medio)
     }
     return medio;
@@ -29,7 +29,7 @@ function  graficoMensual5() {
 
   // console.log(mediosMoreData);
 
-  var id = "grafico-mensual-5";
+  var id = "grafico-inversion-1";
 
   var data = input;
 
@@ -46,8 +46,8 @@ function  graficoMensual5() {
   // if (colores !== undefined) {
     // var cols = Object.keys(colores);
     // cols.shift();
-    var colores = mediosMoreData.map((x) => x['Color']);
-    var logos = mediosMoreData.map((x) => x['Logo']);
+    // var colores = mediosMoreData.map((x) => x['Color']);
+    // var logos = mediosMoreData.map((x) => x['Logo']);
   // } 
   // else {
     // colores = ["#e64b3e", "#9bd6f3", "#74bb55", "#f8c32f", "#3ee697", "#f39bae", "#6455bb", "#2fd2f8", "#f3bb9b", "#a055bb", "#2f5df8",];
@@ -79,10 +79,10 @@ function  graficoMensual5() {
     else return "#" + (4294967296 + r * 16777216 + g * 65536 + b * 256 + (f ? m(a * 255) : 0)).toString(16).slice(1, f ? undefined : -2)
   }
 
-  tableCreate(id, data, colores);
+  tableCreate(id, data);
 
 
-  function tableCreate(id, data, colores) {
+  function tableCreate(id, data) {
 
     // console.log(data);
     // console.log(data.length, Object.keys(data[0]).length);
@@ -113,33 +113,37 @@ function  graficoMensual5() {
           var cellInner = document.createElement("span");
           var cellText = document.createTextNode(Object.keys(data[0])[i]);
 
-          if (i > 0) {
-            // cell.style.backgroundColor = colores[i - 1];
-            cell.style.color = colores[i - 1];
-            cell.classList.add('head');
+          // if (i > 0) {
+          //   // cell.style.backgroundColor = colores[i - 1];
+          //   // cell.style.color = colores[i - 1];
+          //   cell.classList.add('head');
 
-            cell.style.textAlign = "center";
-            var logo = document.createElement("img");
-            logo.setAttribute('src', logos[i - 1]);
-            cellText = false;
-            cellInner.appendChild(logo);
-            cell.appendChild(cellInner);
-            cell.style.opacity = 0;
-          }
+          //   cell.style.textAlign = "center";
+          //   var logo = document.createElement("img");
+          //   // logo.setAttribute('src', logos[i - 1]);
+          //   var cellText = document.createTextNode(Object.keys(data[0])[i]);
+          //   // cellInner.appendChild(logo);
+          //   cell.appendChild(cellInner);
+          //   cell.style.opacity = 0;
+          // }
 
         } else {
           var cell = document.createElement("td");
           var cellInner = document.createElement("span");
           var cellText = document.createTextNode(data[j][Object.keys(data[0])[i]] !== undefined ? data[j][Object.keys(data[0])[i]] : '');
           
-          if (i > 0) {
+          if (i == 3) {
             cellInner.classList.add('colored');
+            // console.log(cellText.data)
             // cellInner.style.backgroundColor = pSBC(0.70, colores[i - 1]);
-            cellInner.style.backgroundColor = pSBC(0.70, colores[i - 1]);
-            if(cellText.data.replace('%','').replace(',','.') > 100) {
-              cellInner.style.color = "#ff0000";
+            // cellInner.style.backgroundColor = pSBC(0.70, colores[i - 1]);
+            if(cellText.data.replace('%','').replace(',','.') < 0) {              
+              cellInner.classList.add('negative');
+            } else {
+              cellInner.classList.add('positive');
             }
           }
+
         }
 
         if (i === 0) {
@@ -147,11 +151,9 @@ function  graficoMensual5() {
           // cell.style.backgroundColor = '#fcfcfc';
         }
 
-        if (!(j === -1 && i > 0)) {
-          cellInner.appendChild(cellText);
-          cell.appendChild(cellInner);
-          cell.style.opacity = 0;
-        }
+        cellInner.appendChild(cellText);
+        cell.appendChild(cellInner);
+        cell.style.opacity = 0;
 
         cell.style.animationDelay = (ani++ * 0.05) + 's';
         row.appendChild(cell);
@@ -175,13 +177,13 @@ function  graficoMensual5() {
   })
 }
 
-var graficoMensual5_show = false;
+var graficoInversion1_show = false;
 
-jQuery('#grafico-mensual-5').waypoint(function() {
-  if(!graficoMensual5_show) {
-    graficoMensual5();
+jQuery('#grafico-inversion-1').waypoint(function() {
+  if(!graficoInversion1_show) {
+    graficoInversion1();
   }
-  graficoMensual5_show = true;
+  graficoInversion1_show = true;
 }, {
   offset: '75%'
 });

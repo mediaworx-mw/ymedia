@@ -21,7 +21,7 @@ function  graficoDiaria1() {
   input = datosGraficos['Programas - Top10'].map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
-    if (moreData) {
+    if (moreData && moreData.length !== 0) {
       // x["Cuota (%)"] = x["Cuota (%)"];
       x['Título'] = x['Título'].replace(/\//g, " / ") + ' '.repeat(i);
       x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "").toUpperCase();

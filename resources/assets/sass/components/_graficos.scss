@@ -297,6 +297,7 @@ img[src="[object"] {
   td,
   th {
     // border: 2px solid white;
+    font-size: 14px;
     min-width: 100px;
     max-width: 200px;
     padding: 5px 10px;
@@ -317,8 +318,25 @@ img[src="[object"] {
       position: relative;
       padding: 3px 10px;
       border-radius: 20px;
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 1px;
+
+    }
+  }
+
+  tr {
+    &:hover {
+      .colored {
+        color: white;
+        transition: 250ms;
+        &.negative {
+          background-color: rgba(223, 87, 82, 0.863);
+        }
+
+        &.positive {
+          background-color: #67d667;
+        }
+      }
     }
   }
 }

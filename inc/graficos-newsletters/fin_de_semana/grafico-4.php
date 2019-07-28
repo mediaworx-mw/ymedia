@@ -74,7 +74,7 @@ function  graficoFDS4(dia) {
   series.dataFields.logos = "Logos";
   series.tooltip.getFillFromObject = false;
   series.tooltip.background.fill = am4core.color("#fff");
-  series.tooltip.label.interactionsEnabled = true;
+  series.tooltip.label.interactionsEnabled = false;
   // console.log(series.tooltip);
 
   series.slices.template.radius = 20;

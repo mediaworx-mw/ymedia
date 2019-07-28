@@ -28,8 +28,8 @@ function  graficoFDS1(dia) {
   input = input.map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
-    if (moreData) {
-      x['Título'] = x['Título'].replace(/\//g, " / ") + ' '.repeat(i);
+    x['Título'] = x['Título'].replace(/\//g, " / ") + ' '.repeat(i);
+    if (moreData && moreData.length !== 0) {
       x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;

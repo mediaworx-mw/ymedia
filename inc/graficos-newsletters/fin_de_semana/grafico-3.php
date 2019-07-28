@@ -29,8 +29,8 @@ if(dia === 'dom') { input = datosGraficosX['Cuota de las tem. en abierto - Top5'
 input = input.map(x => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
   // console.log(x);
-  if (moreData) {
-    x["Cuota (%)"] = Number(x["Cuota (%)"].toString().replace(/,/g, '.'));
+  x["Cuota (%)"] = Number(x["Cuota (%)"].toString().replace(/,/g, '.'));
+  if (moreData && moreData.length !== 0) {
     x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
     x['Color'] = moreData[0].color;
     x['Logo'] = moreData[0].logo;

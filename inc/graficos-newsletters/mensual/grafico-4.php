@@ -21,9 +21,10 @@ function  graficoMensual4() {
   input = datosGraficos['Programas - Top10'].map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
-    if (moreData) {
+    x['Título/Descripción'] = x['Título/Descripción'].replace(/\//g, " / ") + ' '.repeat(i);
+    
+    if (moreData && moreData.length !== 0) {
       // x["Cuota (%)"] = x["Cuota (%)"];
-      x['Título/Descripción'] = x['Título/Descripción'].replace(/\//g, " / ") + ' '.repeat(i);
       x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "").toUpperCase();
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;
@@ -168,7 +169,10 @@ function  graficoMensual4() {
     imageEstrella.dy = 15;
     imageEstrella.horizontalCenter = "right";
     imageEstrella.verticalCenter = "bottom";
-    imageEstrella.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Minuto de oro:</h4><p><span>{minOroDia}</span><br><span>{minOro}h</span><br><span>{minOroValue}</span></p></div>";
+    // imageEstrella.tooltip.getFillFromObject = false;
+    // imageEstrella.tooltip.background.fill = am4core.color("#fff");
+    // console.log(imageEstrella);
+    imageEstrella.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h5>Minuto de oro:</h5><p><span>{minOroDia}</span><br><span>{minOro}h</span><br><span>{minOroValue}</span></p></div>";
 
     imageEstrella.adapter.add("href", function(html, target) {
       if (target.dataItem._dataContext["Minuto de oro"] !== undefined) {
@@ -183,6 +187,25 @@ function  graficoMensual4() {
   }
 
   createSeries('AM(000)', 1);
+
+  var cellSize = 65;
+  chart.events.on("datavalidated", function (ev) {
+
+    // console.log('ajustando');
+
+    // Get objects of interest
+    var chart = ev.target;
+    var categoryAxis = chart.yAxes.getIndex(0);
+
+    // Calculate how we need to adjust chart height
+    var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+
+    // get current chart height
+    var targetHeight = chart.pixelHeight + adjustHeight;
+
+    // Set it on chart's container
+    chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+  });
 
   
   jQuery(document).ready(function(){

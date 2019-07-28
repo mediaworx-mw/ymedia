@@ -1,10 +1,10 @@
 <script>
-function  graficoDiaria4() {
+function  graficoInversion2() {
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
 
   // Create chart instance
-  var chart = am4core.create("grafico-diaria-4", am4charts.PieChart);
+  var chart = am4core.create("grafico-inversion-2", am4charts.PieChart);
 
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -17,31 +17,34 @@ function  graficoDiaria4() {
   chart.hiddenState.properties.opacity = 0;
 
 
-  enGrupos = (grupo, grupos) => grupos.filter( x => x.grupo.toLowerCase().indexOf(grupo.toLowerCase()) > -1 );
+  // enGrupos = (grupo, grupos) => grupos.filter( x => x.grupo.toLowerCase().indexOf(grupo.toLowerCase()) > -1 );
 
   // Set data
+  key = Object.keys(datosGraficos['Televisión'][0])[1]
   input = [];
-  input = datosGraficos['Cuota por grupos de comunicación'].map(x => {
-      const moreData = x.Grupo !== undefined ? enGrupos(x.Grupo, grupos) : false;
+  input = datosGraficos['Televisión'].map(x => {
+      // const moreData = x.Grupo !== undefined ? enGrupos(x.Grupo, grupos) : false;
       // console.log(x);
-      if (moreData.length !== 0) {
+      // if (moreData.length !== 0) {
         // console.log(moreData)
-        x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/,/g, '.').replace(/%/g, '');
-        x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
-        x['Color'] = moreData[0].color;
-        x['Logo'] = moreData[0].logo;
-        x['Logos'] = moreData[0].logos.map(x => "<img style='width:40px;height:40px;margin:10px' src='"+x+"'>").join().replace(/,/g,'');
-      }
+        x[key] = x[key].toString().replace(/,/g, '.').replace(/%/g, '');
+        x['Evolución'] = x['Evolución'].toString().replace(/,/g, '.').replace(/%/g, '');
+        // x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
+        // x['Color'] = moreData[0].color;
+        // x['Logo'] = moreData[0].logo;
+      // }
       return x;
     }
   ); 
 
-  var sorted = input.sort((a, b) => (Number(a["Cuota (%)"]) < Number(b["Cuota (%)"])) ? 1 : -1);
+  console.log(key);
+
+  var sorted = input.sort((a, b) => (Number(a[key]) < Number(b[key])) ? 1 : -1);
   sorted = [...sorted.filter( x => x["Grupo"] !== 'Resto'), ...sorted.filter( x => x["Grupo"] === 'Resto')];
 
   chart.data = sorted;
 
-  // console.log(sorted);
+  console.log(sorted);
 
   chart.innerRadius = am4core.percent(20);
   chart.height = am4core.percent(80);
@@ -54,7 +57,7 @@ function  graficoDiaria4() {
 
   // Add series
 
-  var key = "Cuota (%)";
+  var key = key;
 
   series = chart.series.push(new am4charts.PieSeries());
 
@@ -62,12 +65,12 @@ function  graficoDiaria4() {
   series.colors.list = sorted.map((x) => am4core.color(x["Color"]) );
 
   series.dataFields.category = "Grupo";
-  series.dataFields.value = "Cuota (%)";
+  series.dataFields.value = key;
   series.dataFields.logo = "Logo";
   series.dataFields.logos = "Logos";
   series.tooltip.getFillFromObject = false;
   series.tooltip.background.fill = am4core.color("#fff");
-  series.tooltip.label.interactionsEnabled = false;
+  series.tooltip.label.interactionsEnabled = true;
   // console.log(series.tooltip);
 
   series.slices.template.cornerRadius = 10;
@@ -104,13 +107,13 @@ function  graficoDiaria4() {
 }
 
 
-var graficoDiaria4_show = false;
+var graficoInversion2_show = false;
 
-jQuery('#grafico-diaria-4').waypoint(function() {
-  if(!graficoDiaria4_show) {
-    graficoDiaria4();
+jQuery('#grafico-inversion-2').waypoint(function() {
+  if(!graficoInversion2_show) {
+    graficoInversion2();
   }
-  graficoDiaria4_show = true;
+  graficoInversion2_show = true;
 }, {
   offset: '75%'
 });

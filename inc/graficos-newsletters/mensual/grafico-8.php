@@ -21,8 +21,10 @@ function  graficoMensual8(dia) {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por targets'].slice( 1, 4); dayTitle = 'LUNES-VIERNES' };
-  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por targets'].slice( 5, 8); dayTitle = 'SÁBADO-DOMINGO' };
+  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por targets'].slice(1); dayTitle =  datosGraficos['Presión publicitaria por targets'][0]['Categoría'] };
+  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por targets (acumulado)'].slice(1); dayTitle =  datosGraficos['Presión publicitaria por targets (acumulado)'][0]['Categoría'] };
+
+  jQuery(".grafico-mensual-8-" + dia + "-title")[0].innerText = dayTitle.toUpperCase();
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -31,13 +33,10 @@ function  graficoMensual8(dia) {
   // console.log(col1,col2,col3);
 
   input = input.map(x => {
-    const moreData = x.Categoria !== undefined ? enCadenas(x.Categoria, cadenas) : false;
     // console.log(x);
-    if (moreData) {
-      x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
-      x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-      x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
-    }
+    x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
+    x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
+    x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
     return x;
   });
 
@@ -81,7 +80,7 @@ function  graficoMensual8(dia) {
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
-  valueAxis.extraMax = 0.08;
+  valueAxis.extraMax = 0.09;
 
 
   // Create series
@@ -103,7 +102,7 @@ function  graficoMensual8(dia) {
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
-      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}%</span><br></p></div>";
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}</span><br></p></div>";
     }
 
    
@@ -141,7 +140,7 @@ function  graficoMensual8(dia) {
   }
 
   // Set cell size in pixels
-  var cellSize = 100;
+  var cellSize = 70;
   chart.events.on("datavalidated", function (ev) {
 
     // console.log('ajustando');

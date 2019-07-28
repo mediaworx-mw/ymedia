@@ -22,9 +22,9 @@ function  graficoDiaria5() {
   input = datosGraficos['Spot de oro - Top3'].map((x, i) => {
       const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
       // console.log(x);
-      if (moreData) {
-        x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
-        x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
+      x['Grp’s a formato'] = Number(x['Grp’s a formato'].toString().replace(/,/g, '.'));
+      x['Títulos campaña'] = x['Títulos campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
+      if (moreData && moreData.length !== 0) {
         x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;

@@ -30,10 +30,11 @@ function  graficoMensual2() {
 
   input = input.map(x => {
     const moreData = x.Cadenas !== undefined ? enCadenas(x.Cadenas, cadenas) : false;
-    if (moreData) {
-      x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
-      x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-      x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
+    x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
+    x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
+    x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
+    
+    if (moreData && moreData.length !== 0) {
       x['Cadenas'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['LOGO'] = moreData[0].logo;
@@ -99,7 +100,7 @@ function  graficoMensual2() {
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
-      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><h4>Evolución vs año anterior:</h4><p><span>{evo}%</span><br></p></div>";
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br>anterior:</h6><p><span>{evo}%</span><br></p></div>";
     }
 
    
@@ -138,7 +139,7 @@ function  graficoMensual2() {
   }
 
   // Set cell size in pixels
-  var cellSize = 100;
+  var cellSize = 70;
   chart.events.on("datavalidated", function (ev) {
 
     // console.log('ajustando');

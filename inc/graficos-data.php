@@ -10,10 +10,10 @@ function acf_sheets_fuentes_sheets( $field ) {
     $sheets = get_field('sheets_fuentes', 'option', false);
 
     $nl = ['diario','fin_de_semana', 'mensual', 'egm', 'inversion'];
-    $i = 0; 
+    $i = 0;
     echo '<div id="ids_google_sheets" style="display:none">';
     if( is_array($sheets) ) {
-      foreach( $sheets as $sheet ) {           
+      foreach( $sheets as $sheet ) {
         echo '<input type="hidden" id="fuente_'.$nl[$i++].'" value="'.$sheet.'">';
       }
     }

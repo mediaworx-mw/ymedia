@@ -13,21 +13,22 @@ function  graficoMensual9() {
   chart.dateFormatter.language = new am4core.Language();
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
-  enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+  // enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+  enMarcas = (marca, marcas) => marcas.filter( x => x.marca.toLowerCase().indexOf(marca.toLowerCase()) > -1 );
 
-  // console.log(datosGraficos);
+  // console.log(datosGraficos['Campañas más activas']);
 
   // Set data
   input = [];
   input = datosGraficos['Campañas más activas']
     .filter( (x, i) => i < 5)
     .map((x, i) => {
-      const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
-      // console.log(x);
-      if (moreData) {
-        x['GRP 20\"'] = Number(x['GRP 20\"'].toString().replace(/,/g, '.'));
-        x['Campaña'] = x['Campaña'].replace(/\//g, " / ") + ' '.repeat(i);        
-        x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
+      const moreData = x.Marca !== undefined ? enMarcas(x.Marca, marcas) : false;
+      x['GRP 20\"'] = Number(x['GRP 20\"'].toString().replace(/,/g, '.'));
+      x['Campaña'] = x['Campaña'].replace(/\//g, " / ") + ' '.repeat(i);
+
+      if (moreData && moreData.length !== 0) {
+        x['Marca'] = moreData[0].marca !== undefined ? moreData[0].marca.replace(/ *\([^)]*\) */g, "") : '';
         x['Color'] = moreData[0].color;
         x['Logo'] = moreData[0].logo;
       }
@@ -36,7 +37,7 @@ function  graficoMensual9() {
   );
 
 
-  // input[input.length] = {"GRP 20\"": input[input.length - 1]["GRP 20\""] * 0.08};
+  input[input.length] = {"GRP 20\"": input[input.length - 1]["GRP 20\""] * 0.08};
 
   var sorted = input.sort((a, b) => (a['GRP 20\"'] < b['GRP 20\"']) ? 1 : -1)
   chart.data = sorted;
