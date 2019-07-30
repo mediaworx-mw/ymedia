@@ -13,6 +13,8 @@ import Canal from './components/canal.js';
 import Sidebar from './components/sidebar.js';
 import Topbar from './components/topbar.js';
 import Cookies from './components/cookies.js';
+import Feedly from './components/feedly.js';
+
 import match from './utils/match';
 
 function detectCurrentPage() {
@@ -29,6 +31,8 @@ function detectCurrentPage() {
     .on(x => x.contains('caso'), () => Cliente())
     .on(x => x.contains('canal'), () => Canal())
     .on(x => x.contains('newsletter'), () => Newsletter())
+    .on(x => x.contains('feedly'), () => Feedly())
+
 }
 
 function main() {
@@ -44,5 +48,7 @@ function init() {
   main();
   detectCurrentPage();
 }
+
+
 
 init();

@@ -1,4 +1,6 @@
 const Cookies = () => {
+
+
   const $cookies = document.querySelector('.cookies');
   const $accept = document.querySelector('.cookies__button--accept');
   const $reject = document.querySelector('.cookies__button--reject');
@@ -29,24 +31,28 @@ const Cookies = () => {
   }
 
   const delayCookies = () => {
-    setTimeout(
-      function() {
+    //setTimeout(
+     // function() {
         $cookies.classList.add('visible');
-    }, 1000);
+    //}, 1);
   }
 
-  $accept.addEventListener('click', () => {
-    $cookies.classList.remove('visible');
-    let oneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
-    set_cookie('accept_ymedia_cookies', true, oneYear);
-  });
+  if ($accept != null) {
 
-  $reject.addEventListener('click', () => {
-    $cookies.classList.remove('visible');
-    deleteAllCookies();
-    set_cookie('reject_ymedia_cookies', true);
+    $accept.addEventListener('click', () => {
+      $cookies.classList.remove('visible');
+      let oneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+      set_cookie('accept_ymedia_cookies', true, oneYear);
+    });
 
-  });
+    $reject.addEventListener('click', () => {
+      $cookies.classList.remove('visible');
+      deleteAllCookies();
+      set_cookie('reject_ymedia_cookies', true);
+
+    });
+
+  }
 
   // console.log('accept', document.cookie.indexOf('accept_ymedia_cookies') )
   // console.log('reject', document.cookie.indexOf('reject_ymedia_cookies') )

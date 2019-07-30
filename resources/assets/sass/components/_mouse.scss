@@ -20,3 +20,9 @@
   100% { trasnfrom: translate(-50%, 0)}
 }
 
+@include tablet {
+  .mouse {
+    bottom: 2rem;
+  }
+}
+
