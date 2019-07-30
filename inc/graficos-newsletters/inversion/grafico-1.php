@@ -179,13 +179,22 @@ function  graficoInversion1() {
 
 var graficoInversion1_show = false;
 
-jQuery('#grafico-inversion-1').waypoint(function() {
-  if(!graficoInversion1_show) {
-    graficoInversion1();
-  }
-  graficoInversion1_show = true;
-}, {
-  offset: '75%'
+ScrollReveal().reveal("#grafico-inversion-1", {
+  afterReveal: function activar (el) {
+    if(!graficoInversion1_show) {
+      thischart = graficoInversion1();
+    }
+    graficoInversion1_show = true;
+  },
+  afterReset: function activar (el) {
+    if(graficoInversion1_show) {
+      
+      thischart = null;
+      jQuery("#grafico-inversion-1")[0].innerHTML = "";
+    }
+    graficoInversion1_show = false;
+  },
+  reset: true
 });
 
 </script>

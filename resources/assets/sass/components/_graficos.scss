@@ -23,7 +23,7 @@
   page-break-inside: avoid;
   break-inside: avoid-column;
   width: 49%;
-  margin: 0 1% 0 0;
+  padding: 0 1% 0 0;
   &:nth-child(2) {
     width: 50%;
     margin: 0;
@@ -99,7 +99,7 @@
   }
   &.graficos-multi-3 {
     .grafico_wrapper {
-      width: 33%;
+      width: 33.33%;
       @include desktop {
         width: 100% !important;
       }

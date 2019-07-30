@@ -3,7 +3,7 @@
     ?>
       <div style="width:100%;">
         <h2>Consumo TV</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['consumo_de_tv']['newsletter_mensual_consumo_de_tv_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['consumo_de_tv']['fuente']; ?></p>
         <p>Minutos</p>
         <div class="graficos-multi graficos-multi-2">
           <div class="grafico_wrapper">
@@ -24,7 +24,7 @@
 
       <div style="width:100%;">
         <h2>Cuota de las cadenas</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['cuota_de_las_cadenas']['newsletter_mensual_cuota_de_las_cadenas_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['cuota_de_las_cadenas']['fuente']; ?></p>
         <p>Cuota (%)</p>
         <div class="graficos-multi graficos-multi-2">
           <div class="grafico_wrapper">
@@ -45,7 +45,7 @@
 
       <div style="width:100%;">
         <h2>Cuota de las temáticas</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['cuota_tematicas_en_abierto']['newsletter_mensual_cuota_tematicas_en_abierto_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['cuota_tematicas_en_abierto']['fuente']; ?></p>
         <p>Cuota (%)</p>
         <div class="graficos-multi graficos-multi-2">
           <div class="grafico_wrapper">
@@ -67,7 +67,7 @@
 
       <div class="grafico_wrapper">
         <h2>Programas - Top 10</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['programas_-_top10']['newsletter_mensual_programas_-_top10_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['programas_-_top10']['fuente']; ?></p>
         <div id="grafico-mensual-4" class="grafico-inner" style="min-height: 330px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_mensual['programas_-_top10']['texto']; ?></div>
@@ -78,7 +78,7 @@
       
       <div class="grafico_wrapper">
         <h2>Ocupación por cadenas</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['ocupacion_por_cadenas']['newsletter_mensual_ocupacion_por_cadenas_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['ocupacion_por_cadenas']['fuente']; ?></p>
         <p>% Ocupación por cadenas</p>  
         <div id="grafico-mensual-5" class="grafico-inner grafico-tabla" style="width:auto;margin-bottom:4rem"></div>
         <br>
@@ -91,7 +91,7 @@
       
       <div style="width:100%;">
         <h2>Presión publicitaria por targets</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['presion_publicitaria_por_targets']['newsletter_mensual_presion_publicitaria_por_targets_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['presion_publicitaria_por_targets']['fuente']; ?></p>
         <p>Grp's 20"</p>
         <div class="graficos-multi graficos-multi-2">
           <div class="grafico_wrapper">
@@ -112,7 +112,7 @@
       
       <div style="width:100%;">
         <h2>Presión publicitaria por grupos</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['presion_publicitaria_por_grupos']['newsletter_mensual_presion_publicitaria_por_grupos_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['presion_publicitaria_por_grupos']['fuente']; ?></p>
         <p>Grp’s 20”</p>
         <div class="graficos-multi graficos-multi-2">
           <div class="grafico_wrapper">
@@ -134,7 +134,7 @@
 
       <div style="width:100%;">
         <h2>Presión publicitaria por cadenas</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['presion_publicitaria_por_cadenas']['newsletter_mensual_presion_publicitaria_por_cadenas_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['presion_publicitaria_por_cadenas']['fuente']; ?></p>
         <p>Cuotas Grp’s 20”</p>
         <div class="graficos-multi graficos-multi-2">
           <div class="grafico_wrapper">
@@ -156,7 +156,7 @@
       
       <div class="grafico_wrapper">
         <h2>Campañas más activas</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['campanas_mas_activas']['newsletter_mensual_campanas_mas_activas_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['campanas_mas_activas']['fuente']; ?></p>
         <div id="grafico-mensual-9" class="grafico-inner" style="min-height: 520px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_mensual['campanas_mas_activas']['texto']; ?></div>
@@ -167,7 +167,7 @@
 
       <div class="grafico_wrapper">
         <h2>Spot de oro – Top 3</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['spot_de_oro_–_top_3']['newsletter_mensual_spot_de_oro_–_top_3_fuente']; ?></p>
+        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['spot_de_oro_–_top_3']['fuente']; ?></p>
         <div id="grafico-mensual-10" class="grafico-inner" style="min-height: 520px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_mensual['spot_de_oro_–_top_3']['texto']; ?></div>

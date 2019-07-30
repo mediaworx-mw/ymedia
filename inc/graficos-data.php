@@ -22,7 +22,6 @@ function acf_sheets_fuentes_sheets( $field ) {
 
 add_filter('acf/load_field/name=sheets_fuentes_pick', 'acf_sheets_fuentes_sheets', 10, 3);
 
-
 add_action('admin_enqueue_scripts', 'pw_load_scripts');
 function pw_load_scripts() {
 	wp_enqueue_script('custom-js', '/wp-content/themes/ymedia/inc/graficos-newsletters/load_data.js');

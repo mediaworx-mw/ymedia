@@ -31,7 +31,7 @@ function  graficoFDS4(dia) {
   input = input.map(x => {
       const moreData = x.Grupo !== undefined ? enGrupos(x.Grupo, grupos) : false;
       // console.log(x);
-      if (moreData.length !== 0) {
+      if (moreData && moreData.length !== 0) {
         // console.log(moreData)
         x["Cuota (%)"] = x["Cuota (%)"].toString().replace(/,/g, '.').replace(/%/g, '');
         x['Grupo'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");

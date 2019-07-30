@@ -35,6 +35,9 @@ for ( ii = 0; ii < datosGraficosX.length; ii++){
   }  
 }
 
+
+var max = Math.max(...datosGraficosX.map( x => x['Grp’s a formato'] ).filter( x => x !== undefined).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
+
 // Set data
 input = [];
 if(dia === 'vie') { 
@@ -61,7 +64,7 @@ input = input.map((x, i) => {
   return x;
 });
 
- input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
+//  input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
 
   var sorted = input.sort((a, b) => (a['Grp’s a formato'] < b['Grp’s a formato']) ? 1 : -1)
   
@@ -93,7 +96,9 @@ input = input.map((x, i) => {
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
-  valueAxis.extraMax = 0.05;  
+  valueAxis.extraMax = 0.05;
+  valueAxis.min = 0;
+  valueAxis.max = max;
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";

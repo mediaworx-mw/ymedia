@@ -7,22 +7,18 @@
     <p>
       <small class="spot-de-oro-estrella"><img src="https://www.amcharts.com/lib/images/star.svg">  Minuto de oro</small>
     </p>
-    <div class="grafico_wrapper">
-      <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 380px"></div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="grafico_wrapper">
-      <div id="grafico-fds-1-sab" class="grafico-inner" style="min-height: 380px"></div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="grafico_wrapper">
-      <div id="grafico-fds-1-dom" class="grafico-inner" style="min-height: 380px"></div>
+    <div class="graficos-multi graficos-multi-3">
+      <div class="grafico_wrapper">
+        <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 380px"></div>
+      </div>
+ 
+      <div class="grafico_wrapper">
+        <div id="grafico-fds-1-sab" class="grafico-inner" style="min-height: 380px"></div>
+      </div>
+ 
+      <div class="grafico_wrapper">
+        <div id="grafico-fds-1-dom" class="grafico-inner" style="min-height: 380px"></div>
+      </div>
     </div>
     <br>
     <br>

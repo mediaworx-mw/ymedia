@@ -25,6 +25,9 @@ if(dia === 'vie') { input = datosGraficosX['Cuota de las cadenas - Top5'].slice(
 if(dia === 'sab') { input = datosGraficosX['Cuota de las cadenas - Top5'].slice( 7,12); dayTitle = 'Sábado'};
 if(dia === 'dom') { input = datosGraficosX['Cuota de las cadenas - Top5'].slice(13,18); dayTitle = 'Domingo'};
 
+var max = Math.max(...datosGraficosX['Cuota de las cadenas - Top5'].map( x => x["Cuota (%)"] ).filter( x => x !== undefined).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
+
+// console.log(max);
 
 input = input.map(x => {
   const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
@@ -38,7 +41,7 @@ input = input.map(x => {
 });
 
 
-input[input.length] = {"Cuota (%)": input[input.length - 1]["Cuota (%)"] * 0.08};
+// input[input.length] = {"Cuota (%)": input[input.length - 1]["Cuota (%)"] * 0.08};
 
 var sorted = input.sort((a, b) => (a['Cuota (%)'] < b['Cuota (%)']) ? 1 : -1)
 chart.data = sorted;
@@ -62,6 +65,8 @@ valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
 valueAxis.renderer.baseGrid.disabled = true;
 valueAxis.extraMax = 0.05;
+valueAxis.min = 0;
+valueAxis.max = max;
 
 var topContainer = chart.chartContainer.createChild(am4core.Container);
 topContainer.layout = "absolute";
