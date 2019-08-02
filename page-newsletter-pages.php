@@ -18,7 +18,7 @@
     <div class="entry">
       <?php the_content(); ?>
     </div>
-    <a class="button button--gray button--back" href="<?php echo get_site_url('/') ?>"><i class="fas fa-arrow-left"></i>Ir a inicio</a>
+    <a class="button button--gray button--back" href="<?php bloginfo('url') ?>"><i class="fas fa-arrow-left"></i>Ir a inicio</a>
   </div>
 </div>
 
