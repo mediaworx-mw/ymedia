@@ -18,6 +18,10 @@
       <?php echo do_shortcode('[contact-form-7 id="490" title="Suscripcion"]'); ?>
     </div>
   </div>
+  <script>
+    const $firstLabel = document.querySelector('.wpcf7-mailpoetsignup').getElementsByTagName('label')[1];
+    $firstLabel.parentNode.removeChild($firstLabel);
+  </script>
  <!--  <form class="newsletter-form" novalidate>
     <div class="newsletter-section section section1" >
       <div class="newsletter-section__inner container">

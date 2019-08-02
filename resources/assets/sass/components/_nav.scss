@@ -39,12 +39,15 @@
       }
       &.current_page_item {
         a {
-           -webkit-text-stroke-width: 2px;
+          -webkit-text-stroke-width: 2px;
           -webkit-text-stroke-color: white;
           color: transparent;
           transition: color 0.2s ease;
         }
       }
+    }
+    &.cookies-on {
+      padding-top: 80px;
     }
   }
   &__bottom {
@@ -54,6 +57,9 @@
     position: absolute;
     padding: 0;
     z-index: $zheader;
+    &.cookies-on {
+      // padding-top: 80px;
+    }
   }
 
   &__small{
@@ -63,16 +69,16 @@
     }
     a {
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: $bold;
       transition: color 0.2s ease;
       white-space: nowrap;
-      &:hover{
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: white;
-        color: transparent;
-        transition: color 0.2s ease;
-      }
+      // &:hover{
+      //   -webkit-text-stroke-width: 1px;
+      //   -webkit-text-stroke-color: white;
+      //   color: transparent;
+      //   transition: color 0.2s ease;
+      // }
     }
   }
   &__social {
