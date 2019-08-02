@@ -62,9 +62,17 @@ const Topbar = () => {
 
     if ( baseUrl.startsWith('localhost') ) {
       var url = 'http://localhost:8888/ymedia/wp-json/canal_ymedia/search?terms=';
-    } else {
+    }
+
+    if ( baseUrl.startsWith('staging.ymedia') ) {
       var url = 'https://staging.ymedia.es/wp-json/canal_ymedia/search?terms=';
     }
+
+     if ( baseUrl.startsWith('ymedia.es') ) {
+      var url = 'https://ymedia.es/wpsite/wp-json/canal_ymedia/search?terms=';
+    }
+
+    console.log(baseUrl);
 
     const expand = () => {
       document.querySelector('.canal-featured__list').classList.remove('hidden');

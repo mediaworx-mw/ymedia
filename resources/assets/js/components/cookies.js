@@ -4,6 +4,8 @@ const Cookies = () => {
   const $cookies = document.querySelector('.cookies');
   const $accept = document.querySelector('.cookies__button--accept');
   const $reject = document.querySelector('.cookies__button--reject');
+  const $navListCookies = document.querySelector('.nav__list');
+  const $navBottomCookies = document.querySelector('.nav__bottom');
 
   function set_cookie(name, value, date) {
     document.cookie = name +'='+ value +'; Expires='+ date + '; Path=/;';
@@ -34,6 +36,8 @@ const Cookies = () => {
     //setTimeout(
      // function() {
         $cookies.classList.add('visible');
+        $navListCookies.classList.add('cookies-on');
+        $navBottomCookies.classList.add('cookies-on');
     //}, 1);
   }
 
@@ -41,12 +45,16 @@ const Cookies = () => {
 
     $accept.addEventListener('click', () => {
       $cookies.classList.remove('visible');
+      $navListCookies.classList.remove('cookies-on');
+      $navBottomCookies.classList.remove('cookies-on');
       let oneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
       set_cookie('accept_ymedia_cookies', true, oneYear);
     });
 
     $reject.addEventListener('click', () => {
       $cookies.classList.remove('visible');
+      $navListCookies.classList.remove('cookies-on');
+      $navBottomCookies.classList.remove('cookies-on');
       deleteAllCookies();
       set_cookie('reject_ymedia_cookies', true);
 
