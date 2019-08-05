@@ -142,6 +142,9 @@ function queryParameters($data) {
     's' => $data['key'],
     'posts_per_page' => $data['posts'],
     'offset' => $data['offset'],
+    'orderby' => 'date',
+    'suppress_filters' => true,
+    'order'   => 'DESC',
     'tax_query' => array(
        array(
         'taxonomy' => 'canal_category',
@@ -163,6 +166,9 @@ function queryParameters($data) {
     's' => $data['key'],
     'posts_per_page' => -1,
     'offset' => $data['offset'],
+    'orderby' => 'date',
+    'suppress_filters' => true,
+    'order'   => 'DESC',
     'tax_query' => array(
        array(
         'taxonomy' => 'canal_category',
