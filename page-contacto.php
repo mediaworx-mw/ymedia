@@ -15,7 +15,7 @@
   <div class="contacto-top">
     <div class="contacto-top__inner container">
       <h1 class="contacto-top__title"><?php the_field('titulo_contacto') ?></h1>
-      <a href="<?php echo site_url('/trabaja-con-ymedia'); ?>" class="contacto-top__link">Trabaja con Ymedia +</a>
+      <a href="<?php bloginfo('url')?>/trabaja-con-ymedia" class="contacto-top__link">Trabaja con Ymedia +</a>
     </div>
   </div>
   <div class="contacto__content container">
@@ -24,15 +24,7 @@
         <h2>Dejanos una nota, sugerencia o consulta.</h2>
       </div>
       <div class="contacto-form__form contact-form">
-      <?php
-        //Localhost
-        echo do_shortcode('[contact-form-7 id="287" title="Contacto"]');
-
-        //Staging MediaWorx
-       // echo do_shortcode('[contact-form-7 id="432" title="Contacto"]')
-      ?>
-
-
+      <?php echo do_shortcode('[contact-form-7 id="287" title="Contacto"]'); ?>
       </div>
     </div>
     <div class="contacto-video">

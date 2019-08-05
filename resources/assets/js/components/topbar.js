@@ -69,7 +69,7 @@ const Topbar = () => {
     }
 
      if ( baseUrl.startsWith('ymedia.es') ) {
-      var url = 'https://ymedia.es/wpsite/wp-json/canal_ymedia/search?terms=';
+      var url = 'https://ymedia.es/wp-json/canal_ymedia/search?terms=';
     }
 
     console.log(baseUrl);
