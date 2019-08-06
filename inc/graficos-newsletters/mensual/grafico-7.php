@@ -197,7 +197,7 @@ function  graficoMensual7(dia) {
   // chart.cursor = new am4charts.XYCursor();
 
   jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]").hide();
+    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide()
   })
 
   return chart;

@@ -142,7 +142,7 @@ function  graficoMensual9() {
 
     
   jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]").hide();
+    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide()
   })
 }
 
