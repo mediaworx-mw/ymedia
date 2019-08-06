@@ -19,12 +19,35 @@ function  graficoMensual8(dia) {
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
+
+  var input1 = datosGraficos['Presión publicitaria por targets'].slice(1); 
+  var input2 = datosGraficos['Presión publicitaria por targets (acumulado)'].slice(1); 
+  var key1 = Object.keys(input1[0])[1];
+  var key2 = Object.keys(input2[0])[1];
+  var dayTitle1 = datosGraficos['Presión publicitaria por targets'][0]['Categoría'];
+  var dayTitle2 = datosGraficos['Presión publicitaria por targets (acumulado)'][0]['Categoría'];
+
+  
+  // console.log(key1, key2);
+  // console.log(input1, input2);
+  // console.log(input2, key2, input2.map( x => x[key2] ).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
+  // console.log(max1, max2);
+  // console.log(max);
+
 
   // Set data
-  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por targets'].slice(1); dayTitle =  datosGraficos['Presión publicitaria por targets'][0]['Categoría'] };
-  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por targets (acumulado)'].slice(1); dayTitle =  datosGraficos['Presión publicitaria por targets (acumulado)'][0]['Categoría'] };
+  if(dia === 'lv') { 
+    var input = input1;
+    var dayTitle = dayTitle1;
+  };
 
-  jQuery(".grafico-mensual-8-" + dia + "-title")[0].innerText = dayTitle.toUpperCase();
+  if(dia === 'sd') { 
+    var input = input2;
+    var dayTitle = dayTitle2;
+  };
+
+  jQuery(".grafico-mensual-8-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -34,9 +57,9 @@ function  graficoMensual8(dia) {
 
   input = input.map(x => {
     // console.log(x);
-    x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
-    x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-    x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
+    x[col1] = clean(x[col1]);
+    x[col2] = clean(x[col2]);
+    x[col3] = clean(x[col3]);
     return x;
   });
 
@@ -46,6 +69,7 @@ function  graficoMensual8(dia) {
   // console.log(sorted);
 
   chart.data = sorted;
+  // console.log(max);
 
   chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999")];
 
@@ -80,7 +104,10 @@ function  graficoMensual8(dia) {
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
-  valueAxis.extraMax = 0.09;
+  valueAxis.extraMax = 0.25;
+  valueAxis.min = 0;
+  // valueAxis.max = max;
+
 
 
   // Create series
@@ -134,7 +161,10 @@ function  graficoMensual8(dia) {
     if (chart.data[0]["LOGO"] !== undefined) {
       exceptions++;
     }
-    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== 'Evolución') {
+    if (chart.data[0]["Nota"] !== undefined) {
+      exceptions++;
+    }
+    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== 'Evolución' && key !== 'Nota') {
       createSeries(key, num_of_series - exceptions);
     }
   }

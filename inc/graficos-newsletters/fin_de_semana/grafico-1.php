@@ -87,13 +87,13 @@ function  graficoFDS1(dia) {
   topContainer.paddingBottom = 15;
   topContainer.width = am4core.percent(100);
 
-  var diaTitle = topContainer.createChild(am4core.Label);
-  diaTitle.text = dayTitle;
-  diaTitle.fontWeight = 600;
-  diaTitle.fontSize = 16;
-  diaTitle.fill = '#DC241F';
-  diaTitle.align = "left";
-  diaTitle.paddingRight = 100;
+  // var diaTitle = topContainer.createChild(am4core.Label);
+  // diaTitle.text = dayTitle;
+  // diaTitle.fontWeight = 600;
+  // diaTitle.fontSize = 16;
+  // diaTitle.fill = '#DC241F';
+  // diaTitle.align = "left";
+  // diaTitle.paddingRight = 100;
 
   var axisTitle = topContainer.createChild(am4core.Label);
   if(false) {

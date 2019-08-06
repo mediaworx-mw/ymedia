@@ -128,9 +128,14 @@ function  graficoInversion1() {
           // }
 
         } else {
+
           var cell = document.createElement("td");
           var cellInner = document.createElement("span");
           var cellText = document.createTextNode(data[j][Object.keys(data[0])[i]] !== undefined ? data[j][Object.keys(data[0])[i]] : '');
+
+          if ( j === 0 ) {
+            cellInner.classList.add('total');
+          }
           
           if (i == 3) {
             cellInner.classList.add('colored');

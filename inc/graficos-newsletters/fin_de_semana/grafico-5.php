@@ -106,11 +106,11 @@ input = input.map((x, i) => {
   topContainer.paddingBottom = 15;
   topContainer.width = am4core.percent(100);
 
-  var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.text = "Grp’s a formato";
-  axisTitle.fontWeight = 600;
-  axisTitle.fontSize = 14;
-  axisTitle.align = "left";
+  // var axisTitle = topContainer.createChild(am4core.Label);
+  // axisTitle.text = "Grp’s a formato";
+  // axisTitle.fontWeight = 600;
+  // axisTitle.fontSize = 14;
+  // axisTitle.align = "left";
   // axisTitle.paddingRight = 100;
 
 

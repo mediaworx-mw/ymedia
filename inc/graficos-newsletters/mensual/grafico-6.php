@@ -19,12 +19,13 @@ function  graficoMensual6(dia) {
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
   enGrupos = (grupo, grupos) => grupos.filter( x => x.grupo.toLowerCase().indexOf(grupo.toLowerCase()) > -1 );
+  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
   // Set data
   if(dia === 'lv') { input = datosGraficos['Presión publicitaria por grupos'].slice(1); dayTitle = datosGraficos['Presión publicitaria por grupos'][0]['Categoría'] };
   if(dia === 'sd') { input = datosGraficos['Presión publicitaria por grupos (acumulado)'].slice(1); dayTitle = datosGraficos['Presión publicitaria por grupos (acumulado)'][0]['Categoría'] };
 
-  jQuery(".grafico-mensual-6-" + dia + "-title")[0].innerText = dayTitle.toUpperCase();
+  jQuery(".grafico-mensual-6-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -35,8 +36,8 @@ function  graficoMensual6(dia) {
     const moreData = x['Categoría'] !== undefined ? enGrupos(x['Categoría'], grupos) : false;
     // console.log(x);
     if (moreData && moreData.length !== 0) {
-      x[col1] = Number(x[col1].toString().replace(/,/g, '.').replace(/%/g, '.'));
-      x[col2] = Number(x[col2].toString().replace(/,/g, '.').replace(/%/g, '.'));
+      x[col1] = clean(x[col1]);
+      x[col2] = clean(x[col2]);
       x['Categoría'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;

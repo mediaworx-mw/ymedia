@@ -9,14 +9,17 @@
     </p>
     <div class="graficos-multi graficos-multi-3">
       <div class="grafico_wrapper">
+        <h4>Viernes</h4>
         <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 380px"></div>
       </div>
  
       <div class="grafico_wrapper">
+        <h4>Sábado</h4>
         <div id="grafico-fds-1-sab" class="grafico-inner" style="min-height: 380px"></div>
       </div>
  
       <div class="grafico_wrapper">
+        <h4>Domingo</h4>
         <div id="grafico-fds-1-dom" class="grafico-inner" style="min-height: 380px"></div>
       </div>
     </div>
@@ -31,6 +34,7 @@
   <div style="width:100%;">
     <h2>Cuota de las cadenas - Top 5</h2>
     <p class="graficos-fuente">Fuente: <?php echo $newsletter_fin_de_semana['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
+    <p><strong>Cuota (%)</strong></p>
     <div class="graficos-multi graficos-multi-3">
       <div class="grafico_wrapper">
         <h4>Viernes</h4>
@@ -55,6 +59,7 @@
   <div style="width:100%;">
     <h2>Cuota de las temáticas en abierto - Top 5</h2>
     <p class="graficos-fuente">Fuente: <?php echo $newsletter_fin_de_semana['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
+    <p><strong>Cuota (%)</strong></p>
     <div class="graficos-multi graficos-multi-3">
       <div class="grafico_wrapper">
         <h4>Viernes</h4>
@@ -79,6 +84,7 @@
   <div style="width:100%;">
     <h2>Cuota por grupos de comunicación</h2>
     <p class="graficos-fuente">Fuente: <?php echo $newsletter_fin_de_semana['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
+    <p><strong>Cuota (%)</strong></p>
     <div class="graficos-multi graficos-multi-3">
       <div class="grafico_wrapper">
         <h4>Viernes</h4>
@@ -105,6 +111,7 @@
   <div style="width:100%;">
     <h2>Spot de oro – Top 3</h2>
     <p class="graficos-fuente">Fuente: <?php echo $newsletter_fin_de_semana['spot_de_oro_–_top_3']['fuente']; ?></p>
+    <p><strong>Grp’s a formato</strong></p>
     <div class="graficos-multi graficos-multi-3">
       <div class="grafico_wrapper">
         <h4>Viernes</h4>

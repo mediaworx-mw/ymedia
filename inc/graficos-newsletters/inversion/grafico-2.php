@@ -18,6 +18,7 @@ function  graficoInversion2() {
 
 
   enGrupos = (grupo, grupos) => grupos.filter( x => x.grupo.toLowerCase().indexOf(grupo.toLowerCase()) > -1 );
+  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
   // Set data
   key = Object.keys(datosGraficos['Televisión'][0])[1];
@@ -26,11 +27,11 @@ function  graficoInversion2() {
       const moreData = x.Medio !== undefined ? enGrupos(x.Medio, grupos) : false;
       // console.log(x);
       if (moreData && moreData.length !== 0) {
-        // console.log(moreData)
-        x[key] = x[key].toString().replace(/,/g, '.').replace(/%/g, '');
+        console.log(x)
         x['Medio'] = moreData[0].grupo.replace(/ *\([^)]*\) */g, "");
         // x['Logo'] = moreData[0].logo;
       } 
+      x[key] = clean(x[key]);
       
       // x['Evolución'] = x['Evolución'].toString().replace(/,/g, '.').replace(/%/g, '');
       x['Color'] = x['TV nacional en abierto'] !== undefined ? '#DC241F' : '#999999';
@@ -40,12 +41,13 @@ function  graficoInversion2() {
 
   console.log(key);
 
-  var sorted = input.sort((a, b) => (Number(a[key]) < Number(b[key])) ? 1 : -1);
-  sorted = [...sorted.filter( x => x["Medio"] !== 'Resto TV nacional abierto'), ...sorted.filter( x => x["Medio"] === 'Resto TV nacional abierto')];
+  // var sorted = input.sort((a, b) => (Number(a[key]) < Number(b[key])) ? 1 : -1);
+  // sorted = [...sorted.filter( x => x["Medio"] !== 'Resto TV nacional abierto'), ...sorted.filter( x => x["Medio"] === 'Resto TV nacional abierto')];
+  sorted = input;
 
   chart.data = sorted;
 
-  console.log(sorted);
+  // console.log(sorted);
 
   chart.innerRadius = am4core.percent(40);
   chart.height = am4core.percent(70);
@@ -80,7 +82,7 @@ function  graficoInversion2() {
   series.slices.template.tool = 1;
   series.alignLabels = false;
   // series.labels.template.radius = 1;
-  series.labels.template.html = '<span>{category}<br><span>{value}</span></span>'; 
+  series.labels.template.html = '<span style="font-size:14px">{category}<br><span>{value}</span></span>'; 
   // series.labels.template.html = '<body xmlns=\"http://www.w3.org/1999/xhtml\"><span class="tarta-logos-label" data-src={logo}><span class="logo"><img src={logo}></span><br><span>{value}%</span></span></body>';
   series.slices.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}</span><br></p></div>";
 

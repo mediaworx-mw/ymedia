@@ -55,6 +55,19 @@ function  graficoFDS4(dia) {
   chart.valign = "middle";
   chart.align = "left";
 
+  // var topContainer = chart.chartContainer.createChild(am4core.Container);
+  // topContainer.layout = "absolute";
+  // topContainer.toBack();
+  // topContainer.paddingBottom = 15;
+  // topContainer.width = am4core.percent(100);
+
+  // var dateTitle = topContainer.createChild(am4core.Label);
+  // dateTitle.text = "Cuota (%)";
+  // dateTitle.fontWeight = 600;
+  // dateTitle.fontSize = 14;
+  // dateTitle.align = "left";
+  // dateTitle.dy = "left";
+
 
   // var num_of_series = 2;
   var num_of_series = Object.keys(chart.data[0]).length - 1;

@@ -3,10 +3,10 @@
 
       // print_r ($newsletter_inversion['inversion_publicitaria'])
     ?>
-      <div class="grafico_wrapper" style="width:100%;">
+      <div class="grafico_wrapper">
         <h2>Inversión Publicitaria</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_inversion['inversion_publicitaria']['fuente']; ?></p>
-        <div class="grafico-tabla" style="width:auto;margin-bottom:4rem"> 
+        <div class="grafico-tabla" style="min-width:50%; margin-bottom:4rem"> 
           <div id="grafico-inversion-1" class="grafico-inner" style="min-height: 420px"></div>
         </div>
         <br>
@@ -16,7 +16,7 @@
         <br>
       </div>
 
-      <div class="grafico_wrapper" style="width:100%;">
+      <div class="grafico_wrapper">
         <h2>Zoom Televisión</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_inversion['zoom_television']['fuente']; ?></p>
         <div id="grafico-inversion-2" class="grafico-inner" style="min-height: 420px"></div>

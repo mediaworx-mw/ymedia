@@ -27,7 +27,7 @@ function  graficoMensual1(dia) {
 
 // console.log(dayTitle);
 
-  jQuery(".grafico-mensual-1-" + dia + "-title")[0].innerText = dayTitle.toUpperCase();
+  jQuery(".grafico-mensual-1-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -85,6 +85,7 @@ function  graficoMensual1(dia) {
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.05;
+  valueAxis.min = 0;
 
 
   // Create series
@@ -138,7 +139,10 @@ function  graficoMensual1(dia) {
     if (chart.data[0]["LOGO"] !== undefined) {
       exceptions++;
     }
-    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== 'Evolución') {
+    if (chart.data[0]["Nota"] !== undefined) {
+      exceptions++;
+    }
+    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== 'Evolución' && key !== 'Nota') {
       createSeries(key, num_of_series - exceptions);
     }
   }

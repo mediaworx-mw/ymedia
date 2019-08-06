@@ -75,12 +75,12 @@ topContainer.paddingBottom = 15;
 topContainer.width = am4core.percent(100);
 
 
-var axisTitle = topContainer.createChild(am4core.Label);
-axisTitle.text = "Cuota (%)";
-axisTitle.fontWeight = 600;
-axisTitle.fontSize = 14;
-axisTitle.align = "left";
-axisTitle.paddingRight = 100;
+// var axisTitle = topContainer.createChild(am4core.Label);
+// axisTitle.text = "Cuota (%)";
+// axisTitle.fontWeight = 600;
+// axisTitle.fontSize = 14;
+// axisTitle.align = "left";
+// axisTitle.paddingRight = 100;
 
 
 // Create series

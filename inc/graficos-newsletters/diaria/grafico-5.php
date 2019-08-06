@@ -33,8 +33,9 @@ function  graficoDiaria5() {
     }
   );
 
+  var max = Math.max(...datosGraficos['Spot de oro - Top3'].map( x => x['Grp’s a formato'] ).filter( x => x !== undefined).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
 
-  input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
+  // input[input.length] = {"Grp’s a formato": input[input.length - 1]["Grp’s a formato"] * 0.08};
 
   var sorted = input.sort((a, b) => (a['Grp’s a formato'] < b['Grp’s a formato']) ? 1 : -1)
   chart.data = sorted;
@@ -66,19 +67,21 @@ function  graficoDiaria5() {
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.05;
+  valueAxis.min = 0;
+  valueAxis.max = max;
 
-  var topContainer = chart.chartContainer.createChild(am4core.Container);
-  topContainer.layout = "absolute";
-  topContainer.toBack();
-  topContainer.paddingBottom = 15;
-  topContainer.width = am4core.percent(100);
+  // var topContainer = chart.chartContainer.createChild(am4core.Container);
+  // topContainer.layout = "absolute";
+  // topContainer.toBack();
+  // topContainer.paddingBottom = 15;
+  // topContainer.width = am4core.percent(100);
 
-  var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.text = "Grp’s a formato";
-  axisTitle.fontWeight = 600;
-  axisTitle.fontSize = 14;
-  axisTitle.align = "left";
-  axisTitle.paddingRight = 100;
+  // var axisTitle = topContainer.createChild(am4core.Label);
+  // axisTitle.text = "Grp’s a formato";
+  // axisTitle.fontWeight = 600;
+  // axisTitle.fontSize = 14;
+  // axisTitle.align = "left";
+  // axisTitle.paddingRight = 100;
 
 
   // Create series

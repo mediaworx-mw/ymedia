@@ -32,8 +32,9 @@ input = datosGraficos['Cuota de las cadenas - Top5'].map(x => {
   }
 );
 
+var max = Math.max(...datosGraficos['Cuota de las cadenas - Top5'].map( x => x["Cuota (%)"] ).filter( x => x !== undefined).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
 
-input[input.length] = {"Cuota (%)": input[input.length - 1]["Cuota (%)"] * 0.08};
+// input[input.length] = {"Cuota (%)": input[input.length - 1]["Cuota (%)"] * 0.08};
 
 
 
@@ -63,19 +64,21 @@ valueAxis.renderer.grid.template.disabled = true;
 valueAxis.renderer.labels.template.disabled = true;
 valueAxis.renderer.baseGrid.disabled = true;
 valueAxis.extraMax = 0.05;
+valueAxis.min = 0;
+valueAxis.max = max;
 
-var topContainer = chart.chartContainer.createChild(am4core.Container);
-topContainer.layout = "absolute";
-topContainer.toBack();
-topContainer.paddingBottom = 15;
-topContainer.width = am4core.percent(100);
+// var topContainer = chart.chartContainer.createChild(am4core.Container);
+// topContainer.layout = "absolute";
+// topContainer.toBack();
+// topContainer.paddingBottom = 15;
+// topContainer.width = am4core.percent(100);
 
-var axisTitle = topContainer.createChild(am4core.Label);
-axisTitle.text = "Cuota (%)";
-axisTitle.fontWeight = 600;
-axisTitle.fontSize = 14;
-axisTitle.align = "left";
-axisTitle.paddingRight = 100;
+// var axisTitle = topContainer.createChild(am4core.Label);
+// axisTitle.text = "Cuota (%)";
+// axisTitle.fontWeight = 600;
+// axisTitle.fontSize = 14;
+// axisTitle.align = "left";
+// axisTitle.paddingRight = 100;
 
 
 // Create series

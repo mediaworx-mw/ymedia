@@ -21,7 +21,7 @@ function  graficoMensual2() {
 
   dayTitle = datosGraficos['Cuota de las cadenas'][0]['Cadenas'];
 
-  jQuery(".grafico-mensual-2-title")[0].innerText = dayTitle.toUpperCase();
+  jQuery(".grafico-mensual-2-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];

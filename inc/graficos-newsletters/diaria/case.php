@@ -1,10 +1,10 @@
     <?php
       $newsletter_diaria = get_field( "newsletter_diaria" );
     ?>
-      <div class="grafico_wrapper">
+      <div class="grafico_wrapper" style="width:100%;">
         <h2>Programas - Top 10</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_diaria['programas_-_top_10']['fuente']; ?></p>
-        <div id="grafico-diaria-1" class="grafico-inner" style="min-height: 520px"></div>
+        <div id="grafico-diaria-1" class="grafico-inner" style="min-height: 550px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_diaria['programas_-_top_10']['texto']; ?></div>
         <br>
@@ -15,7 +15,8 @@
       <div class="grafico_wrapper">
         <h2>Cuota de las cadenas - Top 5</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['fuente']; ?></p>
-        <div id="grafico-diaria-2" class="grafico-inner" style="min-height: 520px"></div>
+        <p><strong>Cuota (%)</strong></p>
+        <div id="grafico-diaria-2" class="grafico-inner" style="min-height: 420px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_diaria['cuota_de_las_cadenas_-_top_5']['texto']; ?></div>
         <br>
@@ -26,6 +27,7 @@
       <div class="grafico_wrapper">
         <h2>Cuota de las temáticas en abierto - Top 5</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['fuente']; ?></p>
+        <p><strong>Cuota (%)</strong></p>
         <div id="grafico-diaria-3" class="grafico-inner" style="min-height: 420px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_diaria['cuota_de_las_tematicas_en_abierto_-_top_5']['texto']; ?></div>
@@ -37,6 +39,7 @@
       <div class="grafico_wrapper">
         <h2>Cuota por grupos de comunicación</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
+        <p><strong>Cuota (%)</strong></p>
         <div id="grafico-diaria-4" class="grafico-inner" style="min-height: 420px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['texto']; ?></div>
@@ -48,6 +51,7 @@
       <div class="grafico_wrapper">
         <h2>Spot de oro – Top 3</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_diaria['spot_de_oro_–_top_3']['fuente']; ?></p>
+        <p><strong>Grp’s a formato</strong></p>
         <div id="grafico-diaria-5" class="grafico-inner" style="min-height: 420px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_diaria['spot_de_oro_–_top_3']['texto']; ?></div>

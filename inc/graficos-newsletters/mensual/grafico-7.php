@@ -19,12 +19,35 @@ function  graficoMensual7(dia) {
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
+
+  var input1 = datosGraficos['Presión publicitaria por cadenas'].slice(1); 
+  var input2 = datosGraficos['Presión publicitaria por cadenas (acumulado)'].slice(1); 
+  var key1 = Object.keys(input1[0])[1];
+  var key2 = Object.keys(input2[0])[1];
+  var dayTitle1 = datosGraficos['Presión publicitaria por cadenas'][0]['Categoría'];
+  var dayTitle2 = datosGraficos['Presión publicitaria por cadenas (acumulado)'][0]['Categoría'];
+
+  var max1 = Math.max(...input1.map( x => x[key1] ).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
+  var max2 = Math.max(...input2.map( x => x[key2] ).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
+  var max = Math.max(max1, max2);
+
+  // console.log(key1,key2);
+  // console.log(max1, max2);
+  // console.log(max);
 
   // Set data
-  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por cadenas'].slice(1); dayTitle = datosGraficos['Presión publicitaria por cadenas'][0]['Categoría'] };
-  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por cadenas (acumulado)'].slice(1); dayTitle = datosGraficos['Presión publicitaria por cadenas (acumulado)'][0]['Categoría'] };
+  if(dia === 'lv') { 
+    input = input1;
+    dayTitle = dayTitle1;
+  };
 
-  jQuery(".grafico-mensual-7-" + dia + "-title")[0].innerText = dayTitle.toUpperCase();
+  if(dia === 'sd') { 
+    input = input2;
+    dayTitle = dayTitle2;
+  };
+
+  jQuery(".grafico-mensual-7-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -35,9 +58,9 @@ function  graficoMensual7(dia) {
   input = input.map(x => {
     const moreData = x['Categoría'] !== undefined ? enCadenas(x['Categoría'], cadenas) : false;
     // console.log(x);
-    x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
-    x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-    x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
+    x[col1] = clean(x[col1]);
+    x[col2] = clean(x[col2]);
+    x[col3] = clean(x[col3]);
     
     if (moreData && moreData.length !== 0) {
       x['Categoría'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "");
@@ -88,6 +111,8 @@ function  graficoMensual7(dia) {
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.08;
+  valueAxis.min = 0;
+  // valueAxis.max = max;
 
 
   // Create series
@@ -114,7 +139,7 @@ function  graficoMensual7(dia) {
 
    
     var valueLabel = series.bullets.push(new am4charts.LabelBullet());
-    valueLabel.label.text = "{valueX}";
+    valueLabel.label.text = "{valueX}%";
     valueLabel.label.horizontalCenter = "left";
     valueLabel.label.dx = 10;
     valueLabel.label.fontSize = 14;
@@ -141,7 +166,10 @@ function  graficoMensual7(dia) {
     if (chart.data[0]["LOGO"] !== undefined) {
       exceptions++;
     }
-    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== 'Evolución') {
+    if (chart.data[0]["Nota"] !== undefined) {
+      exceptions++;
+    }
+    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== 'Evolución' && key !== 'Nota') {
       createSeries(key, num_of_series - exceptions);
     }
   }

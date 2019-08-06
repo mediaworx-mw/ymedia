@@ -21,7 +21,7 @@ function  graficoMensual3b() {
 
   dayTitle = datosGraficos['Cuota temáticas en abierto (acumulado)'][0]['Cadenas Tematicas TDT'];
 
-  jQuery(".grafico-mensual-3b-title")[0].innerText = dayTitle.toUpperCase();
+  jQuery(".grafico-mensual-3b-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
   col1 = Object.keys(input[0])[1];
   col2 = Object.keys(input[0])[2];
@@ -84,6 +84,7 @@ function  graficoMensual3b() {
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.05;
+  valueAxis.min = 0;
 
 
   // Create series

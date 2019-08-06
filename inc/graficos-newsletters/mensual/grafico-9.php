@@ -21,7 +21,7 @@ function  graficoMensual9() {
   // Set data
   input = [];
   input = datosGraficos['Campañas más activas']
-    .filter( (x, i) => i < 5)
+    .filter( (x, i) => i < 3)
     .map((x, i) => {
       const moreData = x.Marca !== undefined ? enMarcas(x.Marca, marcas) : false;
       x['GRP 20\"'] = Number(x['GRP 20\"'].toString().replace(/,/g, '.'));
@@ -37,13 +37,15 @@ function  graficoMensual9() {
   );
 
 
-  input[input.length] = {"GRP 20\"": input[input.length - 1]["GRP 20\""] * 0.08};
+  // input[input.length] = {"GRP 20\"": input[input.length - 1]["GRP 20\""] * 0.08};
 
   var sorted = input.sort((a, b) => (a['GRP 20\"'] < b['GRP 20\"']) ? 1 : -1)
   chart.data = sorted;
   // console.log(sorted);
 
   chart.colors.list = [am4core.color("#dddddd")];
+
+  var max = Math.max(...datosGraficos['Campañas más activas'].map( x => x['GRP 20\"'] ).filter( x => x !== undefined).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
 
   var category = "Campaña";
 
@@ -58,7 +60,7 @@ function  graficoMensual9() {
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 150;
+  label.maxWidth = 120;
   // label.truncate = true;
   label.maxHeight = 60;
   label.height = 80;
@@ -69,6 +71,8 @@ function  graficoMensual9() {
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.05;
+  valueAxis.min = 0;
+  valueAxis.max = max;
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";
@@ -76,12 +80,12 @@ function  graficoMensual9() {
   topContainer.paddingBottom = 15;
   topContainer.width = am4core.percent(100);
 
-  var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.text = "GRP 20\"";
-  axisTitle.fontWeight = 600;
-  axisTitle.fontSize = 14;
-  axisTitle.align = "left";
-  axisTitle.paddingRight = 100;
+  // var axisTitle = topContainer.createChild(am4core.Label);
+  // axisTitle.text = "GRP 20\"";
+  // axisTitle.fontWeight = 600;
+  // axisTitle.fontSize = 14;
+  // axisTitle.align = "left";
+  // axisTitle.paddingRight = 100;
 
 
   // Create series
@@ -107,7 +111,7 @@ function  graficoMensual9() {
     var bullet = series.bullets.push(new am4charts.Bullet());
     bullet.locationY = 1;
     var image = bullet.createChild(am4core.Image);
-    image.propertyFields.href = 'Logo';
+    // image.propertyFields.href = 'Logo';
     image.width = 40;
     image.height = 40;
     image.dy = -10;
@@ -126,7 +130,7 @@ function  graficoMensual9() {
     valueLabel.label.rotation = 0;
     valueLabel.label.hideOversized = true;
     valueLabel.label.truncate = true;
-    valueLabel.label.maxWidth = 120;
+    valueLabel.label.maxWidth = 100;
 
     // console.log(bullet);
     // console.log(image);

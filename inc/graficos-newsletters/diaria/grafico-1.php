@@ -32,12 +32,14 @@ function  graficoDiaria1() {
   });
 
 
-  input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
+  // input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
 
   var sorted = input.sort((a, b) => (a['AM (000)'] > b['AM (000)']) ? 1 : -1)
   chart.data = sorted;
 
   // console.log(chart.data);
+
+  var max = Math.max(...datosGraficos['Programas - Top10'].map( x => x["AM (000)"] ).filter( x => x !== undefined).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
 
   chart.colors.list = [am4core.color("#dddddd")];
 
@@ -75,27 +77,30 @@ function  graficoDiaria1() {
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.05;
+  valueAxis.min = 0;
+  valueAxis.max = max;
+
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";
   topContainer.toBack();
   topContainer.paddingBottom = 15;
+  topContainer.dy = -7;
   topContainer.width = am4core.percent(100);
 
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.html = "AM (000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  axisTitle.html = "AM(000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
   axisTitle.fontWeight = 600;
-  axisTitle.fontSize = 14;
+  axisTitle.fontSize = 16;
   axisTitle.align = "left";
   axisTitle.paddingLeft = 110;
 
   var dateTitle = topContainer.createChild(am4core.Label);
   dateTitle.text = "Cuota (%)";
   dateTitle.fontWeight = 600;
-  dateTitle.fontSize = 14;
+  dateTitle.fontSize = 16;
   dateTitle.align = "right";
-  dateTitle.dy = "right";
-
+  // dateTitle.dx = -100;
  
   // Create series
   function createSeries(field) {
