@@ -9,15 +9,16 @@
 ?>
 
 <div class="caso caso--<?php echo $size;?>">
+  <div class="caso__info">
+    <h2 class="caso__name"><?php echo $name; ?></h2>
+    <h3 class="caso__campaign"><?php echo $campaign; ?></h3>
+  </div>
   <a class="caso__top caso__top--youtube" href="<?php the_permalink(); ?>">
     <div class="caso__youtube">
       <?php echo $videos[0]['video_cliente'] ?>
     </div>
   </a>
 
-  <div class="caso__info">
-    <h2 class="caso__name"><?php echo $name; ?></h2>
-    <h3 class="caso__campaign"><?php echo $campaign; ?></h3>
-  </div>
+
 
 </div>
