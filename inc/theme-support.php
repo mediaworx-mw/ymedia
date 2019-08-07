@@ -32,7 +32,6 @@ add_filter( 'wp_list_categories', 'my_menu_notitle' );
 function setup() {
   add_theme_support( 'post-thumbnails' );
   add_image_size( 'ymedia', 900, 600, true );
-  add_image_size('thumbcanal', 640, 390, true);
 }
 add_action( 'after_setup_theme', 'setup' );
 
@@ -220,7 +219,7 @@ function queryParameters($data) {
       'excerpt' => $excerpt,
       'term' => $term,
       'termsList' => $termsList,
-      'thumbnail' => get_the_post_thumbnail_url('thumbcanal'),
+      'thumbnail' => get_the_post_thumbnail_url(),
       'date' => get_the_date( 'd-m-Y' ),
       'primary' => $primary,
     ));

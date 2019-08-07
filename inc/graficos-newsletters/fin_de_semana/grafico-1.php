@@ -39,7 +39,7 @@ function  graficoFDS1(dia) {
 
   // console.log(input);
 
-  input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
+  // input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
 
   var sorted = input.sort((a, b) => (a['AM (000)'] > b['AM (000)']) ? 1 : -1)
   chart.data = sorted;
@@ -80,6 +80,9 @@ function  graficoFDS1(dia) {
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.05;
+  valueAxis.min = 0;
+  valueAxis.max = 3500;
+
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";
@@ -189,7 +192,7 @@ function  graficoFDS1(dia) {
   createSeries('AM (000)', 1);
 
   jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]").hide();
+    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
   })
 
   return chart;

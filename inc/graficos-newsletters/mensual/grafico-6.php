@@ -109,7 +109,7 @@ function  graficoMensual6(dia) {
   // series.ticks.template.disabled = false;
 
   jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]").hide();
+    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide()
   })
 
   return chart;

@@ -331,7 +331,7 @@ img[src="[object"] {
   }
 
   tr {
-    &:hover {
+    // &:hover {
       .colored {
         color: white;
         transition: 250ms;
@@ -343,7 +343,7 @@ img[src="[object"] {
           background-color: #67d667;
         }
       }
-    }
+    // }
   }
 }
 

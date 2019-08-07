@@ -105,8 +105,25 @@ function  graficoInversion2() {
 
   series.ticks.template.disabled = false;
   
+  var legend = new am4charts.Legend();
+  legend.parent = chart.chartContainer;
+  // legend.background.fill = am4core.color("#000");
+  // legend.background.fillOpacity = 0.05;
+  // legend.width = 120;
+  legend.valign = "bottom";
+  legend.dy = 50;
+  legend.data = [{
+    "name": "Televisión Nacional en Abierto",
+    "fill": "#DC241F"
+    },
+    {
+      "name": "Otras Tipologías de Televisión", 
+      "fill": "#999999" 
+    }
+  ];
+
   jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]").hide();
+    //jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
   })
 }
 
