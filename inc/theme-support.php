@@ -220,7 +220,7 @@ function queryParameters($data) {
       'excerpt' => $excerpt,
       'term' => $term,
       'termsList' => $termsList,
-      'thumbnail' => get_the_post_thumbnail_url('thumbcanal'),
+      'thumbnail' => get_the_post_thumbnail_url($post->ID, 'thumbcanal'),
       'date' => get_the_date( 'd-m-Y' ),
       'primary' => $primary,
     ));
