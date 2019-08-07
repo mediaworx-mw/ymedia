@@ -90,26 +90,26 @@
         <br>  
       </div>   
         
-      
-      <div class="grafico_wrapper">
-        <h2>Campañas más activas</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['campanas_mas_activas']['fuente']; ?></p>
-        <p><strong>Grp’s 20”</strong></p>
-        <div id="grafico-mensual-9" class="grafico-inner" style="min-height: 520px"></div>
-        <br>
-        <div class="descripcion"><?php echo $newsletter_mensual['campanas_mas_activas']['texto']; ?></div>
-        <br>
-        <br>
-        <br>
-      </div>      
+      <div style="width:100%;">
+    
+        <div class="graficos-multi graficos-multi-2">
+          <div class="grafico_wrapper">
+            <h2>Campañas más activas</h2>
+            <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['campanas_mas_activas']['fuente']; ?></p>
+            <p><strong>Grp’s 20”</strong></p>
+            <div id="grafico-mensual-9" class="grafico-inner" style="min-height: 520px"></div>
+            <br>
+          </div>  
+          <div class="grafico_wrapper">
+            <h2>Spot de oro – Top 3</h2>
+            <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['spot_de_oro_–_top_3']['fuente']; ?></p>
+            <p><strong>Grp’s a formato</strong></p>
+            <div id="grafico-mensual-10" class="grafico-inner" style="min-height: 520px"></div>
+            <br>
+          </div>
+        </div>
 
-      <div class="grafico_wrapper">
-        <h2>Spot de oro – Top 3</h2>
-        <p class="graficos-fuente">Fuente: <?php echo $newsletter_mensual['spot_de_oro_–_top_3']['fuente']; ?></p>
-        <p><strong>Grp’s a formato</strong></p>
-        <div id="grafico-mensual-10" class="grafico-inner" style="min-height: 520px"></div>
-        <br>
-        <div class="descripcion"><?php echo $newsletter_mensual['spot_de_oro_–_top_3']['texto']; ?></div>
+        <div class="descripcion"><?php echo $newsletter_mensual['campanas_mas_activas']['texto']; ?></div>
         <br>
         <br>
         <br>
