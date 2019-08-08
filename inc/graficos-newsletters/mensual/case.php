@@ -15,13 +15,14 @@
             <div id="grafico-mensual-1-sd" class="grafico-inner" style="min-height: 320px"></div>
           </div>
         </div>
+        <p class="graficos-fuente">* Responsable de Compra del Hogar</p>
+        <br>
         <br>
         <div class="descripcion"><?php echo $newsletter_mensual['consumo_de_tv']['texto']; ?></div>
         <br>
         <br>
         <br>
       </div>
-  
       
     
 
@@ -40,6 +41,7 @@
             <div id="grafico-mensual-8-sd" class="grafico-inner" style="min-height: 320px"></div>
           </div>
         </div>
+        <p class="graficos-fuente">* Responsable de Compra del Hogar</p>
         <br>
         <div class="descripcion"><?php echo $newsletter_mensual['presion_publicitaria_por_targets']['texto']; ?></div>
         <br>
