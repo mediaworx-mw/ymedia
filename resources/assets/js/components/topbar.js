@@ -8,6 +8,7 @@ import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 const Topbar = () => {
 
   if(document.body.contains(document.querySelector('.topbar'))){
+    const $header = document.querySelector('.header');
     const $topbar = document.querySelector('.topbar');
     const $canal = document.querySelector('.canal');
     const $calendar = document.querySelector('.calendar');
@@ -72,7 +73,9 @@ const Topbar = () => {
       var url = 'https://ymedia.es/wp-json/canal_ymedia/search?terms=';
     }
 
-    console.log(baseUrl);
+    window.addEventListener('scroll', () => {
+     collapse();
+    });
 
     const expand = () => {
       document.querySelector('.canal-featured__list').classList.remove('hidden');
@@ -123,7 +126,7 @@ const Topbar = () => {
             }
           }
         }
-        //<span class="article-date canal-article__date">${date}</span>
+
 
         article += `
           <a href="${permalink}" class="canal-article canal-article--regular">
