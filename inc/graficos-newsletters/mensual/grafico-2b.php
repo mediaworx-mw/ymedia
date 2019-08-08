@@ -124,13 +124,13 @@ function  graficoMensual2b() {
     imageInfo.dy = 8;
     imageInfo.horizontalCenter = "right";
     imageInfo.verticalCenter = "bottom";
-    // imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
 
     // console.log(field, col1);      
 
     imageInfo.adapter.add("href", function(html, target) {
       if (field === col1) {
-        var href = "https://icon-library.net/images/info-icon/info-icon-27.jpg";
+        var href = "https://i.imgur.com/MFOMXXg.png";
         return href;
       } else {
         return ;

@@ -122,7 +122,7 @@ function  graficoMensual8(dia) {
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
-      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}</span><br></p></div>";
+      series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}%</span><br></p></div>";
     }
 
    
@@ -144,13 +144,13 @@ function  graficoMensual8(dia) {
     imageInfo.dy = 8;
     imageInfo.horizontalCenter = "right";
     imageInfo.verticalCenter = "bottom";
-    // imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}%</span><br></p></div>";
 
     // console.log(field, col1);      
     
     imageInfo.adapter.add("href", function(html, target) {
       if (field === col1) {
-        var href = "https://icon-library.net/images/info-icon/info-icon-27.jpg";
+        var href = "https://i.imgur.com/MFOMXXg.png";
         return href;
       } else {
         return ;
