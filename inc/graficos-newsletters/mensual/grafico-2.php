@@ -23,9 +23,9 @@ function  graficoMensual2() {
 
   jQuery(".grafico-mensual-2-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
-  col1 = Object.keys(input[0])[1];
-  col2 = Object.keys(input[0])[2];
-  col3 = Object.keys(input[0])[3];
+  var col1 = Object.keys(input[0])[1];
+  var col2 = Object.keys(input[0])[2];
+  var col3 = Object.keys(input[0])[3];
 
 
   input = input.map(x => {
@@ -112,7 +112,28 @@ function  graficoMensual2() {
     valueLabel.label.rotation = 0;
     valueLabel.label.truncate = false;
 
+    var info = series.bullets.push(new am4charts.Bullet());
+    info.locationX = 0;
+    var imageInfo = info.createChild(am4core.Image);
+    imageInfo.href = "";
+    imageInfo.width = 16;
+    imageInfo.height = 16;
+    imageInfo.dx = -4;
+    imageInfo.dy = 8;
+    imageInfo.horizontalCenter = "right";
+    imageInfo.verticalCenter = "bottom";
+    // imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
 
+    // console.log(field, col1);      
+
+    imageInfo.adapter.add("href", function(html, target) {
+      if (field === col1) {
+        var href = "https://icon-library.net/images/info-icon/info-icon-27.jpg";
+        return href;
+      } else {
+        return ;
+      }
+    });    
 
     categoryAxis.renderer.cellStartLocation = 0.1;
     categoryAxis.renderer.cellEndLocation = 0.9;

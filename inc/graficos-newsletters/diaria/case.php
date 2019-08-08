@@ -1,7 +1,7 @@
     <?php
       $newsletter_diaria = get_field( "newsletter_diaria" );
     ?>
-{}      <div class="grafico_wrapper" style="width:100%;">
+      <div class="grafico_wrapper" style="width:100%;">
         <h2>Programas - Top 10</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_diaria['programas_-_top_10']['fuente']; ?></p>
         <div id="grafico-diaria-1" class="grafico-inner" style="min-height: 550px"></div>

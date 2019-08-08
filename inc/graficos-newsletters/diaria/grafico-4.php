@@ -78,7 +78,7 @@ function  graficoDiaria4() {
   series.alignLabels = false;
   series.labels.template.radius = 1;
   // series.labels.template.html = '<span class="tarta-logos-label" data-src={logo}><span class="logo"><image src="{logo}"></image></span><br><span>{value}%</span></span>'; 
-  series.labels.template.html = '<body xmlns=\"http://www.w3.org/1999/xhtml\"><span class="tarta-logos-label" data-src={logo}><span class="logo"><img src={logo}></span><br><span>{value}%</span></span></body>';
+  series.labels.template.html = '<body xmlns=\"http://www.w3.org/1999/xhtml\"><span data-value="{value}" class="tarta-logos-label" data-src={logo}><span class="logo"><img src={logo}></span><br><span>{value}%</span></span></body>';
   series.slices.template.tooltipHTML = "<body xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"grupo-de-logos\">{logos}</div></body>";
 
 
@@ -97,9 +97,21 @@ function  graficoDiaria4() {
   series.hiddenState.properties.startAngle = -90;
 
   series.ticks.template.disabled = false;
+
+  var values = false;
+
+  series.slices.template.events.on("beforevalidated", function(ev) {
+    
+    if (!values) {
+      values = jQuery("span[data-value]");
+      grafico_diaria_last = jQuery(values[values.length - 2]);
+      jQuery(grafico_diaria_last[0]).css('transform', 'translate(15px, -3px)');
+    }
+
+  });
   
   jQuery(document).ready(function(){
-    //jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
+    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
   })
 }
 

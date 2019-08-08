@@ -169,10 +169,9 @@ function  graficoDiaria1() {
   }
 
   createSeries('AM (000)', 1);
-
   
   jQuery(document).ready(function(){
-    //jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
+    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
   })
 }
 

@@ -86,7 +86,7 @@ input = input.map((x, i) => {
   
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 110;
+  label.maxWidth = 120;
   // label.truncate = true;
   label.maxHeight = 60;
   label.height = 80;
@@ -96,7 +96,7 @@ input = input.map((x, i) => {
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
-  valueAxis.extraMax = 0.05;
+  valueAxis.extraMax = 0.075;
   valueAxis.min = 0;
   valueAxis.max = max;
 
@@ -156,7 +156,7 @@ input = input.map((x, i) => {
     valueLabel.label.rotation = 0;
     valueLabel.label.hideOversized = true;
     valueLabel.label.truncate = false;
-    valueLabel.label.maxWidth = 120;
+    valueLabel.label.maxWidth = 140;
     valueLabel.label.maxHeight = 20;
 
     // console.log(bullet);
@@ -168,7 +168,7 @@ input = input.map((x, i) => {
   createSeries('Grp’s a formato', 1);
 
   jQuery(document).ready(function(){
-    //jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
+    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
   })    
 
   return chart;

@@ -1,6 +1,7 @@
 <script>
 
 
+// var dias = [ 'lv' ];
 var dias = [ 'lv', 'sd' ];
 
 function  graficoMensual1(dia) {
@@ -29,9 +30,9 @@ function  graficoMensual1(dia) {
 
   jQuery(".grafico-mensual-1-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
-  col1 = Object.keys(input[0])[1];
-  col2 = Object.keys(input[0])[2];
-  col3 = Object.keys(input[0])[3];
+  var col1 = Object.keys(input[0])[1];
+  var col2 = Object.keys(input[0])[2];
+  var col3 = Object.keys(input[0])[3];
 
   // console.log(col1,col2,col3);
 
@@ -44,6 +45,7 @@ function  graficoMensual1(dia) {
   });
 
 
+
   var sorted = input.sort((a, b) => (a[col1] < b[col1]) ? 1 : -1);
 
   // console.log(sorted);
@@ -51,9 +53,6 @@ function  graficoMensual1(dia) {
   chart.data = sorted;
 
   chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999")];
-
-  // Set data
-  config = input.configuracion || [];
 
 
   // Add legend
@@ -102,12 +101,37 @@ function  graficoMensual1(dia) {
     series.paddingTop = 0;
     // console.log(field);
     series.name = field;
+
     if (field === col1) {
+
       series.dataFields.evo = "Evolución";
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
       series.columns.template.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+
+      var info = series.bullets.push(new am4charts.Bullet());
+      info.locationX = 0;
+      var imageInfo = info.createChild(am4core.Image);
+      imageInfo.href = "";
+      imageInfo.width = 16;
+      imageInfo.height = 16;
+      imageInfo.dx = -4;
+      imageInfo.dy = 8;
+      imageInfo.horizontalCenter = "right";
+      imageInfo.verticalCenter = "bottom";
+      // imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+
+      // console.log(field, col1);      
+      
+      imageInfo.adapter.add("href", function(html, target) {
+        if (field === col1) {
+          var href = "https://icon-library.net/images/info-icon/info-icon-27.jpg";
+          return href;
+        } else {
+          return ;
+        }
+      });
     }
 
    
@@ -122,6 +146,8 @@ function  graficoMensual1(dia) {
 
     categoryAxis.renderer.cellStartLocation = 0.1;
     categoryAxis.renderer.cellEndLocation = 0.9;
+
+
 
     return series;
   }

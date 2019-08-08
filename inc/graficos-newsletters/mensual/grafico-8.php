@@ -28,13 +28,6 @@ function  graficoMensual8(dia) {
   var dayTitle1 = datosGraficos['Presión publicitaria por targets'][0]['Categoría'];
   var dayTitle2 = datosGraficos['Presión publicitaria por targets (acumulado)'][0]['Categoría'];
 
-  
-  // console.log(key1, key2);
-  // console.log(input1, input2);
-  // console.log(input2, key2, input2.map( x => x[key2] ).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
-  // console.log(max1, max2);
-  // console.log(max);
-
 
   // Set data
   if(dia === 'lv') { 
@@ -49,9 +42,9 @@ function  graficoMensual8(dia) {
 
   jQuery(".grafico-mensual-8-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
-  col1 = Object.keys(input[0])[1];
-  col2 = Object.keys(input[0])[2];
-  col3 = Object.keys(input[0])[3];
+  var col1 = Object.keys(input[0])[1];
+  var col2 = Object.keys(input[0])[2];
+  var col3 = Object.keys(input[0])[3];
 
   // console.log(col1,col2,col3);
 
@@ -141,6 +134,28 @@ function  graficoMensual8(dia) {
     valueLabel.label.rotation = 0;
     valueLabel.label.truncate = false;
 
+    var info = series.bullets.push(new am4charts.Bullet());
+    info.locationX = 0;
+    var imageInfo = info.createChild(am4core.Image);
+    imageInfo.href = "";
+    imageInfo.width = 16;
+    imageInfo.height = 16;
+    imageInfo.dx = -4;
+    imageInfo.dy = 8;
+    imageInfo.horizontalCenter = "right";
+    imageInfo.verticalCenter = "bottom";
+    // imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+
+    // console.log(field, col1);      
+    
+    imageInfo.adapter.add("href", function(html, target) {
+      if (field === col1) {
+        var href = "https://icon-library.net/images/info-icon/info-icon-27.jpg";
+        return href;
+      } else {
+        return ;
+      }
+    });    
 
     categoryAxis.renderer.cellStartLocation = 0.1;
     categoryAxis.renderer.cellEndLocation = 0.9;

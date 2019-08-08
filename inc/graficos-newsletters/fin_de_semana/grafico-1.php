@@ -37,6 +37,8 @@ function  graficoFDS1(dia) {
     return x;
   });
 
+  max = Math.max(...datosGraficosX['Programas - Top10'].filter(x => x["AM (000)"] !== undefined).map(x => x["AM (000)"]));
+
   // console.log(input);
 
   // input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
@@ -73,7 +75,7 @@ function  graficoFDS1(dia) {
   categoryAxis2.renderer.labels.template.html = "{cuota}";
   categoryAxis2.renderer.labels.template.fontSize = 14;
   categoryAxis2.renderer.opposite = true;
-  categoryAxis2.height = 350;
+  // categoryAxis2.height = 350;
 
   var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
   valueAxis.renderer.grid.template.disabled = true;
@@ -81,7 +83,7 @@ function  graficoFDS1(dia) {
   valueAxis.renderer.baseGrid.disabled = true;
   valueAxis.extraMax = 0.05;
   valueAxis.min = 0;
-  valueAxis.max = 3500;
+  valueAxis.max = max;
 
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);

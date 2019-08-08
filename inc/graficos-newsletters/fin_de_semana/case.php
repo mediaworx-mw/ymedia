@@ -10,17 +10,17 @@
     <div class="graficos-multi graficos-multi-3">
       <div class="grafico_wrapper">
         <h4>Viernes</h4>
-        <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 380px"></div>
+        <div id="grafico-fds-1-vie" class="grafico-inner" style="min-height: 420px"></div>
       </div>
  
       <div class="grafico_wrapper">
         <h4>Sábado</h4>
-        <div id="grafico-fds-1-sab" class="grafico-inner" style="min-height: 380px"></div>
+        <div id="grafico-fds-1-sab" class="grafico-inner" style="min-height: 420px"></div>
       </div>
  
       <div class="grafico_wrapper">
         <h4>Domingo</h4>
-        <div id="grafico-fds-1-dom" class="grafico-inner" style="min-height: 380px"></div>
+        <div id="grafico-fds-1-dom" class="grafico-inner" style="min-height: 420px"></div>
       </div>
     </div>
     <br>
