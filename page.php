@@ -14,7 +14,7 @@
 
 <div class="page">
   <div class="page__inner container">
-    <h1 class="page_title"><?php the_title(); ?></h1>
+    <h1 class="page__title"><?php the_title(); ?></h1>
 
     <div class="entry">
       <?php the_content(); ?>
