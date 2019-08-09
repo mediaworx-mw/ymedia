@@ -45,7 +45,7 @@
     border: solid 1px $gray;
     padding: 1.5rem;
     background: white;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: $gray-dark;
     font-weight: $regular;
     line-height: 1;
@@ -116,8 +116,9 @@
   // }
 
   textarea {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     max-height: 120px;
+    color: $gray-dark;
     -webkit-appearance:none;
     box-shadow: none !important;
   }
@@ -131,7 +132,7 @@
     border: solid 1px $gray;
     border-radius: 0;
     font-size: 1.6rem;
-     color: $gray-dark;
+    color: $gray-dark;
     -webkit-appearance:none;
     background: white;
   }
@@ -219,8 +220,13 @@ span.wpcf7-not-valid-tip {
 }
 
 div.wpcf7-response-output {
-    position: absolute;
+    position: relative;
     opacity: 0;
+    z-index: 100;
+    font-size: 2rem;
+    color: red;
+    margin: 0;
+    padding: 0;
 }
 
 div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
