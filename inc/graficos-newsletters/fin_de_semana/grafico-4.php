@@ -129,9 +129,7 @@ function  graficoFDS4(dia) {
 
   });
 
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
-  })
+
   
   return chart;
 }

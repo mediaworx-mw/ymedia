@@ -170,9 +170,7 @@ function  graficoMensual5() {
   }
 
   
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide()
-  })
+
 }
 
 var graficoMensual5_show = false;

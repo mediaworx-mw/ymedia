@@ -181,9 +181,7 @@ function  graficoMensual2() {
   // Cursor
   // chart.cursor = new am4charts.XYCursor();
 
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide()
-  })
+
 
   return chart;
 }

@@ -177,9 +177,7 @@ function  graficoInversion1() {
   }
 
   
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
-  })
+
 }
 
 var graficoInversion1_show = false;

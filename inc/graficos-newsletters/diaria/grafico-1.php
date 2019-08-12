@@ -6,6 +6,7 @@ function  graficoDiaria1() {
   
   // Create chart instance
   var chart = am4core.create("grafico-diaria-1", am4charts.XYChart);
+
   
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -170,9 +171,7 @@ function  graficoDiaria1() {
 
   createSeries('AM (000)', 1);
   
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
-  })
+
 }
 
 var graficoDiaria1_show = false;

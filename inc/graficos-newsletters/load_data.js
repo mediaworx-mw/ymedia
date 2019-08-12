@@ -22,7 +22,11 @@ jQuery(document).ready(function () {
     window.TIPOS_DE_NEWSLETTER_SELECTED;
 
     jQuery('#STATUS_DE_CARGA .acf-input p')[0].innerHTML = DATOS_NEWSLETTER.text() !== '' ? 'DATOS CARGADOS' + recargador : 'CARGANDO...';
-    jQuery('#RECARGAR').click((x) => cargarDatos(window.TIPOS_DE_NEWSLETTER_SELECTED));
+    jQuery('#RECARGAR').click((x) => {
+      jQuery('#ACTIVAR_GRAFICOS input[type=checkbox]').trigger('click');
+      jQuery('#ACTIVAR_GRAFICOS input[type=checkbox]').trigger('click');
+    });
+    // jQuery('#RECARGAR').click((x) => cargarDatos(window.TIPOS_DE_NEWSLETTER_SELECTED));
 
     for (i = 0; i < TIPOS_DE_NEWSLETTER.length; i++) {
       if (TIPOS_DE_NEWSLETTER[i].checked) {

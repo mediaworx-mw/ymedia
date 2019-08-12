@@ -17,6 +17,7 @@ if( $activar_graficos ) {
     <script>
       var newsletter_tipo = '<?php echo $newsletter_tipo; ?>'; 
       var datosGraficos = <?php echo $datos; ?>;
+      am4core.options.commercialLicense = true;
     </script>
 
   <?php 

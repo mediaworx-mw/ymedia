@@ -135,7 +135,8 @@ p.graficos-fuente {
 }
 
 [data-src="[object"],
-img[src="[object"] {
+img[src="[object"],
+span.tarta-logos-label[data-src=""] {
   display: none !important;
 }
 

@@ -137,9 +137,7 @@ function  graficoDiaria5() {
     createSeries('Grp’s a formato', 1);
 
     
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide();
-  })
+
 }
 
 

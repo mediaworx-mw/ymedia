@@ -59,7 +59,7 @@ function  graficoMensual8(dia) {
 
   var sorted = input.sort((a, b) => (a[col1] < b[col1]) ? 1 : -1);
 
-  // console.log(sorted);
+  console.log(sorted);
 
   chart.data = sorted;
   // console.log(max);
@@ -206,9 +206,7 @@ function  graficoMensual8(dia) {
   // Cursor
   // chart.cursor = new am4charts.XYCursor();
 
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide()
-  })
+
 
   return chart;
 }

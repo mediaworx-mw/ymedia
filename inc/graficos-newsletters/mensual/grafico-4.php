@@ -209,9 +209,7 @@ function  graficoMensual4() {
   });
 
   
-  jQuery(document).ready(function(){
-    jQuery("g[aria-labelledby]:not(g[aria-controls])").hide()
-  })
+
 }
 
 var graficoMensual4_show = false;
