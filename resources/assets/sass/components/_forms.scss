@@ -221,12 +221,12 @@ span.wpcf7-not-valid-tip {
 
 div.wpcf7-response-output {
     position: relative;
-    opacity: 0;
     z-index: 100;
-    font-size: 2rem;
-    color: red;
+    font-size: 1.8rem;
+    color: $red;
     margin: 0;
     padding: 0;
+    border: none !important;
 }
 
 div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
