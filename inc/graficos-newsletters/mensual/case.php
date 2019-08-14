@@ -173,7 +173,6 @@
 
     <?php 
       require get_template_directory() . '/inc/graficos-newsletters/mensual/grafico-1.php'; //Consumo TV
-      // require get_template_directory() . '/inc/graficos-newsletters/mensual/grafico-5.php'; //Ocupación por cadenas
       
       require get_template_directory() . '/inc/graficos-newsletters/mensual/grafico-8.php'; //Presión publicitaria por targets 
       require get_template_directory() . '/inc/graficos-newsletters/mensual/grafico-6.php'; //Presión publicitaria por grupos

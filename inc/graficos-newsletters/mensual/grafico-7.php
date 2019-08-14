@@ -2,7 +2,9 @@
 
 var dias = [ 'lv', 'sd' ];
 
-function  graficoMensual7(dia) {
+
+function  graficoMensual7(dia, datosGraficos) {
+  // console.log("graficoMensual7-" + dia, datosGraficos);
 
   // console.log('wat1', dia);
   // now all your data is loaded, so you can use it here.
@@ -10,6 +12,10 @@ function  graficoMensual7(dia) {
   
   // Create chart instance
   var chart = am4core.create("grafico-mensual-7-" + dia, am4charts.XYChart);
+  const datosGraficosX = datosGraficos;
+
+  const lv = datosGraficosX['Presión publicitaria por cadenas'];
+  const sd = datosGraficosX['Presión publicitaria por cadenas (acumulado)'];
   
   // Locale
   chart.language.locale = am4lang_es_ES;
@@ -21,30 +27,26 @@ function  graficoMensual7(dia) {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
   clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
-  var input1 = datosGraficos['Presión publicitaria por cadenas'].slice(1); 
-  var input2 = datosGraficos['Presión publicitaria por cadenas (acumulado)'].slice(1); 
+  var input1 = lv.slice(1); 
+  var input2 = sd.slice(1); 
   var key1 = Object.keys(input1[0])[1];
   var key2 = Object.keys(input2[0])[1];
-  var dayTitle1 = datosGraficos['Presión publicitaria por cadenas'][0]['Categoría'];
-  var dayTitle2 = datosGraficos['Presión publicitaria por cadenas (acumulado)'][0]['Categoría'];
+  var dayTitle1 = lv[0]['Categoría'];
+  var dayTitle2 = sd[0]['Categoría'];
 
   var max1 = Math.max(...input1.map( x => x[key1] ).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
   var max2 = Math.max(...input2.map( x => x[key2] ).map(x => typeof x === 'string' ? Number(x.replace(/,/g, '.').replace(/%/, '')) : x));
   var max = Math.max(max1, max2);
 
-  // console.log(key1,key2);
-  // console.log(max1, max2);
-  // console.log(max);
-
   // Set data
   if(dia === 'lv') { 
-    input = input1;
-    dayTitle = dayTitle1;
+    var input = input1;
+    var dayTitle = dayTitle1;
   };
 
   if(dia === 'sd') { 
-    input = input2;
-    dayTitle = dayTitle2;
+    var input = input2;
+    var dayTitle = dayTitle2;
   };
 
   jQuery(".grafico-mensual-7-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
@@ -77,10 +79,10 @@ function  graficoMensual7(dia) {
 
   chart.data = sorted;
 
-  chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999")];
+  // datosGraficosX = datosGraficosXX;
+  // console.log(datosGraficosX);
 
-  // Set data
-  config = input.configuracion || [];
+  chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999")];
 
 
   // Add legend
@@ -156,7 +158,7 @@ function  graficoMensual7(dia) {
     imageInfo.dy = 8;
     imageInfo.horizontalCenter = "right";
     imageInfo.verticalCenter = "bottom";
-    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}%</span><br></p></div>";
 
     // console.log(field, col1);      
     
@@ -218,32 +220,31 @@ function  graficoMensual7(dia) {
   // Cursor
   // chart.cursor = new am4charts.XYCursor();
 
-
-
   return chart;
 }
 
 
 var graficoMensual7_show = {"lv": false, "sd": false};
+var thischart = {};
 
 dias.forEach(dia => {
 
   ScrollReveal().reveal("#grafico-mensual-7-" + dia, {
     afterReveal: function activar (el) {
       if(!graficoMensual7_show[dia]) {
-        thischart = graficoMensual7(dia);
+        thischart[dia] = graficoMensual7(dia, datosGraficos);
+        graficoMensual7_show[dia] = true;
       }
-      graficoMensual7_show[dia] = true;
     },
     afterReset: function activar (el) {
-      if(graficoMensual7_show[dia]) {
-        
-        thischart = null;
+      if(graficoMensual7_show[dia] && thischart[dia] !== null && thischart[dia] !== undefined) {
+        thischart[dia].dispose();
+        thischart[dia] = null;
         jQuery("#grafico-mensual-7-" + dia)[0].innerHTML = "";
       }
       graficoMensual7_show[dia] = false;
     },
-    reset: true
+    reset: false
   });
 
 });

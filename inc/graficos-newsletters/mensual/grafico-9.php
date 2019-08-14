@@ -1,5 +1,8 @@
 <script>
-function  graficoMensual9() {
+
+
+function  graficoMensual9(datosGraficos) {
+  // console.log('graficoMensual9', datosGraficos);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
 
@@ -15,16 +18,17 @@ function  graficoMensual9() {
 
   // enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
   enMarcas = (marca, marcas) => marcas.filter( x => x.marca.toLowerCase().indexOf(marca.toLowerCase()) > -1 );
+  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
   // console.log(datosGraficos['Campañas más activas']);
 
   // Set data
-  input = [];
+  var input = [];
   input = datosGraficos['Campañas más activas']
     .filter( (x, i) => i < 3)
     .map((x, i) => {
       const moreData = x.Marca !== undefined ? enMarcas(x.Marca, marcas) : false;
-      x['GRP 20\"'] = Number(x['GRP 20\"'].toString().replace(/,/g, '.'));
+      x['GRP 20\"'] = clean(x['GRP 20\"']);
       x['Campaña'] = x['Campaña'].replace(/\//g, " / ") + ' '.repeat(i);
 
       if (moreData && moreData.length !== 0) {
@@ -147,13 +151,24 @@ function  graficoMensual9() {
 
 var graficoMensual9_show = false;
 
-jQuery('#grafico-mensual-9').waypoint(function() {
-  if(!graficoMensual9_show) {
-    graficoMensual9();
-  }
-  graficoMensual9_show = true;
-}, {
-  offset: '75%'
+var thischart;
+
+ScrollReveal().reveal("#grafico-mensual-9", {
+  afterReveal: function activar (el) {
+    if(!graficoMensual9_show) {
+      thischart = graficoMensual9(datosGraficos);
+      graficoMensual9_show = true;
+    }
+  },
+  afterReset: function activar (el) {
+    if(graficoMensual9_show && thischart !== null) {
+      thischart.dispose();
+      thischart = null;
+      jQuery("#grafico-mensual-9")[0].innerHTML = "";
+    }
+    graficoMensual9_show = false;
+  },
+  reset: false
 });
 
 

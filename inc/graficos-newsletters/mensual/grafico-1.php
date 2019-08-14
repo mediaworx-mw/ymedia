@@ -1,10 +1,11 @@
 <script>
 
 
-// var dias = [ 'lv' ];
 var dias = [ 'lv', 'sd' ];
 
-function  graficoMensual1(dia) {
+
+function  graficoMensual1(dia, datosGraficos) {
+  // console.log('graficoMensual1-' + dia, datosGraficos);
 
   // console.log('wat1', dia);
   // now all your data is loaded, so you can use it here.
@@ -22,9 +23,18 @@ function  graficoMensual1(dia) {
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
+  var lv = datosGraficos['ConsumoTV'];
+  var sd = datosGraficos['ConsumoTV (acumulado)'];
+
   // Set data
-  if(dia === 'lv') { input = datosGraficos['ConsumoTV'].slice(1); dayTitle = datosGraficos['ConsumoTV'][0]['Categoría'] };
-  if(dia === 'sd') { input = datosGraficos['ConsumoTV (acumulado)'].slice(1); dayTitle = datosGraficos['ConsumoTV (acumulado)'][0]['Categoría'] };
+  if(dia === 'lv') { 
+    var input = lv.slice(1); 
+    var dayTitle = lv[0]['Categoría'] 
+  };
+  if(dia === 'sd') { 
+    var input = sd.slice(1); 
+    var dayTitle = sd[0]['Categoría'] 
+  };
 
 // console.log(dayTitle);
 
@@ -197,32 +207,33 @@ function  graficoMensual1(dia) {
   // Cursor
   // chart.cursor = new am4charts.XYCursor();
 
-
-
   return chart;
 }
 
 
 var graficoMensual1_show = {"lv": false, "sd": false};
+var thischart = {};
 
 dias.forEach(dia => {
 
   ScrollReveal().reveal("#grafico-mensual-1-" + dia, {
     afterReveal: function activar (el) {
       if(!graficoMensual1_show[dia]) {
-        thischart = graficoMensual1(dia);
+        thischart[dia] = graficoMensual1(dia, datosGraficos);
+        graficoMensual1_show[dia] = true;
       }
-      graficoMensual1_show[dia] = true;
     },
     afterReset: function activar (el) {
-      if(graficoMensual1_show[dia]) {
-        
-        thischart = null;
+      if(graficoMensual1_show[dia] && thischart[dia] !== null && thischart[dia] !== undefined) {
+        // console.log(thischart[dia], dia);
+        thischart[dia].dispose();
+        // console.log(thischart[dia], dia);
+        thischart[dia] = {};
         jQuery("#grafico-mensual-1-" + dia)[0].innerHTML = "";
       }
       graficoMensual1_show[dia] = false;
     },
-    reset: true
+    reset: false
   });
 
 });

@@ -2,7 +2,9 @@
 
 var dias = [ 'lv', 'sd' ];
 
-function  graficoMensual6(dia) {
+
+function  graficoMensual6(dia, datosGraficos) {
+  // console.log('graficoMensual6', datosGraficos);
 
   // console.log('wat1', dia);
   // now all your data is loaded, so you can use it here.
@@ -22,13 +24,19 @@ function  graficoMensual6(dia) {
   clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
   // Set data
-  if(dia === 'lv') { input = datosGraficos['Presión publicitaria por grupos'].slice(1); dayTitle = datosGraficos['Presión publicitaria por grupos'][0]['Categoría'] };
-  if(dia === 'sd') { input = datosGraficos['Presión publicitaria por grupos (acumulado)'].slice(1); dayTitle = datosGraficos['Presión publicitaria por grupos (acumulado)'][0]['Categoría'] };
+  if(dia === 'lv') { 
+    var input = datosGraficos['Presión publicitaria por grupos'].slice(1); 
+    var dayTitle = datosGraficos['Presión publicitaria por grupos'][0]['Categoría'] 
+  };
+  if(dia === 'sd') { 
+    var input = datosGraficos['Presión publicitaria por grupos (acumulado)'].slice(1); 
+    var dayTitle = datosGraficos['Presión publicitaria por grupos (acumulado)'][0]['Categoría'] 
+  };
 
   jQuery(".grafico-mensual-6-" + dia + "-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
-  col1 = Object.keys(input[0])[1];
-  col2 = Object.keys(input[0])[2];
+  var col1 = Object.keys(input[0])[1];
+  var col2 = Object.keys(input[0])[2];
 
   // console.log(col1,col2,col2);
 
@@ -66,7 +74,7 @@ function  graficoMensual6(dia) {
 
   var key = Object.keys(chart.data[0])[1];
 
-  series = chart.series.push(new am4charts.PieSeries());
+  var series = chart.series.push(new am4charts.PieSeries());
 
   // Modify chart's colors
   series.colors.list = sorted.map((x) => am4core.color(x["Color"]) );
@@ -121,19 +129,19 @@ dias.forEach(dia => {
   ScrollReveal().reveal("#grafico-mensual-6-" + dia, {
     afterReveal: function activar (el) {
       if(!graficoMensual6_show[dia]) {
-        thischart = graficoMensual6(dia);
+        thischart = graficoMensual6(dia, datosGraficos);
+        graficoMensual6_show[dia] = true;
       }
-      graficoMensual6_show[dia] = true;
     },
     afterReset: function activar (el) {
-      if(graficoMensual6_show[dia]) {
-        
+      if(graficoMensual6_show[dia] && thischart !== null) {
+        thischart.dispose();
         thischart = null;
         jQuery("#grafico-mensual-6-" + dia)[0].innerHTML = "";
       }
       graficoMensual6_show[dia] = false;
     },
-    reset: true
+    reset: false
   });
 
 });

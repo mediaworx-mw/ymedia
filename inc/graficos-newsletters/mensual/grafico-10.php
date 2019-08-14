@@ -1,5 +1,8 @@
 <script>
-function  graficoMensual10() {
+
+
+function  graficoMensual10(datosGraficos) {
+  // console.log('graficoMensual10', datosGraficos);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
 
@@ -18,7 +21,7 @@ function  graficoMensual10() {
   // console.log(datosGraficos);
 
   // Set data
-  input = [];
+  var input = [];
   input = datosGraficos['Spot de oro – Top 3'].map((x, i) => {
       const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
       // console.log(x);
@@ -148,13 +151,23 @@ function  graficoMensual10() {
 
 var graficoMensual10_show = false;
 
-jQuery('#grafico-mensual-10').waypoint(function() {
-  if(!graficoMensual10_show) {
-    graficoMensual10();
-  }
-  graficoMensual10_show = true;
-}, {
-  offset: '75%'
+
+ScrollReveal().reveal("#grafico-mensual-10", {
+  afterReveal: function activar (el) {
+    if(!graficoMensual10_show) {
+      thischart = graficoMensual10(datosGraficos);
+      graficoMensual10_show = true;
+    }
+  },
+  afterReset: function activar (el) {
+    if(graficoMensual10_show && thischart !== null) {
+      thischart.dispose();
+      thischart = null;
+      jQuery("#grafico-mensual-10")[0].innerHTML = "";
+    }
+    graficoMensual10_show = false;
+  },
+  reset: false
 });
 
 

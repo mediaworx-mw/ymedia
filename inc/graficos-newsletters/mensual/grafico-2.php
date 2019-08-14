@@ -1,6 +1,8 @@
 <script>
 
-function  graficoMensual2() {
+
+function  graficoMensual2(datosGraficos) {
+  // console.log('graficoMensual2', datosGraficos);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
   
@@ -17,9 +19,9 @@ function  graficoMensual2() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = datosGraficos['Cuota de las cadenas'].slice(1);
+  var input = datosGraficos['Cuota de las cadenas'].slice(1);
 
-  dayTitle = datosGraficos['Cuota de las cadenas'][0]['Cadenas'];
+  var dayTitle = datosGraficos['Cuota de las cadenas'][0]['Cadenas'];
 
   jQuery(".grafico-mensual-2-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
@@ -122,7 +124,7 @@ function  graficoMensual2() {
     imageInfo.dy = 8;
     imageInfo.horizontalCenter = "right";
     imageInfo.verticalCenter = "bottom";
-    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}%</span><br></p></div>";
 
     // console.log(field, col1);      
 
@@ -188,23 +190,24 @@ function  graficoMensual2() {
 
 var graficoMensual2_show = false;
 
+var thischart;
 
 ScrollReveal().reveal("#grafico-mensual-2", {
   afterReveal: function activar (el) {
     if(!graficoMensual2_show) {
-      thischart = graficoMensual2();
+      thischart = graficoMensual2(datosGraficos);
+      graficoMensual2_show = true;
     }
-    graficoMensual2_show = true;
   },
   afterReset: function activar (el) {
-    if(graficoMensual2_show) {
-      
+    if(graficoMensual2_show && thischart !== null && thischart !== undefined) {
+      thischart.dispose();
       thischart = null;
       jQuery("#grafico-mensual-2")[0].innerHTML = "";
     }
     graficoMensual2_show = false;
   },
-  reset: true
+  reset: false
 });
   
 

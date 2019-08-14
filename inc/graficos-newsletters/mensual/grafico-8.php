@@ -2,7 +2,9 @@
 
 var dias = [ 'lv', 'sd' ];
 
-function  graficoMensual8(dia) {
+
+function  graficoMensual8(dia, datosGraficos) {
+  // console.log('graficoMensual8', datosGraficos);
 
   // console.log('wat1', dia);
   // now all your data is loaded, so you can use it here.
@@ -59,16 +61,12 @@ function  graficoMensual8(dia) {
 
   var sorted = input.sort((a, b) => (a[col1] < b[col1]) ? 1 : -1);
 
-  console.log(sorted);
+  // console.log(sorted);
 
   chart.data = sorted;
   // console.log(max);
 
   chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999")];
-
-  // Set data
-  config = input.configuracion || [];
-
 
   // Add legend
   chart.legend = new am4charts.Legend();
@@ -219,19 +217,19 @@ dias.forEach(dia => {
   ScrollReveal().reveal("#grafico-mensual-8-" + dia, {
     afterReveal: function activar (el) {
       if(!graficoMensual8_show[dia]) {
-        thischart = graficoMensual8(dia);
+        thischart = graficoMensual8(dia, datosGraficos);
+        graficoMensual8_show[dia] = true;
       }
-      graficoMensual8_show[dia] = true;
     },
     afterReset: function activar (el) {
-      if(graficoMensual8_show[dia]) {
-        
+      if(graficoMensual8_show[dia] && thischart !== null) {
+        thischart.dispose();
         thischart = null;
         jQuery("#grafico-mensual-8-" + dia)[0].innerHTML = "";
       }
       graficoMensual8_show[dia] = false;
     },
-    reset: true
+    reset: false
   });
 
 });

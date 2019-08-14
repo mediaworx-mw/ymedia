@@ -1,6 +1,8 @@
 <script>
 
-function  graficoMensual2b() {
+
+function  graficoMensual2b(datosGraficos) {
+  // console.log('graficoMensual2b', datosGraficos);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
   
@@ -17,9 +19,9 @@ function  graficoMensual2b() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = datosGraficos['Cuota de las cadenas (acumulado)'].slice(1);
+  var input = datosGraficos['Cuota de las cadenas (acumulado)'].slice(1);
 
-  dayTitle = datosGraficos['Cuota de las cadenas (acumulado)'][0]['Cadenas'];
+  var dayTitle = datosGraficos['Cuota de las cadenas (acumulado)'][0]['Cadenas'];
 
   jQuery(".grafico-mensual-2b-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
@@ -124,7 +126,7 @@ function  graficoMensual2b() {
     imageInfo.dy = 8;
     imageInfo.horizontalCenter = "right";
     imageInfo.verticalCenter = "bottom";
-    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}%</span><br></p></div>";
 
     // console.log(field, col1);      
 
@@ -190,23 +192,24 @@ function  graficoMensual2b() {
 
 var graficoMensual2b_show = false;
 
+var thischart;
 
 ScrollReveal().reveal("#grafico-mensual-2b", {
   afterReveal: function activar (el) {
     if(!graficoMensual2b_show) {
-      thischart = graficoMensual2b();
+      thischart = graficoMensual2b(datosGraficos);
+      graficoMensual2b_show = true;
     }
-    graficoMensual2b_show = true;
   },
   afterReset: function activar (el) {
-    if(graficoMensual2b_show) {
-      
+    if(graficoMensual2b_show && thischart !== null && thischart !== undefined) {
+      thischart.dispose();
       thischart = null;
       jQuery("#grafico-mensual-2b")[0].innerHTML = "";
     }
     graficoMensual2b_show = false;
   },
-  reset: true
+  reset: false
 });
   
 

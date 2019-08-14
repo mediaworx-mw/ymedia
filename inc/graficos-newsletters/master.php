@@ -16,7 +16,7 @@ if( $activar_graficos ) {
     <script src="//www.amcharts.com/lib/4/lang/es_ES.js"></script>
     <script>
       var newsletter_tipo = '<?php echo $newsletter_tipo; ?>'; 
-      var datosGraficos = <?php echo $datos; ?>;
+      const datosGraficos = <?php echo $datos; ?>;
       am4core.options.commercialLicense = true;
     </script>
 

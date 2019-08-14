@@ -1,6 +1,8 @@
 <script>
 
-function  graficoMensual3() {
+
+function  graficoMensual3(datosGraficos) {
+  // console.log('graficoMensual3', datosGraficos);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
   
@@ -17,9 +19,9 @@ function  graficoMensual3() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = datosGraficos['Cuota temáticas en abierto'].slice(1);
+  var input = datosGraficos['Cuota temáticas en abierto'].slice(1);
 
-  dayTitle = datosGraficos['Cuota temáticas en abierto'][0]['Cadenas Tematicas TDT'];
+  var dayTitle = datosGraficos['Cuota temáticas en abierto'][0]['Cadenas Tematicas TDT'];
 
   jQuery(".grafico-mensual-3-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
@@ -128,7 +130,7 @@ function  graficoMensual3() {
     imageInfo.dy = 8;
     imageInfo.horizontalCenter = "right";
     imageInfo.verticalCenter = "bottom";
-    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}%</span><br></p></div>";
 
     // console.log(field, col1);      
 
@@ -198,19 +200,19 @@ var graficoMensual3_show = false;
 ScrollReveal().reveal("#grafico-mensual-3", {
   afterReveal: function activar (el) {
     if(!graficoMensual3_show) {
-      thischart = graficoMensual3();
+      thischart = graficoMensual3(datosGraficos);
+      graficoMensual3_show = true;
     }
-    graficoMensual3_show = true;
   },
   afterReset: function activar (el) {
-    if(graficoMensual3_show) {
-      
+    if(graficoMensual3_show && thischart !== null) {
+      thischart.dispose();
       thischart = null;
       jQuery("#grafico-mensual-3")[0].innerHTML = "";
     }
     graficoMensual3_show = false;
   },
-  reset: true
+  reset: false
 });
   
 

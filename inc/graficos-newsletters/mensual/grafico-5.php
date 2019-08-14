@@ -1,19 +1,21 @@
 <script>
 
-function  graficoMensual5() {
+
+function  graficoMensual5(datosGraficos) {
+  // console.log('graficoMensual5', datosGraficos);
   
   enCadenas = (cadena, cadenas) => cadenas.filter( 
       x => (x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1) );
 
   // Set data
-  input = [];
+  var input = [];
   input = datosGraficos['Ocupación por cadenas'];
   
   var medios = Object.keys(input[0]).filter( x => x !== 'Medio');
 
   
   
-  mediosMoreData = medios.map(x => {
+  var mediosMoreData = medios.map(x => {
     const moreData = x !== undefined ? enCadenas(x, cadenas) : false;
     // console.log(x, moreData);
     if (moreData && moreData.length !== 0) {
@@ -175,13 +177,23 @@ function  graficoMensual5() {
 
 var graficoMensual5_show = false;
 
-jQuery('#grafico-mensual-5').waypoint(function() {
-  if(!graficoMensual5_show) {
-    graficoMensual5();
-  }
-  graficoMensual5_show = true;
-}, {
-  offset: '75%'
+
+ScrollReveal().reveal("#grafico-mensual-5", {
+  afterReveal: function activar (el) {
+    if(!graficoMensual5_show) {
+      thischart = graficoMensual5(datosGraficos);
+      graficoMensual5_show = true;
+    }
+  },
+  afterReset: function activar (el) {
+    if(graficoMensual5_show && thischart !== null) {
+      thischart.dispose();
+      thischart = null;
+      jQuery("#grafico-mensual-5")[0].innerHTML = "";
+    }
+    graficoMensual5_show = false;
+  },
+  reset: false
 });
 
 </script>

@@ -1,6 +1,8 @@
 <script>
 
-function  graficoMensual4() {
+
+function  graficoMensual4(datosGraficos) {
+  // console.log('graficoMensual4', datosGraficos);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
   
@@ -17,7 +19,7 @@ function  graficoMensual4() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = [];
+  var input = [];
   input = datosGraficos['Programas - Top10'].map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
@@ -214,14 +216,27 @@ function  graficoMensual4() {
 
 var graficoMensual4_show = false;
 
-jQuery('#grafico-mensual-4').waypoint(function() {
-  if(!graficoMensual4_show) {
-    graficoMensual4();
-  }
-  graficoMensual4_show = true;
-}, {
-  offset: '75%'
+
+ScrollReveal().reveal("#grafico-mensual-4", {
+  afterReveal: function activar (el) {
+    if(!graficoMensual4_show) {
+      thischart = graficoMensual4(datosGraficos);
+      graficoMensual4_show = true;
+    }
+  },
+  afterReset: function activar (el) {
+    if(graficoMensual4_show && thischart !== null) {
+      thischart.dispose();
+      thischart = null;
+      jQuery("#grafico-mensual-4")[0].innerHTML = "";
+    }
+    graficoMensual4_show = false;
+  },
+  reset: false
 });
+
+
+
 
 </script>
 

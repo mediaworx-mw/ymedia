@@ -1,6 +1,8 @@
 <script>
 
-function  graficoMensual3b() {
+
+function  graficoMensual3b(datosGraficos) {
+  // console.log('graficoMensual3b', datosGraficos);
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
   
@@ -17,9 +19,9 @@ function  graficoMensual3b() {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   // Set data
-  input = datosGraficos['Cuota temáticas en abierto (acumulado)'].slice(1);
+  var input = datosGraficos['Cuota temáticas en abierto (acumulado)'].slice(1);
 
-  dayTitle = datosGraficos['Cuota temáticas en abierto (acumulado)'][0]['Cadenas Tematicas TDT'];
+  var dayTitle = datosGraficos['Cuota temáticas en abierto (acumulado)'][0]['Cadenas Tematicas TDT'];
 
   jQuery(".grafico-mensual-3b-title")[0].innerText = dayTitle[0].toUpperCase() + dayTitle.slice(1);
 
@@ -128,7 +130,7 @@ function  graficoMensual3b() {
     imageInfo.dy = 8;
     imageInfo.horizontalCenter = "right";
     imageInfo.verticalCenter = "bottom";
-    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo} min</span><br></p></div>";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}%</span><br></p></div>";
 
     // console.log(field, col1);      
 
@@ -198,19 +200,19 @@ var graficoMensual3b_show = false;
 ScrollReveal().reveal("#grafico-mensual-3b", {
   afterReveal: function activar (el) {
     if(!graficoMensual3b_show) {
-      thischart = graficoMensual3b();
+      thischart = graficoMensual3b(datosGraficos);
+      graficoMensual3b_show = true;
     }
-    graficoMensual3b_show = true;
   },
   afterReset: function activar (el) {
-    if(graficoMensual3b_show) {
-      
+    if(graficoMensual3b_show && thischart !== null) {
+      thischart.dispose();
       thischart = null;
       jQuery("#grafico-mensual-3b")[0].innerHTML = "";
     }
     graficoMensual3b_show = false;
   },
-  reset: true
+  reset: false
 });
   
 
