@@ -26,6 +26,8 @@
   }
 
   &__descarga {
+    visibility: hidden;
+    opacity: 0;
     transform: translateX(2000px);
     padding: 0;
     h3 {
@@ -39,6 +41,8 @@
   }
 
   &__marca {
+    // visibility: hidden;
+    // opacity: 0;
      padding: 0 $half-pad 0 0;
      h4 {
       font-size: 3.6rem;
