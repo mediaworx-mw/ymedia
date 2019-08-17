@@ -69,8 +69,8 @@ const Topbar = () => {
       var url = 'https://staging.ymedia.es/wp-json/canal_ymedia/search?terms=';
     }
 
-     if ( baseUrl.startsWith('ymedia.es') ) {
-      var url = 'https://ymedia.es/wp-json/canal_ymedia/search?terms=';
+     if ( baseUrl.startsWith('www.ymedia.es') ) {
+      var url = 'https://www.ymedia.es/wp-json/canal_ymedia/search?terms=';
     }
 
     window.addEventListener('scroll', () => {

@@ -3,6 +3,7 @@ import ScrollMagic from 'scrollmagic';
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 const Corporativo = () => {
+  console.log('hello');
   const $members = document.querySelector('.members');
   const $member = document.querySelectorAll('.member');
   const $memberInner = document.querySelectorAll('.member__inner');
@@ -58,10 +59,6 @@ const Corporativo = () => {
     const video = e.querySelector('.member__video').querySelector('.video');
 
     e.addEventListener('mouseover', function() {
-
-
-
-
       video.play();
       this.querySelector('.member__data-top').classList.add('over');
       this.querySelector('.member__data-bottom').classList.add('over');
@@ -73,6 +70,15 @@ const Corporativo = () => {
       this.querySelector('.member__data-top').classList.remove('over');
       this.querySelector('.member__data-bottom').classList.remove('over');
     });
+
+    if (window.innerWith < 480 ) {
+      video.click();
+
+      // video.play();
+      // video.pause();
+      // video.currentTime = 1;
+
+    }
   });
 
 
