@@ -20,7 +20,7 @@
     data-bio="<?php echo $bio ?>"
     >
     <div class="member__video">
-      <video class="video" playsinline muted>
+      <video class="video" playsinline muted poster="<?php echo $photo ?>">
         <source src="<?php echo $video_webm; ?>" type="video/webm">
         <source src="<?php echo $video_ogg; ?>" type="video/ogg; codecs=theora,vorbis">
         <source src="<?php echo $video_mp4; ?>" type="video/mp4">
