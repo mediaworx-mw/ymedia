@@ -85,6 +85,7 @@ const Contacto = () => {
   // });
 
   const container = document.querySelector(".wpcf7-response-output");
+
   const mutationConfig = {
     attributes: true,
     childList: true,
