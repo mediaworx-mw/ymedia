@@ -36,6 +36,9 @@ function setup() {
 }
 add_action( 'after_setup_theme', 'setup' );
 
+/* Stop Wordpress Default Redirections */
+remove_action('template_redirect', 'redirect_canonical');
+
 
 function ymedia_image_sizes_choose( $sizes ) {
   $ymedia_sizes = array(
