@@ -21,7 +21,7 @@ function  graficoMensual8(dia, datosGraficos) {
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
-  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
+  clean = (valor) => valor !== undefined ? Math.round(Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, ''))) : 0;
 
   var input1 = datosGraficos['Presión publicitaria por targets'].slice(1); 
   var input2 = datosGraficos['Presión publicitaria por targets (acumulado)'].slice(1); 

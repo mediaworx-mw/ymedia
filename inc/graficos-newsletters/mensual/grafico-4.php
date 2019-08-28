@@ -17,6 +17,7 @@ function  graficoMensual4(datosGraficos) {
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
   // Set data
   var input = [];
@@ -26,7 +27,7 @@ function  graficoMensual4(datosGraficos) {
     x['Título/Descripción'] = x['Título/Descripción'].replace(/\//g, " / ") + ' '.repeat(i);
     
     if (moreData && moreData.length !== 0) {
-      // x["Cuota (%)"] = x["Cuota (%)"];
+      x['AM(000)'] = clean(x['AM(000)']);
       x['Cadena'] = moreData[0].cadena.replace(/ *\([^)]*\) */g, "").toUpperCase();
       x['Color'] = moreData[0].color;
       x['Logo'] = moreData[0].logo;
