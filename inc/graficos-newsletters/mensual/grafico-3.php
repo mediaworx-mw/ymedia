@@ -17,6 +17,7 @@ function  graficoMensual3(datosGraficos) {
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
+  clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
   // Set data
   var input = datosGraficos['Cuota temáticas en abierto'].slice(1);
@@ -36,9 +37,9 @@ function  graficoMensual3(datosGraficos) {
     .map(x => {
     const moreData = x['Cadenas Tematicas TDT'] !== undefined ? enCadenas(x['Cadenas Tematicas TDT'], cadenas) : false;
     // console.log(x);
-    x[col1] = Number(x[col1].toString().replace(/,/g, '.'));
-    x[col2] = Number(x[col2].toString().replace(/,/g, '.'));
-    x[col3] = Number(x[col3].toString().replace(/,/g, '.').replace(/%/g, '.'));
+    x[col1] = clean(x[col1]);
+    x[col2] = clean(x[col2]);
+    x[col3] = clean(x[col3]);
     
     if (moreData && moreData.length !== 0) {
       // console.log(x['Cadenas Tematicas TDT'], moreData[0]);
