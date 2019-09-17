@@ -2,6 +2,8 @@
 
 var dias = [ 'vie', 'sab', 'dom' ];
 
+var sacameDeAqui = false;
+
 function  graficoFDS1(dia) {
   // now all your data is loaded, so you can use it here.
   am4core.useTheme(am4themes_animated);
@@ -21,9 +23,10 @@ function  graficoFDS1(dia) {
   const datosGraficosX = datosGraficos;
 
   // Set data
-  if(dia === 'vie') { input = datosGraficosX['Programas - Top10'].slice( 1,11); dayTitle = 'Viernes'};
-  if(dia === 'sab') { input = datosGraficosX['Programas - Top10'].slice(12,22); dayTitle = 'Sábado'};
-  if(dia === 'dom') { input = datosGraficosX['Programas - Top10'].slice(23,33); dayTitle = 'Domingo'};
+  if(dia === 'vie') { var input = datosGraficosX['Programas - Top10'].slice( 1,11); dayTitle = 'Viernes'};
+  if(dia === 'sab') { var input = datosGraficosX['Programas - Top10'].slice(12,22); dayTitle = 'Sábado'};
+  if(dia === 'dom') { var input = datosGraficosX['Programas - Top10'].slice(23,33); dayTitle = 'Domingo'};
+
 
   input = input.map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
@@ -37,7 +40,10 @@ function  graficoFDS1(dia) {
     return x;
   });
 
-  max = Math.max(...datosGraficosX['Programas - Top10'].filter(x => x["AM (000)"] !== undefined).map(x => x["AM (000)"]));
+  var valores = datosGraficosX['Programas - Top10'].filter(x => x["AM (000)"] !== undefined).map(x => x["AM (000)"]);
+
+  var max = Math.max(...valores);
+  var min = Math.min(...valores);
 
   // console.log(input);
 
@@ -84,7 +90,13 @@ function  graficoFDS1(dia) {
   valueAxis.extraMax = 0.05;
   valueAxis.min = 0;
   valueAxis.max = max;
+  
+  // console.log(valueAxis);
 
+  // var axisBreak = valueAxis.axisBreaks.create();
+  // axisBreak.startValue = max/2 - 100;
+  // axisBreak.endValue = max/2 + 100;
+  // axisBreak.breakSize = 0.005;
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
   topContainer.layout = "absolute";
@@ -138,7 +150,7 @@ function  graficoFDS1(dia) {
 
     series.columns.template.events.on("hit", function(ev) {
       ev.target.disabled = true;
-      console.log("clicked on ", ev.target);
+      // console.log("clicked on ", ev.target);
     }, this);
 
     var bullet = series.bullets.push(new am4charts.Bullet());
@@ -164,9 +176,22 @@ function  graficoFDS1(dia) {
     valueLabel.label.fill = "#000";
     valueLabel.label.fontSize = 14;
     valueLabel.label.rotation = 0;
-    valueLabel.label.hideOversized = true;
+    valueLabel.label.hideOversized = false;
     valueLabel.label.truncate = true;
     valueLabel.label.maxWidth = 140;
+    
+
+    valueLabel.label.adapter.add("dx", function(html, target) {
+      if (target.dataItem.valueX < max/2.4) {
+        if (target.dataItem._dataContext["Minuto de oro"] !== undefined) {
+          return 64;
+        } else {
+          return 40;
+        }
+      } else {
+        return -10;
+      }
+    });
 
     var estrella = series.bullets.push(new am4charts.Bullet());
     estrella.locationX = 0;
