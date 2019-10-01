@@ -1,6 +1,6 @@
 <script>
 
-console.log(datosGraficos);
+// console.log(datosGraficos);
 
 function  graficoMensual2(datosGraficos) {
   // console.log('graficoMensual2', datosGraficos);

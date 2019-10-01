@@ -55,7 +55,8 @@ function  graficoMensual4(datosGraficos) {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
-  categoryAxis.height = 500;
+  categoryAxis.height = 490;
+  categoryAxis.extraMax = 0.05;
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
@@ -71,7 +72,8 @@ function  graficoMensual4(datosGraficos) {
   categoryAxis3.renderer.labels.template.html = "{emisiones}";
   categoryAxis3.renderer.labels.template.fontSize = 14;
   categoryAxis3.renderer.opposite = true;
-  categoryAxis3.height = 500;
+  categoryAxis3.height = 490;
+  categoryAxis3.extraMax = 0.05;
 
   var categoryAxis2 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis2.dataFields.category = category;
@@ -83,13 +85,16 @@ function  graficoMensual4(datosGraficos) {
   categoryAxis2.renderer.labels.template.fontSize = 14;
   categoryAxis2.renderer.opposite = true;
   categoryAxis2.renderer.dx = -70;
-  categoryAxis2.height = 500;
+  categoryAxis2.height = 490;
+  categoryAxis2.extraMax = 0.05;
 
 
   var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
   valueAxis.renderer.grid.template.disabled = true;
   valueAxis.renderer.labels.template.disabled = true;
   valueAxis.renderer.baseGrid.disabled = true;
+  valueAxis.min = 0;
+  // valueAxis.max = 6000;
   valueAxis.extraMax = 0.05;
 
   var topContainer = chart.chartContainer.createChild(am4core.Container);
