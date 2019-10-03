@@ -155,6 +155,22 @@
     margin: 0 auto;
     padding-top: 0;
     padding-bottom: 4rem;
+
+  }
+  &__seccion100 {
+    width: 100%;
+    p {
+      text-align: center;
+      margin: 0 auto;
+    }
+    img {
+      margin: 0 auto;
+      text-align: center;
+    }
+    .aligncenter {
+      margin: 0 auto;
+      text-align: center;
+     }
   }
   &__graficos {
     position: relative;
@@ -298,6 +314,18 @@
   }
 }
 
+@include desktop {
+  .canal-single {
+    &__seccion100 {
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
 @include tablet {
   .canal-single {
     &__category {
@@ -321,5 +349,6 @@
         }
       }
     }
+
   }
 }

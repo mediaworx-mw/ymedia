@@ -61,17 +61,34 @@ const Topbar = () => {
     $input.value = "";
     $topbarmKeyInput.value = "";
 
-    if ( baseUrl.startsWith('localhost') ) {
+    // if ( baseUrl.startsWith('localhost') ) {
+    //   var url = 'http://localhost:8888/ymedia/wp-json/canal_ymedia/search?terms=';
+    // }
+
+
+    // if ( baseUrl.startsWith('staging.ymedia') ) {
+    //   var url = 'https://staging.ymedia.es/wp-json/canal_ymedia/search?terms=';
+    // }
+
+    //  if ( baseUrl.startsWith('www.ymedia.es') ) {
+    //   var url = 'https://www.ymedia.es/wp-json/canal_ymedia/search?terms=';
+    // }
+
+     //str.indexOf("REP") == 0  IE
+
+    if ( baseUrl.indexOf('localhost') === 0 ) {
       var url = 'http://localhost:8888/ymedia/wp-json/canal_ymedia/search?terms=';
     }
 
-    if ( baseUrl.startsWith('staging.ymedia') ) {
+
+    if ( baseUrl.indexOf('staging.ymedia') === 0 ) {
       var url = 'https://staging.ymedia.es/wp-json/canal_ymedia/search?terms=';
     }
 
-     if ( baseUrl.startsWith('www.ymedia.es') ) {
+     if ( baseUrl.indexOf('www.ymedia.es') === 0 ) {
       var url = 'https://www.ymedia.es/wp-json/canal_ymedia/search?terms=';
     }
+
 
     window.addEventListener('scroll', () => {
      collapse();
