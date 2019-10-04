@@ -1,4 +1,4 @@
-<a onclick="goBack()" class="back"><i class="fas fa-angle-left"></i>Regresar</a>
+<a onclick="goBack()" class="back"><i class="fas fa-angle-left"></i>Volver</a>
 
 <script>
   function goBack() {
