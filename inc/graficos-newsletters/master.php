@@ -64,6 +64,26 @@ if( $activar_graficos ) {
         // no rows found
     endif;
 
+    // Tomamos la configuración de las cadenas de la página de opciones       
+    if( have_rows('medios', 'option') ):
+      echo "<script>";
+      echo "var medios = [];";
+
+      while ( have_rows('medios', 'option') ) : the_row();
+
+        $medio = get_sub_field('medio');
+        $logo = get_sub_field('logo');
+
+        echo "medios.push({medio: '$medio', logo: '$logo' });";
+
+      endwhile;
+
+      echo "</script>";
+
+    else :
+        // no rows found
+    endif;    
+
      // Tomamos la configuración de los grupos de comunicación de la página de opciones
     if( have_rows('grupos', 'option') ):
 
@@ -118,7 +138,7 @@ if( $activar_graficos ) {
       break;
 
     case 'EGM':
-      echo 'EGM';
+      require get_template_directory() . '/inc/graficos-newsletters/egm/case.php';
       break;   
 
     case 'Inversión':
