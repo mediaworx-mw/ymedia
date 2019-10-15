@@ -1,18 +1,24 @@
-.content {
+.content, .content-two {
   padding: 0 0 4rem 0;
   column-count: 2;
   column-gap: 20px;
   width: 98.6%;
 }
 
+.content-one {
+  width: 100%;
+}
+
+
+
 @include desktop {
-  .content {
+  .content, .content-two {
     width: calc( (100vw - 16.6666vw) - 2vw );
   }
 }
 
 @include tablet {
-  .content {
+  .content, .content-two {
     width: 100%;
     column-count: 1;
     column-gap: 0;

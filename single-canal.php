@@ -58,6 +58,24 @@
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
             </div>
+
+            <?php if(have_rows('bloques_canal')):?>
+              <div class="canal-content">
+                <?php while(have_rows('bloques_canal')): the_row() ?>
+                  <?php $columns = get_sub_field('columnas_bloque_canal') ?>
+                  <?php if($columns === '1'): ?>
+                    <div class="canal-content content-one entry">
+                      <?php the_sub_field('contenido_bloque_canal') ?>
+                    </div>
+                  <?php endif ?>
+                   <?php if($columns === '2'): ?>
+                    <div class="canal-content content-two entry">
+                      <?php the_sub_field('contenido_bloque_canal') ?>
+                    </div>
+                  <?php endif ?>
+                <?php endwhile;?>
+              </div>
+            <?php endif;?>
              <?php if ( get_field('seccion_100') ):?>
               <div class="canal-single__seccion100">
                 <?php the_field('seccion_100') ?>
@@ -114,6 +132,25 @@
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
             </div>
+
+            <?php if(have_rows('bloques_canal')):?>
+              <div class="canal-content">
+                <?php while(have_rows('bloques_canal')): the_row() ?>
+                  <?php $columns = get_sub_field('columnas_bloque_canal') ?>
+                  <?php if($columns === '1'): ?>
+                    <div class="canal-content content-one entry">
+                      <?php the_sub_field('contenido_bloque_canal') ?>
+                    </div>
+                  <?php endif ?>
+                   <?php if($columns === '2'): ?>
+                    <div class="canal-content content-two entry">
+                      <?php the_sub_field('contenido_bloque_canal') ?>
+                    </div>
+                  <?php endif ?>
+                <?php endwhile;?>
+              </div>
+            <?php endif;?>
+
              <?php if ( get_field('seccion_100') ):?>
               <div class="canal-single__seccion100">
                 <?php the_field('seccion_100') ?>
@@ -170,6 +207,24 @@
             <div class="canal-single__entry">
               <?php get_template_part('components/entry-canal'); ?>
             </div>
+            <?php if(have_rows('bloques_canal')):?>
+              <div class="canal-content">
+
+                <?php while(have_rows('bloques_canal')): the_row() ?>
+                  <?php $columns = get_sub_field('columnas_bloque_canal') ?>
+                  <?php if($columns === '1'): ?>
+                    <div class="canal-content content-one entry">
+                      <?php the_sub_field('contenido_bloque_canal') ?>
+                    </div>
+                  <?php endif ?>
+                   <?php if($columns === '2'): ?>
+                    <div class="canal-content content-two entry">
+                      <?php the_sub_field('contenido_bloque_canal') ?>
+                    </div>
+                  <?php endif ?>
+                <?php endwhile;?>
+              </div>
+            <?php endif;?>
             <?php if ( get_field('seccion_100') ):?>
               <div class="canal-single__seccion100">
                 <?php the_field('seccion_100') ?>
