@@ -55,9 +55,11 @@
             <div class="canal-single__excerpt canal-single__excerpt--full">
               <?php the_field('resumen_canal') ?>
             </div>
-            <div class="canal-single__entry">
-              <?php get_template_part('components/entry-canal'); ?>
-            </div>
+            <?php  if( '' !== get_post()->post_content ):?>
+              <div class="canal-single__entry">
+                <?php get_template_part('components/entry-canal'); ?>
+              </div>
+            <?php endif; ?>
 
             <?php if(have_rows('bloques_canal')):?>
               <div class="canal-content">
@@ -129,9 +131,11 @@
             <div class="canal-single__excerpt canal-single__excerpt--full">
               <?php the_field('resumen_canal') ?>
             </div>
-            <div class="canal-single__entry">
-              <?php get_template_part('components/entry-canal'); ?>
-            </div>
+            <?php  if( '' !== get_post()->post_content ):?>
+              <div class="canal-single__entry">
+                <?php get_template_part('components/entry-canal'); ?>
+              </div>
+            <?php endif; ?>
 
             <?php if(have_rows('bloques_canal')):?>
               <div class="canal-content">
@@ -204,9 +208,11 @@
         <div class="canal-single__main canal-single__main--small container">
           <?php get_template_part('components/canal/single-side'); ?>
           <div class="canal-single__content">
-            <div class="canal-single__entry">
-              <?php get_template_part('components/entry-canal'); ?>
-            </div>
+           <?php  if( '' !== get_post()->post_content ):?>
+              <div class="canal-single__entry">
+                <?php get_template_part('components/entry-canal'); ?>
+              </div>
+            <?php endif; ?>
             <?php if(have_rows('bloques_canal')):?>
               <div class="canal-content">
 
