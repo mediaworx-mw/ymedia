@@ -140,8 +140,8 @@ function  graficoEGM4() {
 
   // Create map instance
   var chart = am4core.create("grafico-EGM-4", am4maps.MapChart);
-  chart.maxZoomLevel = 4;
-  chart.minZoomLevel = 1.5;
+  chart.maxZoomLevel = 2;
+  chart.minZoomLevel = 2;
 
   // Set map definition
   chart.geodata = am4geodata_spainHigh;
