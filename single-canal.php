@@ -33,18 +33,19 @@
                <span style="background: <?php echo $color; ?>" class="canal-single__category"> <?php echo $name; ?></span>
               <?php endforeach; ?>
               <h1 class="canal-single__title"><?php the_title(); ?></h1>
-
             </div>
             <div class="canal-single__meta">
               <div class="canal-single__date">
                 <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
                 <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
               </div>
+              <?php  if(get_field('mostrar_autor_canal')):?>
               <div class="canal-single__author">
                 <?php $author_name = get_the_author_meta('first_name', false).' '. get_the_author_meta('last_name', false);?>
-                <h2><?php echo $author_name;?></h2>
-                <span><?php the_field('rol_author', $user = 'user_'.$post->post_author); ?></span>
+                <h2>Por <?php echo $author_name;?></h2>
+                <!--<span><?php the_field('rol_author', $user = 'user_'.$post->post_author); ?></span>-->
               </div>
+            <?php endif; ?>
             </div>
           </div>
         </div>
@@ -116,11 +117,12 @@
                 <h2><?php echo $post_month = get_the_date( 'F' ); ?></h2>
                 <h3><?php echo $post_month = get_the_date( 'j' ); ?></h3>
               </div>
+              <?php  if(get_field('mostrar_autor_canal')):?>
               <div class="canal-single__author">
                 <?php $author_name = get_the_author_meta('first_name', false).' '. get_the_author_meta('last_name', false);?>
-                <h2><?php echo $author_name;?></h2>
-                <span><?php the_field('rol_author', $user = 'user_'.$post->post_author); ?></span>
+                <h2>Por <?php echo $author_name;?></h2>
               </div>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -184,6 +186,12 @@
             <span style="background: <?php echo $color; ?>" class="canal-single__category"> <?php echo $name; ?></span>
             <?php endforeach; ?>
               <h1 class="canal-single__title"><?php the_title(); ?></h1>
+              <?php  if(get_field('mostrar_autor_canal')):?>
+              <div class="canal-single__author">
+                <?php $author_name = get_the_author_meta('first_name', false).' '. get_the_author_meta('last_name', false);?>
+                <h2>Por <?php echo $author_name;?></h2>
+              </div>
+              <?php endif; ?>
 
             <?php $thumb = get_the_post_thumbnail_url(); ?>
             <div class="canal-single__header">

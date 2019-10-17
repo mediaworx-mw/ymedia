@@ -12,9 +12,22 @@
       .canal-single__title{
         color: $red;
       }
+      .canal-single__title {
+        margin: 0;
+      }
       .canal-single__meta{
         bottom: auto;
         top: 0;
+      }
+      .canal-single__author {
+        padding: 0;
+        margin: 0 0 1rem 0;
+        h2 {
+          font-size: 2rem;
+          line-height: 3rem;
+          color: $red;
+          font-weight: $bold;
+        }
       }
     }
   }
@@ -66,7 +79,7 @@
     font-size: 4rem;
     line-height: 5rem;
     font-weight: $bold;
-    margin: 0 0 2rem 0;
+    margin: 0 0 3rem 0;
   }
 
   &__meta {
@@ -95,21 +108,10 @@
     }
   }
   &__author {
-    padding: 1rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    display: none;
+    padding: 3rem 1rem 3rem 3.5rem;
     h2 {
-      font-size: 3rem;
-      line-height: 2rem;
-      color: white;
-      font-weight: $bold;
-      margin: 0 0 1rem 0;
-    }
-    span {
-      font-size: 1.8rem;
-      line-height: 2rem;
+      font-size: 2rem;
+      line-height: 3rem;
       color: white;
       font-weight: $bold;
     }
@@ -149,6 +151,7 @@
       }
       font-size: 1.8rem;
       line-height: 2.6rem;
+
     }
   }
   &__entry {
@@ -197,6 +200,16 @@
           bottom: auto;
           top: 0;
         }
+        .canal-single__author {
+          padding: 0;
+          margin: 0 0 1rem 0;
+          h2 {
+            font-size: 1.6rem;
+            line-height: 1.6rem;
+            color: $red;
+            font-weight: $bold;
+          }
+        }
       }
     }
     &__excerpt {
@@ -224,7 +237,7 @@
     &__header {
       position: absolute;
       bottom: 4rem;
-      left: 12rem;
+      left: 9.5rem;
     }
     &__category {
       display: inline-block;
@@ -253,36 +266,22 @@
       align-items: center;
       padding: 1rem;
       h2 {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         line-height: 1;
         color: white;
         font-weight: $regular;
         margin: 0;
       }
       h3 {
-        font-size: 6rem;
+        font-size: 4rem;
         color: white;
         font-weight: $bold;
       }
     }
     &__author {
-      padding: 1rem 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      display: none;
       h2 {
-        font-size: 3rem;
-        line-height: 2rem;
-        color: white;
-        font-weight: $bold;
-        margin: 0 0 1rem 0;
-      }
-      span {
-        font-size: 1.8rem;
-        line-height: 2rem;
-        color: white;
-        font-weight: $bold;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
       }
     }
     &__main {

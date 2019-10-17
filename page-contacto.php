@@ -21,7 +21,7 @@
   <div class="contacto__content container">
     <div class="contacto-form">
       <div class="contacto-form__header">
-        <h2>Dejanos una nota, sugerencia o consulta.</h2>
+        <h2>Dejanos una nota, sugerencia o consultas.</h2>
       </div>
       <div class="contacto-form__form contact-form">
       <?php echo do_shortcode('[contact-form-7 id="287" title="Contacto"]'); ?>
