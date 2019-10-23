@@ -33,11 +33,13 @@
             <?php $interna = get_field('pagina_interna_cliente'); ?>
             <?php if ($interna) : ?>
               <a href="<?php the_permalink(); ?>" class="clientes-list__block clientes-list__client">
-                <img src="<?php the_field('logo_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
+                <img class="logo-color" src="<?php the_field('logo_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
+                <img class="logo-white" src="<?php the_field('logo_blanco_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
               </a>
             <?php else: ?>
               <a class="clientes-list__block clientes-list__client clientes-list__client--nolink">
-                <img src="<?php the_field('logo_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
+                <img class="logo-color" src="<?php the_field('logo_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
+                <img class="logo-white" src="<?php the_field('logo_blanco_cliente'); ?>" alt="<?php the_field('nombre_cliente'); ?>">
               </a>
             <?php endif; ?>
             <?php wp_reset_postdata();?>

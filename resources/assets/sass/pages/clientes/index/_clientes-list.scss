@@ -71,16 +71,29 @@
         content: none;
       }
     }
-    img {
-      filter: brightness(0) invert(1);
+    .logo-color {
+      //filter: brightness(0) invert(1);
+      width: 60%;
+      margin: 0 auto;
+      display: none;
+    }
+    .logo-white {
       width: 60%;
       margin: 0 auto;
       display: block;
     }
     &:hover {
       background: white;
-       border: 1px solid white;
+      border: 1px solid white;
       transition: background 0.3s ease, border 0.3s ease;
+      .logo-color {
+        display: block;
+      }
+      .logo-white {
+        display: none;
+      }
+
+
       img {
         filter: none;
       }
