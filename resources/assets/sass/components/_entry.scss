@@ -32,9 +32,17 @@
   }
 
   img{
-    //width: 100%;
+    width: 100%;
     height: auto;
-    margin: 0 0 1rem 0;
+    margin: 1rem 0 0 0;
+  }
+
+  div.imagen-centrada {
+    text-align: center;
+    img {
+      width: auto !important;
+      margin: 0 auto;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
