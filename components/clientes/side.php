@@ -20,5 +20,9 @@
     <h2 class="cliente-side__subtitle">Medios</h2>
     <h2 class="cliente-side__heading"><?php the_field('medios_cliente') ?></h2>
   </div>
+   <div class="cliente-side__section">
+    <h2 class="cliente-side__subtitle">Premios</h2>
+    <h2 class="cliente-side__heading"><?php the_field('premios_cliente') ?></h2>
+  </div>
  <?php get_template_part('components/share'); ?>
 </div>

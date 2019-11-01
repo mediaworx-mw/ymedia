@@ -1,3 +1,15 @@
+<?php
+
+if (!is_page('ie')) {
+  if (preg_match('/MSIE\s(?P<v>\d+)/i', @$_SERVER['HTTP_USER_AGENT'], $B) && $B['v'] <= 10) {
+    echo '<h1>You are using IE9</h1>';
+    $newURL = 'https://ymedia.es/ie/';
+    header('Location: '.$newURL);
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
