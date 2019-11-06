@@ -10,10 +10,11 @@ if( $activar_graficos ) {
   ?>
     <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha256-jDnOKIOq2KNsQZTcBTEnsp76FnfMEttF6AV2DF2fFNE=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.5/scrollreveal.min.js" integrity="sha256-8VU/+18Z5eyYrv12HuV6lH74T2PFmP1ggKi+JkwYDHE=" crossorigin="anonymous"></script>
-    <script src="//www.amcharts.com/lib/4/core.js"></script>
-    <script src="//www.amcharts.com/lib/4/charts.js"></script>
-    <script src="//www.amcharts.com/lib/4/themes/animated.js"></script>
-    <script src="//www.amcharts.com/lib/4/lang/es_ES.js"></script>
+    <script src="//www.amcharts.com/lib/version/4.7.6/core.js"></script>
+    <!-- <script src="//www.amcharts.com/lib/4/core.js"></script> -->
+    <script src="//www.amcharts.com/lib/version/4.7.6/charts.js"></script>
+    <script src="//www.amcharts.com/lib/version/4.7.6/themes/animated.js"></script>
+    <script src="//www.amcharts.com/lib/version/4.7.6/lang/es_ES.js"></script>
     <script>
       var newsletter_tipo = '<?php echo $newsletter_tipo; ?>'; 
       const datosGraficos = <?php echo $datos; ?>;
