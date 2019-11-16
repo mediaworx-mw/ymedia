@@ -46,7 +46,9 @@ if (!is_page('ie')) {
   <header class="header header--small">
 <?php else: ?>
   <header class="header">
-  <?php get_template_part('components/cookies') ?>
+  <?php  if (!is_page('ie')) { ?>
+    <?php get_template_part('components/cookies') ?>
+  <?php }?>
 <?php endif; ?>
   <?php get_template_part('components/contacto-info'); ?>
   <div class="header__inner container">
