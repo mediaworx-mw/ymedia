@@ -20,10 +20,6 @@ const Contacto = () => {
   $mail.value = "";
   $comments.value = "";
 
-  // $phone.disabled = true;
-  // $mail.disabled = true;
-  // $comments.disabled = true;
-
 
   const animateFields = () => {
     const tl1 = new TimelineLite({paused: true});
@@ -75,14 +71,7 @@ const Contacto = () => {
     }
   });
 
-  // $comments.addEventListener('blur', function() {
-  //   if ( $comments.value !=='' ) {
-  //     if (flag4 == 1 ) {
-  //       $video.play();
 
-  //     }
-  //   }
-  // });
 
   const container = document.querySelector(".wpcf7-response-output");
 
@@ -99,10 +88,10 @@ const Contacto = () => {
 
       if ( container.classList.contains('wpcf7-mail-sent-ok') ){
 
-        //if (flag4 == 1) {
+
           $video.play();
           observer.disconnect();
-        //}
+
       }
     });
   };

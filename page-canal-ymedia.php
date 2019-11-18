@@ -11,8 +11,6 @@
 ?>
 
 <?php get_header(); ?>
-
-
 <div class="canal" data-site-body="canal" data-dates="">
   <?php get_template_part('components/topbar'); ?>
    <div class="canal-featured">

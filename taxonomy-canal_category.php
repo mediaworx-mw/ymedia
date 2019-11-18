@@ -1,6 +1,6 @@
 <?php
 /**
-* The front page template file
+* The Category Ymedia template file
 * Template Name: Canal Ymedia Category
 *
 *

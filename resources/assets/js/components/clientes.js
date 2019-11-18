@@ -61,16 +61,6 @@ const Clientes = () => {
   .addTo(controllerBlocks);
 
 
-  // $blocks.forEach(block => {
-  //   let tweenBlocks = TweenMax.to(block, 0.5, {y: 0, opacity: 1, ease:Expo.easeOut });
-
-  //   new ScrollMagic.Scene({
-  //     triggerElement: block,
-  //     offset: -(window.innerHeight * 0.6)
-  //   })
-  //   .setTween(tweenBlocks)
-  //   .addTo(controllerBlocks);
-  // });
 
 }
 

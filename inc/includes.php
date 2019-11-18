@@ -17,8 +17,6 @@ function grid($class) {
  include($src.'/components/grid.php');
 }
 
-
-
 function page_crumb() {
  $src = get_template_directory();
  include($src.'/components/page-crumb.php');

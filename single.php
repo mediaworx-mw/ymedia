@@ -16,7 +16,6 @@
   <?php while ( have_posts() ) : the_post();?>
   <article id="post-<?php the_ID(); ?>">
     <div class="canal-single">
-
       <div class="canal-single__top canal-single__top--contained overgrid container">
         <?php
           function showThumb() {
@@ -28,7 +27,6 @@
             }
           }
         ?>
-
         <div class="canal-single__hero canal-single__hero--cover" style="background-image: url('<?php showThumb(); ?>')">
           <div class="canal-single__header">
             <?php
@@ -36,11 +34,7 @@
               $id = get_the_ID();
               $terms = get_the_terms($id, 'category' );
               $color = get_field('color_category', $terms[0]);
-
-
             ?>
-
-
              <span style="background: <?php echo $color; ?>" class="canal-single__category"><?php echo $category[0]->cat_name; ?></span>
             <h1 class="canal-single__title"><?php the_title(); ?></h1>
           </div>
@@ -66,7 +60,6 @@
           <div class="canal-single__entry">
             <?php get_template_part('components/entry-canal'); ?>
           </div>
-
         </div>
       </div>
     </div>
@@ -79,10 +72,7 @@
     const $paragraph = $entryFirstDiv.getElementsByTagName('p')[0]
     $paragraph.parentNode.removeChild($paragraph);
   </script>
-
-
 <?php endwhile;?>
-
 </div>
 <?php grid('gray') ?>
 <?php get_footer(); ?>

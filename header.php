@@ -18,9 +18,7 @@ if (!is_page('ie')) {
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="profile" href="http://gmpg.org/xfn/11">
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144335596-1"></script>
-
   <script>
     if (document.cookie.indexOf('reject_ymedia_cookies') != -1) {
       window['ga-disable-UA-144335596-1'] = true;
@@ -31,7 +29,6 @@ if (!is_page('ie')) {
       gtag('config', 'UA-144335596-1');
     }
   </script>
-
   <?php wp_head(); ?>
 </head>
 <?php if (!is_front_page()): ?>

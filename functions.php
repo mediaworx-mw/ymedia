@@ -1,6 +1,6 @@
 <?php
 /**
- * Main functions
+ * THeme Main functions
  *
  *
  * @package WordPress

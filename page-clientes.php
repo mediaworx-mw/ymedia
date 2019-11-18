@@ -29,7 +29,6 @@
               $post = $post_object;
               setup_postdata( $post );
           ?>
-
             <?php $interna = get_field('pagina_interna_cliente'); ?>
             <?php if ($interna) : ?>
               <a href="<?php the_permalink(); ?>" class="clientes-list__block clientes-list__client">
@@ -44,13 +43,10 @@
             <?php endif; ?>
             <?php wp_reset_postdata();?>
           <?php endif; ?>
-
         <?php endif ?>
-
       <?php endwhile; endif;?>
     </div>
   </div>
-
   <div class="clientes-bottom overgrid">
     <div class="clientes-bottom__inner container ">
       <div class="clientes-bottom__tag">

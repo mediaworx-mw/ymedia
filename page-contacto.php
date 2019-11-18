@@ -15,7 +15,6 @@
   <div class="contacto-top">
     <div class="contacto-top__inner container">
       <h1 class="contacto-top__title"><?php the_field('titulo_contacto') ?></h1>
-      <!--<a href="<?php bloginfo('url')?>/trabaja-con-ymedia" class="contacto-top__link">Trabaja con Ymedia +</a>-->
     </div>
   </div>
   <div class="contacto__content container">
@@ -36,7 +35,6 @@
     </div>
     <div class="contacto-maps">
       <div class="contacto-maps__maps">
-
         <div class="contacto-maps__map overgrid">
           <div class="contacto-maps__map-inner">
             <?php if( have_rows('madrid_mapa_contacto') ): while ( have_rows('madrid_mapa_contacto') ) : the_row();?>
@@ -52,8 +50,6 @@
              <?php endwhile; endif; ?>
           </div>
         </div>
-
-
         <div class="contacto-maps__map overgrid">
           <div class="contacto-maps__map-inner">
             <?php if( have_rows('barcelona_mapa_contacto') ): while ( have_rows('barcelona_mapa_contacto') ) : the_row();?>
@@ -73,6 +69,4 @@
   </div>
 </div>
 <?php grid('gray');?>
-
-
 <?php get_footer();?>

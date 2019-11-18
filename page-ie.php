@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
+ * The template for displaying IE not compatible message
  *
  *
  * @package WordPress
@@ -15,8 +15,6 @@
 <div class="page">
   <div class="page__inner container">
     <h1 class="page__title">Por favor actualice la version de su navegador.</h1>
-
-
   </div>
 </div>
 

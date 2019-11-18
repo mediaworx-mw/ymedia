@@ -6,18 +6,14 @@
  * @package WordPress
  * @subpackage Ymedia
  */
-
 ?>
 
 <?php get_header(); ?>
-
 <?php if (isset($_GET['date'])):
-
     $date = $_GET['date'];
     $year  = substr($date, 0, 4);
     $month = substr($date, 5, 2);
     $day   = substr($date, 8);
-
     $args = array(
       'post_type' => 'canal',
       'date_query' => array(
@@ -59,7 +55,6 @@
     </div>
     <?php get_template_part('components/sidebar'); ?>
   </div>
-
 <?php else: ?>
   <div class="resultados" data-site-body="resultados">
     <div class="resultados-top">
@@ -84,9 +79,6 @@
     </div>
     <?php get_template_part('components/sidebar'); ?>
   </div>
-
 <?php endif; ?>
-
-
 <?php grid('gray') ?>
 <?php get_footer(); ?>
