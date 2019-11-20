@@ -109,7 +109,7 @@ function  graficoEGM13() {
     series.paddingTop = 0;
     // console.log(field);
     series.name = field;
-    if (field === col1) {
+    if (field === col2) {
       series.dataFields.evo = evolucion_str;
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
@@ -124,6 +124,29 @@ function  graficoEGM13() {
     valueLabel.label.fontSize = 14;
     valueLabel.label.rotation = 0;
     valueLabel.label.truncate = false;
+
+    var info = series.bullets.push(new am4charts.Bullet());
+    info.locationX = 0;
+    var imageInfo = info.createChild(am4core.Image);
+    imageInfo.href = "";
+    imageInfo.width = 16;
+    imageInfo.height = 16;
+    imageInfo.dx = -4;
+    imageInfo.dy = 8;
+    imageInfo.horizontalCenter = "right";
+    imageInfo.verticalCenter = "bottom";
+    imageInfo.tooltipHTML = "<div style=\"text-align:center;font-size:1.5em\"><br><h6>Evolución vs año <br> anterior:</h6><p><span>{evo}</span><br></p></div>";
+
+    // console.log(field, col1);      
+
+    imageInfo.adapter.add("href", function(html, target) {
+      if (field === col2) {
+        var href = "https://i.imgur.com/MFOMXXg.png";
+        return href;
+      } else {
+        return ;
+      }
+    });  
 
 
     categoryAxis.renderer.cellStartLocation = 0.1;

@@ -152,7 +152,7 @@ function  graficoEGM4() {
 
   // Center on the groups by default
   chart.homeZoomLevel = 2;
-  chart.homeGeoPoint = { longitude: -3.70, latitude: 41 };
+  chart.homeGeoPoint = { longitude: -3.70, latitude: 40 };
 
   // Polygon series
   var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
@@ -163,7 +163,7 @@ function  graficoEGM4() {
   // Configure series
   var polygonTemplate = polygonSeries.mapPolygons.template;
   // polygonTemplate.tooltipColorSource.rgb =  {r:255, g:255, b:255};
-  polygonTemplate.tooltipHTML =  "<small style='font-size:12px;text-align:center'><img src='{imageURL}' style='background:white;margin-bottom:5px'><br><strong style='font-size:14px'>{label}</strong><br> {2º EGM '19} <br> {dif}<br><br></small> ";
+  polygonTemplate.tooltipHTML =  "<small style='font-size:12px;text-align:center'><img src='{imageURL}' style='background:white;margin-bottom:5px;border-radius:4px;'><br><strong style='font-size:14px'>{label}</strong><br> {2º EGM '19} <br> {dif}<br><br></small> ";
   polygonTemplate.fill = am4core.color("#ccc");
 
   polygonSeries.data = regiones;
@@ -171,29 +171,6 @@ function  graficoEGM4() {
   // Bind "fill" property to "fill" key in data
   polygonTemplate.propertyFields.fill = "fill";
 
-
-  // Image series
-  // var imageSeries = chart.series.push(new am4maps.MapImageSeries());
-  // var imageTemplate = imageSeries.mapImages.template;
-  // imageTemplate.propertyFields.longitude = "longitude";
-  // imageTemplate.propertyFields.latitude = "latitude";
-  // imageTemplate.nonScaling = true;
-
-  // var image = imageTemplate.createChild(am4core.Image);
-  // image.propertyFields.href = "imageURL";
-  // image.width = 80;
-  // image.height = 80;
-  // image.horizontalCenter = "middle";
-  // image.verticalCenter = "middle";
-
-  // var label = imageTemplate.createChild(am4core.Label);
-  // label.html = "<small style='display:block;font-size:12px;text-align:center'>{2º EGM '19} <br> {dif}</small> ";
-  // label.html = "<small style='display:block;font-size:12px;text-align:center'><strong style='font-size:14px'>{label}</strong><br> {2º EGM '19} <br> {dif}</small> ";
-  // label.horizontalCenter = "middle";
-  // label.verticalCenter = "top";
-  // label.dy = 20;
-
-  // imageSeries.data = regiones;
 
   }); // end am4core.ready()
   
