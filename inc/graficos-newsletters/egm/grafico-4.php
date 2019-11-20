@@ -6,10 +6,11 @@ function  graficoEGM4() {
   enMedios = (medio, medios) => medios.filter( x => x.medio.toLowerCase().indexOf(medio.toLowerCase()) > -1 );
   clean = (valor) => valor !== undefined ? Number(valor.toString().replace(/\./g, '').replace(/,/g, '.').replace(/%/g, '')) : 0;
 
+
   var input = datosGraficos["DiariosRegion"];
   
 
-  var total = input[0]["3ª EGM '18."];
+  var total = input[0]["2º EGM '19."];
 
   input.splice(18, 1);
   input.splice(0, 1);
@@ -57,8 +58,8 @@ function  graficoEGM4() {
     "label": "Castilla/Mancha",
     "id": "ES-CM"
   }, {
-    "latitude": 41.722521,
-    "longitude": -2.3233934,
+    "latitude": 42.3,
+    "longitude": 1.750000,
     "label": "C.Catalana",
     "id": "ES-CT"
   }, {
@@ -105,14 +106,14 @@ function  graficoEGM4() {
 
 
 
-  
-
   input = input.map(x => { const moreData = x["Diario"] !== undefined ? enMedios(x["Diario"], medios) : false;
     if (moreData && moreData.length !== 0) {
       x['LOGO'] = moreData[0].logo;
     }
     return x;
   });
+
+  var evolucion_str = "Dif. 2º EGM '19 vs 2º EGM '18"; // Object.keys(datosGraficos["DiariosRegion"][0]).filter(x => x.length > 15 )[0];
 
   // console.log(input)
 
@@ -122,9 +123,9 @@ function  graficoEGM4() {
     const moreData = x["label"] !== undefined ? input.filter( y => y["Region"].toLowerCase().indexOf(x["label"].toLowerCase()) > -1 ) : false;
     if (moreData && moreData.length !== 0) {
       x['imageURL'] = moreData[0]["LOGO"];
-      x["3ª EGM '18"] = moreData[0]["3ª EGM '18"] !== undefined ? Math.floor(Number(moreData[0]["3ª EGM '18"].replace(',','.'))) + " Lectores" : "";
-      x["dif"] = moreData[0]["Dif. 3ª EGM '18 vs 3ª EGM '17"] !== undefined ? '(' + moreData[0]["Dif. 3ª EGM '18 vs 3ª EGM '17"] + ')' : "";
-      x["fill"] = moreData[0]["3ª EGM '18."] > total ? am4core.color("#cc1f11") : am4core.color("#aaa") 
+      x["2º EGM '19"] = moreData[0]["2º EGM '19"] !== undefined ? Math.floor(Number(moreData[0]["2º EGM '19"].replace(',','.'))) + " Lectores" : "";
+      x["dif"] = moreData[0][evolucion_str] !== undefined ? '(' + moreData[0][evolucion_str] + ')' : "";
+      x["fill"] = moreData[0]["2º EGM '19."] > total ? am4core.color("#cc1f11") : am4core.color("#aaa") 
     }
       return x;
   })
@@ -140,8 +141,8 @@ function  graficoEGM4() {
 
   // Create map instance
   var chart = am4core.create("grafico-EGM-4", am4maps.MapChart);
-  chart.maxZoomLevel = 2;
-  chart.minZoomLevel = 2;
+  chart.maxZoomLevel = 1.45;
+  chart.minZoomLevel = 1.45;
 
   // Set map definition
   chart.geodata = am4geodata_spainHigh;
@@ -151,18 +152,18 @@ function  graficoEGM4() {
 
   // Center on the groups by default
   chart.homeZoomLevel = 2;
-  chart.homeGeoPoint = { longitude: -3.703790, latitude: 41.16775 };
+  chart.homeGeoPoint = { longitude: -3.70, latitude: 41 };
 
   // Polygon series
   var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
-  polygonSeries.exclude = ["AQ"];
   polygonSeries.useGeodata = true;
   polygonSeries.nonScalingStroke = true;
   polygonSeries.strokeOpacity = 0.5;
 
   // Configure series
   var polygonTemplate = polygonSeries.mapPolygons.template;
-  polygonTemplate.tooltipHTML =  "<small style='font-size:12px;text-align:center'><strong style='font-size:14px'>{label}</strong><br> {3ª EGM '18} <br> {dif}</small> ";
+  // polygonTemplate.tooltipColorSource.rgb =  {r:255, g:255, b:255};
+  polygonTemplate.tooltipHTML =  "<small style='font-size:12px;text-align:center'><img src='{imageURL}' style='background:white;margin-bottom:5px'><br><strong style='font-size:14px'>{label}</strong><br> {2º EGM '19} <br> {dif}<br><br></small> ";
   polygonTemplate.fill = am4core.color("#ccc");
 
   polygonSeries.data = regiones;
@@ -172,26 +173,27 @@ function  graficoEGM4() {
 
 
   // Image series
-  var imageSeries = chart.series.push(new am4maps.MapImageSeries());
-  var imageTemplate = imageSeries.mapImages.template;
-  imageTemplate.propertyFields.longitude = "longitude";
-  imageTemplate.propertyFields.latitude = "latitude";
-  imageTemplate.nonScaling = true;
+  // var imageSeries = chart.series.push(new am4maps.MapImageSeries());
+  // var imageTemplate = imageSeries.mapImages.template;
+  // imageTemplate.propertyFields.longitude = "longitude";
+  // imageTemplate.propertyFields.latitude = "latitude";
+  // imageTemplate.nonScaling = true;
 
-  var image = imageTemplate.createChild(am4core.Image);
-  image.propertyFields.href = "imageURL";
-  image.width = 80;
-  image.height = 80;
-  image.horizontalCenter = "middle";
-  image.verticalCenter = "middle";
+  // var image = imageTemplate.createChild(am4core.Image);
+  // image.propertyFields.href = "imageURL";
+  // image.width = 80;
+  // image.height = 80;
+  // image.horizontalCenter = "middle";
+  // image.verticalCenter = "middle";
 
-  var label = imageTemplate.createChild(am4core.Label);
-  label.html = "<small style='display:block;font-size:12px;text-align:center'><strong style='font-size:14px'>{label}</strong><br> {3ª EGM '18} <br> {dif}</small> ";
-  label.horizontalCenter = "middle";
-  label.verticalCenter = "top";
-  label.dy = 20;
+  // var label = imageTemplate.createChild(am4core.Label);
+  // label.html = "<small style='display:block;font-size:12px;text-align:center'>{2º EGM '19} <br> {dif}</small> ";
+  // label.html = "<small style='display:block;font-size:12px;text-align:center'><strong style='font-size:14px'>{label}</strong><br> {2º EGM '19} <br> {dif}</small> ";
+  // label.horizontalCenter = "middle";
+  // label.verticalCenter = "top";
+  // label.dy = 20;
 
-  imageSeries.data = regiones;
+  // imageSeries.data = regiones;
 
   }); // end am4core.ready()
   

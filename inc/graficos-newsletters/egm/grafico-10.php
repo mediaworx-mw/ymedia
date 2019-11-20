@@ -29,7 +29,7 @@ function  graficoEGM10() {
 
 
   input = input.map(x => {
-    const moreData = x["Radio generalista - Deporte LV"] !== undefined ? enMedios(x["Radio generalista - Deporte LV"], medios) : false;
+    const moreData = x["Radio generalista - Carrusel Deportivo S"] !== undefined ? enMedios(x["Radio generalista - Carrusel Deportivo S"], medios) : false;
     x[col1] = clean(x[col1]);
     x[col2] = clean(x[col2]);
     x[col3] = clean(x[col3]);
@@ -54,7 +54,8 @@ function  graficoEGM10() {
 
   // console.log(sorted);
 
-  
+  var evolucion_str = Object.keys(datosGraficos[sheet_name][0]).filter(x => x.length > 10 && x !== "Radio generalista - Carrusel Deportivo S")[0];
+
 
   chart.data = sorted;
 
@@ -63,7 +64,7 @@ function  graficoEGM10() {
   // Add legend
   chart.legend = new am4charts.Legend();
 
-  var category = "Radio generalista - Deporte LV";
+  var category = "Radio generalista - Carrusel Deportivo S";
 
   // Num of series
   var num_of_series = Object.keys(chart.data[0]).length - 1;
@@ -76,9 +77,11 @@ function  graficoEGM10() {
   categoryAxis1.dataFields.logo = "LOGO";
   // console.log(categoryAxis1.dataFields, category);
   categoryAxis1.renderer.grid.template.location = 0;
-  categoryAxis1.renderer.minGridDistance = 50;
+  categoryAxis1.renderer.minGridDistance = 30;
+  categoryAxis1.width = 120;
   categoryAxis1.renderer.grid.template.disabled = true;
-  categoryAxis1.renderer.labels.template.html = "<div class=\"logos-label\"><img width=\"64\" height=\"64\" src=\"{logo}\" title=\"{category}\" /></div>";
+  categoryAxis1.renderer.labels.template.fontSize = 14;
+  categoryAxis1.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:80px;height:80px;\"><img width=\"80\" height=\"80\" src=\"{logo}\" title=\"{category}\" style=\"width:80px;height:80px;\" /></div>";
   // categoryAxis.renderer.labels.template.html = "<img width=\"60\" height=\"60\" src=\"{logo}\" title=\"{category}\" />";
   // console.log(categoryAxis.renderer.labels.template);
 
@@ -90,13 +93,17 @@ function  graficoEGM10() {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 50;
   categoryAxis.renderer.grid.template.disabled = true;
-  categoryAxis.renderer.labels.template.html = "<div style='justify-content:center;text-align:center; width:100px;white-space:normal;height:50px;display:flex;align-items:center'><span>{programa}</span></div>";
-  categoryAxis.renderer.labels.template.fontSize = 12;
+  categoryAxis.renderer.labels.template.fontSize = 14;
+  categoryAxis.renderer.labels.template.fontWeight = 'bold';
+  categoryAxis.renderer.labels.template.align = 'left';
+  categoryAxis.renderer.labels.template.dx = -10;
+  categoryAxis.renderer.labels.template.html = "<div style='justify-content:left;text-align:left; width:100px;white-space:normal;height:50px;display:flex;align-items:center'><span>{programa}</span></div>";
+
 
 
   var categoryAxis3 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis3.dataFields.category = category;
-  categoryAxis3.dataFields.dif3 = "Dif '18 vs '17";
+  categoryAxis3.dataFields.dif3 = evolucion_str;
   categoryAxis3.renderer.grid.template.location = 0;
   categoryAxis3.renderer.minGridDistance = 50;
   categoryAxis3.renderer.grid.template.disabled = true;
@@ -129,7 +136,7 @@ function  graficoEGM10() {
     // console.log(field);
     series.name = field;
     if (field === col1) {
-      series.dataFields.evo = "Dif '18 vs '17";
+      series.dataFields.evo = evolucion_str;
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
@@ -155,7 +162,7 @@ function  graficoEGM10() {
   for (var i = 0; i < num_of_series; i++) {
     var key = Object.keys(chart.data[0])[i + 1];
     var exceptions = 0;
-    if (chart.data[0]["Dif '18 vs '17"] !== undefined) {
+    if (chart.data[0][evolucion_str] !== undefined) {
       exceptions++;
     }
     if (chart.data[0]["programa"] !== undefined) {
@@ -167,7 +174,7 @@ function  graficoEGM10() {
     if (chart.data[0]["LOGO"] !== undefined) {
       exceptions++;
     }
-    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== "Dif '18 vs '17" && key !== "programa") {
+    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== evolucion_str && key !== "programa") {
       createSeries(key, num_of_series - exceptions);
     }
   }

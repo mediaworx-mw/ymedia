@@ -24,16 +24,16 @@ function  graficoEGM6() {
 
   var col1 = Object.keys(input[0])[1];
   var col2 = Object.keys(input[0])[2];
-  var col3 = Object.keys(input[0])[3];
-  var col4 = Object.keys(input[0])[4];
+  // var col3 = Object.keys(input[0])[3];
+  // var col4 = Object.keys(input[0])[4];
 
 
   input = input.map(x => {
     const moreData = x["Categoría"] !== undefined ? enMedios(x["Categoría"], medios) : false;
     x[col1] = clean(x[col1]);
     x[col2] = clean(x[col2]);
-    x[col3] = clean(x[col3]);
-    x[col4] = clean(x[col4]);
+    // x[col3] = clean(x[col3]);
+    // x[col4] = clean(x[col4]);
 
     if (moreData && moreData.length !== 0) {
       x['LOGO'] = moreData[0].logo;
@@ -46,17 +46,17 @@ function  graficoEGM6() {
 
   // input[input.length] = {"Evolución": input[input.length - 1]["Evolución"] * 0.08};
 
-  var sorted = input.sort((a, b) => (a[col1] > b[col1]) ? 1 : -1);
+  var sorted = input.sort((a, b) => (a[col1] > b[col1]) ? 1 : -1).reverse();
 
 
 
   // console.log(sorted);
 
-  
+  var evolucion_str = Object.keys(datosGraficos[sheet_name][0]).filter(x => x.length  > 10)[0];
 
-  chart.data = [sorted[0],sorted[1],sorted[2],sorted[3],sorted[4]];
+  chart.data = [sorted[0],sorted[1],sorted[2],sorted[3],sorted[4]].reverse();
 
-  chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#999999"),am4core.color("#666666")].reverse();
+  chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc")].reverse();
 
   // Add legend
   chart.legend = new am4charts.Legend();
@@ -74,14 +74,16 @@ function  graficoEGM6() {
   // console.log(categoryAxis.dataFields, category);
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
+  categoryAxis.width = 120;
   categoryAxis.renderer.grid.template.disabled = true;
-  categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\"><img width=\"32\" height=\"32\" src=\"{logo}\" title=\"{category}\" /></div>";
+  categoryAxis.renderer.labels.template.fontSize = 14;
+  categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:80px;height:80px;\"><img width=\"80\" height=\"80\" src=\"{logo}\" title=\"{category}\" style=\"width:80px;height:80px;\" /></div>";
   // categoryAxis.renderer.labels.template.html = "<img width=\"60\" height=\"60\" src=\"{logo}\" title=\"{category}\" />";
   // console.log(categoryAxis.renderer.labels.template);
 
   var categoryAxis3 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis3.dataFields.category = category;
-  categoryAxis3.dataFields.dif3 = "Dif. 3ª EGM '18 vs 3ª EGM '17";
+  categoryAxis3.dataFields.dif3 = evolucion_str;
   categoryAxis3.renderer.grid.template.location = 0;
   categoryAxis3.renderer.minGridDistance = 30;
   categoryAxis3.renderer.grid.template.disabled = true;
@@ -114,7 +116,7 @@ function  graficoEGM6() {
     // console.log(field);
     series.name = field;
     if (field === col1) {
-      series.dataFields.evo = "Dif. 3ª EGM '18 vs 3ª EGM '17";
+      series.dataFields.evo = evolucion_str;
       // series.columns.template.tooltipText = "{evo}";
       series.tooltip.getFillFromObject = false;
       series.tooltip.background.fill = am4core.color("#fff");
@@ -140,7 +142,7 @@ function  graficoEGM6() {
   for (var i = 0; i < num_of_series; i++) {
     var key = Object.keys(chart.data[0])[i + 1];
     var exceptions = 0;
-    if (chart.data[0]["Dif. 3ª EGM '18 vs 3ª EGM '17"] !== undefined) {
+    if (chart.data[0][evolucion_str] !== undefined) {
       exceptions++;
     }
     if (chart.data[0]["COLOR"] !== undefined) {
@@ -149,7 +151,7 @@ function  graficoEGM6() {
     if (chart.data[0]["LOGO"] !== undefined) {
       exceptions++;
     }
-    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== "Dif. 3ª EGM '18 vs 3ª EGM '17") {
+    if (key.toLowerCase() !== 'color' && key.toLowerCase() !== 'logo' && key !== evolucion_str) {
       createSeries(key, num_of_series - exceptions);
     }
   }

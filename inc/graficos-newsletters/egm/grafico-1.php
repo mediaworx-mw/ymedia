@@ -32,7 +32,7 @@ function  graficoEGM1() {
   var sorted = input.sort((a, b) => (a['Año'] > b['Año']) ? 1 : -1);
   chart.data = sorted;
 
-  chart.colors.list = [am4core.color("#DC241F"),am4core.color("#cccccc"),am4core.color("#aaa"),am4core.color("#888"),am4core.color("#666"),am4core.color("#444"),am4core.color("#222")];
+  chart.colors.list = [am4core.color("#ef3737"),am4core.color("#6523cc"),am4core.color("#43beef"),am4core.color("#62b720"),am4core.color("#edca37"),am4core.color("#ea9036"),am4core.color("#e86baa"),am4core.color("#7f7fdd")];
 
   // Create category axis
   var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -68,7 +68,7 @@ function  graficoEGM1() {
   chart.cursor.behavior = "zoomY";
 
   // Add legend
-  // chart.legend = new am4charts.Legend();
+  chart.legend = new am4charts.Legend();
   
 }
 

@@ -9,12 +9,15 @@
         <h2>Evolución de la penetración de medios</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['ConsumoMedios']['fuente']; ?></p>
         <div id="grafico-EGM-1" class="grafico-inner" style="min-height: 450px"></div>
+        <small>Desliza el ratón por encima del gráfico para ver el detalle anual de cada medio</small>
+        <br>
         <br>
         <div class="descripcion"><?php echo $newsletter_egm['ConsumoMedios']['texto']; ?></div>
         <br>
         <br>
         <br>
       </div>
+
       <div class="grafico_wrapper" style="width:100%;" >
         <h2>Evolución de la audiencia por medios (000)</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['AudienciaMedios']['fuente']; ?></p>
@@ -26,7 +29,7 @@
         <br>
       </div>
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Diarios: Evolución de la audiencia por soporte (000) – Top 5</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['DiariosSoporte']['fuente']; ?></p>
         <div id="grafico-EGM-3" class="grafico-inner" style="min-height: 650px"></div>
@@ -36,6 +39,7 @@
         <br>
         <br>
       </div>   
+
       <div class="grafico_wrapper" style="width:100%;" >
         <h2>Diarios: Penetración diarios por región y principales cabeceras (000)</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['DiariosRegion']['fuente']; ?></p>
@@ -47,7 +51,7 @@
         <br>
       </div>         
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Revistas Mensuales: Evolución de la audiencia por soporte (000) – Top 5</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RevistasMensuales']['fuente']; ?></p>
         <div id="grafico-EGM-5" class="grafico-inner" style="min-height: 650px"></div>
@@ -58,7 +62,7 @@
         <br>
       </div>   
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Revistas Semanales: Evolución de la audiencia por soporte (000) – Top 5</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RevistasSemanales']['fuente']; ?></p>
         <div id="grafico-EGM-6" class="grafico-inner" style="min-height: 650px"></div>
@@ -69,7 +73,7 @@
         <br>
       </div>     
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Radio: Evolución de la audiencia por cadena (000) – Top 5</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RadioCadena']['fuente']; ?></p>
         <div id="grafico-EGM-7" class="grafico-inner" style="min-height: 650px"></div>
@@ -80,7 +84,7 @@
         <br>
       </div>
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Radiofórmula: Morning show (000)</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RadioformulaFS']['fuente']; ?></p>
         <div id="grafico-EGM-8" class="grafico-inner" style="min-height: 650px"></div>
@@ -91,7 +95,7 @@
         <br>
       </div>            
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Radio Generalista: Mañana (000)</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RadioGenMañana']['fuente']; ?></p>
         <div id="grafico-EGM-9" class="grafico-inner" style="min-height: 650px"></div>
@@ -102,7 +106,7 @@
         <br>
       </div>   
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Radio Generalista: Deporte LV (000)</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RadioGenDepLV']['fuente']; ?></p>
         <div id="grafico-EGM-10" class="grafico-inner" style="min-height: 650px"></div>
@@ -113,7 +117,7 @@
         <br>
       </div>        
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Radio Generalista: Deporte Sábado (000)</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RadioGenDepS']['fuente']; ?></p>
         <div id="grafico-EGM-11" class="grafico-inner" style="min-height: 650px"></div>
@@ -124,7 +128,7 @@
         <br>
       </div>    
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Radio Generalista: Deporte Domingo (000)</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['RadioGenDepD']['fuente']; ?></p>
         <div id="grafico-EGM-12" class="grafico-inner" style="min-height: 650px"></div>
@@ -135,7 +139,7 @@
         <br>
       </div>  
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Internet: Acceso por dispositivo</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['InternetDispositivos']['fuente']; ?></p>
         <div id="grafico-EGM-13" class="grafico-inner" style="min-height: 650px"></div>
@@ -146,7 +150,7 @@
         <br>
       </div>  
 
-      <div class="grafico_wrapper" >
+      <div class="grafico_wrapper" style="width:100%;" >
         <h2>Internet: Actividades</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['InternetActividades']['fuente']; ?></p>
         <div id="grafico-EGM-14" class="grafico-inner" style="min-height: 650px"></div>
