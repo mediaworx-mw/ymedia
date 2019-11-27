@@ -110,6 +110,9 @@ function  graficoEGM5() {
     series.columns.template.column.cornerRadiusBottomLeft = 20;
     series.columns.template.column.cornerRadiusTopLeft = 20;
     series.paddingTop = 0;
+
+    series.columns.template.width = 22;
+    series.columns.template.height = 22;
     // console.log(field);
     series.name = field;
     if (field === col2) {

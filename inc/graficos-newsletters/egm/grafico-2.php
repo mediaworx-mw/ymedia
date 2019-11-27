@@ -106,6 +106,9 @@ function  graficoEGM2() {
     series.columns.template.column.cornerRadiusBottomLeft = 20;
     series.columns.template.column.cornerRadiusTopLeft = 20;
     series.paddingTop = 0;
+
+    series.columns.template.width = 22;
+    series.columns.template.height = 22;
     // console.log(field);
     series.name = field;
     if (field === col2) {
@@ -172,25 +175,25 @@ function  graficoEGM2() {
     }
   }
 
-  // Set cell size in pixels
-  var cellSize = 70;
-  chart.events.on("datavalidated", function (ev) {
+  // // Set cell size in pixels
+  // var cellSize = 70;
+  // chart.events.on("datavalidated", function (ev) {
 
-    // console.log('ajustando');
+  //   // console.log('ajustando');
 
-    // Get objects of interest
-    var chart = ev.target;
-    var categoryAxis = chart.yAxes.getIndex(0);
+  //   // Get objects of interest
+  //   var chart = ev.target;
+  //   var categoryAxis = chart.yAxes.getIndex(0);
 
-    // Calculate how we need to adjust chart height
-    var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+  //   // Calculate how we need to adjust chart height
+  //   var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
 
-    // get current chart height
-    var targetHeight = chart.pixelHeight + adjustHeight;
+  //   // get current chart height
+  //   var targetHeight = chart.pixelHeight + adjustHeight;
 
-    // Set it on chart's container
-    chart.svgContainer.htmlElement.style.height = targetHeight + "px";
-  });
+  //   // Set it on chart's container
+  //   chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+  // });
   // Cursor
   // chart.cursor = new am4charts.XYCursor();
 
