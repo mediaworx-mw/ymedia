@@ -46,7 +46,7 @@ function  graficoEGM7() {
 
   // input[input.length] = {"Evolución": input[input.length - 1]["Evolución"] * 0.08};
 
-  var sorted = input.sort((a, b) => (a[col1] > b[col1]) ? 1 : -1).reverse();
+  var sorted = input.sort((a, b) => (a[col2] > b[col2]) ? 1 : -1).reverse();
 
 
   // console.log(sorted);

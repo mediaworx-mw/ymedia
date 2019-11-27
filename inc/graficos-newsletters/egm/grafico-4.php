@@ -10,7 +10,7 @@ function  graficoEGM4() {
     var input = datosGraficos["DiariosRegion"];
     
 
-    var total = input[0]["2º EGM '19."];
+    var total = clean(input[0]["3º EGM '19."]);
 
     input.splice(18, 1);
     input.splice(0, 1);
@@ -112,7 +112,7 @@ function  graficoEGM4() {
       return x;
     });
 
-    var evolucion_str = "Dif. 2º EGM '19 vs 2º EGM '18"; // Object.keys(datosGraficos["DiariosRegion"][0]).filter(x => x.length > 15 )[0];
+    var evolucion_str = "Dif. 3º EGM '19 vs 3º EGM '18"; // Object.keys(datosGraficos["DiariosRegion"][0]).filter(x => x.length > 15 )[0];
 
     // console.log(input)
 
@@ -122,9 +122,9 @@ function  graficoEGM4() {
       if (moreData && moreData.length !== 0) {
         x['imageURL'] = moreData[0]["LOGO"];
         x['imageINFO'] = x['imageURL'] !== undefined ?  "https://i.imgur.com/MFOMXXg.png" : '';
-        x["2º EGM '19"] = moreData[0]["2º EGM '19"] !== undefined ? Math.floor(Number(moreData[0]["2º EGM '19"].replace(',','.'))) + " Lectores" : "";
+        x["3º EGM '19"] = moreData[0]["3º EGM '19"] !== undefined ? Math.floor(Number(moreData[0]["3º EGM '19"].replace(',','.'))) + " Lectores" : "";
         x["dif"] = moreData[0][evolucion_str] !== undefined ? '(' + moreData[0][evolucion_str] + ')' : "";
-        x["fill"] = moreData[0]["2º EGM '19."] > total ? am4core.color("#cc1f11") : am4core.color("#aaa");
+        x["fill"] = clean(moreData[0]["3º EGM '19."]) > total ? am4core.color("#cc1f11") : am4core.color("#aaa");
       }
         // console.log(x);
         return x;
@@ -216,7 +216,7 @@ function  graficoEGM4() {
       // console.log(html);
       if(target.dataItem._dataContext.imageURL !== undefined){
         // console.log(target.dataItem._dataContext.imageURL)
-        return  "<small style='color:black;height:130px; font-size:12px;text-align:center'><img width='76px' height='76px' src='{imageURL}' style='min-height:76px;background:white;margin-bottom:5px;border-radius:4px;'><br><strong style='font-size:14px'>{label}</strong><br> {2º EGM '19} <br> {dif}<br><br></small> ";
+        return  "<small style='color:black;height:130px; font-size:12px;text-align:center'><img width='76px' height='76px' src='{imageURL}' style='min-height:76px;background:white;margin-bottom:5px;border-radius:4px;'><br><strong style='font-size:14px'>{label}</strong><br> {3º EGM '19} <br> {dif}<br><br></small> ";
       } else {
         // console.log(target.dataItem._dataContext.imageURL);
         return "";

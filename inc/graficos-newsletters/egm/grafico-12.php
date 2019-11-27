@@ -50,7 +50,7 @@ function  graficoEGM12() {
 
   // input[input.length] = {"Evolución": input[input.length - 1]["Evolución"] * 0.08};
 
-  var sorted = input.sort((a, b) => (a[col1] > b[col1]) ? 1 : -1);
+  var sorted = input.sort((a, b) => (a[col4] > b[col4])  ? 1 : -1);
 
 
 
