@@ -56,8 +56,8 @@ function  graficoDiaria5() {
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 130;
-  // label.truncate = true;
+  label.maxWidth = is_mobile ? 80 : 130;
+   // label.truncate = true;
   label.maxHeight = 60;
   label.height = 80;
   label.tooltipText = "{category}";

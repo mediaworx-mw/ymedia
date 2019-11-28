@@ -62,7 +62,7 @@ function  graficoMensual10(datosGraficos) {
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
   // label.truncate = true;
-  label.maxWidth = 120;
+  label.maxWidth = is_mobile ? 80 : 130;
   label.maxHeight = 60;
   label.height = 80;
   label.tooltipText = "{category}";

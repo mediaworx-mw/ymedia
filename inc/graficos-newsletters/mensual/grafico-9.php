@@ -64,7 +64,8 @@ function  graficoMensual9(datosGraficos) {
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 120;
+  // label.maxWidth = 120;
+  label.maxWidth = is_mobile ? 80 : 130;
   // label.truncate = true;
   label.maxHeight = 60;
   label.height = 80;
@@ -135,6 +136,7 @@ function  graficoMensual9(datosGraficos) {
     valueLabel.label.hideOversized = true;
     valueLabel.label.truncate = true;
     valueLabel.label.maxWidth = 100;
+    // valueLabel.label.maxWidth = is_mobile ? 80 : 130;
 
     // console.log(bullet);
     // console.log(image);

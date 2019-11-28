@@ -20,7 +20,7 @@ function  graficoEGM1() {
   chart.dateFormatter.language.locale = am4lang_es_ES;
 
   // Set data
-  input = [];
+  var input = [];
   input = datosGraficos[sheet_name].map((x, i) =>  {
 
     let xx = {};

@@ -56,11 +56,11 @@
         <div class="graficos-multi graficos-multi-2">
           <div class="grafico_wrapper">
             <h4 class="grafico-mensual-6-lv-title"></h4>
-            <div id="grafico-mensual-6-lv" class="grafico-inner" style="min-height: 420px"></div>
+            <div id="grafico-mensual-6-lv" class="grafico-inner" style="min-height: 380px"></div>
           </div>
           <div class="grafico_wrapper">
             <h4 class="grafico-mensual-6-sd-title"></h4>
-            <div id="grafico-mensual-6-sd" class="grafico-inner" style="min-height: 420px"></div>
+            <div id="grafico-mensual-6-sd" class="grafico-inner" style="min-height: 380px"></div>
           </div>
         </div>
         <br>

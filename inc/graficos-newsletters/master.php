@@ -18,6 +18,7 @@ if( $activar_graficos ) {
     <script>
       var newsletter_tipo = '<?php echo $newsletter_tipo; ?>'; 
       const datosGraficos = <?php echo $datos; ?>;
+      var is_mobile = jQuery(window).innerWidth() < 700 ? true : false;
       am4core.options.commercialLicense = true;
     </script>
 
@@ -152,3 +153,12 @@ if( $activar_graficos ) {
   }               
 }
 ?>
+
+<style>
+@media screen and (max-width: 1200px) {
+  .grafico-inner {
+    width: calc(100% + 30px) !important;
+    margin: 0 -15px !important;
+  }
+}
+</style>

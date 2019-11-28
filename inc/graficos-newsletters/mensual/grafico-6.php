@@ -60,9 +60,8 @@ function  graficoMensual6(dia, datosGraficos) {
   // console.log(sorted);
 
   chart.data = sorted;
-  chart.innerRadius = am4core.percent(10);
-  // console.log(sorted);
-  chart.height = am4core.percent(70);
+  chart.innerRadius = is_mobile ? am4core.percent(10) : am4core.percent(10);
+  chart.height = is_mobile ? am4core.percent(40) : am4core.percent(70);
   chart.valign = "middle";
   chart.align = "left";
 

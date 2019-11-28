@@ -40,7 +40,7 @@
         <h2>Cuota por grupos de comunicación</h2>
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['fuente']; ?></p>
         <p><strong>Cuota (%)</strong></p>
-        <div id="grafico-diaria-4" class="grafico-inner" style="min-height: 420px"></div>
+        <div id="grafico-diaria-4" class="grafico-inner" style="min-height: 320px"></div>
         <br>
         <div class="descripcion"><?php echo $newsletter_diaria['cuota_por_grupos_de_comunicacion']['texto']; ?></div>
         <br>

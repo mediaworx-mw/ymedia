@@ -86,7 +86,7 @@ input = input.map((x, i) => {
   
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 120;
+  label.maxWidth = is_mobile ? 90 : 120;
   // label.truncate = true;
   label.maxHeight = 60;
   label.height = 80;
@@ -156,7 +156,8 @@ input = input.map((x, i) => {
     valueLabel.label.rotation = 0;
     valueLabel.label.hideOversized = true;
     valueLabel.label.truncate = false;
-    valueLabel.label.maxWidth = 140;
+    // valueLabel.label.maxWidth = 140;
+    valueLabel.label.maxWidth = is_mobile ? 30 : 140;
     valueLabel.label.maxHeight = 20;
 
     // console.log(bullet);

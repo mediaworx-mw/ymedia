@@ -53,38 +53,57 @@ function  graficoMensual4(datosGraficos) {
   categoryAxis.dataFields.category = category;
   categoryAxis.dataFields.logo = "Logo";
   categoryAxis.renderer.grid.template.location = 0;
-  categoryAxis.renderer.minGridDistance = 30;
+  // categoryAxis.renderer.minGridDistance = is_mobile ? 50 : 30;
+  // categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
   categoryAxis.height = 490;
+  categoryAxis.width = is_mobile ? 0 : 110;
   categoryAxis.extraMax = 0.05;
+
+  if(is_mobile) {
+    categoryAxis.renderer.cellStartLocation = 0.15;
+    categoryAxis.renderer.cellEndLocation = 0.85;
+  }
 
   var label = categoryAxis.renderer.labels.template;
   label.wrap = true;
-  label.maxWidth = 110;
-  label.textAlign = 'end';
+  label.maxWidth = is_mobile ? 1550 : 110;
+  label.dy = is_mobile ? -20 : 0;
+  label.textAlign = is_mobile ? 'left' : 'end'; 
+  label.align = is_mobile ? 'left' : 'end'; 
 
   var categoryAxis3 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis3.dataFields.category = category;
   categoryAxis3.dataFields.emisiones = "Emisiones";
   categoryAxis3.renderer.grid.template.location = 0;
-  categoryAxis3.renderer.minGridDistance = 30;
+  // categoryAxis3.renderer.minGridDistance = 30;
+  // categoryAxis3.renderer.minGridDistance = is_mobile ? 50 : 30;
   categoryAxis3.renderer.grid.template.disabled = true;
   categoryAxis3.renderer.labels.template.html = "{emisiones}";
   categoryAxis3.renderer.labels.template.fontSize = 14;
   categoryAxis3.renderer.opposite = true;
   categoryAxis3.height = 490;
   categoryAxis3.extraMax = 0.05;
+  categoryAxis3.renderer.labels.align = 'right';
 
   var categoryAxis2 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis2.dataFields.category = category;
   categoryAxis2.dataFields.cuota = "Cuota";
   categoryAxis2.renderer.grid.template.location = 0;
-  categoryAxis2.renderer.minGridDistance = 30;
+  // categoryAxis2.renderer.minGridDistance = 30;
+  // categoryAxis2.renderer.minGridDistance = is_mobile ? 50 : 30;
   categoryAxis2.renderer.grid.template.disabled = true;
   categoryAxis2.renderer.labels.template.html = "{cuota}";
   categoryAxis2.renderer.labels.template.fontSize = 14;
   categoryAxis2.renderer.opposite = true;
-  categoryAxis2.renderer.dx = -70;
+  if(is_mobile){
+    categoryAxis2.renderer.labels.align = 'right';
+    categoryAxis2.renderer.dx = 35;
+    categoryAxis2.renderer.dy = -20;
+    categoryAxis2.renderer.fontSize = 12;
+  } else {
+    categoryAxis2.renderer.dx = -70;
+  }
   categoryAxis2.height = 490;
   categoryAxis2.extraMax = 0.05;
 
@@ -105,24 +124,40 @@ function  graficoMensual4(datosGraficos) {
   topContainer.width = am4core.percent(100);
 
   var axisTitle = topContainer.createChild(am4core.Label);
-  axisTitle.html = "AM(000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  if(is_mobile){
+    axisTitle.html = "AM(000) <br> <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  } else {
+    axisTitle.html = "AM(000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
+  }
+  
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 16;
   axisTitle.align = "left";
-  axisTitle.paddingLeft = 110;
+  axisTitle.paddingLeft = is_mobile ? 0 : 110;
 
   var dateTitle = topContainer.createChild(am4core.Label);
   dateTitle.text = "Cuota (%)";
   dateTitle.fontWeight = 600;
   dateTitle.fontSize = 16;
   dateTitle.align = "right";
-  dateTitle.dx = -100;
+  if(is_mobile){
+    // dateTitle.dy = -10;
+    dateTitle.dx = 0;
+  } else {
+    dateTitle.dx = -100;
+  }
 
   var emiTitle = topContainer.createChild(am4core.Label);
   emiTitle.text = "Emisiones";
   emiTitle.fontWeight = 600;
   emiTitle.fontSize = 16;
   emiTitle.align = "right";
+  if(is_mobile){
+    emiTitle.dy = 20;
+    emiTitle.dx = 0;
+  } else {
+    // emiTitle.dx = -100;
+  }
 
  
   // Create series

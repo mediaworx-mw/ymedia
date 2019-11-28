@@ -50,9 +50,8 @@ function  graficoFDS4(dia) {
   // console.log(sorted);
 
   chart.data = sorted;
-  chart.innerRadius = am4core.percent(10);
-  // console.log(sorted);
-  chart.height = am4core.percent(80);
+  chart.innerRadius = is_mobile ? am4core.percent(10) : am4core.percent(10);
+  chart.height = is_mobile ? am4core.percent(60) : am4core.percent(80);
   chart.valign = "middle";
   chart.align = "left";
 
