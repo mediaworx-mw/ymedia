@@ -74,24 +74,34 @@ function  graficoEGM6() {
   // console.log(categoryAxis.dataFields, category);
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
-  categoryAxis.width = 120;
+  categoryAxis.width = is_mobile ? 50 : 120;
   categoryAxis.renderer.grid.template.disabled = true;
   categoryAxis.renderer.labels.template.fontSize = 14;
-  categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:80px;height:80px;\"><img width=\"80\" height=\"80\" src=\"{logo}\" title=\"{category}\" style=\"width:80px;height:80px;\" /></div>";
-  // categoryAxis.renderer.labels.template.html = "<img width=\"60\" height=\"60\" src=\"{logo}\" title=\"{category}\" />";
-  // console.log(categoryAxis.renderer.labels.template);
+  if(is_mobile) {
+    categoryAxis.renderer.labels.template.dx = -20;
+    categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:40px;height:40px;\"><img width=\"40\" height=\"40\" src=\"{logo}\" title=\"{category}\" style=\"width:40px;height:40px;\" /></div>";
+  } else {
+    categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:80px;height:80px;\"><img width=\"80\" height=\"80\" src=\"{logo}\" title=\"{category}\" style=\"width:80px;height:80px;\" /></div>";
+  }
+
 
   var categoryAxis3 = chart.yAxes.push(new am4charts.CategoryAxis());
   categoryAxis3.dataFields.category = category;
   categoryAxis3.dataFields.dif3 = evolucion_str;
   categoryAxis3.renderer.grid.template.location = 0;
-  categoryAxis3.renderer.minGridDistance = 30;
+  categoryAxis3.renderer.minGridDistance = 50;
   categoryAxis3.renderer.grid.template.disabled = true;
-  categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:60px;height:60px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+  if(is_mobile) {
+    categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:40px;height:40px;font-size:12px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+    categoryAxis3.dx = 10;
+  } else {
+    categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:60px;height:60px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+  }
+  categoryAxis3.extraMax = 0.05;
   categoryAxis3.renderer.labels.template.fontSize = 14;
   categoryAxis3.renderer.opposite = true;
   // categoryAxis3.height = 550;
-  categoryAxis3.extraMax = 0.05;
+  // categoryAxis3.extraMax = 0.05;
 
 
   var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
@@ -117,7 +127,6 @@ function  graficoEGM6() {
     series.columns.template.width = 22;
     series.columns.template.height = 22;
     // console.log(field);
-    series.name = field;
     series.name = field;
     if (field === col2) {
       series.dataFields.evo = evolucion_str;

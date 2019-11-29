@@ -84,12 +84,16 @@ function  graficoEGM12() {
   // console.log(categoryAxis1.dataFields, category);
   categoryAxis1.renderer.grid.template.location = 0;
   categoryAxis1.renderer.minGridDistance = 30;
-  categoryAxis1.width = 120;
+  categoryAxis1.width = is_mobile ? 50 : 120;
   categoryAxis1.renderer.grid.template.disabled = true;
   categoryAxis1.renderer.labels.template.fontSize = 14;
-  categoryAxis1.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:80px;height:80px;\"><img width=\"80\" height=\"80\" src=\"{logo}\" title=\"{category}\" style=\"width:80px;height:80px;\" /></div>";
-  // categoryAxis.renderer.labels.template.html = "<img width=\"60\" height=\"60\" src=\"{logo}\" title=\"{category}\" />";
-  // console.log(categoryAxis.renderer.labels.template);
+  if(is_mobile) {
+    categoryAxis1.renderer.labels.template.dx = -20;
+    categoryAxis1.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:40px;height:40px;\"><img width=\"40\" height=\"40\" src=\"{logo}\" title=\"{category}\" style=\"width:40px;height:40px;\" /></div>";
+  } else {
+    categoryAxis1.renderer.labels.template.html = "<div class=\"logos-label\" style=\"width:80px;height:80px;\"><img width=\"80\" height=\"80\" src=\"{logo}\" title=\"{category}\" style=\"width:80px;height:80px;\" /></div>";
+  }
+  
 
   var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
   // var i = 0;
@@ -99,12 +103,14 @@ function  graficoEGM12() {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 50;
   categoryAxis.renderer.grid.template.disabled = true;
-  categoryAxis.renderer.labels.template.fontSize = 14;
+  categoryAxis.renderer.labels.template.fontSize = is_mobile ? 12 : 14;
   categoryAxis.renderer.labels.template.fontWeight = 'bold';
   categoryAxis.renderer.labels.template.align = 'left';
-  categoryAxis.renderer.labels.template.dx = -10;
-  categoryAxis.renderer.labels.template.html = "<div style='justify-content:left;text-align:left; width:100px;white-space:normal;height:50px;display:flex;align-items:center'><span>{programa}</span></div>";
-
+  categoryAxis.renderer.labels.template.dx = is_mobile ? -10 : -20;
+  categoryAxis.renderer.labels.template.dy = is_mobile ? -53 : 0;
+  categoryAxis.width = is_mobile ? 0 : categoryAxis.width;
+  categoryAxis.renderer.labels.template.maxWidth = 2000;
+  categoryAxis.renderer.labels.template.html = "<div style='justify-content:left;text-align:left; width:150px;white-space:normal;height:50px;display:flex;align-items:center'><span>{programa}</span></div>";
 
 
   var categoryAxis3 = chart.yAxes.push(new am4charts.CategoryAxis());
@@ -113,7 +119,13 @@ function  graficoEGM12() {
   categoryAxis3.renderer.grid.template.location = 0;
   categoryAxis3.renderer.minGridDistance = 50;
   categoryAxis3.renderer.grid.template.disabled = true;
-  categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:60px;height:60px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+  if(is_mobile) {
+    categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:40px;height:40px;font-size:12px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+    categoryAxis3.dx = 10;
+  } else {
+    categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:60px;height:60px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+  }
+  categoryAxis3.extraMax = 0.05;
   categoryAxis3.renderer.labels.template.fontSize = 14;
   categoryAxis3.renderer.opposite = true;
   // categoryAxis3.height = 550;
@@ -141,8 +153,8 @@ function  graficoEGM12() {
     series.paddingTop = 0;
 
     series.columns.template.width = 22;
-    series.columns.template.height = 22;
-    // console.log(field);
+    series.columns.template.height = is_mobile ? 22 : 22;
+
     series.name = field;
     if (field === col4) {
       series.dataFields.evo = evolucion_str;
@@ -184,7 +196,7 @@ function  graficoEGM12() {
     });  
 
 
-    categoryAxis1.renderer.cellStartLocation = 0.1;
+     categoryAxis1.renderer.cellStartLocation = 0.1;
     categoryAxis1.renderer.cellEndLocation = 0.9;
 
     return series;

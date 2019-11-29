@@ -66,10 +66,14 @@ function  graficoEGM2() {
   categoryAxis.renderer.grid.template.location = 0;
   categoryAxis.renderer.minGridDistance = 30;
   categoryAxis.renderer.grid.template.disabled = true;
-  categoryAxis.renderer.labels.template.fontSize = 14;
+  categoryAxis.renderer.labels.template.fontSize = is_mobile ? 12 : 14;
   categoryAxis.renderer.labels.template.fontWeight = 'bold';
   categoryAxis.renderer.labels.template.align = 'left';
-  categoryAxis.renderer.labels.template.dx = -20;
+  categoryAxis.renderer.labels.template.dx = is_mobile ? -10 : -20;
+  categoryAxis.renderer.labels.template.dy = is_mobile ? -30 : categoryAxis.width;;
+  categoryAxis.width = is_mobile ? 0 : categoryAxis.width;
+
+ 
   // categoryAxis.renderer.labels.template.html = "<div class=\"logos-label\"><img width=\"32\" height=\"32\" src=\"{logo}\" title=\"{category}\" /></div>";
   // categoryAxis.renderer.labels.template.html = "<img width=\"60\" height=\"60\" src=\"{logo}\" title=\"{category}\" />";
   // console.log(categoryAxis.renderer.labels.template);
@@ -80,11 +84,16 @@ function  graficoEGM2() {
   categoryAxis3.renderer.grid.template.location = 0;
   categoryAxis3.renderer.minGridDistance = 30;
   categoryAxis3.renderer.grid.template.disabled = true;
-  categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:60px;height:60px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+  if(is_mobile) {
+    categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:40px;height:40px;font-size:12px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+    categoryAxis3.extraMax = 0;
+  } else {
+    categoryAxis3.renderer.labels.template.html = "<div style='background:#cccccc;color:white;position:relative;width:60px;height:60px;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:30px'>{dif3}</div>";
+    categoryAxis3.extraMax = 0.05;
+  }
   categoryAxis3.renderer.labels.template.fontSize = 14;
   categoryAxis3.renderer.opposite = true;
   // categoryAxis3.height = 550;
-  categoryAxis3.extraMax = 0.05;
 
 
   var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
@@ -150,9 +159,13 @@ function  graficoEGM2() {
       }
     });  
 
-
-    categoryAxis.renderer.cellStartLocation = 0.1;
-    categoryAxis.renderer.cellEndLocation = 0.9;
+    if (is_mobile) {
+      categoryAxis.renderer.cellStartLocation = 0.15;
+      categoryAxis.renderer.cellEndLocation = 0.85;
+    } else {
+      categoryAxis.renderer.cellStartLocation = 0.1;
+      categoryAxis.renderer.cellEndLocation = 0.9;
+    }
 
     return series;
   }
@@ -175,25 +188,25 @@ function  graficoEGM2() {
     }
   }
 
-  // // Set cell size in pixels
-  // var cellSize = 70;
-  // chart.events.on("datavalidated", function (ev) {
+  // Set cell size in pixels
+  var cellSize = 70;
+  chart.events.on("datavalidated", function (ev) {
 
-  //   // console.log('ajustando');
+    // console.log('ajustando');
 
-  //   // Get objects of interest
-  //   var chart = ev.target;
-  //   var categoryAxis = chart.yAxes.getIndex(0);
+    // Get objects of interest
+    var chart = ev.target;
+    var categoryAxis = chart.yAxes.getIndex(0);
 
-  //   // Calculate how we need to adjust chart height
-  //   var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+    // Calculate how we need to adjust chart height
+    var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
 
-  //   // get current chart height
-  //   var targetHeight = chart.pixelHeight + adjustHeight;
+    // get current chart height
+    var targetHeight = chart.pixelHeight + adjustHeight;
 
-  //   // Set it on chart's container
-  //   chart.svgContainer.htmlElement.style.height = targetHeight + "px";
-  // });
+    // Set it on chart's container
+    chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+  });
   // Cursor
   // chart.cursor = new am4charts.XYCursor();
 

@@ -160,5 +160,11 @@ if( $activar_graficos ) {
     width: calc(100% + 30px) !important;
     margin: 0 -15px !important;
   }
+  p.graficos-fuente {
+    line-height: 1.2;
+  }
+  #grafico-EGM-4 {
+    height: 350px !important;
+  }
 }
 </style>

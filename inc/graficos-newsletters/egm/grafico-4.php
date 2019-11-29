@@ -138,7 +138,7 @@ function  graficoEGM4() {
     // .filter( x => { if (x["dif"] !== "")  { return x; } });
 
 
-    console.log(regiones);
+    // console.log(regiones);
 
 
     // Themes begin

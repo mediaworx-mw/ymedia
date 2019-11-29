@@ -45,8 +45,8 @@
         <p class="graficos-fuente">Fuente: <?php echo $newsletter_egm['DiariosRegion']['fuente']; ?></p>
         <div id="grafico-EGM-4" class="grafico-inner" style="width: 100%; height: 650px;"></div>
         <p style="font-size:10px;display:flex;align-items:center;justify-content:center;">
-          <small style="font-size:10px;display:flex;align-items:center;justify-content:center;margin-right:20px"><span style="display:inline-block;border-radius:4px;margin-right:5px;width:22px;height:22px;background:#dc241f"></span>  Comunidad con un consumo por encima de la media nacional</small>
-          <small style="font-size:10px;display:flex;align-items:center;justify-content:center;margin-right:20px"><span style="display:inline-block;border-radius:4px;margin-right:5px;width:22px;height:22px"><img  style="filter:invert(80%);display:inline-block;border-radius:11px;margin:0; margin-right:5px;width:20px;height:20px" src="https://i.imgur.com/MFOMXXg.png" width="15" height="15" alt=""> </span> Comunidad con un diario lider regional</small>
+          <small style="font-size:10px;display:flex;align-items:center;justify-content:center;margin-right:20px;line-height:1.2"><span style="display:inline-block;border-radius:4px;margin-right:5px;width:22px;height:22px;background:#dc241f"></span>  Comunidad con un consumo por encima de la media nacional</small>
+          <small style="font-size:10px;display:flex;align-items:center;justify-content:center;margin-right:20px;line-height:1.2"><span style="display:inline-block;border-radius:4px;margin-right:5px;width:22px;height:22px"><img  style="filter:invert(80%);display:inline-block;border-radius:11px;margin:0; margin-right:5px;width:20px;height:20px" src="https://i.imgur.com/MFOMXXg.png" width="15" height="15" alt=""> </span> Comunidad con un diario lider regional</small>
         </p>
         <br>
         <br>
