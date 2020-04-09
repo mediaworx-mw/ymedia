@@ -1,4 +1,4 @@
-    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://www.amcharts.com/lib/version/4.7.6/maps.js"></script>
     <script src="https://www.amcharts.com/lib/4/geodata/worldHigh.js"></script>
     <script src="https://www.amcharts.com/lib/4/geodata/spainHigh.js"></script>
 
