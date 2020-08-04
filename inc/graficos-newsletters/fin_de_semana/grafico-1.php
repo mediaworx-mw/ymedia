@@ -21,13 +21,18 @@ function  graficoFDS1(dia) {
   enCadenas = (cadena, cadenas) => cadenas.filter( x => x.cadena.toLowerCase().indexOf(cadena.toLowerCase()) > -1 );
 
   const datosGraficosX = datosGraficos;
+ // var valsKey = "AM(000)";
+	var valsKey = Object.keys(datosGraficosX['Programas - Top10'][1])[1];
+
+	console.log(valsKey)
 
   // Set data
   if(dia === 'vie') { var input = datosGraficosX['Programas - Top10'].slice( 1,11); dayTitle = 'Viernes'};
   if(dia === 'sab') { var input = datosGraficosX['Programas - Top10'].slice(12,22); dayTitle = 'Sábado'};
   if(dia === 'dom') { var input = datosGraficosX['Programas - Top10'].slice(23,33); dayTitle = 'Domingo'};
 
-
+	
+	
   input = input.map((x, i) => {
     const moreData = x.Cadena !== undefined ? enCadenas(x.Cadena, cadenas) : false;
     // console.log(x);
@@ -40,16 +45,18 @@ function  graficoFDS1(dia) {
     return x;
   });
 
-  var valores = datosGraficosX['Programas - Top10'].filter(x => x["AM (000)"] !== undefined).map(x => x["AM (000)"]);
+  var valores = datosGraficosX['Programas - Top10'].filter(x => x[valsKey] !== undefined).map(x => x[valsKey]);
+	
+// 	console.log('v', valores)
 
   var max = Math.max(...valores);
   var min = Math.min(...valores);
 
   // console.log(input);
 
-  // input[input.length] = {"AM (000)": input[input.length - 1]["AM (000)"] * 0.08};
+  // input[input.length] = {valsKey: input[input.length - 1][valsKey] * 0.08};
 
-  var sorted = input.sort((a, b) => (a['AM (000)'] > b['AM (000)']) ? 1 : -1)
+  var sorted = input.sort((a, b) => (a[valsKey] > b[valsKey]) ? 1 : -1)
   chart.data = sorted;
 
   chart.colors.list = [am4core.color("#dddddd")];
@@ -126,7 +133,7 @@ function  graficoFDS1(dia) {
   // if(dia === 'vie') {
     axisTitle.html = "AM (000) <small class='small-text'><img src='https://www.amcharts.com/lib/images/star.svg'>  Minuto de oro</small>";
   } else {
-    axisTitle.html = "AM (000)";
+    axisTitle.html = valsKey;
   }
   axisTitle.fontWeight = 600;
   axisTitle.fontSize = 14;
@@ -225,9 +232,7 @@ function  graficoFDS1(dia) {
     
     return series;
   }
-  createSeries('AM (000)', 1);
-
-
+  createSeries(valsKey, 1);
 
   return chart;
 }
